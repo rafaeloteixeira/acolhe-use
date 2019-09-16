@@ -33,12 +33,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             try
             {
-                await acaoRepository.AddAsync(new Acao { Name = "tester" });
+                await acaoRepository.AddAsync(new Acao { Nome = "tester" });
                 var listAcao = await acaoRepository.GetAllAsync();
 
                 foreach (var item in listAcao)
                 {
-                    Console.WriteLine("lista: " + item.Name);
+                    Console.WriteLine("lista: " + item.Nome);
                 }
             }
             catch (System.Exception e)

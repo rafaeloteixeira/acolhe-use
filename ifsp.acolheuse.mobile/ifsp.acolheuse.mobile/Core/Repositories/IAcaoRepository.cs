@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.Core.Repositories
 {
     public interface IAcaoRepository : IRepository<Acao>
     {
-        Acao GetCompleteAcao(int id);
+        Task<IEnumerable<Acao>> GetAllByIdLinhaAsync(string idLinha);
     }
 }

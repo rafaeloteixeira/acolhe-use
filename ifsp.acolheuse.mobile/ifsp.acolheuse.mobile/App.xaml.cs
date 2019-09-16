@@ -10,6 +10,7 @@ using Microsoft.AppCenter.Crashes;
 using Plugin.CloudFirestore;
 using ifsp.acolheuse.mobile.Persistence.Repositories;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Views.Administrador;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -40,7 +41,26 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ViewB, ViewBViewModel>();
             containerRegistry.RegisterForNavigation<PrismContentPage1, PrismContentPage1ViewModel>();
 
+            #region administrador
             containerRegistry.Register<IAcaoRepository, AcaoRepository>();
+            containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
+            containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
+            containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
+            containerRegistry.RegisterForNavigation<HorarioAcaoPage, HorarioAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
+            containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
+            containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
+            containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
+            containerRegistry.RegisterForNavigation<HorarioAcaoPage, HorarioAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaEstagiariosPage, ListaEstagiariosPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaLinhasPage, ListaLinhasPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaServidoresPage, ListaServidoresPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaUsuariosPage, ListaUsuariosPageViewModel>();
+            #endregion
+
         }
 
         protected override void OnStart()

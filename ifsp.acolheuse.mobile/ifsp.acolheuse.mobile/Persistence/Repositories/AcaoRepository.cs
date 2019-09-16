@@ -1,8 +1,10 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using Plugin.CloudFirestore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.Persistence.Repositories
 {
@@ -13,9 +15,16 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         {
         }
 
-        public Acao GetCompleteAcao(int id)
+        public async Task<IEnumerable<Acao>> GetAllByIdLinhaAsync(string idLinha)
         {
-            throw new NotImplementedException();
+            var query = await CrossCloudFirestore.Current
+                                               .Instance
+                                               .GetCollection(typeParameterType.Name)
+                                                .WhereEqualsTo("Linha/Id", idLinha)
+                                               .GetDocumentsAsync();
+
+            var yourModels = query.ToObjects<Acao>();
+            return yourModels;
         }
     }
 }
