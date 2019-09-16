@@ -34,7 +34,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             try
             {
-                acaoRepository.Add(new Acao { Name = "teste2" });
+                await acaoRepository.AddAsync(new Acao { Name = "tester" });
                 var listAcao = await acaoRepository.GetAllAsync();
 
                 foreach (var item in listAcao)

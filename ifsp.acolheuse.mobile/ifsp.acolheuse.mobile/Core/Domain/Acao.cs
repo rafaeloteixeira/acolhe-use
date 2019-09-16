@@ -3,9 +3,12 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
+    [Table("acaos")]
     public class Acao : BindableBase
     {
         private string id;

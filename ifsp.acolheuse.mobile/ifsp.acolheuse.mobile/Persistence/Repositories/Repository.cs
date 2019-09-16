@@ -7,78 +7,58 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.CloudFirestore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ifsp.acolheuse.mobile.Persistence.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly FirebaseAccess Context;
+        protected Type typeParameterType;
 
         public Repository(FirebaseAccess context)
         {
             Context = context;
+            typeParameterType = typeof(TEntity);
         }
 
         public async Task<TEntity> GetAsync(string id)
         {
-            return null;
+            var document = await CrossCloudFirestore.Current
+                                                    .Instance
+                                                    .GetCollection(typeParameterType.Name)
+                                                    .GetDocument(id)
+                                                    .GetDocumentAsync();
+
+            var yourModel = document.ToObject<TEntity>();
+            return yourModel;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             var query = await CrossCloudFirestore.Current
                                                .Instance
-                                               .GetCollection("acao")
+                                               .GetCollection(typeParameterType.Name)
                                                .GetDocumentsAsync();
 
             var yourModels = query.ToObjects<TEntity>();
             return yourModels;
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public async Task AddAsync(TEntity entity)
         {
-            return null;
+            await CrossCloudFirestore.Current.Instance
+                                               .GetCollection(typeParameterType.Name)
+                                               .AddDocumentAsync(entity);
         }
 
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
-        {
-            return null;
-        }
-
-        public void Add(TEntity entity)
-        {
-            CrossCloudFirestore.Current
-                                     .Instance
-                                     .GetCollection("acao")
-                                     .AddDocument(entity, (error) =>
-                                     {
-                                         if (error != null)
-                                         {
-                                             System.Diagnostics.Debug.WriteLine("Firebase erro: " + error);
-                                         }
-                                     });
-        }
-
-        public async void AddAsync(TEntity entity)
+        public async Task RemoveAsync(string id)
         {
             await CrossCloudFirestore.Current
-                                      .Instance
-                                      .GetCollection("acao")
-                                      .AddDocumentAsync(entity);
-        }
-
-        public void AddRange(IEnumerable<TEntity> entities)
-        {
-
-        }
-
-        public void Remove(TEntity entity)
-        {
-
-        }
-
-        public void RemoveRange(IEnumerable<TEntity> entities)
-        {
+                         .Instance
+                         .GetCollection(typeParameterType.Name)
+                         .GetDocument(id)
+                         .DeleteDocumentAsync();
         }
     }
 }

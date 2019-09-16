@@ -10,12 +10,7 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
     {
         Task<TEntity> GetAsync(string id);
         Task<IEnumerable<TEntity>> GetAllAsync();
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
-        TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
-        void AddAsync(TEntity entity);
-        void Add(TEntity entity);
-        void AddRange(IEnumerable<TEntity> entities);
-        void Remove(TEntity entity);
-        void RemoveRange(IEnumerable<TEntity> entities);
+        Task AddAsync(TEntity entity);
+        Task RemoveAsync(string id);
     }
 }
