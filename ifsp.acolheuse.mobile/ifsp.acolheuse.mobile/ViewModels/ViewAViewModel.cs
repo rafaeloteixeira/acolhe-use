@@ -33,22 +33,36 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             try
             {
-                await acaoRepository.AddAsync(new Acao { Nome = "tester" });
-                var listAcao = await acaoRepository.GetAllAsync();
 
-                foreach (var item in listAcao)
-                {
-                    Console.WriteLine("lista: " + item.Nome);
-                }
+                Acao acao = new Acao { Id = "rXb2YcCflgr3FCXSfGfd" };
+                var navParameters = new NavigationParameters();
+                navParameters.Add("acao", acao);
+                await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
+
             }
-            catch (System.Exception e)
+            catch (Exception ex)
             {
-
             }
 
+            //try
+            //{
+            //    await acaoRepository.AddAsync(new Acao { Nome = "tester" });
+            //    var listAcao = await acaoRepository.GetAllAsync();
+            //    var acao = await acaoRepository.GetAsync("D21WkMt3zoTbL1OWdKx4");
+
+            //    foreach (var item in listAcao)
+            //    {
+            //        Console.WriteLine("lista: " + item.Nome);
+            //    }
+            //}
+            //catch (System.Exception e)
+            //{
+
+            //}
 
 
-            await navigationService.NavigateAsync("ViewB");
+
+            //await navigationService.NavigateAsync("ViewB");
         }
 
     }

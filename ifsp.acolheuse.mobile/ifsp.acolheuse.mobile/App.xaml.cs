@@ -35,14 +35,16 @@ namespace ifsp.acolheuse.mobile
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
             containerRegistry.RegisterForNavigation<ViewB, ViewBViewModel>();
             containerRegistry.RegisterForNavigation<PrismContentPage1, PrismContentPage1ViewModel>();
+            containerRegistry.Register<IAcaoRepository, AcaoRepository>();
+            containerRegistry.Register<ILinhaRepository, LinhaRepository>();
 
             #region administrador
-            containerRegistry.Register<IAcaoRepository, AcaoRepository>();
             containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
             containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();

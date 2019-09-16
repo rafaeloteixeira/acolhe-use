@@ -3,6 +3,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ifsp.acolheuse.mobile.Views.Administrador.CadastroAcaoPage">
-  
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.CadastroAcaoPage"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Command="{Binding SalvarAcaoCommand}" />
+        <ToolbarItem Text="Estagiários" Order="Secondary" Command="{Binding EditarEstagiariosCommand}" />
+        <ToolbarItem Text="Responsáveis" Order="Secondary" Command="{Binding EditarResponsaveisCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="5">
+                <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding LinhasCollection}" SelectedItem="{Binding Acao.Linha}"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
+                            <Entry Text="{Binding Acao.Nome}" HorizontalOptions="Fill"/>
+                        </sfText:SfTextInputLayout>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Text="Orientação" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding Acao.IsOrientation}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Text="Individual" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding Acao.IsIndividual}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Text="Grupo" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding Acao.IsGroup}"/>
+                        </StackLayout>
+                        <!---->
+
+
+
+                        <StackLayout Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Número de vagas" >
+                                        <Entry Text="{Binding Acao.NumeroVagas}" />
+                                    </sfText:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label Text="Lista Aberta" VerticalOptions="Center"/>
+                                    <Switch IsToggled="{Binding Acao.IsListaAberta}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <combobox:SfComboBox DataSource="{Binding DiasCollection}" SelectedItem="{Binding Dia}" />
+                            </StackLayout>
+                            <sfButtons:SfButton Text="Configurar" Command="{Binding ConfigurarDiaCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

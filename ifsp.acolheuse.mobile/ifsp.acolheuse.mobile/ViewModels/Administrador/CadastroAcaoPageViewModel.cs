@@ -14,6 +14,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #region commands
         public DelegateCommand _editarResponsaveisCommand { get; set; }
         public DelegateCommand _editarEstagiariosCommand { get; set; }
+
+
+
         public DelegateCommand _salvarAcaoCommand { get; set; }
         public DelegateCommand _configurarDiaCommand { get; set; }
         public DelegateCommand EditarResponsaveisCommand => _editarResponsaveisCommand ?? (_editarResponsaveisCommand = new DelegateCommand(EditarListaResponsaveisAsync));
@@ -109,6 +112,24 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             LinhasCollection = await linhaRepository.GetAllAsync();
             Dia = DiasCollection[0];
+        }
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (parameters["acao"] != null)
+            {
+                Acao = parameters["acao"] as Acao;
+                CarregarLinhaAcao(Acao.Id);
+            }
+            else
+            {
+                CarregarLinha();
+
+            }
         }
     }
 }

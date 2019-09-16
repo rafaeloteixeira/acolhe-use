@@ -16,6 +16,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public DelegateCommand _editarListaAcoes { get; set; }
         public DelegateCommand SalvarLinhaCommand => _salvarLinhaCommand ?? (_salvarLinhaCommand = new DelegateCommand(EditarListaResponsaveisAsync));
         public DelegateCommand EditarListaAcoes => _editarListaAcoes ?? (_editarListaAcoes = new DelegateCommand(EditarListaResponsaveisAsync));
+
         #endregion
 
         #region properties
@@ -37,17 +38,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             this.navigationService = navigationService;
             this.linhaRepository = linhaRepository;
+            this.acaoRepository = acaoRepository;
             Linha = new Linha();
             Title = titlePage;
-        }
 
-        public CadastroLinhaCuidadoPageViewModel(Linha linha, INavigationService navigationService, ILinhaRepository linhaRepository, IAcaoRepository acaoRepository)
-        : base(navigationService)
+        }
+        internal async void OpenCadastroAcao(Acao acao)
         {
-            this.navigationService = navigationService;
-            this.linhaRepository = linhaRepository;
-            this.Linha = linha;
-            Title = titlePage;
+            var navParameters = new NavigationParameters();
+            navParameters.Add("acao", acao);
+            await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
         }
 
         public async void EditarListaResponsaveisAsync()
@@ -74,6 +74,19 @@ namespace ifsp.acolheuse.mobile.ViewModels
             if (Linha != null && !String.IsNullOrEmpty(Linha.Id))
             {
                 Linha.AcaoCollection = await acaoRepository.GetAllByIdLinhaAsync(Linha.Id);
+            }
+        }
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+    
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (parameters["linha"] != null)
+            {
+                Linha = parameters["linha"] as Linha;
             }
         }
     }

@@ -14,31 +14,38 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly FirebaseAccess Context;
-        protected Type typeParameterType;
+        protected string collectionName;
 
         public Repository(FirebaseAccess context)
         {
             Context = context;
-            typeParameterType = typeof(TEntity);
+            collectionName = typeof(TEntity).Name.ToLower();
         }
 
         public async Task<TEntity> GetAsync(string id)
         {
-            var document = await CrossCloudFirestore.Current
-                                                    .Instance
-                                                    .GetCollection(typeParameterType.Name)
-                                                    .GetDocument(id)
-                                                    .GetDocumentAsync();
+            try
+            {
+                var document = await CrossCloudFirestore.Current
+                                           .Instance
+                                           .GetCollection(collectionName)
+                                           .GetDocument(id)
+                                           .GetDocumentAsync();
 
-            var yourModel = document.ToObject<TEntity>();
-            return yourModel;
+                var yourModel = document.ToObject<TEntity>();
+                return yourModel;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             var query = await CrossCloudFirestore.Current
                                                .Instance
-                                               .GetCollection(typeParameterType.Name)
+                                               .GetCollection(collectionName)
                                                .GetDocumentsAsync();
 
             var yourModels = query.ToObjects<TEntity>();
@@ -48,7 +55,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         public async Task AddAsync(TEntity entity)
         {
             await CrossCloudFirestore.Current.Instance
-                                               .GetCollection(typeParameterType.Name)
+                                               .GetCollection(collectionName)
                                                .AddDocumentAsync(entity);
         }
 
@@ -56,7 +63,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         {
             await CrossCloudFirestore.Current
                          .Instance
-                         .GetCollection(typeParameterType.Name)
+                         .GetCollection(collectionName)
                          .GetDocument(id)
                          .DeleteDocumentAsync();
         }
