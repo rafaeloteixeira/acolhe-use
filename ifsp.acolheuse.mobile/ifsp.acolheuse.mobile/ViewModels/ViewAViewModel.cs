@@ -25,7 +25,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             this.navigationService = navigationService;
             this.acaoRepository = acaoRepository;
-
             Title = "My View A";
         }
 

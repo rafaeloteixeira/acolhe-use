@@ -8,16 +8,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    [Table("acaos")]
     public class Acao : BindableBase
     {
         private string id;
-        private string name;
+        private string nome;
         private int numeroVagas;
-        private int isOpen;
+        private int isListaAberta;
         private bool isOrientation;
         private bool isIndividual;
         private bool isGroup;
+        private Linha linha;
+        private DiasAcao dias;
+        private IEnumerable<Lista> responsavelCollection;
+        private IEnumerable<Lista> estagiarioCollection;
 
         [Id]
         public string Id
@@ -25,20 +28,20 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return id; }
             set { id = value; RaisePropertyChanged(); }
         }
-        public string Name
+        public string Nome
         {
-            get { return name; }
-            set { name = value; RaisePropertyChanged(); }
+            get { return nome; }
+            set { nome = value; RaisePropertyChanged(); }
         }
         public int NumeroVagas
         {
             get { return numeroVagas; }
             set { numeroVagas = value; RaisePropertyChanged(); }
         }
-        public int IsOpen
+        public int IsListaAberta
         {
-            get { return isOpen; }
-            set { isOpen = value; RaisePropertyChanged(); }
+            get { return isListaAberta; }
+            set { isListaAberta = value; RaisePropertyChanged(); }
         }
         public bool IsOrientation
         {
@@ -54,6 +57,32 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         {
             get { return isGroup; }
             set { isGroup = value; RaisePropertyChanged(); }
+        }
+        public Linha Linha
+        {
+            get { return linha; }
+            set { linha = value; RaisePropertyChanged(); }
+        }
+        public DiasAcao Dias
+        {
+            get { return dias; }
+            set { dias = value; RaisePropertyChanged(); }
+        }
+        public IEnumerable<Lista> ResponsavelCollection
+        {
+            get { return responsavelCollection; }
+            set { responsavelCollection = value; RaisePropertyChanged(); }
+        }
+        public IEnumerable<Lista> EstagiarioCollection
+        {
+            get { return estagiarioCollection; }
+            set { estagiarioCollection = value; RaisePropertyChanged(); }
+        }
+
+        public Acao()
+        {
+            Linha = new Linha();
+            Dias = new DiasAcao();
         }
     }
 }
