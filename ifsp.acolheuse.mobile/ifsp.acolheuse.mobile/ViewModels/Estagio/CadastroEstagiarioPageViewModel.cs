@@ -38,13 +38,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private IEstagiarioRepository estagiarioRepository;
         private IServidorRepository servidorRepository;
+        private IUserRepository userRepository;
 
-        public CadastroEstagiarioPageViewModel(INavigationService navigationService, IEstagiarioRepository estagiarioRepository, IServidorRepository servidorRepository) :
+        public CadastroEstagiarioPageViewModel(INavigationService navigationService, IEstagiarioRepository estagiarioRepository, IServidorRepository servidorRepository, IUserRepository userRepository) :
             base(navigationService)
         {
             this.navigationService = navigationService;
             this.estagiarioRepository = estagiarioRepository;
             this.servidorRepository = servidorRepository;
+            this.userRepository = userRepository;
 
             Estagiario = new Estagiario();
         }
@@ -62,7 +64,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 {
                     Estagiario.UserId = user.UserId;
                     await estagiarioRepository.AddAsync(Estagiario);
-                    //await firebase.GetConnection().Child("users").Child(user.UserId).PutAsync(user);
+                    await userRepository.AddAsync(user);
                     await navigationService.GoBackAsync();
                 }
                 else

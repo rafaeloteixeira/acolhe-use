@@ -14,8 +14,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
     {
         #region commands
         public DelegateCommand _salvarServidorCommand { get; set; }
-        public DelegateCommand _editarListaEstagiarios
-        { get; set; }
+        public DelegateCommand _editarListaEstagiarios { get; set; }
         public DelegateCommand SalvarServidorCommand => _salvarServidorCommand ?? (_salvarServidorCommand = new DelegateCommand(SalvarServidorAsync));
         public DelegateCommand EditarListaEstagiarios => _editarListaEstagiarios ?? (_editarListaEstagiarios = new DelegateCommand(SalvarServidorAsync));
         #endregion
@@ -39,13 +38,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private IServidorRepository servidorRepository;
         private IEstagiarioRepository estagiarioRepository;
+        private IUserRepository userRepository;
 
-        public CadastroServidorPageViewModel(INavigationService navigationService, IServidorRepository servidorRepository, IEstagiarioRepository estagiarioRepository)
+        public CadastroServidorPageViewModel(INavigationService navigationService, IServidorRepository servidorRepository, IEstagiarioRepository estagiarioRepository, IUserRepository userRepository)
             : base(navigationService)
         {
             this.navigationService = navigationService;
             this.servidorRepository = servidorRepository;
             this.estagiarioRepository = estagiarioRepository;
+            this.userRepository = userRepository;
+
             Servidor = new Servidor();
         }
 
@@ -71,7 +73,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                         Servidor.UserId = user.UserId;
 
                         await servidorRepository.AddAsync(Servidor);
-                        //await firebase.GetConnection().Child("users").Child(user.UserId).PutAsync(user);
+                        await userRepository.AddAsync(user);
                         await navigationService.GoBackAsync();
                     }
                     else

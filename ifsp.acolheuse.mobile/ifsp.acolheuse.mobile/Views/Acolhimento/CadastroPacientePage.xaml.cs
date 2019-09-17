@@ -8,5 +8,10 @@ namespace ifsp.acolheuse.mobile.Views.Acolhimento
         {
             InitializeComponent();
         }
+
+        private void LvAcao_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
     }
 }
