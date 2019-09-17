@@ -5,20 +5,60 @@ using System.Collections.Generic;
 using System.Linq;
 using ifsp.acolheuse.mobile.Core.Repositories;
 using Prism.Navigation;
+using ifsp.acolheuse.mobile.Core.Domain;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
     public class ListaUsuariosPageViewModel : ViewModelBase
     {
-        private INavigationService navigationService;
-        private IAcaoRepository acaoRepository;
+        #region commands
+        public DelegateCommand _novoPacienteCommand { get; set; }
+        public DelegateCommand NovoPacienteCommand => _novoPacienteCommand ?? (_novoPacienteCommand = new DelegateCommand(BuscarPacientesCollectionAsync));
+        #endregion
 
-        public ListaUsuariosPageViewModel(INavigationService navigationService, IAcaoRepository acaoRepository) :
+        #region properties
+        private IEnumerable<Paciente> pacienteCollection;
+        public IEnumerable<Paciente> PacienteCollection
+        {
+            get { return pacienteCollection; }
+            set { pacienteCollection = value; RaisePropertyChanged(); }
+        }
+
+        #endregion
+
+        private INavigationService navigationService;
+        private IPacienteRepository pacienteRepository;
+
+        public ListaUsuariosPageViewModel(INavigationService navigationService, IPacienteRepository pacienteRepository) :
             base(navigationService)
         {
             this.navigationService = navigationService;
-            this.acaoRepository = acaoRepository;
+            this.pacienteRepository = pacienteRepository;
             Title = "My View A";
+        }
+
+        internal async void ItemTapped(Paciente paciente)
+        {
+            var navParameters = new NavigationParameters();
+            navParameters.Add("paciente", paciente);
+            await navigationService.NavigateAsync("CadastroPacientePage", navParameters);
+        }
+
+        public async void NovoPacienteCommandAsync()
+        {
+            await navigationService.NavigateAsync("CadastroPacientePage");
+        }
+
+        public async void BuscarPacientesCollectionAsync()
+        {
+            try
+            {
+                PacienteCollection = await pacienteRepository.GetAllAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
