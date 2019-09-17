@@ -3,6 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ifsp.acolheuse.mobile.Views.Administrador.ListaServidoresPage">
-  
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.ListaServidoresPage"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="Servidores">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo"
+                 Command="{Binding NovoServidorCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="filterText" HeightRequest="40" Placeholder="" TextChanged="OnFilterTextChanged" Grid.Row="0"/>
+
+            <listview:SfListView x:Name="lvServidor" ItemsSource="{Binding ServidoresCollection}" ItemTapped="LvServidor_ItemTapped">
+
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="8">
+                                <Grid x:Name="GridTasks">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding NomeCompleto}"  FontAttributes="Bold" Grid.Column="0" />
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

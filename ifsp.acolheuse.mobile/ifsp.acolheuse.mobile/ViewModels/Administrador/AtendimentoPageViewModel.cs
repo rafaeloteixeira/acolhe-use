@@ -8,7 +8,6 @@ using Prism.Navigation;
 using Syncfusion.SfSchedule.XForms;
 using ifsp.acolheuse.mobile.Core.Domain;
 using System.Collections.ObjectModel;
-using System.Linq;
 using ifsp.acolheuse.mobile.Services;
 
 namespace ifsp.acolheuse.mobile.ViewModels
