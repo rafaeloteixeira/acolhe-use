@@ -13,7 +13,7 @@ using ifsp.acolheuse.mobile.Services;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
-    public class HorarioAcaoPageViewModel : ViewModelBase
+    public class AtendimentoPageViewModel : ViewModelBase
     {
         #region properties
         private ObservableCollection<ScheduleAppointment> horarios;
@@ -46,10 +46,10 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
 
         private INavigationService navigationService;
-        private IHorarioAcaoRepository horarioRepository;
+        private IAtendimentoRepository horarioRepository;
         private IAcaoRepository acaoRepository;
 
-        public HorarioAcaoPageViewModel(INavigationService navigationService, IHorarioAcaoRepository horarioRepository, IAcaoRepository acaoRepository) :
+        public AtendimentoPageViewModel(INavigationService navigationService, IAtendimentoRepository horarioRepository, IAcaoRepository acaoRepository) :
             base(navigationService)
         {
             this.navigationService = navigationService;

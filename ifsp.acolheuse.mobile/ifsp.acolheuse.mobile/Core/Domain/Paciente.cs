@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Plugin.CloudFirestore.Attributes;
+using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    public class Paciente
+    public class Paciente : BindableBase
     {
         private string cpf;
         private string nome;
@@ -12,7 +14,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string email;
         private string telefone;
         private string celular;
-        private ObservableCollection<IncluirModel> acoesCollection;
+        private IEnumerable<Lista> acoesCollection;
 
         public string Id
         {
@@ -21,7 +23,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         public string Cpf
         {
             get { return cpf; }
-            set { cpf = value; OnPropertyChanged(); }
+            set { cpf = value; RaisePropertyChanged(); }
         }
 
         [Ignored]
@@ -32,41 +34,40 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         public string Nome
         {
             get { return nome; }
-            set { nome = value; OnPropertyChanged(); }
+            set { nome = value; RaisePropertyChanged(); }
         }
 
         public string Sobrenome
         {
             get { return sobrenome; }
-            set { sobrenome = value; OnPropertyChanged(); }
+            set { sobrenome = value; RaisePropertyChanged(); }
         }
         public string Email
         {
             get { return email; }
-            set { email = value; OnPropertyChanged(); }
+            set { email = value; RaisePropertyChanged(); }
         }
 
         public string Telefone
         {
             get { return telefone; }
-            set { telefone = value; OnPropertyChanged(); }
+            set { telefone = value; RaisePropertyChanged(); }
         }
 
         public string Celular
         {
             get { return celular; }
-            set { celular = value; OnPropertyChanged(); }
+            set { celular = value; RaisePropertyChanged(); }
         }
 
-        public ObservableCollection<IncluirModel> AcoesCollection
+        public IEnumerable<Lista> AcoesCollection
         {
             get { return acoesCollection; }
-            set { acoesCollection = value; OnPropertyChanged(); }
+            set { acoesCollection = value; RaisePropertyChanged(); }
         }
 
-        public PacienteModel()
+        public Paciente()
         {
-            AcoesCollection = new ObservableCollection<IncluirModel>();
         }
     }
 }

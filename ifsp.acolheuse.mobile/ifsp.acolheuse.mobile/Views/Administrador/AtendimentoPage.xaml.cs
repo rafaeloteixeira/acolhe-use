@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace ifsp.acolheuse.mobile.Views.Administrador
 {
-    public partial class HorarioAcaoPage : ContentPage
+    public partial class AtendimentoPage : ContentPage
     {
-        private readonly HorarioAcaoPageViewModel _viewModel;
-        public HorarioAcaoPage()
+        private readonly AtendimentoPageViewModel _viewModel;
+        public AtendimentoPage()
         {
             InitializeComponent();
             BindingContext = _viewModel;

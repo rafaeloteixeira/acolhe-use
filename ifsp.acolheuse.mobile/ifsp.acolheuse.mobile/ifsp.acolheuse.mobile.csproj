@@ -36,7 +36,7 @@
     <EmbeddedResource Update="Views\Administrador\EdicaoListaResponsaveisPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\HorarioAcaoPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\AtendimentoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Administrador\ListaAcoesPage.xaml">
@@ -70,6 +70,12 @@
     <Folder Include="Views\Acolhimento\" />
     <Folder Include="Views\Estagiario\" />
     <Folder Include="Views\Servidor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Administrador\AtendimentoPage.xaml.cs">
+      <DependentUpon>AtendimentoPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

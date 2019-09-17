@@ -49,13 +49,13 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
-            containerRegistry.RegisterForNavigation<HorarioAcaoPage, HorarioAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<AtendimentoPage, AtendimentoPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
             containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
             containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
-            containerRegistry.RegisterForNavigation<HorarioAcaoPage, HorarioAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<AtendimentoPage, AtendimentoPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaEstagiariosPage, ListaEstagiariosPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaLinhasPage, ListaLinhasPageViewModel>();

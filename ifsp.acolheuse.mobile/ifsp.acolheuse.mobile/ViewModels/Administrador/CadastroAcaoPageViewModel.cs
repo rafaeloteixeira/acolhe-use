@@ -84,7 +84,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         }
         public async void ConfigurarDiaAsync()
         {
-            await navigationService.NavigateAsync("HorarioAcaoPage");
+            await navigationService.NavigateAsync("AtendimentoPage");
         }
 
         public async void SalvarAcaoAsync()

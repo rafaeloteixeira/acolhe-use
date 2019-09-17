@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.CloudFirestore.Attributes;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
