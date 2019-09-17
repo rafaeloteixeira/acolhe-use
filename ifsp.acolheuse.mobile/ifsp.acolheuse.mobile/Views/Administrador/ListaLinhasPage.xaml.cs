@@ -1,22 +1,17 @@
-﻿using Xamarin.Forms;
+﻿using ifsp.acolheuse.mobile.Core.Domain;
+using ifsp.acolheuse.mobile.Core.Settings;
+using ifsp.acolheuse.mobile.ViewModels;
+using Xamarin.Forms;
 
 namespace ifsp.acolheuse.mobile.Views.Administrador
 {
     public partial class ListaLinhasPage : ContentPage
     {
+        private readonly ListaLinhasPageViewModel _viewModel;
         public ListaLinhasPage()
         {
             InitializeComponent();
-        }
-    }
-    public partial class ListarLinhasView : ContentPage
-    {
-        private readonly ViewModels.Administrador.ListarLinhasViewModel _viewModel;
-        public ListarLinhasView()
-        {
-            InitializeComponent();
-            _viewModel = new ViewModels.Administrador.ListarLinhasViewModel();
-            this.BindingContext = _viewModel;
+            _viewModel = BindingContext as ListaLinhasPageViewModel;
 
             if (Settings.Tipo == "acolhimento")
                 ToolbarItems.Clear();
@@ -28,14 +23,14 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
             _viewModel.BuscarLinhasCollectionAsync();
         }
 
-        private async void LvLinhas_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void LvLinhas_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             if (Settings.Tipo != "acolhimento")
             {
                 if (e.ItemData != null)
                 {
-                    var item = (LinhaModel)e.ItemData;
-                    await NavigationService.Instance.PushAsync(new Views.Administrador.CadastroLinhaCuidadoView(item));
+                    var item = (Linha)e.ItemData;
+                    _viewModel.ItemTapped(item);
                 }
             }
         }
@@ -55,7 +50,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
             if (searchBar == null || searchBar.Text == null)
                 return true;
 
-            var linha = obj as LinhaModel;
+            var linha = obj as Linha;
             if (linha.Nome.ToLower().Contains(searchBar.Text.ToLower()) || linha.Nome.ToLower().Contains(searchBar.Text.ToLower()))
                 return true;
             else

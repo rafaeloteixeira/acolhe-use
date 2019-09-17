@@ -12,8 +12,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
     public class ListaEstagiariosPageViewModel : ViewModelBase
     {
         #region commands
-        public DelegateCommand _movoEstagiarioCommand { get; set; }
-        public DelegateCommand NovoEstagiarioCommand => _movoEstagiarioCommand ?? (_movoEstagiarioCommand = new DelegateCommand(NovoEstagiarioCommandAsync));
+        public DelegateCommand _novoEstagiarioCommand { get; set; }
+        public DelegateCommand NovoEstagiarioCommand => _novoEstagiarioCommand ?? (_novoEstagiarioCommand = new DelegateCommand(NovoEstagiarioCommandAsync));
         #endregion
         
         #region properties
