@@ -14,15 +14,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #region commands
         public DelegateCommand _editarResponsaveisCommand { get; set; }
         public DelegateCommand _editarEstagiariosCommand { get; set; }
-
-
-
         public DelegateCommand _salvarAcaoCommand { get; set; }
         public DelegateCommand _configurarDiaCommand { get; set; }
+
         public DelegateCommand EditarResponsaveisCommand => _editarResponsaveisCommand ?? (_editarResponsaveisCommand = new DelegateCommand(EditarListaResponsaveisAsync));
         public DelegateCommand EditarEstagiariosCommand => _editarEstagiariosCommand ?? (_editarEstagiariosCommand = new DelegateCommand(EditarListaEstagiariosAsync));
-        public DelegateCommand SalvarAcaoCommand => _salvarAcaoCommand ?? (_salvarAcaoCommand = new DelegateCommand(ConfigurarDiaAsync));
-        public DelegateCommand ConfigurarDiaCommand => _configurarDiaCommand ?? (_configurarDiaCommand = new DelegateCommand(SalvarAcaoAsync));
+        public DelegateCommand SalvarAcaoCommand => _salvarAcaoCommand ?? (_salvarAcaoCommand = new DelegateCommand(SalvarAcaoAsync));
+        public DelegateCommand ConfigurarDiaCommand => _configurarDiaCommand ?? (_configurarDiaCommand = new DelegateCommand(ConfigurarDiaAsync));
         #endregion
 
         #region properties
