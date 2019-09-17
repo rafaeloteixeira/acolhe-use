@@ -103,8 +103,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     if (Servidor.IsProfessor)
                     {
                         Servidor.EstagiarioCollection = await estagiarioRepository.GetEstagiariosByResponsavelIdAsync(Servidor.UserId);
-
-
                     }
                 }
             }

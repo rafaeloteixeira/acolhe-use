@@ -15,6 +15,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.2.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="17.2.0.51" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
