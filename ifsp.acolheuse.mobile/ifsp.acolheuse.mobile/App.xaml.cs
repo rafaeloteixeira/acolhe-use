@@ -11,6 +11,9 @@ using Plugin.CloudFirestore;
 using ifsp.acolheuse.mobile.Persistence.Repositories;
 using ifsp.acolheuse.mobile.Core.Repositories;
 using ifsp.acolheuse.mobile.Views.Administrador;
+using ifsp.acolheuse.mobile.Views.Acolhimento;
+using ifsp.acolheuse.mobile.Views.Responsavel;
+using ifsp.acolheuse.mobile.Views.Estagio;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -63,6 +66,9 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ListaUsuariosPage, ListaUsuariosPageViewModel>();
             #endregion
 
+            containerRegistry.RegisterForNavigation<CadastroPacientePage, CadastroPacientePageViewModel>();
+            containerRegistry.RegisterForNavigation<CadastroServidorPage, CadastroServidorPageViewModel>();
+            containerRegistry.RegisterForNavigation<CadastroEstagiarioPage, CadastroEstagiarioPageViewModel>();
         }
 
         protected override void OnStart()

@@ -18,37 +18,37 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         public string Id
         {
             get { return id; }
-            set { id = value; OnPropertyChanged(); }
+            set { id = value; RaisePropertyChanged(); }
         }
         public string Nome
         {
             get { return nome; }
-            set { nome = value; OnPropertyChanged(); }
+            set { nome = value; RaisePropertyChanged(); }
         }
         public bool Adicionado
         {
             get { return adicionado; }
-            set { adicionado = value; OnPropertyChanged(); }
+            set { adicionado = value; RaisePropertyChanged(); }
         }
         public bool IsListaEspera
         {
             get { return isListaEspera; }
-            set { isListaEspera = value; OnPropertyChanged(); }
+            set { isListaEspera = value; RaisePropertyChanged(); }
         }
         public bool IsAtendimento
         {
             get { return isAtendimento; }
-            set { isAtendimento = value; OnPropertyChanged(); }
+            set { isAtendimento = value; RaisePropertyChanged(); }
         }
         public bool IsAlta
         {
             get { return isAlta; }
-            set { isAlta = value; OnPropertyChanged(); }
+            set { isAlta = value; RaisePropertyChanged(); }
         }
         public bool IsInterconsulta
         {
             get { return isInterconsulta; }
-            set { isInterconsulta = value; OnPropertyChanged(); }
+            set { isInterconsulta = value; RaisePropertyChanged(); }
         }
     }
 }

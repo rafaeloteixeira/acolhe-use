@@ -18,14 +18,12 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 
         private int tipoConsulta;
         private string eventName;
-        private string descricaoConsulta;
         private string idServidor;
         private Paciente paciente;
         private string idAcao;
         private int capacidade;
         private DateTime startTime;
         private DateTime endTime;
-        private Color cor;
         private bool allDay;
         private bool repeat;
         private bool confirmado;
