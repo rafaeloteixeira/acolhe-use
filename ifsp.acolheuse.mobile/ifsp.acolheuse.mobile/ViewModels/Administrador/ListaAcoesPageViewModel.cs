@@ -32,13 +32,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
             get { return linha; }
             set { linha = value; RaisePropertyChanged(); }
         }
-
-        internal async void ItemTapped(Acao acao)
-        {
-            var navParameters = new NavigationParameters();
-            navParameters.Add("acao", acao);
-            await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
-        }
         #endregion
 
         private INavigationService navigationService;
@@ -57,7 +50,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             await navigationService.NavigateAsync("CadastroAcaoPage");
         }
-
+        internal async void ItemTapped(Acao acao)
+        {
+            var navParameters = new NavigationParameters();
+            navParameters.Add("acao", acao);
+            await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
+        }
         public async void BuscarLinhasCollectionAsync()
         {
             try

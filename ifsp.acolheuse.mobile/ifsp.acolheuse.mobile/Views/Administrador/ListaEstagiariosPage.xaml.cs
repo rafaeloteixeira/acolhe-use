@@ -1,22 +1,16 @@
-﻿using Xamarin.Forms;
+﻿using ifsp.acolheuse.mobile.Core.Domain;
+using ifsp.acolheuse.mobile.ViewModels;
+using Xamarin.Forms;
 
 namespace ifsp.acolheuse.mobile.Views.Administrador
 {
     public partial class ListaEstagiariosPage : ContentPage
     {
+        private readonly ListaEstagiariosPageViewModel _viewModel;
         public ListaEstagiariosPage()
         {
             InitializeComponent();
-        }
-    }
-    public partial class ListarEstagiariosView : ContentPage
-    {
-        private readonly ViewModels.Administrador.ListarEstagiariosViewModel _viewModel;
-        public ListarEstagiariosView()
-        {
-            InitializeComponent();
-            _viewModel = new ViewModels.Administrador.ListarEstagiariosViewModel();
-            this.BindingContext = _viewModel;
+            _viewModel = BindingContext as ListaEstagiariosPageViewModel;
         }
 
         protected override void OnAppearing()
@@ -24,12 +18,12 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
             _viewModel.BuscarEstagiarioCollectionAsync();
         }
 
-        private async void LvEstagiario_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void LvEstagiario_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             if (e.ItemData != null)
             {
-                var estagiario = (EstagiarioModel)e.ItemData;
-                await NavigationService.Instance.PushAsync(new Views.Estagiario.EstagiarioPerfilView(estagiario.UserId));
+                var estagiario = (Estagiario)e.ItemData;
+                _viewModel.ItemTapped(estagiario);
             }
         }
 
@@ -48,7 +42,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
             if (searchBar == null || searchBar.Text == null)
                 return true;
 
-            var servidor = obj as EstagiarioModel;
+            var servidor = obj as Estagiario;
             if (servidor.NomeCompleto.ToLower().Contains(searchBar.Text.ToLower()) || servidor.NomeCompleto.ToLower().Contains(searchBar.Text.ToLower()))
                 return true;
             else
