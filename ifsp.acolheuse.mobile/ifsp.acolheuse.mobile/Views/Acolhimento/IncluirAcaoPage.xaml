@@ -13,7 +13,7 @@
         <StackLayout>
             <SearchBar />
             <ListView x:Name="lvAcoes" ItemsSource="{Binding AcoesCollection}"
-          CachingStrategy="RecycleElement" RowHeight="60" ItemTapped="LvAcoes_ItemTapped">
+          CachingStrategy="RecycleElement" RowHeight="60" >
 
                 <ListView.ItemTemplate>
                     <DataTemplate>

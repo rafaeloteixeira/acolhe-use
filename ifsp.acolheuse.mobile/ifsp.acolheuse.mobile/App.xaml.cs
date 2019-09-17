@@ -14,6 +14,7 @@ using ifsp.acolheuse.mobile.Views.Administrador;
 using ifsp.acolheuse.mobile.Views.Acolhimento;
 using ifsp.acolheuse.mobile.Views.Responsavel;
 using ifsp.acolheuse.mobile.Views.Estagio;
+using ifsp.acolheuse.mobile.Views.Menu;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -33,7 +34,7 @@ namespace ifsp.acolheuse.mobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ViewA");
+            await NavigationService.NavigateAsync("NavigationPage/MenuPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -44,8 +45,15 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
             containerRegistry.RegisterForNavigation<ViewB, ViewBViewModel>();
             containerRegistry.RegisterForNavigation<PrismContentPage1, PrismContentPage1ViewModel>();
+
             containerRegistry.Register<IAcaoRepository, AcaoRepository>();
             containerRegistry.Register<ILinhaRepository, LinhaRepository>();
+
+            containerRegistry.Register<IAtendimentoRepository, AtendimentoRepository>();
+            containerRegistry.Register<IEstagiarioRepository, EstagiarioRepository>();
+            containerRegistry.Register<IPacienteRepository, PacienteRepository>();
+            containerRegistry.Register<IServidorRepository, ServidorRepository>();
+            containerRegistry.Register<IUserRepository, UserRepository>();
 
             #region administrador
             containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
@@ -69,6 +77,8 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<CadastroPacientePage, CadastroPacientePageViewModel>();
             containerRegistry.RegisterForNavigation<CadastroServidorPage, CadastroServidorPageViewModel>();
             containerRegistry.RegisterForNavigation<CadastroEstagiarioPage, CadastroEstagiarioPageViewModel>();
+            containerRegistry.RegisterForNavigation<IncluirAcaoPage, IncluirAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
         }
 
         protected override void OnStart()
