@@ -16,8 +16,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
         {
             _viewModel.BuscarPacientesCollectionAsync();
         }
-
-        private void LvLinhas_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void LvPaciente_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             if (e.ItemData != null)
             {

@@ -22,8 +22,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <!--<RowDefinition Height="15" />
-                    <RowDefinition Height="Auto" />-->
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -55,25 +53,7 @@
                         <maskededit:SfMaskedEdit Value="{Binding Paciente.Celular}" Keyboard="Numeric" Mask="(00) 0 0000-0000" />
                     </sfText:SfTextInputLayout>
                 </Grid>
-                <!--<Label Grid.Row="6" Text="Ações"/>-->
-                <!--<ListView Grid.Row="7" Grid.ColumnSpan="2" x:Name="lvAcao" ItemsSource="{Binding Paciente.AcoesCollection}"
-          CachingStrategy="RecycleElement" RowHeight="60" ItemTapped="LvAcao_ItemTapped" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="8">
-                                    <Grid x:Name="GridTasks">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="1*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
-                                    </Grid>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>

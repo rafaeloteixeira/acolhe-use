@@ -8,6 +8,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 {
     public class Paciente : BindableBase
     {
+        private string id;
         private string cpf;
         private string nome;
         private string sobrenome;
@@ -16,9 +17,11 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string celular;
         private IEnumerable<Lista> acoesCollection;
 
+        [Id]
         public string Id
         {
-            get { return String.IsNullOrEmpty(cpf) ? "" : cpf.Replace("-", "").Replace(".", ""); }
+            get { return id; }
+            set { id = value; RaisePropertyChanged(); }
         }
         public string Cpf
         {

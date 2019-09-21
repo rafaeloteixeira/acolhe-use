@@ -13,7 +13,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
     {
         #region commands
         public DelegateCommand _novoPacienteCommand { get; set; }
-        public DelegateCommand NovoPacienteCommand => _novoPacienteCommand ?? (_novoPacienteCommand = new DelegateCommand(BuscarPacientesCollectionAsync));
+        public DelegateCommand NovoPacienteCommand => _novoPacienteCommand ?? (_novoPacienteCommand = new DelegateCommand(NovoPacienteCommandAsync));
         #endregion
 
         #region properties

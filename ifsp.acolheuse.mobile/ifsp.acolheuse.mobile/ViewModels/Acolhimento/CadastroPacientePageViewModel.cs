@@ -30,11 +30,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private IPacienteRepository pacienteRepository;
 
-        public CadastroPacientePageViewModel(INavigationService navigationService, IPacienteRepository pacienteRepository, IAcaoRepository acaoRepository) :
+        public CadastroPacientePageViewModel(INavigationService navigationService, IPacienteRepository pacienteRepository) :
         base(navigationService)
         {
             this.navigationService = navigationService;
             this.pacienteRepository = pacienteRepository;
+            Paciente = new Paciente();
         }
     
         public async void SalvarPacienteAsync()
@@ -69,10 +70,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 Paciente = parameters["paciente"] as Paciente;
                 GetPacienteAsync();
-            }
-            else
-            {
-                Paciente = new Paciente();
             }
         }
     }

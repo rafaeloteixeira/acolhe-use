@@ -43,6 +43,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             this.navigationService = navigationService;
             this.pacienteRepository = pacienteRepository;
+            this.acaoRepository = acaoRepository;
         }
 
         public async void SalvarAsync()
@@ -59,7 +60,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             for (int i = 0; i < acoes.Count(); i++)
             {
-                if (Paciente.AcoesCollection.FirstOrDefault(x => x.Id == acoes.ElementAt(i).Id) != null)
+                if (Paciente.AcoesCollection?.FirstOrDefault(x => x.Id == acoes.ElementAt(i).Id) != null)
                 {
                     AcoesCollection.Add(new Lista
                     {
