@@ -11,6 +11,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
     public class Acao : BindableBase
     {
         private string id;
+        private string guidAcao;
         private string nome;
         private int numeroVagas;
         private int isListaAberta;
@@ -32,6 +33,11 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         {
             get { return nome; }
             set { nome = value; RaisePropertyChanged(); }
+        }
+        public string GuidAcao
+        {
+            get { return guidAcao; }
+            set { guidAcao = value; RaisePropertyChanged(); }
         }
         public int NumeroVagas
         {

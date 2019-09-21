@@ -9,5 +9,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
     public interface IAcaoRepository : IRepository<Acao>
     {
         Task<IEnumerable<Acao>> GetAllByIdLinhaAsync(string idLinha);
+        Task<Acao> GetByGuidAsync(string guidAcao);
     }
 }

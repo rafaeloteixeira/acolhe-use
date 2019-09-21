@@ -61,16 +61,10 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
         public async Task UpdateAsync(TEntity entity, string id)
         {
-            try
-            {
-                await CrossCloudFirestore.Current.Instance
-                                                     .GetCollection(collectionName)
-                                                     .GetDocument(id)
-                                                     .UpdateDataAsync(entity);
-            }
-            catch (Exception ex)
-            {
-            }
+            await CrossCloudFirestore.Current.Instance
+                                                 .GetCollection(collectionName)
+                                                 .GetDocument(id)
+                                                 .UpdateDataAsync(entity);
         }
 
         public async Task AddOrUpdateAsync(TEntity entity, string id)

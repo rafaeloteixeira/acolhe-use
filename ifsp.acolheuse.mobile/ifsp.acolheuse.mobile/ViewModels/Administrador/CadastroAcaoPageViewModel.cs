@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ifsp.acolheuse.mobile.Core.Domain;
+using ifsp.acolheuse.mobile.Services;
+using System.Threading.Tasks;
+using Prism.Services;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
@@ -70,13 +73,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private IAcaoRepository acaoRepository;
         private ILinhaRepository linhaRepository;
+        private IPageDialogService dialogService;
 
-        public CadastroAcaoPageViewModel(INavigationService navigationService, IAcaoRepository acaoRepository, ILinhaRepository linhaRepository) :
+        public CadastroAcaoPageViewModel(INavigationService navigationService, IAcaoRepository acaoRepository, ILinhaRepository linhaRepository, IPageDialogService dialogService) :
            base(navigationService)
         {
             this.navigationService = navigationService;
             this.acaoRepository = acaoRepository;
             this.linhaRepository = linhaRepository;
+            this.dialogService = dialogService;
             Acao = new Acao();
             Linha = new Linha();
             Title = "Cadastro de Ação";
@@ -96,14 +101,30 @@ namespace ifsp.acolheuse.mobile.ViewModels
         }
         public async void ConfigurarDiaAsync()
         {
+
+            if (String.IsNullOrEmpty(Acao.Id))
+            {
+                var action = await dialogService.DisplayActionSheetAsync("Para configurar é necessário salvar a ação.", "Cancelar", null, "Salvar");
+
+                if (action == "Cancelar")
+                    return;
+
+                Acao.GuidAcao = Guid.NewGuid().ToString();
+                await acaoRepository.AddAsync(Acao);
+                Acao = await acaoRepository.GetByGuidAsync(Acao.GuidAcao.ToString());
+            }
+
             var navParameters = new NavigationParameters();
-            navParameters.Add("acao", acao);
-            navParameters.Add("dia", dia);
+            navParameters.Add("acao", Acao);
+            navParameters.Add("dia", Dia);
             await navigationService.NavigateAsync("HorarioAcaoPage", navParameters);
         }
 
         public async void SalvarAcaoAsync()
         {
+            if(String.IsNullOrEmpty(Acao.GuidAcao))
+                Acao.GuidAcao = Guid.NewGuid().ToString();
+
             this.Acao.IdLinha = Linha.Id;
             await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
             await navigationService.GoBackAsync();

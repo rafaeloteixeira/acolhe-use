@@ -3,6 +3,7 @@ using ifsp.acolheuse.mobile.Core.Repositories;
 using Plugin.CloudFirestore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,18 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
             var yourModels = query.ToObjects<Acao>();
             return yourModels;
+        }
+
+        public async Task<Acao> GetByGuidAsync(string guidAcao)
+        {
+            var query = await CrossCloudFirestore.Current
+                                   .Instance
+                                   .GetCollection(collectionName)
+                                   .WhereEqualsTo("GuidAcao", guidAcao)
+                                   .GetDocumentsAsync();
+
+            var yourModels = query.ToObjects<Acao>();
+            return yourModels.FirstOrDefault();
         }
     }
 }

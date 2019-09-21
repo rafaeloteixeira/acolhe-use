@@ -48,8 +48,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
         }
         public async void NovaAcaoAsync()
         {
-
-            await navigationService.NavigateAsync("CadastroAcaoPage");
             var navParameters = new NavigationParameters();
             navParameters.Add("linha", Linha);
             await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
