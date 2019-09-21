@@ -11,6 +11,8 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
         Task<TEntity> GetAsync(string id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task AddAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity, string id);
+        Task AddOrUpdateAsync(TEntity entity, string id);
         Task RemoveAsync(string id);
     }
 }

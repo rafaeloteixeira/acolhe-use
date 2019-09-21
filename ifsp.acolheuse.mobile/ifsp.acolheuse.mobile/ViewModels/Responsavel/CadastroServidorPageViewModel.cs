@@ -1,5 +1,6 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -39,6 +40,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private IServidorRepository servidorRepository;
         private IEstagiarioRepository estagiarioRepository;
         private IUserRepository userRepository;
+        FirebaseAccess firebase = new FirebaseAccess();
 
         public CadastroServidorPageViewModel(INavigationService navigationService, IServidorRepository servidorRepository, IEstagiarioRepository estagiarioRepository, IUserRepository userRepository)
             : base(navigationService)
@@ -55,6 +57,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("estagiario", estagiario);
+            navParameters.Add("admin", true);
             await navigationService.NavigateAsync("CadastroEstagiarioPage", navParameters);
         }
 
@@ -62,11 +65,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             try
             {
-                if (admin)
+                if (String.IsNullOrEmpty(Servidor.Id) && admin)
                 {
                     User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
-                    //var result = await firebase.CreateUserAsync(user);
-                    var result = "";
+                    var result = await firebase.CreateUserAsync(user);
+            
 
                     if (String.IsNullOrEmpty(result))
                     {
@@ -83,7 +86,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 }
                 else
                 {
-                    await servidorRepository.AddAsync(Servidor);
+                    await servidorRepository.AddOrUpdateAsync(Servidor, Servidor.Id);
                     await navigationService.GoBackAsync();
                 }
             }
@@ -98,14 +101,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
             try
             {
 
-                if (!String.IsNullOrEmpty(Servidor.UserId))
+                if (!String.IsNullOrEmpty(Servidor.Id))
                 {
-                    Servidor = await servidorRepository.GetAsync(Servidor.UserId);
-
-                    if (Servidor.IsProfessor)
-                    {
-                        Servidor.EstagiarioCollection = await estagiarioRepository.GetEstagiariosByResponsavelIdAsync(Servidor.UserId);
-                    }
+                    Servidor = await servidorRepository.GetAsync(Servidor.Id);
                 }
             }
             catch (Exception)
@@ -140,10 +138,14 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 Servidor = parameters["servidor"] as Servidor;
             }
-            else
+
+            if (parameters["admin"] != null)
             {
                 admin = true;
             }
+
+            GetServidorAsync();
+
         }
     }
 }

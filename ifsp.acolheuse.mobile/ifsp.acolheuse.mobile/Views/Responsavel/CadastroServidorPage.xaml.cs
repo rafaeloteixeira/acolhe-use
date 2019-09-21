@@ -15,7 +15,6 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
 
         protected override void OnAppearing()
         {
-            _viewModel.GetServidorAsync();
         }
 
         private void LvEstagiario_ItemTapped(object sender, ItemTappedEventArgs e)

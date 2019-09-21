@@ -29,6 +29,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private string dia;
         private int tamanhoLvResponsaveis;
         private int tamanhoLvEstagiarios;
+        private Linha linha;
 
         public int TamanhoLvResponsaveis
         {
@@ -59,6 +60,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             get { return new List<string> { "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira" }; }
         }
+        public Linha Linha
+        {
+            get { return linha; }
+            set { linha = value; RaisePropertyChanged(); }
+        }
         #endregion
 
         private INavigationService navigationService;
@@ -71,25 +77,36 @@ namespace ifsp.acolheuse.mobile.ViewModels
             this.navigationService = navigationService;
             this.acaoRepository = acaoRepository;
             this.linhaRepository = linhaRepository;
+            Acao = new Acao();
+            Linha = new Linha();
             Title = "Cadastro de Ação";
         }
 
         public async void EditarListaResponsaveisAsync()
         {
-            await navigationService.NavigateAsync("EdicaoListaResponsaveisPage");
+            var navParameters = new NavigationParameters();
+            navParameters.Add("acao", acao);
+            await navigationService.NavigateAsync("EdicaoListaResponsaveisPage", navParameters);
         }
         public async void EditarListaEstagiariosAsync()
         {
-            await navigationService.NavigateAsync("EdicaoListaEstagiariosPage");
+            var navParameters = new NavigationParameters();
+            navParameters.Add("acao", acao);
+            await navigationService.NavigateAsync("EdicaoListaEstagiariosPage", navParameters);
         }
         public async void ConfigurarDiaAsync()
         {
-            await navigationService.NavigateAsync("AtendimentoPage");
+            var navParameters = new NavigationParameters();
+            navParameters.Add("acao", acao);
+            navParameters.Add("dia", dia);
+            await navigationService.NavigateAsync("HorarioAcaoPage", navParameters);
         }
 
         public async void SalvarAcaoAsync()
         {
-            await acaoRepository.AddAsync(Acao);
+            this.Acao.IdLinha = Linha.Id;
+            await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
+            await navigationService.GoBackAsync();
         }
 
         public async void CarregarLinhaAcao(string IdAcao)
@@ -97,6 +114,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             try
             {
                 Acao = await acaoRepository.GetAsync(IdAcao);
+                Linha = await linhaRepository.GetAsync(Acao.IdLinha);
                 LinhasCollection = await linhaRepository.GetAllAsync();
                 Dia = DiasCollection[0];
             }
@@ -118,6 +136,10 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            if (parameters["linha"] != null)
+            {
+                Linha = parameters["linha"] as Linha;
+            }
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
@@ -126,7 +148,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
             else
             {
                 CarregarLinha();
-
             }
         }
     }

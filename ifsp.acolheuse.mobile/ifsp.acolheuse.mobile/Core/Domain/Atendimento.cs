@@ -77,7 +77,6 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             }
         }
 
-        [Id]
         public string EventId
         {
             get

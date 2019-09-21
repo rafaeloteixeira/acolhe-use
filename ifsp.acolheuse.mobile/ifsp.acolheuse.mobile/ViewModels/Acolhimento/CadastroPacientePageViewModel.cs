@@ -29,7 +29,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
         private INavigationService navigationService;
         private IPacienteRepository pacienteRepository;
-        private IAcaoRepository acaoRepository;
+
         public CadastroPacientePageViewModel(INavigationService navigationService, IPacienteRepository pacienteRepository, IAcaoRepository acaoRepository) :
         base(navigationService)
         {
@@ -39,7 +39,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
     
         public async void SalvarPacienteAsync()
         {
-            await pacienteRepository.AddAsync(Paciente);
+            await pacienteRepository.AddOrUpdateAsync(Paciente, Paciente.Id);
             await navigationService.GoBackAsync();
         }
         public async void EditarAcoesAsync()

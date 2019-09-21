@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.3.0" />
     <PackageReference Include="Microsoft.AppCenter" Version="2.1.1" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.1.1" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.1.1" />
@@ -44,7 +45,7 @@
     <EmbeddedResource Update="Views\Administrador\EdicaoListaResponsaveisPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\AtendimentoPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\HorarioAcaoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Administrador\ListaAcoesPage.xaml">
@@ -81,12 +82,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\Administrador\AtendimentoPage.xaml.cs">
-      <DependentUpon>AtendimentoPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
 </Project>

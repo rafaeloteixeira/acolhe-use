@@ -1,18 +1,18 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Services;
+using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using Syncfusion.SfSchedule.XForms;
-using ifsp.acolheuse.mobile.Core.Domain;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using ifsp.acolheuse.mobile.Services;
+using System.Linq;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
-    public class AtendimentoPageViewModel : ViewModelBase
+    public class HorarioAcaoPageViewModel : ViewModelBase
     {
         #region properties
         private ObservableCollection<ScheduleAppointment> horarios;
@@ -45,35 +45,35 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
 
         private INavigationService navigationService;
-        private IAtendimentoRepository horarioRepository;
+        private IHorarioAcaoRepository horarioRepository;
         private IAcaoRepository acaoRepository;
 
-        public AtendimentoPageViewModel(INavigationService navigationService, IAtendimentoRepository horarioRepository, IAcaoRepository acaoRepository) :
+        public HorarioAcaoPageViewModel(INavigationService navigationService, IHorarioAcaoRepository horarioRepository, IAcaoRepository acaoRepository) :
             base(navigationService)
         {
             this.navigationService = navigationService;
             this.horarioRepository = horarioRepository;
             this.acaoRepository = acaoRepository;
+
+            Horarios = new ObservableCollection<ScheduleAppointment>();
             Title = "My View A";
         }
-
-
         /// <summary>
         /// Creates meetings and stores in a collection.  
         /// </summary>
         public async void CreateAppointments(DateTime hora)
         {
-            Atendimento atendimento = new Atendimento(Atendimento._INCLUIDO, "", null, null, Acao.Id, 0, false, false, hora, null);
+            HorarioAcao horario = new HorarioAcao(Acao.Id, hora);
 
-            var horario = await horarioRepository.GetAtendimentoByIdAcaoEventIdAsync(Acao.Id, atendimento.EventId);
+            var horarioAtendimento = await horarioRepository.GetAtendimentoByIdAcaoEventIdAsync(Acao.Id, horario.EventId);
 
-            if (horario != null)
+            if (horarioAtendimento == null)
             {
                 if (await MessageService.Instance.ShowAsyncYesNo("Deseja adicionar este horário do atendimento da " + dia + "?"))
                 {
-                    if (atendimento != null)
+                    if (horario != null)
                     {
-                        await horarioRepository.AddAtendimentoByIdAcaoAsync(Acao.Id, atendimento);
+                        await horarioRepository.AddAtendimentoByIdAcaoAsync(Acao.Id, horario);
                         BuscarHorariosAsync();
                     }
                 }
@@ -82,7 +82,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 if (await MessageService.Instance.ShowAsyncYesNo("Deseja excluir este horário do atendimento da " + dia + "?"))
                 {
-                    await horarioRepository.DeleteAtendimentoByIdAcaoEventIdAsync(Acao.Id, atendimento.EventId);
+                    await horarioRepository.DeleteAtendimentoByIdAcaoEventIdAsync(Acao.Id, horario.EventId);
+                    BuscarHorariosAsync();
                 }
             }
         }
@@ -119,36 +120,39 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters["acao"] != null && parameters["servidor"] != null && parameters["dia"] != null)
+            if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
-                Servidor = parameters["servidor"] as Servidor;
-                dia = parameters["acao"].ToString();
-
-                switch (dia)
-                {
-                    case "Segunda-feira":
-                        Date = new DateTime(0001, 01, 03, 08, 0, 0);
-                        break;
-                    case "Terça-feira":
-                        Date = new DateTime(0001, 01, 04, 08, 0, 0);
-                        break;
-                    case "Quarta-feira":
-                        Date = new DateTime(0001, 01, 05, 08, 0, 0);
-                        break;
-                    case "Quinta-feira":
-                        Date = new DateTime(0001, 01, 06, 08, 0, 0);
-                        break;
-                    case "Sexta-feira":
-                        Date = new DateTime(0001, 01, 07, 08, 0, 0);
-                        break;
-                }
-
-                BuscarHorariosAsync();
             }
-      
+            if (parameters["servidor"] != null)
+            {
+                Servidor = parameters["servidor"] as Servidor;
+            }
+            if (parameters["dia"] != null)
+            {
+                dia = parameters["dia"].ToString();
+            }
 
+            switch (dia)
+            {
+                case "Segunda-feira":
+                    Date = new DateTime(0001, 01, 03, 08, 0, 0);
+                    break;
+                case "Terça-feira":
+                    Date = new DateTime(0001, 01, 04, 08, 0, 0);
+                    break;
+                case "Quarta-feira":
+                    Date = new DateTime(0001, 01, 05, 08, 0, 0);
+                    break;
+                case "Quinta-feira":
+                    Date = new DateTime(0001, 01, 06, 08, 0, 0);
+                    break;
+                case "Sexta-feira":
+                    Date = new DateTime(0001, 01, 07, 08, 0, 0);
+                    break;
+            }
 
+            BuscarHorariosAsync();
         }
     }
 }

@@ -15,7 +15,6 @@ namespace ifsp.acolheuse.mobile.Views.Estagio
       
         protected override void OnAppearing()
         {
-            _viewModel.GetEstagiarioAsync();
         }
     }
 }

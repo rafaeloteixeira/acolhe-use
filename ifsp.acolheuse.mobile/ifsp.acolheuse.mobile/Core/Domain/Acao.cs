@@ -17,7 +17,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private bool isOrientation;
         private bool isIndividual;
         private bool isGroup;
-        private Linha linha;
+        private string idLinha;
         private DiasAcao dias;
         private IEnumerable<Lista> responsavelCollection;
         private IEnumerable<Lista> estagiarioCollection;
@@ -58,11 +58,12 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return isGroup; }
             set { isGroup = value; RaisePropertyChanged(); }
         }
-        public Linha Linha
+        public string IdLinha
         {
-            get { return linha; }
-            set { linha = value; RaisePropertyChanged(); }
+            get { return idLinha; }
+            set { idLinha = value; RaisePropertyChanged(); }
         }
+
         public DiasAcao Dias
         {
             get { return dias; }
@@ -81,7 +82,6 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 
         public Acao()
         {
-            Linha = new Linha();
             Dias = new DiasAcao();
         }
     }

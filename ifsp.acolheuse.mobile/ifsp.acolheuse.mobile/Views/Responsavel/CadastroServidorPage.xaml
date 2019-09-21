@@ -4,7 +4,6 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.CadastroServidorPage"
-             xmlns:behavior="clr-namespace:ifsp.use.mobile.Behaviors"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
              Title="Dados do Servidor">
@@ -30,7 +29,7 @@
 
                 <Grid Grid.Row="0">
                     <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="CPF" >
-                        <maskededit:SfMaskedEdit Value="{Binding Servidor.Cpf}" Keyboard="Numeric" Mask="000.000.000-00" />
+                        <maskededit:SfMaskedEdit Value="{Binding Servidor.Cpf}" Keyboard="Numeric" MaskType="Text" Mask="000.000.000-00" />
                     </sfText:SfTextInputLayout>
                     <Label Text="É Orientador?" Grid.Column="1" HorizontalTextAlignment="End"/>
                     <Switch IsToggled="{Binding Servidor.IsProfessor}" Grid.Column="1" />

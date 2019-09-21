@@ -68,7 +68,7 @@
                     <Label Text="Professor orientador"/>
                 </Grid>
                 <Grid Grid.Row="7">
-                    <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding ProfessorCollection}" SelectedItem="{Binding Estagiario.ProfessorOrientador}" />
+                    <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding ProfessorCollection}" SelectedItem="{Binding ProfessorOrientador}" />
                 </Grid>
 
 

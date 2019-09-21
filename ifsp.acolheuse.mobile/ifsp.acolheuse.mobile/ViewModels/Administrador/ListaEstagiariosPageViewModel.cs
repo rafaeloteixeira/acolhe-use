@@ -40,12 +40,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("estagiario", estagiario);
+            navParameters.Add("admin", true);
             await navigationService.NavigateAsync("CadastroEstagiarioPage", navParameters);
         }
 
         public async void NovoEstagiarioCommandAsync()
         {
-            await navigationService.NavigateAsync("CadastroEstagiarioPage");
+            var navParameters = new NavigationParameters();
+            navParameters.Add("admin", true);
+            await navigationService.NavigateAsync("CadastroEstagiarioPage", navParameters);
         }
 
         public async void BuscarEstagiarioCollectionAsync()

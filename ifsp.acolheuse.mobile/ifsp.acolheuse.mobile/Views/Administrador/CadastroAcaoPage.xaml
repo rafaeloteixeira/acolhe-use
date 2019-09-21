@@ -18,7 +18,7 @@
             <StackLayout Margin="5">
                 <StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand">
-                        <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding LinhasCollection}" SelectedItem="{Binding Acao.Linha}"/>
+                        <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding LinhasCollection}" SelectedItem="{Binding Linha}"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >

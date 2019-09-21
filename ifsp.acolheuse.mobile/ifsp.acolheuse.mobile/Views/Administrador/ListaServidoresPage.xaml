@@ -14,7 +14,7 @@
         <StackLayout>
             <SearchBar x:Name="filterText" HeightRequest="40" Placeholder="" TextChanged="OnFilterTextChanged" Grid.Row="0"/>
 
-            <listview:SfListView x:Name="lvServidor" ItemsSource="{Binding ServidoresCollection}" >
+            <listview:SfListView x:Name="lvServidor" ItemsSource="{Binding ServidoresCollection}" ItemTapped="LvServidor_ItemTapped">
 
                 <listview:SfListView.ItemTemplate>
                     <DataTemplate>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ifsp.acolheuse.mobile.Views.Administrador.AtendimentoPage"
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.HorarioAcaoPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              Title="Horário da Ação">
     <ContentPage.Resources>

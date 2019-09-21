@@ -20,8 +20,10 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             var query = await CrossCloudFirestore.Current
                                                .Instance
                                                .GetCollection(collectionName)
-                                                .WhereEqualsTo("Linha/Id", idLinha)
+                                               .WhereEqualsTo("IdLinha", idLinha)
                                                .GetDocumentsAsync();
+
+
 
             var yourModels = query.ToObjects<Acao>();
             return yourModels;

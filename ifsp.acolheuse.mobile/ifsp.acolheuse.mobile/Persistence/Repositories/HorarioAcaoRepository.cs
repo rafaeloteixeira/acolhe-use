@@ -9,13 +9,13 @@ using System.Linq;
 
 namespace ifsp.acolheuse.mobile.Persistence.Repositories
 {
-    public class AtendimentoRepository : Repository<Atendimento>, IAtendimentoRepository
+    public class HorarioAcaoRepository : Repository<Atendimento>, IHorarioAcaoRepository
     {
-        public AtendimentoRepository()
+        public HorarioAcaoRepository()
             : base(new FirebaseConfigurations.FirebaseAccess())
         {
         }
-        public async Task<IEnumerable<Atendimento>> GetAtendimentosByIdAcaoAsync(string idAcao)
+        public async Task<IEnumerable<HorarioAcao>> GetAtendimentosByIdAcaoAsync(string idAcao)
         {
             var query = await CrossCloudFirestore.Current
                                                .Instance
@@ -24,26 +24,26 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                                                .GetCollection("horarios")
                                                .GetDocumentsAsync();
 
-            var yourModels = query.ToObjects<Atendimento>();
+            var yourModels = query.ToObjects<HorarioAcao>();
             return yourModels;
         }
 
 
-        public async Task<Atendimento> GetAtendimentoByIdAcaoEventIdAsync(string idAcao, string eventId)
+        public async Task<HorarioAcao> GetAtendimentoByIdAcaoEventIdAsync(string idAcao, string eventId)
         {
-            var document = await CrossCloudFirestore.Current
+            var query = await CrossCloudFirestore.Current
                                                .Instance
                                                .GetCollection(collectionName)
                                                .GetDocument(idAcao)
                                                .GetCollection("horarios")
-                                               .GetDocument(eventId)
-                                               .GetDocumentAsync();
+                                               .WhereEqualsTo("EventId", eventId)
+                                               .GetDocumentsAsync();
 
-            var yourModel = document.ToObject<Atendimento>();
-            return yourModel;
+            var yourModels = query.ToObjects<HorarioAcao>();
+            return yourModels.FirstOrDefault();
         }
 
-        public async Task AddAtendimentoByIdAcaoAsync(string idAcao, Atendimento entity)
+        public async Task AddAtendimentoByIdAcaoAsync(string idAcao, HorarioAcao entity)
         {
 
             await CrossCloudFirestore.Current
@@ -56,15 +56,14 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         }
         public async Task DeleteAtendimentoByIdAcaoEventIdAsync(string idAcao, string eventId)
         {
-
+            var item = await GetAtendimentoByIdAcaoEventIdAsync(idAcao, eventId);
             await CrossCloudFirestore.Current
                                     .Instance
                                     .GetCollection(collectionName)
                                     .GetDocument(idAcao)
                                     .GetCollection("horarios")
-                                    .GetDocument(eventId)
+                                    .GetDocument(item.Id)
                                     .DeleteDocumentAsync();
-
         }
     }
 }

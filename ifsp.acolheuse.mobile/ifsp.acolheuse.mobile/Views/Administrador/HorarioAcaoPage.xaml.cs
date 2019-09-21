@@ -5,13 +5,15 @@ using Xamarin.Forms;
 
 namespace ifsp.acolheuse.mobile.Views.Administrador
 {
-    public partial class AtendimentoPage : ContentPage
+    public partial class HorarioAcaoPage : ContentPage
     {
-        private readonly AtendimentoPageViewModel _viewModel;
-        public AtendimentoPage()
+  
+        private readonly HorarioAcaoPageViewModel _viewModel;
+
+        public HorarioAcaoPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel;
+            _viewModel = BindingContext as HorarioAcaoPageViewModel;
         }
 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)

@@ -17,7 +17,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
             _viewModel.BuscarServidoresCollectionAsync();
         }
 
-        private void LvLinhas_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void LvServidor_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             if (e.ItemData != null)
             {

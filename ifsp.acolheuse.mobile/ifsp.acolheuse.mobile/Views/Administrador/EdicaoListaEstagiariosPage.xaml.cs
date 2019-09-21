@@ -9,7 +9,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
         public EdicaoListaEstagiariosPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel;
+            _viewModel = BindingContext as EdicaoListaEstagiariosPageViewModel;
         }
         protected override void OnAppearing()
         {

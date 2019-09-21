@@ -21,7 +21,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             var query = await CrossCloudFirestore.Current
                                                .Instance
                                                .GetCollection(collectionName)
-                                                .WhereEqualsTo("ProfessorOrientador/UserId", idServidor)
+                                                .WhereEqualsTo("IdProfessor", idServidor)
                                                .GetDocumentsAsync();
 
             var yourModels = query.ToObjects<Estagiario>();

@@ -46,7 +46,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             //try
             //{
-            //    await acaoRepository.AddAsync(new Acao { Nome = "tester" });
+            //    await acaoRepository.AddOrUpdateAsync(new Acao { Nome = "tester" });
             //    var listAcao = await acaoRepository.GetAllAsync();
             //    var acao = await acaoRepository.GetAsync("D21WkMt3zoTbL1OWdKx4");
 

@@ -14,8 +14,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #region commands
         public DelegateCommand _salvarLinhaCommand { get; set; }
         public DelegateCommand _editarListaAcoes { get; set; }
-        public DelegateCommand SalvarLinhaCommand => _salvarLinhaCommand ?? (_salvarLinhaCommand = new DelegateCommand(EditarListaResponsaveisAsync));
-        public DelegateCommand EditarListaAcoes => _editarListaAcoes ?? (_editarListaAcoes = new DelegateCommand(EditarListaResponsaveisAsync));
+        public DelegateCommand SalvarLinhaCommand => _salvarLinhaCommand ?? (_salvarLinhaCommand = new DelegateCommand(SalvarAsync));
+        public DelegateCommand EditarListaAcoes => _editarListaAcoes ?? (_editarListaAcoes = new DelegateCommand(SalvarAsync));
 
         #endregion
 
@@ -50,14 +50,10 @@ namespace ifsp.acolheuse.mobile.ViewModels
             await navigationService.NavigateAsync("CadastroAcaoPage", navParameters);
         }
 
-        public async void EditarListaResponsaveisAsync()
+        public async void SalvarAsync()
         {
-            if (String.IsNullOrEmpty(Linha.Id))
-                Linha.Id = Guid.NewGuid().ToString("N");
-
-            await linhaRepository.AddAsync(Linha);
-
-            GetLinhaAsync();
+            await linhaRepository.AddOrUpdateAsync(Linha, Linha.Id);
+            await navigationService.GoBackAsync();
         }
 
         public async void GetLinhaAsync()

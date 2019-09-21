@@ -42,12 +42,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("servidor", servidor);
+            navParameters.Add("admin", true);
             await navigationService.NavigateAsync("CadastroServidorPage", navParameters);
         }
 
         public async void NovoServidorCommandAsync()
         {
-            await navigationService.NavigateAsync("CadastroServidorPage");
+            var navParameters = new NavigationParameters();
+            navParameters.Add("admin", true);
+            await navigationService.NavigateAsync("CadastroServidorPage", navParameters);
         }
 
         public async void BuscarServidoresCollectionAsync()

@@ -1,5 +1,6 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -21,12 +22,19 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         #region properties
         private Estagiario estagiario;
+        private Servidor professorOrientador;
         private IEnumerable<Servidor> professorCollection;
         private bool admin;
+
         public Estagiario Estagiario
         {
             get { return estagiario; }
             set { estagiario = value; RaisePropertyChanged(); }
+        }
+        public Servidor ProfessorOrientador
+        {
+            get { return professorOrientador; }
+            set { professorOrientador = value; RaisePropertyChanged(); }
         }
         public IEnumerable<Servidor> ProfessorCollection
         {
@@ -34,7 +42,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             set { professorCollection = value; RaisePropertyChanged(); }
         }
         #endregion
-
+        FirebaseAccess firebase = new FirebaseAccess();
         private INavigationService navigationService;
         private IEstagiarioRepository estagiarioRepository;
         private IServidorRepository servidorRepository;
@@ -49,16 +57,17 @@ namespace ifsp.acolheuse.mobile.ViewModels
             this.userRepository = userRepository;
 
             Estagiario = new Estagiario();
+            ProfessorOrientador = new Servidor();
         }
 
         public async void SalvarEstagiarioAsync()
         {
-            if (admin)
+            Estagiario.IdProfessor = ProfessorOrientador.Id;
+
+            if (admin && String.IsNullOrEmpty(Estagiario.Id))
             {
                 User user = new User() { Email = Estagiario.Email, Password = Estagiario.Senha, Tipo = "estagiario" };
-
-                //var result = await firebase.CreateUserAsync(user);
-                var result = "";
+                var result = await firebase.CreateUserAsync(user);
 
                 if (String.IsNullOrEmpty(result))
                 {
@@ -74,20 +83,30 @@ namespace ifsp.acolheuse.mobile.ViewModels
             }
             else
             {
-                await estagiarioRepository.AddAsync(Estagiario);
+                await estagiarioRepository.AddOrUpdateAsync(Estagiario, Estagiario.Id);
                 await navigationService.GoBackAsync();
             }
         }
 
         public async void GetEstagiarioAsync()
         {
-            ProfessorCollection = await servidorRepository.GetAllAsync();
-
-            if (!String.IsNullOrEmpty(Estagiario.UserId))
+            try
             {
-                Estagiario = await estagiarioRepository.GetAsync(Estagiario.UserId);
+                if (!String.IsNullOrEmpty(Estagiario.Id))
+                {
+                    Estagiario = await estagiarioRepository.GetAsync(Estagiario.Id);
+                    ProfessorOrientador = await servidorRepository.GetAsync(Estagiario.IdProfessor);
+                }
+
+                ProfessorCollection = await servidorRepository.GetAllAsync();
             }
+            catch (Exception)
+            {
+                throw;
+            }
+       
         }
+   
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
 
@@ -99,10 +118,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 Estagiario = parameters["estagiario"] as Estagiario;
             }
-            else
+
+            if (parameters["admin"] != null)
             {
                 admin = true;
             }
+            GetEstagiarioAsync();
+
         }
     }
 }

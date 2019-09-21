@@ -9,6 +9,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 {
     public class Servidor : BindableBase
     {
+        private string id;
         private string userId;
         private string cpf;
         private string nome;
@@ -19,8 +20,13 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string senha;
         private string confirmarSenha;
         private bool isProfessor;
-        private IEnumerable<Estagiario> estagiarioCollection;
 
+        [Id]
+        public string Id
+        {
+            get { return id; }
+            set { id = value; RaisePropertyChanged(); }
+        }
         public string UserId
         {
             get { return userId; }
@@ -66,6 +72,8 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return email; }
             set { email = value; RaisePropertyChanged(); }
         }
+
+        [Ignored]
         public string Senha
         {
             get { return senha; }
@@ -82,11 +90,6 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         {
             get { return isProfessor; }
             set { isProfessor = value; RaisePropertyChanged(); }
-        }
-        public IEnumerable<Estagiario> EstagiarioCollection
-        {
-            get { return estagiarioCollection; }
-            set { estagiarioCollection = value; RaisePropertyChanged(); }
         }
     }
 }

@@ -47,13 +47,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
             this.acaoRepository = acaoRepository;
             this.servidorRepository = servidorRepository;
             Title = "Editar Responsáveis";
-            BuscarServidoresCollectionAsync();
         }
 
         public async void SalvarAsync()
         {
             Acao.ResponsavelCollection = new ObservableCollection<Lista>(ResponsavelCollection.Where(x => x.Adicionado == true));
-            await acaoRepository.AddAsync(Acao);
+            await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
             await NavigationService.GoBackAsync();
         }
 
@@ -67,7 +66,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
                 for (int i = 0; i < servidores.Count(); i++)
                 {
-                    if (Acao.ResponsavelCollection.FirstOrDefault(x => x.Id == servidores.ElementAt(i).UserId) != null)
+                    if (Acao.ResponsavelCollection?.FirstOrDefault(x => x.Id == servidores.ElementAt(i).UserId) != null)
                     {
                         ResponsavelCollection.Add(new Lista
                         {
@@ -103,6 +102,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
+                BuscarServidoresCollectionAsync();
             }
 
         }

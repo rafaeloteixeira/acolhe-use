@@ -46,13 +46,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
             this.acaoRepository = acaoRepository;
             this.estagiarioRepository = estagiarioRepository;
             Title = "Editar Estagiários";
-            BuscarEstagiariosCollectionAsync();
         }
 
         public async void SalvarAsync()
         {
             Acao.EstagiarioCollection = new ObservableCollection<Lista>(EstagiarioCollection.Where(x => x.Adicionado == true));
-            await acaoRepository.AddAsync(Acao);
+            await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
             await NavigationService.GoBackAsync();
         }
 
@@ -61,12 +60,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
             try
             {
                 EstagiarioCollection = new ObservableCollection<Lista>();
-
                 IEnumerable<Estagiario> estagiarios = await estagiarioRepository.GetAllAsync();
 
                 for (int i = 0; i < estagiarios.Count(); i++)
                 {
-                    if (Acao.EstagiarioCollection.FirstOrDefault(x => x.Id == estagiarios.ElementAt(i).UserId) != null)
+                    if (Acao.EstagiarioCollection?.FirstOrDefault(x => x.Id == estagiarios.ElementAt(i).UserId) != null)
                     {
                         EstagiarioCollection.Add(new Lista
                         {
@@ -102,8 +100,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
+                BuscarEstagiariosCollectionAsync();
             }
-
         }
     }
 }

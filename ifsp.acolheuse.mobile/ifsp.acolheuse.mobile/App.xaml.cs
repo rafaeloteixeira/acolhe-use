@@ -49,7 +49,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.Register<IAcaoRepository, AcaoRepository>();
             containerRegistry.Register<ILinhaRepository, LinhaRepository>();
 
-            containerRegistry.Register<IAtendimentoRepository, AtendimentoRepository>();
+            containerRegistry.Register<IHorarioAcaoRepository, HorarioAcaoRepository>();
             containerRegistry.Register<IEstagiarioRepository, EstagiarioRepository>();
             containerRegistry.Register<IPacienteRepository, PacienteRepository>();
             containerRegistry.Register<IServidorRepository, ServidorRepository>();
@@ -60,13 +60,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
             containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
-            containerRegistry.RegisterForNavigation<AtendimentoPage, AtendimentoPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
-            containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, CadastroLinhaCuidadoPageViewModel>();
-            containerRegistry.RegisterForNavigation<CadastroAcaoPage, CadastroAcaoPageViewModel>();
-            containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, EdicaoListaEstagiariosPageViewModel>();
-            containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, EdicaoListaResponsaveisPageViewModel>();
-            containerRegistry.RegisterForNavigation<AtendimentoPage, AtendimentoPageViewModel>();
+            containerRegistry.RegisterForNavigation<HorarioAcaoPage, HorarioAcaoPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaAcoesPage, ListaAcoesPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaEstagiariosPage, ListaEstagiariosPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaLinhasPage, ListaLinhasPageViewModel>();
