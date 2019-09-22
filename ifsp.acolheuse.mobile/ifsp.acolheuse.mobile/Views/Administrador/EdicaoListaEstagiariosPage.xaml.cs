@@ -5,11 +5,11 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
 {
     public partial class EdicaoListaEstagiariosPage : ContentPage
     {
-        private readonly EdicaoListaEstagiariosPageViewModel _viewModel;
+        private readonly ViewModels.Administrador.EdicaoListaEstagiariosPageViewModel _viewModel;
         public EdicaoListaEstagiariosPage()
         {
             InitializeComponent();
-            _viewModel = BindingContext as EdicaoListaEstagiariosPageViewModel;
+            _viewModel = BindingContext as ViewModels.Administrador.EdicaoListaEstagiariosPageViewModel;
         }
         protected override void OnAppearing()
         {

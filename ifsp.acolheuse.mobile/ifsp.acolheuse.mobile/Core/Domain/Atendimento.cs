@@ -16,6 +16,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         public const int _INTERCONSULTA = 3;
         public const int _INCLUIDO = 100;
 
+        private string id;
         private int tipoConsulta;
         private string eventName;
         private string idServidor;
@@ -30,6 +31,12 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private bool cancelado;
         private IEnumerable<string> estagiariosIdCollection;
 
+        [Id]
+        public string Id
+        {
+            get { return id; }
+            set { id = value; RaisePropertyChanged(); }
+        }
         public int TipoConsulta
         {
             get { return tipoConsulta; }

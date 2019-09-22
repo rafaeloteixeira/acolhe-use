@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
@@ -15,7 +16,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string email;
         private string telefone;
         private string celular;
-        private IEnumerable<Lista> acoesCollection;
+        private ObservableCollection<Lista> acoesCollection;
 
         [Id]
         public string Id
@@ -63,7 +64,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             set { celular = value; RaisePropertyChanged(); }
         }
 
-        public IEnumerable<Lista> AcoesCollection
+        public ObservableCollection<Lista> AcoesCollection
         {
             get { return acoesCollection; }
             set { acoesCollection = value; RaisePropertyChanged(); }

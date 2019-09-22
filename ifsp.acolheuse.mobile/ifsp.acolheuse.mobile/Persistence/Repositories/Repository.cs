@@ -24,21 +24,15 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
         public async Task<TEntity> GetAsync(string id)
         {
-            try
-            {
-                var document = await CrossCloudFirestore.Current
-                                           .Instance
-                                           .GetCollection(collectionName)
-                                           .GetDocument(id)
-                                           .GetDocumentAsync();
 
-                var yourModel = document.ToObject<TEntity>();
-                return yourModel;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            var document = await CrossCloudFirestore.Current
+                                       .Instance
+                                       .GetCollection(collectionName)
+                                       .GetDocument(id)
+                                       .GetDocumentAsync();
+
+            var yourModel = document.ToObject<TEntity>();
+            return yourModel;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()

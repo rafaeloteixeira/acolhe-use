@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
@@ -10,7 +11,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
     {
         private string id;
         private string nome;
-        private IEnumerable<Acao> acaoCollection;
+        private ObservableCollection<Acao> acaoCollection;
 
         [Id]
         public string Id
@@ -23,7 +24,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return nome; }
             set { nome = value; RaisePropertyChanged(); }
         }
-        public IEnumerable<Acao> AcaoCollection
+        public ObservableCollection<Acao> AcaoCollection
         {
             get { return acaoCollection; }
             set { acaoCollection = value; RaisePropertyChanged(); }

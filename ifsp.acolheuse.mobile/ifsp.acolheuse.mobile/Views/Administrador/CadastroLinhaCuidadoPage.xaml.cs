@@ -6,11 +6,11 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
 {
     public partial class CadastroLinhaCuidadoPage : ContentPage
     {
-        private readonly CadastroLinhaCuidadoPageViewModel _viewModel;
+        private readonly ViewModels.Administrador.CadastroLinhaCuidadoPageViewModel _viewModel;
         public CadastroLinhaCuidadoPage()
         {
             InitializeComponent();
-            _viewModel = BindingContext as CadastroLinhaCuidadoPageViewModel;
+            _viewModel = BindingContext as ViewModels.Administrador.CadastroLinhaCuidadoPageViewModel;
             _viewModel.GetLinhaAsync();
         }
 

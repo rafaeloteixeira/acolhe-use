@@ -8,12 +8,12 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
     public partial class HorarioAcaoPage : ContentPage
     {
   
-        private readonly HorarioAcaoPageViewModel _viewModel;
+        private readonly ViewModels.Administrador.HorarioAcaoPageViewModel _viewModel;
 
         public HorarioAcaoPage()
         {
             InitializeComponent();
-            _viewModel = BindingContext as HorarioAcaoPageViewModel;
+            _viewModel = BindingContext as ViewModels.Administrador.HorarioAcaoPageViewModel;
         }
 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)

@@ -5,12 +5,12 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
 {
     public partial class CadastroAcaoPage : ContentPage
     {
-        private readonly CadastroAcaoPageViewModel _viewModel;
+        private readonly ViewModels.Administrador.CadastroAcaoPageViewModel _viewModel;
 
         public CadastroAcaoPage()
         {
             InitializeComponent();
-            _viewModel = BindingContext as CadastroAcaoPageViewModel;
+            _viewModel = BindingContext as ViewModels.Administrador.CadastroAcaoPageViewModel;
         }
         protected override void OnAppearing()
         {

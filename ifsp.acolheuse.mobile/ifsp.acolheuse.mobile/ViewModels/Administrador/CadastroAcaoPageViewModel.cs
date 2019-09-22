@@ -10,7 +10,7 @@ using ifsp.acolheuse.mobile.Services;
 using System.Threading.Tasks;
 using Prism.Services;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 {
     public class CadastroAcaoPageViewModel : ViewModelBase
     {

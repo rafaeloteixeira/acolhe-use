@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 {
     public class CadastroEstagiarioPageViewModel : ViewModelBase
     {
@@ -42,6 +42,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             set { professorCollection = value; RaisePropertyChanged(); }
         }
         #endregion
+
         FirebaseAccess firebase = new FirebaseAccess();
         private INavigationService navigationService;
         private IEstagiarioRepository estagiarioRepository;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
@@ -20,8 +21,8 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private bool isGroup;
         private string idLinha;
         private DiasAcao dias;
-        private IEnumerable<Lista> responsavelCollection;
-        private IEnumerable<Lista> estagiarioCollection;
+        private ObservableCollection<Lista> responsavelCollection;
+        private ObservableCollection<Lista> estagiarioCollection;
 
         [Id]
         public string Id
@@ -75,12 +76,12 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return dias; }
             set { dias = value; RaisePropertyChanged(); }
         }
-        public IEnumerable<Lista> ResponsavelCollection
+        public ObservableCollection<Lista> ResponsavelCollection
         {
             get { return responsavelCollection; }
             set { responsavelCollection = value; RaisePropertyChanged(); }
         }
-        public IEnumerable<Lista> EstagiarioCollection
+        public ObservableCollection<Lista> EstagiarioCollection
         {
             get { return estagiarioCollection; }
             set { estagiarioCollection = value; RaisePropertyChanged(); }

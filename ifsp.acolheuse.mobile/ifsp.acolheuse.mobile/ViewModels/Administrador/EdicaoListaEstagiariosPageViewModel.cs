@@ -8,7 +8,7 @@ using Prism.Navigation;
 using ifsp.acolheuse.mobile.Core.Domain;
 using System.Collections.ObjectModel;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 {
     public class EdicaoListaEstagiariosPageViewModel : ViewModelBase
     {

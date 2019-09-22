@@ -7,7 +7,7 @@ using ifsp.acolheuse.mobile.Core.Repositories;
 using Prism.Navigation;
 using ifsp.acolheuse.mobile.Core.Domain;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 {
     public class CadastroLinhaCuidadoPageViewModel : ViewModelBase
     {
@@ -69,13 +69,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             if (Linha != null && !String.IsNullOrEmpty(Linha.Id))
             {
-                Linha.AcaoCollection = await acaoRepository.GetAllByIdLinhaAsync(Linha.Id);
+                Linha.AcaoCollection = new System.Collections.ObjectModel.ObservableCollection<Acao>(await acaoRepository.GetAllByIdLinhaAsync(Linha.Id));
             }
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
-    
+
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)

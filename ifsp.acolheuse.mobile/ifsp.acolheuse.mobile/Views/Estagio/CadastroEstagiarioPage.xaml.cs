@@ -5,12 +5,12 @@ namespace ifsp.acolheuse.mobile.Views.Estagio
 {
     public partial class CadastroEstagiarioPage : ContentPage
     {
-        private readonly CadastroEstagiarioPageViewModel _viewModel;
+        private readonly ViewModels.Estagio.CadastroEstagiarioPageViewModel _viewModel;
 
         public CadastroEstagiarioPage()
         {
             InitializeComponent();
-            _viewModel = BindingContext as CadastroEstagiarioPageViewModel;
+            _viewModel = BindingContext as ViewModels.Estagio.CadastroEstagiarioPageViewModel;
         }
       
         protected override void OnAppearing()

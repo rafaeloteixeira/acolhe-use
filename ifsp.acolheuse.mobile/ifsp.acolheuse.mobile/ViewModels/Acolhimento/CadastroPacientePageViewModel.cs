@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
 {
     public class CadastroPacientePageViewModel : ViewModelBase
     {
@@ -27,6 +27,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             set { paciente = value; RaisePropertyChanged(); }
         }
         #endregion
+
         private INavigationService navigationService;
         private IPacienteRepository pacienteRepository;
 

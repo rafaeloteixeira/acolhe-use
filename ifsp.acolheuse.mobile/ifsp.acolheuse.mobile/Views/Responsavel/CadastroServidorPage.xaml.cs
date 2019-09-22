@@ -1,6 +1,7 @@
 ﻿using ifsp.acolheuse.mobile.ViewModels;
 using ifsp.acolheuse.mobile.Core.Domain;
 using Xamarin.Forms;
+using ifsp.acolheuse.mobile.ViewModels.Responsavel;
 
 namespace ifsp.acolheuse.mobile.Views.Responsavel
 {

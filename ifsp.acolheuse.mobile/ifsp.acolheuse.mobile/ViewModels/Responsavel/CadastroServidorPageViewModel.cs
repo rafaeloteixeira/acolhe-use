@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ifsp.acolheuse.mobile.ViewModels
+namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 {
     public class CadastroServidorPageViewModel : ViewModelBase
     {
@@ -63,36 +63,29 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void SalvarServidorAsync()
         {
-            try
+            if (String.IsNullOrEmpty(Servidor.Id) && admin)
             {
-                if (String.IsNullOrEmpty(Servidor.Id) && admin)
+                User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
+                var result = await firebase.CreateUserAsync(user);
+
+
+                if (String.IsNullOrEmpty(result))
                 {
-                    User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
-                    var result = await firebase.CreateUserAsync(user);
-            
+                    Servidor.UserId = user.UserId;
 
-                    if (String.IsNullOrEmpty(result))
-                    {
-                        Servidor.UserId = user.UserId;
-
-                        await servidorRepository.AddAsync(Servidor);
-                        await userRepository.AddAsync(user);
-                        await navigationService.GoBackAsync();
-                    }
-                    else
-                    {
-                        await MessageService.Instance.ShowAsync(result);
-                    }
+                    await servidorRepository.AddAsync(Servidor);
+                    await userRepository.AddAsync(user);
+                    await navigationService.GoBackAsync();
                 }
                 else
                 {
-                    await servidorRepository.AddOrUpdateAsync(Servidor, Servidor.Id);
-                    await navigationService.GoBackAsync();
+                    await MessageService.Instance.ShowAsync(result);
                 }
             }
-            catch (Exception)
+            else
             {
-                throw;
+                await servidorRepository.AddOrUpdateAsync(Servidor, Servidor.Id);
+                await navigationService.GoBackAsync();
             }
         }
 
