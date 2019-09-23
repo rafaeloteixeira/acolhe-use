@@ -21,8 +21,8 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private bool isGroup;
         private string idLinha;
         private DiasAcao dias;
-        private ObservableCollection<Lista> responsavelCollection;
-        private ObservableCollection<Lista> estagiarioCollection;
+        private ObservableCollection<ListaEntidade> responsavelCollection;
+        private ObservableCollection<ListaEntidade> estagiarioCollection;
 
         [Id]
         public string Id
@@ -76,12 +76,12 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return dias; }
             set { dias = value; RaisePropertyChanged(); }
         }
-        public ObservableCollection<Lista> ResponsavelCollection
+        public ObservableCollection<ListaEntidade> ResponsavelCollection
         {
             get { return responsavelCollection; }
             set { responsavelCollection = value; RaisePropertyChanged(); }
         }
-        public ObservableCollection<Lista> EstagiarioCollection
+        public ObservableCollection<ListaEntidade> EstagiarioCollection
         {
             get { return estagiarioCollection; }
             set { estagiarioCollection = value; RaisePropertyChanged(); }

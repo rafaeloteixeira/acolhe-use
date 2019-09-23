@@ -19,16 +19,20 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         #endregion
 
         #region properties
+        private IEnumerable<Acao> acaoCollection;
         private ObservableCollection<Linha> linhasCollection;
         private Linha linha;
 
+        public IEnumerable<Acao> AcaoCollection
+        {
+            get { return acaoCollection; }
+            set { acaoCollection = value; RaisePropertyChanged(); }
+        }
         public ObservableCollection<Linha> LinhasCollection
         {
             get { return linhasCollection; }
             set { linhasCollection = value; RaisePropertyChanged(); }
         }
-
-
 
         public Linha Linha
         {
@@ -39,6 +43,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         #endregion
 
         private INavigationService navigationService;
+
+      
+
         private IAcaoRepository acaoRepository;
         private ILinhaRepository linhaRepository;
         public ListaAcoesResponsavelPageViewModel(INavigationService navigationService, IAcaoRepository acaoRepository, ILinhaRepository linhaRepository) :
@@ -47,7 +54,6 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             this.navigationService = navigationService;
             this.acaoRepository = acaoRepository;
             this.linhaRepository = linhaRepository;
-            LinhasCollection = new ObservableCollection<Linha>();
             Linha = new Linha();
         }
 
@@ -65,23 +71,23 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             LinhasCollection = new ObservableCollection<Linha>();
 
-            ObservableCollection<Acao> acoes = new ObservableCollection<Acao>((await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null));
+            ObservableCollection<Acao> acoes = new ObservableCollection<Acao>((await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection != null && x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null));
 
             for (int i = 0; i < acoes.Count(); i++)
             {
-                Linha linha = LinhasCollection.FirstOrDefault(x => x.Id == acoes[i].IdLinha);
+                Linha linhaResponsavel = LinhasCollection.FirstOrDefault(x => x.Id == acoes[i].IdLinha);
 
-                if (linha != null)
+                if (linhaResponsavel == null)
                 {
-                    linha.AcaoCollection.Add(acoes[i]);
-                }
-                else
-                {
-                    Linha linhaAcao = await linhaRepository.GetAsync(acoes[i].IdLinha);
-                    LinhasCollection.Add(linhaAcao);
+                    linhaResponsavel = await linhaRepository.GetAsync(acoes[i].IdLinha);
+                    LinhasCollection.Add(linhaResponsavel);
                 }
 
             }
+        }
+        internal async void BuscarAcoesCollectionAsync()
+        {
+            AcaoCollection = await acaoRepository.GetAllByIdLinhaAsync(Linha.Id);
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

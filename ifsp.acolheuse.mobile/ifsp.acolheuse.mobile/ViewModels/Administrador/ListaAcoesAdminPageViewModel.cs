@@ -19,9 +19,15 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         #endregion
 
         #region properties
+        private IEnumerable<Acao> acaoCollection;
         private IEnumerable<Linha> linhasCollection;
         private Linha linha;
 
+        public IEnumerable<Acao> AcaoCollection
+        {
+            get { return acaoCollection; }
+            set { acaoCollection = value; RaisePropertyChanged(); }
+        }
         public IEnumerable<Linha> LinhasCollection
         {
             get { return linhasCollection; }
@@ -71,14 +77,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         }
         public async void BuscarAcoesCollectionAsync()
         {
-            try
-            {
-                Linha.AcaoCollection = new ObservableCollection<Acao>(await acaoRepository.GetAllByIdLinhaAsync(Linha.Id));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            AcaoCollection = new ObservableCollection<Acao>(await acaoRepository.GetAllByIdLinhaAsync(Linha.Id));
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    public class Lista : BindableBase
+    public class ListaAtendimento : BindableBase
     {
         private string id;
         private string nome;

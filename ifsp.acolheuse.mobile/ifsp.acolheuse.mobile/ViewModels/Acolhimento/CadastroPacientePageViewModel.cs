@@ -48,7 +48,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("paciente", Paciente);
-            await navigationService.NavigateAsync("IncluirAcaoPage", navParameters);
+            await navigationService.NavigateAsync("InclusaoAcaoPage", navParameters);
         }
 
         public async void GetPacienteAsync()

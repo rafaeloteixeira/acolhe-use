@@ -71,7 +71,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
                 if (String.IsNullOrEmpty(result))
                 {
-                    Servidor.UserId = user.UserId;
+                    Servidor.Id = user.Id;
 
                     await servidorRepository.AddAsync(Servidor);
                     await userRepository.AddAsync(user);

@@ -14,10 +14,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
     public class EdicaoListaResponsaveisPageViewModel : ViewModelBase
     {
         #region properties
-        private ObservableCollection<Lista> responsavelCollection;
+        private ObservableCollection<ListaEntidade> responsavelCollection;
         private Acao acao;
 
-        public ObservableCollection<Lista> ResponsavelCollection
+        public ObservableCollection<ListaEntidade> ResponsavelCollection
         {
             get { return responsavelCollection; }
             set { responsavelCollection = value; RaisePropertyChanged(); }
@@ -51,7 +51,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
         public async void SalvarAsync()
         {
-            Acao.ResponsavelCollection = new ObservableCollection<Lista>(ResponsavelCollection.Where(x => x.Adicionado == true));
+            Acao.ResponsavelCollection = new ObservableCollection<ListaEntidade>(ResponsavelCollection.Where(x => x.Adicionado == true));
             await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
             await NavigationService.GoBackAsync();
         }
@@ -60,26 +60,26 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         {
             try
             {
-                ResponsavelCollection = new ObservableCollection<Lista>();
+                ResponsavelCollection = new ObservableCollection<ListaEntidade>();
 
                 IEnumerable<Servidor> servidores = await servidorRepository.GetAllAsync();
 
                 for (int i = 0; i < servidores.Count(); i++)
                 {
-                    if (Acao.ResponsavelCollection?.FirstOrDefault(x => x.Id == servidores.ElementAt(i).UserId) != null)
+                    if (Acao.ResponsavelCollection?.FirstOrDefault(x => x.Id == servidores.ElementAt(i).Id) != null)
                     {
-                        ResponsavelCollection.Add(new Lista
+                        ResponsavelCollection.Add(new ListaEntidade
                         {
-                            Id = servidores.ElementAt(i).UserId,
+                            Id = servidores.ElementAt(i).Id,
                             Nome = servidores.ElementAt(i).Nome,
                             Adicionado = true
                         });
                     }
                     else
                     {
-                        ResponsavelCollection.Add(new Lista
+                        ResponsavelCollection.Add(new ListaEntidade
                         {
-                            Id = servidores.ElementAt(i).UserId,
+                            Id = servidores.ElementAt(i).Id,
                             Nome = servidores.ElementAt(i).Nome,
                             Adicionado = false
                         });

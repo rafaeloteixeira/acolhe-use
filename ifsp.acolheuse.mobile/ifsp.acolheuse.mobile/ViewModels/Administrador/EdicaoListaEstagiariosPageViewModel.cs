@@ -13,10 +13,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
     public class EdicaoListaEstagiariosPageViewModel : ViewModelBase
     {
         #region properties
-        private ObservableCollection<Lista> estagiarioCollection;
+        private ObservableCollection<ListaEntidade> estagiarioCollection;
         private Acao acao;
 
-        public ObservableCollection<Lista> EstagiarioCollection
+        public ObservableCollection<ListaEntidade> EstagiarioCollection
         {
             get { return estagiarioCollection; }
             set { estagiarioCollection = value; RaisePropertyChanged(); }
@@ -50,7 +50,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
         public async void SalvarAsync()
         {
-            Acao.EstagiarioCollection = new ObservableCollection<Lista>(EstagiarioCollection.Where(x => x.Adicionado == true));
+            Acao.EstagiarioCollection = new ObservableCollection<ListaEntidade>(EstagiarioCollection.Where(x => x.Adicionado == true));
             await acaoRepository.AddOrUpdateAsync(Acao, Acao.Id);
             await NavigationService.GoBackAsync();
         }
@@ -59,25 +59,25 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         {
             try
             {
-                EstagiarioCollection = new ObservableCollection<Lista>();
+                EstagiarioCollection = new ObservableCollection<ListaEntidade>();
                 IEnumerable<Estagiario> estagiarios = await estagiarioRepository.GetAllAsync();
 
                 for (int i = 0; i < estagiarios.Count(); i++)
                 {
-                    if (Acao.EstagiarioCollection?.FirstOrDefault(x => x.Id == estagiarios.ElementAt(i).UserId) != null)
+                    if (Acao.EstagiarioCollection?.FirstOrDefault(x => x.Id == estagiarios.ElementAt(i).Id) != null)
                     {
-                        EstagiarioCollection.Add(new Lista
+                        EstagiarioCollection.Add(new ListaEntidade
                         {
-                            Id = estagiarios.ElementAt(i).UserId,
+                            Id = estagiarios.ElementAt(i).Id,
                             Nome = estagiarios.ElementAt(i).Nome,
                             Adicionado = true
                         });
                     }
                     else
                     {
-                        EstagiarioCollection.Add(new Lista
+                        EstagiarioCollection.Add(new ListaEntidade
                         {
-                            Id = estagiarios.ElementAt(i).UserId,
+                            Id = estagiarios.ElementAt(i).Id,
                             Nome = estagiarios.ElementAt(i).Nome,
                             Adicionado = false
                         });

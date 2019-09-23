@@ -54,11 +54,8 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public async void BuscarPacientesCollectionAsync()
         {
-            //BUSCA OS DADOS DO SERVIDOR LOGADO
-            Servidor servidor = await servidorRepository.GetAsync(Settings.UserId);
-
             //BUSCA AS AÇÕES ATENDIDAS POR ESSE SERVIDOR
-            IEnumerable<Acao> acaoesAtendidas = (await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection.FirstOrDefault(m => m.Id == servidor.UserId) != null);
+            IEnumerable<Acao> acaoesAtendidas = (await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null);
 
             //BUSCA OS USUÁRIOS ATENDIDOS PELAS AÇÕES DO SERVIDOR
             PacientesCollection = (await pacienteRepository.GetAllAsync()).Where(p => p.AcoesCollection.Any(c => acaoesAtendidas.Any(c2 => c2.Id == c.Id) && c.IsAlta == true));
@@ -85,8 +82,8 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
-                BuscarPacientesCollectionAsync();
             }
+            BuscarPacientesCollectionAsync();
         }
     }
 }

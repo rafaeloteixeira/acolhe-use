@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <StackLayout>
             <combobox:SfComboBox Grid.Row="7" DisplayMemberPath="Nome" DataSource="{Binding LinhasCollection}" SelectedItem="{Binding Linha}" SelectionChanged="SfComboBox_SelectionChanged" Text="Selecione uma linha"  />
-            <listview:SfListView x:Name="lvAcoes" ItemsSource="{Binding Linha.AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
+            <listview:SfListView x:Name="lvAcoes" ItemsSource="{Binding AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
 
                 <listview:SfListView.ItemTemplate>
                     <DataTemplate>

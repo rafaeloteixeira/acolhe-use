@@ -28,6 +28,7 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
 
         private void SfComboBox_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
         {
+            _viewModel.BuscarAcoesCollectionAsync();
         }
     }
 }

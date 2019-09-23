@@ -16,7 +16,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string email;
         private string telefone;
         private string celular;
-        private ObservableCollection<Lista> acoesCollection;
+        private ObservableCollection<ListaAtendimento> acoesCollection;
 
         [Id]
         public string Id
@@ -64,7 +64,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             set { celular = value; RaisePropertyChanged(); }
         }
 
-        public ObservableCollection<Lista> AcoesCollection
+        public ObservableCollection<ListaAtendimento> AcoesCollection
         {
             get { return acoesCollection; }
             set { acoesCollection = value; RaisePropertyChanged(); }

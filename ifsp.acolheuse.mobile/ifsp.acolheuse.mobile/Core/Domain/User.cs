@@ -11,7 +11,8 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private string email;
         private string password;
         private string tipo;
-        private string userId;
+        private string id;
+        private string localId;
 
         public string Email
         {
@@ -45,10 +46,16 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return tipo; }
             set { tipo = value; RaisePropertyChanged(); }
         }
-        public string UserId
+        public string Id
         {
-            get { return userId; }
-            set { userId = value; RaisePropertyChanged(); }
+            get { return id; }
+            set { id = value; RaisePropertyChanged(); }
+        }
+
+        public string LocalId
+        {
+            get { return localId; }
+            set { localId = value; RaisePropertyChanged(); }
         }
 
     }

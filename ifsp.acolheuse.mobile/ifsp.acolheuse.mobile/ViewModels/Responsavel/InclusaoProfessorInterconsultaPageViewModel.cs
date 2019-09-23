@@ -66,7 +66,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             if (Paciente.AcoesCollection.FirstOrDefault(x => x.Id == acaoDestino.Id) == null)
             {
-                Paciente.AcoesCollection.Add(new Lista
+                Paciente.AcoesCollection.Add(new ListaAtendimento
                 {
                     Id = acaoDestino.Id,
                     Nome = acaoDestino.Nome,

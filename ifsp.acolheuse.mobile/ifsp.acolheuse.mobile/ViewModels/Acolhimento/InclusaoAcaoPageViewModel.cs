@@ -20,14 +20,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
 
         #region properties
         private Paciente paciente;
-        private ObservableCollection<Lista> acoesCollection;
+        private ObservableCollection<ListaAtendimento> acoesCollection;
 
         public Paciente Paciente
         {
             get { return paciente; }
             set { paciente = value; RaisePropertyChanged(); }
         }
-        public ObservableCollection<Lista> AcoesCollection
+        public ObservableCollection<ListaAtendimento> AcoesCollection
         {
             get { return acoesCollection; }
             set { acoesCollection = value; RaisePropertyChanged(); }
@@ -48,21 +48,21 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
 
         public async void SalvarAsync()
         {
-            Paciente.AcoesCollection = new ObservableCollection<Lista>(AcoesCollection.Where(x => x.Adicionado == true));
+            Paciente.AcoesCollection = new ObservableCollection<ListaAtendimento>(AcoesCollection.Where(x => x.Adicionado == true));
             await pacienteRepository.AddOrUpdateAsync(Paciente, Paciente.Id);
             await navigationService.GoBackAsync();
         }
 
         public async void BuscarAcoesCollectionAsync()
         {
-            AcoesCollection = new ObservableCollection<Lista>();
+            AcoesCollection = new ObservableCollection<ListaAtendimento>();
             var acoes = await acaoRepository.GetAllAsync();
 
             for (int i = 0; i < acoes.Count(); i++)
             {
                 if (Paciente.AcoesCollection?.FirstOrDefault(x => x.Id == acoes.ElementAt(i).Id) != null)
                 {
-                    AcoesCollection.Add(new Lista
+                    AcoesCollection.Add(new ListaAtendimento
                     {
                         Id = acoes.ElementAt(i).Id,
                         Nome = acoes.ElementAt(i).Nome,
@@ -75,7 +75,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
                 }
                 else
                 {
-                    AcoesCollection.Add(new Lista
+                    AcoesCollection.Add(new ListaAtendimento
                     {
                         Id = acoes.ElementAt(i).Id,
                         Nome = acoes.ElementAt(i).Nome,

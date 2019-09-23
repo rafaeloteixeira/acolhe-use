@@ -10,7 +10,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
     public class Servidor : BindableBase
     {
         private string id;
-        private string userId;
+        private string localId;
         private string cpf;
         private string nome;
         private string sobrenome;
@@ -27,10 +27,10 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return id; }
             set { id = value; RaisePropertyChanged(); }
         }
-        public string UserId
+        public string LocalId
         {
-            get { return userId; }
-            set { userId = value; RaisePropertyChanged(); }
+            get { return localId; }
+            set { localId = value; RaisePropertyChanged(); }
         }
 
         public string Cpf

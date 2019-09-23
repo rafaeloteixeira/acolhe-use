@@ -13,7 +13,6 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
     public class AcaoServidorPageViewModel : ViewModelBase
     {
         #region commands
-        public DelegateCommand _editarResponsaveisCommand { get; set; }
         public DelegateCommand _editarEstagiariosCommand { get; set; }
         public DelegateCommand _salvarAcaoCommand { get; set; }
         public DelegateCommand _listaInterconsultaCommand { get; set; }
@@ -22,7 +21,6 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         public DelegateCommand _listarPacientesAltaCommand { get; set; }
 
 
-        public DelegateCommand EditarResponsaveisCommand => _editarResponsaveisCommand ?? (_editarResponsaveisCommand = new DelegateCommand(EditarListaResponsaveisAsync));
         public DelegateCommand EditarEstagiariosCommand => _editarEstagiariosCommand ?? (_editarEstagiariosCommand = new DelegateCommand(EditarListaEstagiariosAsync));
         public DelegateCommand SalvarAcaoCommand => _salvarAcaoCommand ?? (_salvarAcaoCommand = new DelegateCommand(SalvarAcaoAsync));
         public DelegateCommand ListaInterconsultaCommand => _listaInterconsultaCommand ?? (_listaInterconsultaCommand = new DelegateCommand(ListaInterconsultaAsync));
@@ -57,44 +55,40 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             this.navigationService = navigationService;
             this.linhaRepository = linhaRepository;
             this.acaoRepository = acaoRepository;
+
+            Acao = new Acao();
         }
 
-        public async void EditarListaResponsaveisAsync()
-        {
-            var navParameters = new NavigationParameters();
-            navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaServidoresPage", navParameters); //adm
-        }
 
         public async void EditarListaEstagiariosAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaEstagiariosPage", navParameters); //adm
+            await navigationService.NavigateAsync("ListaEstagiariosResponsavelPage", navParameters); //adm
         }
         public async void ListaAtendimentoAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaAtendimentoPage", navParameters); //resp
+            await navigationService.NavigateAsync("ListaAtendimentoResponsavelPage", navParameters); //resp
         }
         public async void ListaInterconsultaAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaInterconsultaPage", navParameters); //resp
+            await navigationService.NavigateAsync("ListaInterconsultaResponsavelPage", navParameters); //resp
         }
         public async void ListaEsperaAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaEsperaPage", navParameters); //resp
+            await navigationService.NavigateAsync("ListaEsperaResponsavelPage", navParameters); //resp
         }
         public async void ListaAltaAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("acao", Acao);
-            await navigationService.NavigateAsync("ListaUsuariosAltaPage", navParameters); //resp
+            await navigationService.NavigateAsync("ListaUsuariosAltaResponsavelPage", navParameters); //resp
         }
         public async void SalvarAcaoAsync()
         {
@@ -117,10 +111,6 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
-            }
-            else
-            {
-                Acao = new Acao();
             }
         }
     }

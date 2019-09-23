@@ -63,7 +63,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             Meetings = new ObservableCollection<ScheduleAppointment>();
             Servidor = await servidorRepository.GetAsync(Settings.UserId);
 
-            var atendimentos = (await atendimentoRepository.GetAllAsync()).Where(x => x.IdServidor == Servidor.UserId);
+            var atendimentos = (await atendimentoRepository.GetAllAsync()).Where(x => x.IdServidor == Servidor.Id);
 
             for (int i = 0; i < atendimentos.Count(); i++)
             {

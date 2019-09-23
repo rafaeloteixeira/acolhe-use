@@ -21,7 +21,7 @@
             </StackLayout>
             <Label Text="Ações" FontAttributes="Bold"  />
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                <listview:SfListView x:Name="lvAcoes" VerticalOptions="FillAndExpand" ItemsSource="{Binding Linha.AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
+                <listview:SfListView x:Name="lvAcoes" VerticalOptions="FillAndExpand" ItemsSource="{Binding AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
                     <listview:SfListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

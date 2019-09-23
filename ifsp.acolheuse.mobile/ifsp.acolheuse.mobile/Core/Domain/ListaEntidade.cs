@@ -1,18 +1,16 @@
-﻿using Plugin.CloudFirestore.Attributes;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    public class Linha : BindableBase
+    public class ListaEntidade : BindableBase
     {
         private string id;
         private string nome;
-      
-        [Id]
+        private bool adicionado;
+
         public string Id
         {
             get { return id; }
@@ -23,10 +21,10 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return nome; }
             set { nome = value; RaisePropertyChanged(); }
         }
-
-
-        public Linha()
+        public bool Adicionado
         {
+            get { return adicionado; }
+            set { adicionado = value; RaisePropertyChanged(); }
         }
     }
 }

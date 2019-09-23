@@ -51,7 +51,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public async void AgendarAsync()
         {
-            Acao.EstagiarioCollection = new ObservableCollection<Lista>(acao.EstagiarioCollection.Where(x => x.Adicionado));
+            Acao.EstagiarioCollection = new ObservableCollection<ListaEntidade>(acao.EstagiarioCollection.Where(x => x.Adicionado));
 
             var navParameters = new NavigationParameters();
             navParameters.Add("paciente", Paciente);
@@ -63,15 +63,15 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public async void BuscarEstagiariosCollectionAsync()
         {
-            Acao.EstagiarioCollection = new ObservableCollection<Lista>();
+            Acao.EstagiarioCollection = new ObservableCollection<ListaEntidade>();
             var estagiarios = await estagiarioRepository.GetAllAsync();
 
 
             for (int i = 0; i < estagiarios.Count(); i++)
             {
-                Acao.EstagiarioCollection.Add(new Lista
+                Acao.EstagiarioCollection.Add(new ListaEntidade
                 {
-                    Id = estagiarios.ElementAt(i).UserId,
+                    Id = estagiarios.ElementAt(i).Id,
                     Nome = estagiarios.ElementAt(i).Nome,
                     Adicionado = false
                 });

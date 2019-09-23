@@ -73,13 +73,13 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             switch (TipoConsulta)
             {
                 case Atendimento._ORIENTACAO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.UserId, Paciente, Acao.Id, 0, false, false, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, false, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._GRUPO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.UserId, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._INDIVIDUAL:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.UserId, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
             }
 
@@ -154,7 +154,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             var atendimentos = (await atendimentoRepository.GetAllAsync())
                 .Where
                 (
-                    x => x.IdServidor == Servidor.UserId
+                    x => x.IdServidor == Servidor.Id
                     && x.Paciente.Id == Paciente.Id && x.TipoConsulta == TipoConsulta
                 );
 

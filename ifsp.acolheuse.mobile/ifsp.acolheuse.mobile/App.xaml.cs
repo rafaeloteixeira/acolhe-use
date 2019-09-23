@@ -15,6 +15,7 @@ using ifsp.acolheuse.mobile.Views.Acolhimento;
 using ifsp.acolheuse.mobile.Views.Responsavel;
 using ifsp.acolheuse.mobile.Views.Estagio;
 using ifsp.acolheuse.mobile.Views.Menu;
+using ifsp.acolheuse.mobile.Core.Settings;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -34,7 +35,11 @@ namespace ifsp.acolheuse.mobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MenuAdminPage");
+            Settings.UserId = "MUpZRnWd2vMfPCBt3c0N";
+            await NavigationService.NavigateAsync("NavigationPage/MenuResponsavelPage");
+
+            //await NavigationService.NavigateAsync("NavigationPage/MenuAdminPage");
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

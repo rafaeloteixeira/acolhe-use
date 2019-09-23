@@ -72,7 +72,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 
                 if (String.IsNullOrEmpty(result))
                 {
-                    Estagiario.UserId = user.UserId;
+                    Estagiario.Id = user.Id;
                     await estagiarioRepository.AddAsync(Estagiario);
                     await userRepository.AddAsync(user);
                     await navigationService.GoBackAsync();
