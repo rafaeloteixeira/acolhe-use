@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ifsp.acolheuse.mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,19 @@ namespace ifsp.acolheuse.mobile.Views
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void Admin_Clicked(object sender, EventArgs e)
+        {
+
+            (BindingContext as MainPageViewModel).NavigateAdmin(); 
+        }
+
+        private void Servidor_Clicked(object sender, EventArgs e)
+        {
+            (BindingContext as MainPageViewModel).NavigateServ();
+           
+    
         }
     }
 }

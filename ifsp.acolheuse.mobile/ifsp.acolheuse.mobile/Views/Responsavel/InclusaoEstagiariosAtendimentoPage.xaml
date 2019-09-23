@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar />
-            <listview:SfListView x:Name="lvEstagiario" ItemsSource="{Binding Acao.EstagiarioCollection}">
+            <listview:SfListView x:Name="lvEstagiario" ItemsSource="{Binding EstagiarioCollection}">
                 <listview:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

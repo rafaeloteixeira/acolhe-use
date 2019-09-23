@@ -34,7 +34,8 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public Paciente Paciente { get; set; }
         public Servidor Servidor { get; set; }
-        public Acao Acao { get; set; }
+        public string IdAcao { get; set; }
+        public ObservableCollection<ListaEntidade> EstagiarioCollection { get; set; }
         public int TipoConsulta { get; set; }
 
         #endregion
@@ -73,13 +74,13 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             switch (TipoConsulta)
             {
                 case Atendimento._ORIENTACAO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, false, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, false, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._GRUPO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, true, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._INDIVIDUAL:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, Acao.Id, 0, false, true, agendamento, new ObservableCollection<string>(Acao.EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, true, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
             }
 
@@ -106,7 +107,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
                 if (atendimentos.Count() == 0)
                 {
-                    var horariosDisponiveis = (await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(Acao.Id))
+                    var horariosDisponiveis = (await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao))
                         .Where
                         (
                             x => x.StartTime.DayOfWeek == atendimento.StartTime.DayOfWeek
@@ -200,7 +201,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
             //DISPONÍVEIS
 
-            var ex = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(Acao.Id);
+            var ex = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
 
             for (int i = 0; i < ex.Count(); i++)
             {
@@ -250,14 +251,20 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             {
                 Paciente = parameters["paciente"] as Paciente;
             }
-            if (parameters["acao"] != null)
+            if (parameters["id_acao"] != null)
             {
-                Acao = parameters["acao"] as Acao;
+                IdAcao = parameters["id_acao"].ToString();
             }
-            if (parameters["tipoConsulta"] != null)
+            if (parameters["estagiarios"] != null)
             {
-                TipoConsulta = int.Parse(parameters["tipoConsulta"].ToString());
+                EstagiarioCollection = parameters["estagiarios"] as ObservableCollection<ListaEntidade>;
             }
+            if (parameters["tipo_consulta"] != null)
+            {
+                TipoConsulta = int.Parse(parameters["tipo_consulta"].ToString());
+            }
+
+            BuscarAtendimentos();
         }
     }
 }

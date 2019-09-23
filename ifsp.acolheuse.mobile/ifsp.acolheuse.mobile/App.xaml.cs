@@ -34,19 +34,14 @@ namespace ifsp.acolheuse.mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            Settings.UserId = "MUpZRnWd2vMfPCBt3c0N";
-            await NavigationService.NavigateAsync("NavigationPage/MenuResponsavelPage");
-
-            //await NavigationService.NavigateAsync("NavigationPage/MenuAdminPage");
-
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-
+            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             #region menu
             containerRegistry.RegisterForNavigation<MenuAdminPage, MenuAdminPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuResponsavelPage, MenuResponsavelPageViewModel>();

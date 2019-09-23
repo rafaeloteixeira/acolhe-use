@@ -18,10 +18,16 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         #endregion
 
         #region properties
+        private ObservableCollection<ListaEntidade> estagiarioCollection;
         private Acao acao;
         private Paciente paciente;
         private int tipoConsulta;
 
+        public ObservableCollection<ListaEntidade> EstagiarioCollection
+        {
+            get { return estagiarioCollection; }
+            set { estagiarioCollection = value; RaisePropertyChanged(); }
+        }
         public Acao Acao
         {
             get { return acao; }
@@ -51,32 +57,31 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public async void AgendarAsync()
         {
-            Acao.EstagiarioCollection = new ObservableCollection<ListaEntidade>(acao.EstagiarioCollection.Where(x => x.Adicionado));
+            EstagiarioCollection = new ObservableCollection<ListaEntidade>(acao.EstagiarioCollection.Where(x => x.Adicionado));
 
             var navParameters = new NavigationParameters();
             navParameters.Add("paciente", Paciente);
-            navParameters.Add("acao", Acao);
+            navParameters.Add("id_acao", Acao.Id);
+            navParameters.Add("estagiarios", EstagiarioCollection);
             navParameters.Add("tipo_consulta", TipoConsulta);
 
             await navigationService.NavigateAsync("AgendaAtendimentoPage", navParameters);
         }
 
-        public async void BuscarEstagiariosCollectionAsync()
+        public void BuscarEstagiariosCollection()
         {
-            Acao.EstagiarioCollection = new ObservableCollection<ListaEntidade>();
-            var estagiarios = await estagiarioRepository.GetAllAsync();
-
-
-            for (int i = 0; i < estagiarios.Count(); i++)
+            EstagiarioCollection = new ObservableCollection<ListaEntidade>();
+            for (int i = 0; i < Acao.EstagiarioCollection.Count(); i++)
             {
-                Acao.EstagiarioCollection.Add(new ListaEntidade
+                EstagiarioCollection.Add(new ListaEntidade
                 {
-                    Id = estagiarios.ElementAt(i).Id,
-                    Nome = estagiarios.ElementAt(i).Nome,
+                    Id = Acao.EstagiarioCollection[i].Id,
+                    Nome = Acao.EstagiarioCollection[i].Nome,
                     Adicionado = false
                 });
             }
         }
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
 
@@ -91,6 +96,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
+                BuscarEstagiariosCollection();
             }
             if (parameters["tipo_consulta"] != null)
             {

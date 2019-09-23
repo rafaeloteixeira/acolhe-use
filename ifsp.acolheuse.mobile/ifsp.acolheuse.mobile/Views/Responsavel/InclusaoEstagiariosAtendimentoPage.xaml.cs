@@ -15,7 +15,6 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
    
         protected override void OnAppearing()
         {
-            _viewModel.BuscarEstagiariosCollectionAsync();
         }
     }
 }

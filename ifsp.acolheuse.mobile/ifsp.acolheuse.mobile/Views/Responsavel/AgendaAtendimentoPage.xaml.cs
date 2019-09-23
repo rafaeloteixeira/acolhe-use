@@ -21,7 +21,7 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
 
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            _viewModel.BuscarAtendimentos();
+
         }
 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
@@ -29,11 +29,7 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
             DateTime agendamento = e.Datetime;
             if (agendamento != null)
             {
-                Task.Run(() =>
-                {
-                    _viewModel.LoadAppointment(agendamento);
-
-                }).Wait();
+                _viewModel.LoadAppointment(agendamento);
             }
         }
 

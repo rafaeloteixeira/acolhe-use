@@ -85,24 +85,24 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         public async void AgendarOrientacaoAsync()
         {
             var navParameters = new NavigationParameters();
-            navParameters.Add("Paciente", Paciente);
-            navParameters.Add("Acao", Acao);
+            navParameters.Add("paciente", Paciente);
+            navParameters.Add("acao", Acao);
             navParameters.Add("tipo_consulta", Atendimento._ORIENTACAO);
             await navigationService.NavigateAsync("InclusaoEstagiariosAtendimentoPage", navParameters); //resp
         }
         public async void AgendarIndividualAsync()
         {
             var navParameters = new NavigationParameters();
-            navParameters.Add("Paciente", Paciente);
-            navParameters.Add("Acao", Acao);
+            navParameters.Add("paciente", Paciente);
+            navParameters.Add("acao", Acao);
             navParameters.Add("tipo_consulta", Atendimento._INDIVIDUAL);
             await navigationService.NavigateAsync("InclusaoEstagiariosAtendimentoPage", navParameters); //resp
         }
         public async void AgendarGrupoAsync()
         {
             var navParameters = new NavigationParameters();
-            navParameters.Add("Paciente", Paciente);
-            navParameters.Add("Acao", Acao);
+            navParameters.Add("paciente", Paciente);
+            navParameters.Add("acao", Acao);
             navParameters.Add("tipo_consulta", Atendimento._GRUPO);
             await navigationService.NavigateAsync("InclusaoEstagiariosAtendimentoPage", navParameters); //resp
         }

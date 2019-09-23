@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ifsp.acolheuse.mobile.Persistence.Repositories
 {
-    public class HorarioAcaoRepository : Repository<Atendimento>, IHorarioAcaoRepository
+    public class HorarioAcaoRepository : Repository<HorarioAcao>, IHorarioAcaoRepository
     {
         public HorarioAcaoRepository()
             : base(new FirebaseConfigurations.FirebaseAccess())
