@@ -70,7 +70,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             IEnumerable<Acao> acaoesAtendidas = (await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection != null && x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null);
 
             //BUSCA OS USUÁRIOS ATENDIDOS PELAS AÇÕES DO SERVIDOR
-            PacientesCollection = (await pacienteRepository.GetAllAsync()).Where(p => p.AcoesCollection.Any(c => acaoesAtendidas.Any(c2 => c2.Id == c.Id) && c.IsAtendimento == true));
+            PacientesCollection = (await pacienteRepository.GetAllAsync()).Where(p => p.AcoesCollection != null && p.AcoesCollection.Any(c => acaoesAtendidas.Any(c2 => c2.Id == c.Id) && c.IsAtendimento == true));
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

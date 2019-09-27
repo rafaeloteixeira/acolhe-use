@@ -32,26 +32,5 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
                 _viewModel.LoadAppointment(agendamento);
             }
         }
-
-        private void Schedule_CellLongPressed(object sender, CellTappedEventArgs e)
-        {
-            DateTime agendamento = e.Datetime;
-            if (agendamento != null)
-            {
-                _viewModel.CreateDeleteAppointments(agendamento);
-            }
-        }
-
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            DateTime agendamento = schedule.SelectedDate.Value.Date;
-            _viewModel.CreateDeleteAppointments(agendamento);
-        }
-
-        private void ToolbarItem_Open_Clicked(object sender, EventArgs e)
-        {
-            DateTime agendamento = schedule.SelectedDate.Value.Date;
-            _viewModel.OpenAppointment();
-        }
     }
 }

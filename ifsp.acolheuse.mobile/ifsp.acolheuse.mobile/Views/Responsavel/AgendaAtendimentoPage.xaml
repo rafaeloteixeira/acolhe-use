@@ -7,15 +7,10 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              Title="Agendar Atendimento"
              Appearing="ContentPage_Appearing">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Detalhes" Clicked="ToolbarItem_Open_Clicked"/>
-        <ToolbarItem Text="Novo" Clicked="ToolbarItem_Clicked"/>
-        <ToolbarItem Text="Deletar" Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <syncfusion:SfSchedule x:Name="schedule"
 	    DataSource="{Binding Meetings}"
-	    ScheduleView ="WorkWeekView" CellTapped="Schedule_CellTapped" CellLongPressed="Schedule_CellLongPressed" Locale="pt">
+	    ScheduleView ="WorkWeekView" CellTapped="Schedule_CellTapped" Locale="pt">
             <!--<syncfusion:SfSchedule.BindingContext>
                 <local:AgendaServidorViewModel/>
             </syncfusion:SfSchedule.BindingContext>-->

@@ -94,6 +94,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<InclusaoProfessorInterconsultaPage, ViewModels.Responsavel.InclusaoProfessorInterconsultaPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaAtendimentoResponsavelPage, ViewModels.Responsavel.ListaAtendimentoResponsavelPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaEsperaResponsavelPage, ViewModels.Responsavel.ListaEsperaResponsavelPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListaInterconsultaResponsavelPage, ViewModels.Responsavel.ListaInterconsultaResponsavelPageViewModel>();
 
             containerRegistry.RegisterForNavigation<ListaAcoesResponsavelPage, ViewModels.Responsavel.ListaAcoesResponsavelPageViewModel>();
             containerRegistry.RegisterForNavigation<ListaEstagiariosResponsavelPage, ViewModels.Responsavel.ListaEstagiariosResponsavelPageViewModel>();

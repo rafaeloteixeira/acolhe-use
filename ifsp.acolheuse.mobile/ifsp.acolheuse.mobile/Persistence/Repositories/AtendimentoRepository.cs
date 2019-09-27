@@ -3,6 +3,7 @@ using ifsp.acolheuse.mobile.Core.Repositories;
 using Plugin.CloudFirestore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,13 +15,17 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             : base(new FirebaseConfigurations.FirebaseAccess())
         {
         }
-        public async Task RemoveByServidorAsync(string id)
+
+        public async Task<Atendimento> GetAtendimentoByEventIdAcaoIdAsync(string eventId, string acaoId)
         {
-            await CrossCloudFirestore.Current
-                         .Instance
-                         .GetCollection(collectionName)
-                         .GetDocument(id)
-                         .DeleteDocumentAsync();
+            var query = await CrossCloudFirestore.Current
+                                        .Instance
+                                        .GetCollection(collectionName)
+                                        .GetDocumentsAsync();
+
+            var yourModel = query.ToObjects<Atendimento>().FirstOrDefault(x => x.EventId == eventId && x.IdAcao == acaoId);
+            return yourModel;
         }
+
     }
 }

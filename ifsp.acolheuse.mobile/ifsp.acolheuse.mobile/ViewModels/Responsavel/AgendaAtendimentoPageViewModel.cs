@@ -18,10 +18,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
     public class AgendaAtendimentoPageViewModel : ViewModelBase
     {
         #region properties
-        private ObservableCollection<ScheduleAppointment> meetings;
+        private ScheduleAppointmentCollection meetings;
         private bool isRemovable;
-        private Atendimento atendimento;
-        public ObservableCollection<ScheduleAppointment> Meetings
+
+        public ScheduleAppointmentCollection Meetings
         {
             get { return meetings; }
             set { meetings = value; RaisePropertyChanged(); }
@@ -55,11 +55,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             this.atendimentoRepository = atendimentoRepository;
             this.horarioAcaoRepository = horarioAcaoRepository;
             this.servidorRepository = servidorRepository;
-
-            Meetings = new ObservableCollection<ScheduleAppointment>();
+            EstagiarioCollection = new ObservableCollection<ListaEntidade>();
         }
 
-        internal async void OpenAppointment()
+        internal async void OpenAppointment(Atendimento atendimento)
         {
             IEnumerable<Estagiario> estagiarios = (await estagiarioRepository.GetAllAsync()).Where(x => atendimento.EstagiariosIdCollection.Contains(x.Id));
 
@@ -67,79 +66,83 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             navParameters.Add("estagiarios", estagiarios);
             await navigationService.NavigateAsync("DetalhesAgendamentoPage", navParameters);
         }
-        internal async void LoadAppointment(DateTime agendamento)
+        internal async void LoadAppointment(DateTime date)
         {
 
-            atendimento = null;
+            Atendimento atendimento = null;
+
+            ListaEntidade dadosPaciente = new ListaEntidade
+            {
+                Id = Paciente.Id,
+                Nome = Paciente.NomeCompleto
+            };
+
             switch (TipoConsulta)
             {
                 case Atendimento._ORIENTACAO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, false, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, dadosPaciente, IdAcao, 0, false, false, date, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._GRUPO:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, true, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, dadosPaciente, IdAcao, 0, false, true, date, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
                 case Atendimento._INDIVIDUAL:
-                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, Paciente, IdAcao, 0, false, true, agendamento, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
+                    atendimento = new Atendimento(TipoConsulta, "", Servidor.Id, dadosPaciente, IdAcao, 0, false, true, date, new ObservableCollection<string>(EstagiarioCollection.Select(item => item.Id).ToList()));
                     break;
             }
 
-            var atendimentos = (await atendimentoRepository.GetAllAsync()).Where(x => x.EventId == atendimento.EventId);
+            var atendimentoMarcado = (await atendimentoRepository.GetAtendimentoByEventIdAcaoIdAsync(atendimento.EventId, IdAcao));
 
-            if (atendimentos.Count() == 0)
-                IsRemovable = false;
-            else
-                IsRemovable = true;
-        }
-
-        /// <summary>
-        /// Creates meetings and stores in a collection.  
-        /// </summary>
-        public async void CreateDeleteAppointments(DateTime? Date)
-        {
-            if (IsRemovable)
+            if (atendimentoMarcado == null)
             {
-                Delete();
-            }
-            else
-            {
-                var atendimentos = (await atendimentoRepository.GetAllAsync()).Where(x => x.EventId == atendimento.EventId);
+                IEnumerable<HorarioAcao> horariosDisponiveis = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
 
-                if (atendimentos.Count() == 0)
+                if(horariosDisponiveis.FirstOrDefault(x=>x.StartTime.DayOfWeek == date.DayOfWeek && x.StartTime.Hour == date.Hour) != null)
                 {
-                    var horariosDisponiveis = (await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao))
-                        .Where
-                        (
-                            x => x.StartTime.DayOfWeek == atendimento.StartTime.DayOfWeek
-                            && x.StartTime.Hour == atendimento.StartTime.Hour
-                        );
+                    var action = await dialogService.DisplayActionSheetAsync("Deseja agendar o atendimento?", "Cancelar", "Agendar");
 
-                    if (horariosDisponiveis.Count() > 0)
+                    switch (action)
                     {
-                        Create();
+                        case "Cancelar":
+                            return;
+                        case "Agendar":
+                            Create(atendimento);
+                            break;
                     }
                 }
             }
-        }
-
-        private async void Create()
-        {
-            if (await MessageService.Instance.ShowAsyncYesNo("Deseja agendar o atendimento?"))
+            else
             {
-                if (atendimento != null)
+                atendimento = atendimentoMarcado;
+                var action = await dialogService.DisplayActionSheetAsync("Selectione a operação desejada:", "Cancelar", null, "Ver detalhes", "Desmarcar");
+
+                switch (action)
                 {
-                    await atendimentoRepository.AddAsync(atendimento);
-                    BuscarAtendimentos();
+                    case "Cancelar":
+                        return;
+                    case "Ver detalhes":
+                        OpenAppointment(atendimento);
+                        break;
+                    case "Desmarcar":
+                        Delete(atendimento);
+                        break;
                 }
+
             }
         }
-        private async void Delete()
+
+        private async void Create(Atendimento atendimento)
         {
-            bool excluir = false;
+            if (atendimento != null)
+            {
+                await atendimentoRepository.AddAsync(atendimento);
+                BuscarAtendimentos();
+            }
+        }
+        private async void Delete(Atendimento atendimento)
+        {
+            bool excluir = true;
             if (atendimento.TipoConsulta == Atendimento._GRUPO)
-                excluir = await MessageService.Instance.ShowAsyncYesNo("Deseja excluir o atendimento? Esta ação excluirá os horários de grupo para todas as semanas");
-            else
-                excluir = await MessageService.Instance.ShowAsyncYesNo("Deseja excluir o atendimento?");
+                excluir = await MessageService.Instance.ShowAsyncYesNo("Esta ação excluirá os horários de grupo para todas as semanas. Continuar?");
 
             if (excluir)
             {
@@ -149,26 +152,72 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         }
         public async void BuscarAtendimentos()
         {
-            Meetings = new ObservableCollection<ScheduleAppointment>();
-            Servidor = await servidorRepository.GetAsync(Settings.UserId);
-
-            var atendimentos = (await atendimentoRepository.GetAllAsync())
-                .Where
-                (
-                    x => x.IdServidor == Servidor.Id
-                    && x.Paciente.Id == Paciente.Id && x.TipoConsulta == TipoConsulta
-                );
-
-            for (int i = 0; i < atendimentos.Count(); i++)
+            try
             {
-                ScheduleAppointment appointment = new ScheduleAppointment();
-                appointment.Subject = atendimentos.ElementAt(i).DescricaoConsulta;
-                appointment.Color = atendimentos.ElementAt(i).Cor;
-                appointment.StartTime = atendimentos.ElementAt(i).StartTime;
-                appointment.EndTime = atendimentos.ElementAt(i).EndTime;
+                Meetings = new ScheduleAppointmentCollection ();
+                Servidor = await servidorRepository.GetAsync(Settings.UserId);
 
-                if (atendimentos.ElementAt(i).Repeat)
+                var atendimentos = (await atendimentoRepository.GetAllAsync())
+                    .Where
+                    (
+                        x => x.IdServidor == Servidor.Id
+                        && x.Paciente.Id == Paciente.Id && x.TipoConsulta == TipoConsulta
+                    );
+
+                for (int i = 0; i < atendimentos.Count(); i++)
                 {
+                    ScheduleAppointment appointment = new ScheduleAppointment();
+                    appointment.Subject = atendimentos.ElementAt(i).DescricaoConsulta;
+                    appointment.Color = atendimentos.ElementAt(i).Cor;
+                    appointment.StartTime = atendimentos.ElementAt(i).StartTime;
+                    appointment.EndTime = atendimentos.ElementAt(i).EndTime;
+
+                    if (atendimentos.ElementAt(i).Repeat)
+                    {
+                        RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
+                        recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
+                        recurrenceProperties.RecurrenceRange = RecurrenceRange.NoEndDate;
+
+                        switch (appointment.StartTime.DayOfWeek)
+                        {
+                            case DayOfWeek.Monday:
+                                recurrenceProperties.WeekDays = WeekDays.Monday;
+                                break;
+                            case DayOfWeek.Tuesday:
+                                recurrenceProperties.WeekDays = WeekDays.Tuesday;
+                                break;
+                            case DayOfWeek.Wednesday:
+                                recurrenceProperties.WeekDays = WeekDays.Wednesday;
+                                break;
+                            case DayOfWeek.Thursday:
+                                recurrenceProperties.WeekDays = WeekDays.Thursday;
+                                break;
+                            case DayOfWeek.Friday:
+                                recurrenceProperties.WeekDays = WeekDays.Friday;
+                                break;
+                        }
+
+                        appointment.RecurrenceRule = Xamarin.Forms.DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
+                    }
+
+
+                    Meetings.Add(appointment);
+                }
+
+                //DISPONÍVEIS
+
+                IEnumerable<HorarioAcao> horariosDisponiveis = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
+
+                for (int i = 0; i < horariosDisponiveis.Count(); i++)
+                {
+                    if (atendimentos.Where(x => x.StartTime.DayOfWeek == horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek && x.StartTime.Hour == horariosDisponiveis.ElementAt(i).StartTime.Hour).Count() > 0)
+                        continue;
+
+                    ScheduleAppointment appointment = new ScheduleAppointment();
+                    appointment.Subject = "(+) Marcar";
+                    appointment.Color = horariosDisponiveis.ElementAt(i).Cor;
+                    appointment.StartTime = horariosDisponiveis.ElementAt(i).StartTime;
+                    appointment.EndTime = horariosDisponiveis.ElementAt(i).EndTime;
                     RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
                     recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
                     recurrenceProperties.RecurrenceRange = RecurrenceRange.NoEndDate;
@@ -191,54 +240,16 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                             recurrenceProperties.WeekDays = WeekDays.Friday;
                             break;
                     }
-
                     appointment.RecurrenceRule = Xamarin.Forms.DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
+
+                    Meetings.Add(appointment);
                 }
-
-
-                Meetings.Add(appointment);
             }
-
-            //DISPONÍVEIS
-
-            var ex = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
-
-            for (int i = 0; i < ex.Count(); i++)
+            catch (Exception ex)
             {
-                if (atendimentos.FirstOrDefault(x => x.StartTime.DayOfWeek == ex.ElementAt(i).StartTime.DayOfWeek && x.StartTime.Hour == ex.ElementAt(i).StartTime.Hour) != null)
-                    continue;
 
-                ScheduleAppointment appointment = new ScheduleAppointment();
-                appointment.Subject = "(+) Marcar";
-                appointment.Color = ex.ElementAt(i).Cor;
-                appointment.StartTime = ex.ElementAt(i).StartTime;
-                appointment.EndTime = ex.ElementAt(i).EndTime;
-                RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
-                recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
-                recurrenceProperties.RecurrenceRange = RecurrenceRange.NoEndDate;
-
-                switch (appointment.StartTime.DayOfWeek)
-                {
-                    case DayOfWeek.Monday:
-                        recurrenceProperties.WeekDays = WeekDays.Monday;
-                        break;
-                    case DayOfWeek.Tuesday:
-                        recurrenceProperties.WeekDays = WeekDays.Tuesday;
-                        break;
-                    case DayOfWeek.Wednesday:
-                        recurrenceProperties.WeekDays = WeekDays.Wednesday;
-                        break;
-                    case DayOfWeek.Thursday:
-                        recurrenceProperties.WeekDays = WeekDays.Thursday;
-                        break;
-                    case DayOfWeek.Friday:
-                        recurrenceProperties.WeekDays = WeekDays.Friday;
-                        break;
-                }
-                appointment.RecurrenceRule = Xamarin.Forms.DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
-
-                Meetings.Add(appointment);
             }
+
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -247,6 +258,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+         
             if (parameters["paciente"] != null)
             {
                 Paciente = parameters["paciente"] as Paciente;

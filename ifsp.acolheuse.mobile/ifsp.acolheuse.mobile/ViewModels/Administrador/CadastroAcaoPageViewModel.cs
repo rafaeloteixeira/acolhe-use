@@ -157,18 +157,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters["linha"] != null)
+            var navigationMode = parameters.GetNavigationMode();
+            if(navigationMode != NavigationMode.Back)
             {
-                Linha = parameters["linha"] as Linha;
-            }
-            if (parameters["acao"] != null)
-            {
-                Acao = parameters["acao"] as Acao;
-                CarregarLinhaAcao(Acao.Id);
-            }
-            else
-            {
-                CarregarLinha();
+                if (parameters["linha"] != null)
+                {
+                    Linha = parameters["linha"] as Linha;
+                }
+                if (parameters["acao"] != null)
+                {
+                    Acao = parameters["acao"] as Acao;
+                    CarregarLinhaAcao(Acao.Id);
+                }
+                else
+                {
+                    CarregarLinha();
+                }
             }
         }
     }

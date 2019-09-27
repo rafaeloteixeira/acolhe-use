@@ -20,7 +20,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         private int tipoConsulta;
         private string eventName;
         private string idServidor;
-        private Paciente paciente;
+        private ListaEntidade paciente;
         private string idAcao;
         private int capacidade;
         private DateTime startTime;
@@ -73,17 +73,18 @@ namespace ifsp.acolheuse.mobile.Core.Domain
                 switch (TipoConsulta)
                 {
                     case _ORIENTACAO:
-                        return paciente.NomeCompleto;
+                        return paciente.Nome;
                     case _GRUPO:
                         return "Grupo";
                     case _INDIVIDUAL:
-                        return paciente.NomeCompleto;
+                        return paciente.Nome;
                     default:
                         return "";
                 }
             }
         }
 
+        [Ignored]
         public string EventId
         {
             get
@@ -109,7 +110,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return idServidor; }
             set { idServidor = value; RaisePropertyChanged(); }
         }
-        public Paciente Paciente
+        public ListaEntidade Paciente
         {
             get { return paciente; }
             set { paciente = value; RaisePropertyChanged(); }
@@ -165,7 +166,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 
         }
 
-        public Atendimento(int tipoConsulta, string eventName, string idServidor, Paciente paciente, string idAcao, int capacidade, bool allDay, bool repeat, DateTime? Date, IEnumerable<string> EstagiariosIdCollection)
+        public Atendimento(int tipoConsulta, string eventName, string idServidor, ListaEntidade paciente, string idAcao, int capacidade, bool allDay, bool repeat, DateTime? Date, IEnumerable<string> EstagiariosIdCollection)
         {
             this.EventName = eventName;
             this.IdServidor = idServidor;

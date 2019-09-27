@@ -14,7 +14,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         internal async void NavigateServ()
         {
-            Settings.UserId = "MUpZRnWd2vMfPCBt3c0N";
+            Settings.UserId = "oUwZmTbsOZJaKCClvcDA";
             await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
         }
 
