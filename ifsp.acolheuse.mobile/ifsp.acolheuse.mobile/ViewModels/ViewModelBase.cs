@@ -12,10 +12,20 @@ namespace ifsp.acolheuse.mobile.ViewModels
         protected INavigationService NavigationService { get; private set; }
 
         private string _title;
+        private bool _isBusy;
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
+        }
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value, () => RaisePropertyChanged(nameof(IsNotBusy))); }
+        }
+        public bool IsNotBusy
+        {
+            get { return !IsBusy; }
         }
 
         public ViewModelBase(INavigationService navigationService)

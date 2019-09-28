@@ -1,6 +1,7 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
 using ifsp.acolheuse.mobile.Core.Settings;
+using ifsp.acolheuse.mobile.ExtensionsMethods;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -153,12 +154,23 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         public async void BuscarTodos()
         {
             Meetings = new ScheduleAppointmentCollection();
-            
-            IEnumerable<Atendimento> atendimentos = await atendimentoRepository.GetAllByServidorIdPacienteIdConsultaId(ServidorId, Paciente.Id, TipoConsulta);
-            IEnumerable<HorarioAcao> horariosDisponiveis = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
+            try
+            {
+                IsBusy = true;
 
-            BuscarAtendimentos(atendimentos);
-            BuscarHorariosDisponiveis(atendimentos, horariosDisponiveis);
+                IEnumerable<Atendimento> atendimentos = await atendimentoRepository.GetAllByServidorIdPacienteIdConsultaId(ServidorId, Paciente.Id, TipoConsulta);
+                IEnumerable<HorarioAcao> horariosDisponiveis = await horarioAcaoRepository.GetAtendimentosByIdAcaoAsync(IdAcao);
+
+                BuscarAtendimentos(atendimentos);
+                BuscarHorariosDisponiveis(atendimentos, horariosDisponiveis);
+
+                IsBusy = false;
+            }
+            catch (Exception)
+            {
+                IsBusy = false;
+                throw;
+            }
         }
 
         private void BuscarAtendimentos(IEnumerable<Atendimento> atendimentos)
@@ -175,7 +187,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                 {
                     RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
                     recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
-                    recurrenceProperties.RecurrenceRange = RecurrenceRange.NoEndDate;
+                    recurrenceProperties.RecurrenceRange = RecurrenceRange.Count;
+                    recurrenceProperties.RecurrenceCount = 10;
+                    recurrenceProperties.StartDate = appointment.StartTime;
 
                     switch (appointment.StartTime.DayOfWeek)
                     {
@@ -204,6 +218,11 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         }
         private void BuscarHorariosDisponiveis(IEnumerable<Atendimento> atendimentos, IEnumerable<HorarioAcao> horariosDisponiveis)
         {
+            RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
+            recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
+            recurrenceProperties.RecurrenceRange = RecurrenceRange.EndDate;
+            recurrenceProperties.EndDate = DateTime.Now.AddYears(1);
+            recurrenceProperties.StartDate = DateTime.Now;
 
             for (int i = 0; i < horariosDisponiveis.Count(); i++)
             {
@@ -217,15 +236,12 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                     continue;
 
                 ScheduleAppointment appointment = new ScheduleAppointment();
-                appointment.Subject = "Indisponível";
+                appointment.Subject = "";
                 appointment.Color = horariosDisponiveis.ElementAt(i).Cor;
-                appointment.StartTime = horariosDisponiveis.ElementAt(i).StartTime;
-                appointment.EndTime = horariosDisponiveis.ElementAt(i).EndTime;
-                RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
-                recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
-                recurrenceProperties.RecurrenceRange = RecurrenceRange.NoEndDate;
+                appointment.StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek).Day, horariosDisponiveis.ElementAt(i).StartTime.Hour, horariosDisponiveis.ElementAt(i).StartTime.Minute, 0);
+                appointment.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).EndTime.DayOfWeek).Day, horariosDisponiveis.ElementAt(i).EndTime.Hour, horariosDisponiveis.ElementAt(i).EndTime.Minute, 0);
 
-                switch (appointment.StartTime.DayOfWeek)
+                switch (horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek)
                 {
                     case DayOfWeek.Monday:
                         recurrenceProperties.WeekDays = WeekDays.Monday;
@@ -243,10 +259,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                         recurrenceProperties.WeekDays = WeekDays.Friday;
                         break;
                 }
+
                 appointment.RecurrenceRule = Xamarin.Forms.DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
                 Meetings.Add(appointment);
             }
-
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

@@ -5,42 +5,43 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.AgendaAtendimentoPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             Title="Agendar Atendimento"
-             Appearing="ContentPage_Appearing">
+             Title="Agendar Atendimento" Appearing="ContentPage_Appearing">
     <ContentPage.Content>
-        <syncfusion:SfSchedule x:Name="schedule"
-	    DataSource="{Binding Meetings}"
-	    ScheduleView ="WorkWeekView" CellTapped="Schedule_CellTapped" Locale="pt">
-            <!--<syncfusion:SfSchedule.BindingContext>
-                <local:AgendaServidorViewModel/>
-            </syncfusion:SfSchedule.BindingContext>-->
-            <syncfusion:SfSchedule.WeekViewSettings>
-                <syncfusion:WeekViewSettings 
-                    NonWorkingHoursTimeSlotColor="#fcf3c9"
-			        NonWorkingHoursTimeSlotBorderColor="#fceb9f"
-			        TimeSlotBorderStrokeWidth="5"
-			        VerticalLineStrokeWidth="5" 
-			        VerticalLineColor="LightGray"
-                    WorkStartHour="08"
-                    WorkEndHour="18">
-                    <!--<syncfusion:WeekViewSettings.NonAccessibleBlocks>
-                        <syncfusion:NonAccessibleBlock 
-					 StartTime="12"
-					 EndTime="13"  
-					 Text="ALMOÇO"
-					 Color="Black" />
-                    </syncfusion:WeekViewSettings.NonAccessibleBlocks>-->
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <syncfusion:SfSchedule x:Name="schedule" DataSource="{Binding Meetings}" ScheduleView ="WorkWeekView" CellTapped="Schedule_CellTapped" Locale="pt"  ShowAppointmentsInline="False">
+                    <syncfusion:SfSchedule.WeekViewSettings>
+                        <syncfusion:WeekViewSettings 
+                                NonWorkingHoursTimeSlotColor="#fcf3c9"
+			                    NonWorkingHoursTimeSlotBorderColor="#fceb9f"
+			                    VerticalLineColor="LightGray"
+                                WorkStartHour="08"
+                                WorkEndHour="18" />
+                    </syncfusion:SfSchedule.WeekViewSettings>
+                    <!--<syncfusion:SfSchedule.DayViewSettings>
+                        <syncfusion:DayViewSettings>
+                            <syncfusion:DayViewSettings.DayLabelSettings>
+                                <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
+                            </syncfusion:DayViewSettings.DayLabelSettings>
+                        </syncfusion:DayViewSettings>
+                    </syncfusion:SfSchedule.DayViewSettings>-->
+                </syncfusion:SfSchedule>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
 
-                </syncfusion:WeekViewSettings>
-
-            </syncfusion:SfSchedule.WeekViewSettings>
-            <syncfusion:SfSchedule.DayViewSettings>
-                <syncfusion:DayViewSettings>
-                    <syncfusion:DayViewSettings.DayLabelSettings>
-                        <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
-                    </syncfusion:DayViewSettings.DayLabelSettings>
-                </syncfusion:DayViewSettings>
-            </syncfusion:SfSchedule.DayViewSettings>
-        </syncfusion:SfSchedule>
     </ContentPage.Content>
 </ContentPage>

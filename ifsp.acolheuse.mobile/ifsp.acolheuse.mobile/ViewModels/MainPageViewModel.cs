@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
@@ -20,6 +21,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         internal async void NavigateAdmin()
         {
+            IsBusy = true;
+            await Task.Delay(4000);
+            IsBusy = false;
             await NavigationService.NavigateAsync("/NavigationPage/MenuAdminPage");
         }
     }
