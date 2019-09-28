@@ -19,7 +19,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         {
             get
             {
-                return Color.FromHex("#7AFF9A");
+                return Color.FromHex("#808080");
             }
         }
         [Id]

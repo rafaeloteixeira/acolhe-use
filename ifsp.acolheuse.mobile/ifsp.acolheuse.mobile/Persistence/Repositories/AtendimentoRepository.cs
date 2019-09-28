@@ -16,6 +16,23 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         {
         }
 
+        public async Task<IEnumerable<Atendimento>> GetAllByServidorIdPacienteIdConsultaId(string servidorId, string pacienteId, int tipoConsulta)
+        {
+            var query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .GetCollection(collectionName)
+                                     .GetDocumentsAsync();
+
+            var yourModels = query.ToObjects<Atendimento>().Where
+            (
+                x => x.IdServidor == servidorId
+                && x.Paciente.Id == pacienteId 
+                && x.TipoConsulta == tipoConsulta
+            );
+
+            return yourModels;
+        }
+
         public async Task<Atendimento> GetAtendimentoByEventIdAcaoIdAsync(string eventId, string acaoId)
         {
             var query = await CrossCloudFirestore.Current

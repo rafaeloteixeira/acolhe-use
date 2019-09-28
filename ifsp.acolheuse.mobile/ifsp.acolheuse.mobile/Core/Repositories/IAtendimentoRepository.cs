@@ -9,5 +9,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
     public interface IAtendimentoRepository : IRepository<Atendimento>
     {
         Task<Atendimento> GetAtendimentoByEventIdAcaoIdAsync(string eventId, string idAcao);
+        Task<IEnumerable<Atendimento>> GetAllByServidorIdPacienteIdConsultaId(string servidorId, string pacienteId, int tipoConsulta);
     }
 }
