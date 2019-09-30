@@ -6,39 +6,34 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.AcaoServidorPage"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="Dados do Ação">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Margin="5">
-                <StackLayout VerticalOptions="StartAndExpand">
-                    <StackLayout HorizontalOptions="FillAndExpand">
-                        <sfText:SfTextInputLayout Hint="Nome da linha" ContainerType="Outlined">
-                            <Entry Text="{Binding Acao.Linha.Nome}" HorizontalOptions="Fill" IsReadOnly="True"/>
-                        </sfText:SfTextInputLayout>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="FillAndExpand">
-                        <sfText:SfTextInputLayout Hint="Nome da ação" ContainerType="Outlined">
-                            <Entry Text="{Binding Acao.Nome}" HorizontalOptions="Fill" IsReadOnly="True"/>
-                        </sfText:SfTextInputLayout>
-                    </StackLayout>
-                </StackLayout>
-
-                <StackLayout VerticalOptions="StartAndExpand">
+                <StackLayout Padding="10,10,10,10" VerticalOptions="Start" >
                     <StackLayout VerticalOptions="Start">
-                        <StackLayout Orientation="Horizontal" Spacing="0">
-                            <StackLayout HorizontalOptions="FillAndExpand">
-                                <sfText:SfTextInputLayout Hint="Número de vagas" ContainerType="Outlined">
-                                    <Entry Text="{Binding Acao.NumeroVagas}" HorizontalOptions="Fill" VerticalOptions="Center"/>
-                                </sfText:SfTextInputLayout>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                                <Label Text="Lista Aberta" VerticalOptions="Center"/>
-                                <Switch IsToggled="{Binding Acao.IsListaAberta}" VerticalOptions="Center"/>
-                            </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Linha: " HorizontalOptions="Fill" />
+                            <Label Text="{Binding Linha.Nome}" HorizontalOptions="Fill" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Ação: " HorizontalOptions="Fill" />
+                            <Label Text="{Binding Acao.Nome}" HorizontalOptions="Fill" />
                         </StackLayout>
                     </StackLayout>
 
+                    <StackLayout VerticalOptions="StartAndExpand"  Orientation="Horizontal">
+                        <StackLayout VerticalOptions="Start">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Número de vagas: " HorizontalOptions="Fill" />
+                                    <Label Text="{Binding Acao.NumeroVagas}" HorizontalOptions="Fill" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
                     <StackLayout Spacing="0" VerticalOptions="Start">
                         <Label Text="Estagiários" FontAttributes="Bold" />
 
@@ -65,10 +60,10 @@
 
             </StackLayout>
             <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
-                <Button Text="Lista de interconsulta" Command="{Binding ListaInterconsultaCommand}"/>
-                <Button Text="Lista de atendimento" Command="{Binding ListaAtendimentoCommand}"/>
-                <Button Text="Lista de espera" Command="{Binding ListaEsperaCommand}"/>
-                <Button Text="Usuários de alta" Command="{Binding ListarPacientesAltaCommand}"/>
+                <buttons:SfButton Text="Interconsultas"/>
+                <buttons:SfButton Text="Atendimentos"/>
+                <buttons:SfButton Text="Lista de espera"/>
+                <buttons:SfButton Text="Altas"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

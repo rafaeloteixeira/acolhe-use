@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifsp.acolheuse.mobile.Andro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifsp.acolheuse.mobile.iOS", "ifsp.acolheuse.mobile\ifsp.acolheuse.mobile.iOS\ifsp.acolheuse.mobile.iOS.csproj", "{02332993-BE1E-44E5-88D2-15FC6D8DFAA8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{435F52AE-5F83-430E-96C9-35587905796C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
