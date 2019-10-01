@@ -8,63 +8,89 @@
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="Dados do Ação">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Margin="5">
-                <StackLayout Padding="10,10,10,10" VerticalOptions="Start" >
-                    <StackLayout VerticalOptions="Start">
-                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Linha: " HorizontalOptions="Fill" />
-                            <Label Text="{Binding Linha.Nome}" HorizontalOptions="Fill" />
-                        </StackLayout>
-
-                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Ação: " HorizontalOptions="Fill" />
-                            <Label Text="{Binding Acao.Nome}" HorizontalOptions="Fill" />
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout VerticalOptions="StartAndExpand"  Orientation="Horizontal">
+        
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                    <StackLayout>
                         <StackLayout VerticalOptions="Start">
-                            <StackLayout Orientation="Horizontal" Spacing="0">
-                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                    <Label Text="Número de vagas: " HorizontalOptions="Fill" />
-                                    <Label Text="{Binding Acao.NumeroVagas}" HorizontalOptions="Fill" />
+                            <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                                <Label Text="Linha: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                                <Label Text="{Binding Linha.Nome}" FontSize="Large"  HorizontalOptions="Fill" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                                <Label Text="Ação: " FontSize="Large"  HorizontalOptions="Fill" FontAttributes="Bold"/>
+                                <Label Text="{Binding Acao.Nome}" FontSize="Large"  HorizontalOptions="Fill" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout VerticalOptions="StartAndExpand"  Orientation="Horizontal">
+                            <StackLayout VerticalOptions="Start">
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label Text="Número de vagas: " FontSize="Large"  FontAttributes="Bold" HorizontalOptions="Fill" />
+                                        <Label Text="{Binding Acao.NumeroVagas}" FontSize="Large"  HorizontalOptions="Fill" />
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                    <StackLayout Spacing="0" VerticalOptions="Start">
-                        <Label Text="Estagiários" FontAttributes="Bold" />
+                        <StackLayout Spacing="0" VerticalOptions="Start" Margin="0, 20, 0, 0">
+                            <Label Text="Estagiários" FontSize="Large"  FontAttributes="Bold" />
 
-                        <listview:SfListView x:Name="lvEstagiario" ItemsSource="{Binding Acao.EstagiarioCollection}" ItemTapped="LvEstagiario_ItemTapped" VerticalOptions="StartAndExpand">
+                            <listview:SfListView x:Name="lvEstagiario" ItemsSource="{Binding Acao.EstagiarioCollection}" ItemTapped="LvEstagiario_ItemTapped" VerticalOptions="StartAndExpand">
 
-                            <listview:SfListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Margin="8">
-                                            <Grid x:Name="GridTasks">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1*" />
-                                                    <ColumnDefinition Width="1*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
-                                            </Grid>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </listview:SfListView.ItemTemplate>
-                        </listview:SfListView>
+                                <listview:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Margin="8">
+                                                <Grid x:Name="GridTasks">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*" />
+                                                        <ColumnDefinition Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </listview:SfListView.ItemTemplate>
+                            </listview:SfListView>
+                        </StackLayout>
                     </StackLayout>
+                    <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                        <buttons:SfButton Text="Interconsultas" Command="{Binding ListaInterconsultaCommand}"/>
+                        <buttons:SfButton Text="Atendimentos" Command="{Binding ListaAtendimentoCommand}"/>
+                        <buttons:SfButton Text="Lista de espera" Command="{Binding ListaEsperaCommand}"/>
+                        <buttons:SfButton Text="Altas" Command="{Binding ListarPacientesAltaCommand}"/>
+                    </StackLayout>
+
                 </StackLayout>
-
             </StackLayout>
-            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
-                <buttons:SfButton Text="Interconsultas"/>
-                <buttons:SfButton Text="Atendimentos"/>
-                <buttons:SfButton Text="Lista de espera"/>
-                <buttons:SfButton Text="Altas"/>
-            </StackLayout>
-        </StackLayout>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

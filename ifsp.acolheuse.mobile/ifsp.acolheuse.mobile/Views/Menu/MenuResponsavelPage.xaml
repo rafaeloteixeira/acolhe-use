@@ -2,38 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Menu.MenuResponsavelPage"
-             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              NavigationPage.HasBackButton="False"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="True"
+             Title="AcolheUSE">
     <ContentPage.Content>
-        <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" DrawerWidth ="250" DrawerHeaderHeight="0" >
-            <navigationdrawer:SfNavigationDrawer.ContentView>
-                <Grid x:Name="mainContentView" BackgroundColor="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <StackLayout BackgroundColor="#1aa1d6" Orientation="Horizontal">
-                        <ImageButton HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#1aa1d6" Clicked="hamburgerButton_Clicked" Source="menu" Aspect="Fill"/>
-                    </StackLayout>
-                </Grid>
-            </navigationdrawer:SfNavigationDrawer.ContentView>
-            <navigationdrawer:SfNavigationDrawer.DrawerContentView>
-                <listview:SfListView x:Name="listView" ItemsSource="{Binding ListaMenu}" ItemTapped="ListView_ItemTapped" VerticalOptions="StartAndExpand">
-                    <listview:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid VerticalOptions="StartAndExpand" Margin="0, 20, 0, 0">
-                                    <Label Margin="20, 0, 0, 0" Text="{Binding Titulo}" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </listview:SfListView.ItemTemplate>
-                </listview:SfListView>
-            </navigationdrawer:SfNavigationDrawer.DrawerContentView>
-        </navigationdrawer:SfNavigationDrawer>
+        
+        <listview:SfListView x:Name="listView" 
+                    ItemsSource="{Binding ListaMenu}"
+                    ItemSize="100"
+                    ItemTapped="ListView_ItemTapped">
+            <listview:SfListView.LayoutManager>
+                <listview:LinearLayout />
+            </listview:SfListView.LayoutManager>
+
+            <listview:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="2" Margin="2" >
+                        <Frame HasShadow="True" Padding="2" Margin="2">
+                            <StackLayout>
+                                <Label Text="{Binding Titulo}" FontSize="Large"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </listview:SfListView.ItemTemplate>
+        </listview:SfListView>
+            
+   
     </ContentPage.Content>
 </ContentPage>

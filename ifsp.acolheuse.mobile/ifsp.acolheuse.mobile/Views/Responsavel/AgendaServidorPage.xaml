@@ -7,6 +7,13 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              xmlns:local="clr-namespace:ifsp.use.mobile.ViewModels.Servidor"
              Title="Agenda">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.Content>
         <syncfusion:SfSchedule x:Name="schedule"
 	    DataSource="{Binding Meetings}"

@@ -5,9 +5,11 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 {
@@ -44,7 +46,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         private INavigationService navigationService;
 
-      
+
 
         private IAcaoRepository acaoRepository;
         private ILinhaRepository linhaRepository;
@@ -67,24 +69,28 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             await navigationService.NavigateAsync("CadastroAcaoPage");
         }
-        public async void BuscarLinhasCollectionAsync()
-        {
-            LinhasCollection = new ObservableCollection<Linha>();
 
+
+
+        private async Task<ConcurrentBag<Linha>> BuscarLinhasCollectionAsync()
+        {
+            ConcurrentBag<Linha> linhas = new ConcurrentBag<Linha>();
             ObservableCollection<Acao> acoes = new ObservableCollection<Acao>((await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection != null && x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null));
 
             for (int i = 0; i < acoes.Count(); i++)
             {
-                Linha linhaResponsavel = LinhasCollection.FirstOrDefault(x => x.Id == acoes[i].IdLinha);
+                Linha linhaResponsavel = linhas.FirstOrDefault(x => x.Id == acoes[i].IdLinha);
 
                 if (linhaResponsavel == null)
                 {
                     linhaResponsavel = await linhaRepository.GetAsync(acoes[i].IdLinha);
-                    LinhasCollection.Add(linhaResponsavel);
+                    linhas.Add(linhaResponsavel);
                 }
-
             }
+
+            return linhas;
         }
+
         internal async void BuscarAcoesCollectionAsync()
         {
             AcaoCollection = await acaoRepository.GetAllByIdLinhaAsync(Linha.Id);
@@ -96,6 +102,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            var navigationMode = parameters.GetNavigationMode();
+            if (navigationMode != NavigationMode.Back)
+            {
+
+                Task taskA = Task.Run(async () =>
+                     LinhasCollection = new ObservableCollection<Linha>(await BuscarLinhasCollectionAsync())
+                );
+            }
         }
     }
 }

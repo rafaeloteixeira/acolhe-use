@@ -6,57 +6,70 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.AtendimentoPage"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="Atendimento">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
 
-        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
-            <Grid RowSpacing="1" ColumnSpacing="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Ação: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Acao.Nome}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
 
-                <sfText:SfTextInputLayout Grid.Row="0" ContainerType="Outlined" Hint="Nome da ação" >
-                    <Entry Text="{Binding Acao.Nome}" HorizontalOptions="Fill" IsReadOnly="True"/>
-                </sfText:SfTextInputLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Usuário: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Paciente.NomeCompleto}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
 
-                <sfText:SfTextInputLayout Grid.Row="1" ContainerType="Outlined" Hint="Nome do usuário" >
-                    <Entry Text="{Binding Paciente.NomeCompleto}" HorizontalOptions="Fill" IsReadOnly="True"/>
-                </sfText:SfTextInputLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Telefone: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Paciente.Telefone}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
 
-                <sfText:SfTextInputLayout Grid.Row="2" ContainerType="Outlined" Hint="Telefone" >
-                    <maskededit:SfMaskedEdit Value="{Binding Paciente.Telefone}" HorizontalOptions="Fill" IsEnabled="False" Keyboard="Numeric" Mask="(00) 0000-0000" />
-                </sfText:SfTextInputLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Celular: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Paciente.Celular}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
 
-                <sfText:SfTextInputLayout Grid.Row="3" ContainerType="Outlined" Hint="Celular" >
-                    <maskededit:SfMaskedEdit Value="{Binding Paciente.Celular}" HorizontalOptions="Fill" IsEnabled="False" Keyboard="Numeric" Mask="(00) 0 0000-0000" />
-                </sfText:SfTextInputLayout>
-
-                <Grid Grid.Row="4" VerticalOptions="End">
-                    <StackLayout Grid.Column="0" Orientation="Vertical">
-                        <Button Text="Interconsulta" Command="{Binding InterconsultaCommand}" IsEnabled="{Binding InterconsultaVisible}" />
-                        <Button Text="Orientação" Command="{Binding AgendarOrientacaoCommand}" IsEnabled="{Binding OrientacaoVisible}" />
+                       
                     </StackLayout>
-                    <StackLayout Grid.Column="1" Orientation="Vertical" >
-                        <Button Text="Individual" Command="{Binding AgendarIndividualCommand}" IsEnabled="{Binding IndividualVisible}" />
-                        <Button Text="Grupo" Command="{Binding AgendarGrupoCommand}" IsEnabled="{Binding GrupoVisible}"/>
+                    <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                        <buttons:SfButton Text="Interconsulta" Command="{Binding InterconsultaCommand}" IsEnabled="{Binding InterconsultaVisible}"/>
+                        <buttons:SfButton Text="Orientação" Command="{Binding AgendarOrientacaoCommand}" IsEnabled="{Binding OrientacaoVisible}" />
+                        <buttons:SfButton Text="Individual" Command="{Binding AgendarIndividualCommand}" IsEnabled="{Binding IndividualVisible}"/>
+                        <buttons:SfButton Text="Grupo" Command="{Binding AgendarGrupoCommand}" IsEnabled="{Binding GrupoVisible}"/>
+                        <buttons:SfButton Text="Dar Alta" Command="{Binding DarAltaCommand}" />
                     </StackLayout>
-                </Grid>
+                </StackLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
 
-                <Grid Grid.Row="5" VerticalOptions="End">
-                    <Button Text="Dar Alta" Command="{Binding DarAltaCommand}" />
-                </Grid>
-            </Grid>
-
-        </ScrollView>
 
     </ContentPage.Content>
 </ContentPage>

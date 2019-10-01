@@ -5,6 +5,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Acolhimento.InclusaoAcaoPage"
              Title="Incluir Ação">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salvar"
                  Command="{Binding SalvarCommand}" />

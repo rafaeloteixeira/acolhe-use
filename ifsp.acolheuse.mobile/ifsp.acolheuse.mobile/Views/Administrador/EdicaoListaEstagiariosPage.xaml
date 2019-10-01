@@ -6,6 +6,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Administrador.EdicaoListaEstagiariosPage"
              Title="{Binding Title}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salvar"
                  Command="{Binding SalvarCommand}" />

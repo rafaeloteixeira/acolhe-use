@@ -7,6 +7,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
@@ -22,7 +23,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         private Servidor servidor;
         private string estagiarioCollectionString;
-        private bool admin;
+        private bool isAdmin;
 
         public Servidor Servidor
         {
@@ -35,6 +36,12 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             get { return estagiarioCollectionString; }
             set { estagiarioCollectionString = value; RaisePropertyChanged(); }
         }
+        public bool IsAdmin
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; RaisePropertyChanged(); }
+        }
+
 
         private INavigationService navigationService;
         private IServidorRepository servidorRepository;
@@ -63,7 +70,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
         public async void SalvarServidorAsync()
         {
-            if (String.IsNullOrEmpty(Servidor.Id) && admin)
+            if (String.IsNullOrEmpty(Servidor.Id) && IsAdmin)
             {
                 User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
                 var result = await firebase.CreateUserAsync(user);
@@ -134,7 +141,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
             if (parameters["admin"] != null)
             {
-                admin = true;
+                IsAdmin = true;
             }
 
             GetServidorAsync();

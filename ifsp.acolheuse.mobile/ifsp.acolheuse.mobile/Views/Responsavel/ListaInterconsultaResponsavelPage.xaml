@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.ListaInterconsultaResponsavelPage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Lista de Interconsulta">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="filterText" HeightRequest="40" Placeholder="" TextChanged="OnFilterTextChanged" Grid.Row="0"/>

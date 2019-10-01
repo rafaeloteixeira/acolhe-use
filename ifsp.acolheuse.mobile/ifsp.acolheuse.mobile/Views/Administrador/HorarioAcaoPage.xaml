@@ -6,8 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Administrador.HorarioAcaoPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              Title="Horário da Ação">
-    <ContentPage.Resources>
-    </ContentPage.Resources>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.Content>
 
         <syncfusion:SfSchedule x:Name="schedule"

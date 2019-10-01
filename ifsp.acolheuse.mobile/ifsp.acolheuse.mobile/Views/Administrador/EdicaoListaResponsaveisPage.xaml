@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Administrador.EdicaoListaResponsaveisPage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Incluir Responsáveis">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salvar"
                  Command="{Binding SalvarCommand}" />

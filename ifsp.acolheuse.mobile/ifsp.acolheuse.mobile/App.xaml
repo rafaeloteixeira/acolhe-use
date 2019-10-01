@@ -1,11 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             xmlns:themes = "clr-namespace:ifsp.acolheuse.mobile.Themes;assembly=ifsp.acolheuse.mobile"
+            xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+            xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+            xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+            xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+            xmlns:text="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="ifsp.acolheuse.mobile.App">
-	<Application.Resources>
+    <Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:LightTheme />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
-	</Application.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="#007044"></Setter>
+            <Setter Property="BarTextColor" Value="White"></Setter>
+        </Style>
+
+        <Style TargetType="Switch">
+            <Setter Property="OnColor" Value="#007044"></Setter>
+        </Style>
+
+        <Style TargetType="listview:SfListView">
+            <Setter Property="SelectionBackgroundColor" Value="Transparent"></Setter>
+        </Style>
+
+        <Style TargetType="buttons:SfButton">
+            <Setter Property="BackgroundColor" Value="#007044"></Setter>
+            <Setter Property="TextColor" Value="White"></Setter>
+        </Style>
+
+        <Style TargetType="text:SfTextInputLayout">
+            <Setter Property="FocusedColor" Value="#007044"></Setter>
+        </Style>
+
+
+    </Application.Resources>
 </prism:PrismApplication>

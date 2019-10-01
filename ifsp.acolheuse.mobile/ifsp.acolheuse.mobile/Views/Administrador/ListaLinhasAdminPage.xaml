@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Administrador.ListaLinhasAdminPage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Linhas">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Novo"
                  Command="{Binding NovaLinhaCommand}" />

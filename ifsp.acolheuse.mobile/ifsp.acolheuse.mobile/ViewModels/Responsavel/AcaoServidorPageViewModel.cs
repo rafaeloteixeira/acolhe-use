@@ -30,9 +30,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         #endregion
 
         #region properties
+        private Linha linha;
         private Acao acao;
         private IEnumerable<Linha> linhasCollection;
-
+        public Linha Linha
+        {
+            get { return linha; }
+            set { linha = value; RaisePropertyChanged(); }
+        }
         public Acao Acao
         {
             get { return acao; }
@@ -111,7 +116,12 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             if (parameters["acao"] != null)
             {
                 Acao = parameters["acao"] as Acao;
+                TrazerLinha();
             }
+        }
+        private async void TrazerLinha()
+        {
+            Linha = await linhaRepository.GetAsync(Acao.IdLinha);
         }
     }
 }

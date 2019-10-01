@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ifsp.acolheuse.mobile.ViewModels
@@ -26,6 +27,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public bool IsNotBusy
         {
             get { return !IsBusy; }
+        }
+
+        public CultureInfo MaskedEditCultureInfo
+        {
+            get { return new CultureInfo("en-US"); }
         }
 
         public ViewModelBase(INavigationService navigationService)

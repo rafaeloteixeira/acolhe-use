@@ -19,13 +19,7 @@ namespace ifsp.acolheuse.mobile.Views.Menu
                 var item = (MenuModel)e.ItemData;
                 MenuResponsavelPageViewModel menu = BindingContext as MenuResponsavelPageViewModel;
                 menu.NavegarMenu(item.Id);
-                navigationDrawer.ToggleDrawer();
             }
-        }
-
-        private void hamburgerButton_Clicked(object sender, EventArgs e)
-        {
-            navigationDrawer.ToggleDrawer();
         }
     }
 }

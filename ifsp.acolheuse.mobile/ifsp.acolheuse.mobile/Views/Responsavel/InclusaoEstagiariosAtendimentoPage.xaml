@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.InclusaoEstagiariosAtendimentoPage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Selecionar estagiários">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Agendar"
                  Command="{Binding AgendarCommand}" />

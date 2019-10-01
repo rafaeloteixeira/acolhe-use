@@ -96,6 +96,11 @@
     <ITunesArtwork Include="iTunesArtwork@1x.png" />
     <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
+    <BundleResource Include="Resources\UIFontIcons.ttf" />
+    <BundleResource Include="Resources\Montserrat-Bold.ttf" />
+    <BundleResource Include="Resources\Montserrat-Medium.ttf" />
+    <BundleResource Include="Resources\Montserrat-Regular.ttf" />
+    <BundleResource Include="Resources\Montserrat-SemiBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">

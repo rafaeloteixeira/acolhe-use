@@ -6,34 +6,63 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.EstagiarioServidorPage"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              Title="Dados do Estagiário">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                        <StackLayout>
+                            <sfText:SfTextInputLayout ContainerType="Outlined" Hint="RA" >
+                                <Entry Text="{Binding Estagiario.Ra}" HorizontalOptions="Fill" IsEnabled="False"/>
+                            </sfText:SfTextInputLayout>
+                            <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
+                                <Entry Text="{Binding Estagiario.Nome}" HorizontalOptions="Fill" IsEnabled="False"/>
+                            </sfText:SfTextInputLayout>
+                            <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Sobrenome" >
+                                <Entry Text="{Binding Estagiario.Sobrenome}" HorizontalOptions="Fill" IsEnabled="False"/>
+                            </sfText:SfTextInputLayout>
 
-            <StackLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="RA" >
-                    <Entry Text="{Binding Estagiario.Ra}" HorizontalOptions="Fill" IsEnabled="False"/>
-                </sfText:SfTextInputLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
-                    <Entry Text="{Binding Estagiario.Nome}" HorizontalOptions="Fill" IsEnabled="False"/>
-                </sfText:SfTextInputLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Sobrenome" >
-                    <Entry Text="{Binding Estagiario.Sobrenome}" HorizontalOptions="Fill" IsEnabled="False"/>
-                </sfText:SfTextInputLayout>
+                        </StackLayout>
 
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Telefone" >
-                        <Entry Text="{Binding Estagiario.Telefone}" HorizontalOptions="Fill" IsEnabled="False"/>
-                    </sfText:SfTextInputLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Telefone" >
+                                    <Entry Text="{Binding Estagiario.Telefone}" HorizontalOptions="Fill" IsEnabled="False"/>
+                                </sfText:SfTextInputLayout>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Celular" >
+                                    <Entry Text="{Binding Estagiario.Celular}" HorizontalOptions="Fill" IsEnabled="False"/>
+                                </sfText:SfTextInputLayout>
+                            </StackLayout>
+                        </StackLayout>
                 </StackLayout>
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Celular" >
-                        <Entry Text="{Binding Estagiario.Celular}" HorizontalOptions="Fill" IsEnabled="False"/>
-                    </sfText:SfTextInputLayout>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+        
+
     </ContentPage.Content>
 </ContentPage>

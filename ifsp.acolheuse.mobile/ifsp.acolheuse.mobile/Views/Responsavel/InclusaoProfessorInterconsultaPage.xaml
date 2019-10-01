@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.InclusaoProfessorInterconsultaPage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Interconsulta - Selecionar ação">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Text="Pedir interconsulta"
                  Command="{Binding PerdirInterconsultaCommand}" />-->

@@ -16,6 +16,8 @@ using ifsp.acolheuse.mobile.Views.Responsavel;
 using ifsp.acolheuse.mobile.Views.Estagio;
 using ifsp.acolheuse.mobile.Views.Menu;
 using ifsp.acolheuse.mobile.Core.Settings;
+using ifsp.acolheuse.mobile.Views.AuthForms;
+using ifsp.acolheuse.mobile.ViewModels.AuthForms;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -39,9 +41,10 @@ namespace ifsp.acolheuse.mobile
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginPageViewModel>();
+
             #region menu
             containerRegistry.RegisterForNavigation<MenuAdminPage, MenuAdminPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuResponsavelPage, MenuResponsavelPageViewModel>();

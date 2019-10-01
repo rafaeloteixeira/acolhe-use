@@ -6,6 +6,13 @@
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.UsuarioServidorPage"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              Title="Dados do Usuário">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Ações"
                  Command="{Binding EditarListaAcoes}" />
@@ -13,58 +20,80 @@
                  Command="{Binding SalvarPacienteCommand}" />
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                    <StackLayout IsEnabled="False" Margin="10">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="CPF" >
+                                    <Entry Text="{Binding Paciente.Cpf}" HorizontalOptions="Fill"/>
+                                </sfText:SfTextInputLayout>
+                            </StackLayout>
+                            <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
+                                <Entry Text="{Binding Paciente.Nome}" HorizontalOptions="Fill"/>
+                            </sfText:SfTextInputLayout>
+                            <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Sobrenome" >
+                                <Entry Text="{Binding Paciente.Sobrenome}" HorizontalOptions="Fill"/>
+                            </sfText:SfTextInputLayout>
+                        </StackLayout>
 
-        <StackLayout IsEnabled="False" Margin="10">
-            <StackLayout>
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="CPF" >
-                        <Entry Text="{Binding Paciente.Cpf}" HorizontalOptions="Fill"/>
-                    </sfText:SfTextInputLayout>
-                </StackLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
-                    <Entry Text="{Binding Paciente.Nome}" HorizontalOptions="Fill"/>
-                </sfText:SfTextInputLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Sobrenome" >
-                    <Entry Text="{Binding Paciente.Sobrenome}" HorizontalOptions="Fill"/>
-                </sfText:SfTextInputLayout>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Telefone" >
-                        <Entry Text="{Binding Paciente.Telefone}" HorizontalOptions="Fill"/>
-                    </sfText:SfTextInputLayout>
-                </StackLayout >
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Celular" >
-                        <Entry Text="{Binding Paciente.Celular}" HorizontalOptions="Fill"/>
-                    </sfText:SfTextInputLayout>
-                </StackLayout>
-            </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Telefone" >
+                                    <Entry Text="{Binding Paciente.Telefone}" HorizontalOptions="Fill"/>
+                                </sfText:SfTextInputLayout>
+                            </StackLayout >
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Celular" >
+                                    <Entry Text="{Binding Paciente.Celular}" HorizontalOptions="Fill"/>
+                                </sfText:SfTextInputLayout>
+                            </StackLayout>
+                        </StackLayout>
 
 
-            <StackLayout VerticalOptions="FillAndExpand">
-                <Label Text="Ações" FontAttributes="Bold" />
-                <ListView x:Name="lvAcao" ItemsSource="{Binding Paciente.AcoesCollection}"
+                        <StackLayout VerticalOptions="FillAndExpand">
+                            <Label Text="Ações" FontAttributes="Bold" />
+                            <ListView x:Name="lvAcao" ItemsSource="{Binding Paciente.AcoesCollection}"
           CachingStrategy="RecycleElement" RowHeight="60" ItemTapped="LvAcao_ItemTapped" VerticalOptions="FillAndExpand">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="8">
-                                    <Grid x:Name="GridTasks">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="1*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
-                                    </Grid>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </StackLayout>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Margin="8">
+                                                <Grid x:Name="GridTasks">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*" />
+                                                        <ColumnDefinition Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
     </ContentPage.Content>
 </ContentPage>

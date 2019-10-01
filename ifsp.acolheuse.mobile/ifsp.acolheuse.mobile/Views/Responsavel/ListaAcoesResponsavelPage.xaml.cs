@@ -14,7 +14,7 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
         }
         protected override void OnAppearing()
         {
-            _viewModel.BuscarLinhasCollectionAsync();
+            
         }
 
         private  void LvAcoes_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
