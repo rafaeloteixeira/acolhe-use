@@ -16,5 +16,10 @@ namespace ifsp.acolheuse.mobile.Views.Estagio
         protected override void OnAppearing()
         {
         }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _viewModel.CheckPassword();
+        }
     }
 }

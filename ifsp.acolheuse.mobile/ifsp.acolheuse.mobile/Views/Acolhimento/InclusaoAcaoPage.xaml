@@ -13,7 +13,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salvar"
+        <ToolbarItem Text="Adicionar"
                  Command="{Binding SalvarCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

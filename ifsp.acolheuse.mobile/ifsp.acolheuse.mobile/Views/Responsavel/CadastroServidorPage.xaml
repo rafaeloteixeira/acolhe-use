@@ -46,8 +46,10 @@
                                 <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="CPF" >
                                     <maskededit:SfMaskedEdit Value="{Binding Servidor.Cpf}" Keyboard="Numeric" MaskType="Text" Mask="000.000.000-00" Culture="{Binding MaskedEditCultureInfo}" />
                                 </sfText:SfTextInputLayout>
-                                <Label Text="É Orientador?" Grid.Column="1" HorizontalTextAlignment="End"/>
-                                <Switch IsToggled="{Binding Servidor.IsProfessor}" Grid.Column="1" />
+                            <StackLayout IsVisible="{Binding IsAdmin}" Orientation="Vertical" Grid.Column="1" >
+                                    <Label Text="É orientador?" HorizontalTextAlignment="End" />
+                                    <Switch IsToggled="{Binding Servidor.IsProfessor}" Grid.Column="1"/>
+                                </StackLayout>
                             </Grid>
 
 
@@ -73,11 +75,11 @@
                             </sfText:SfTextInputLayout>
                             <Grid Grid.Row="5">
 
-                                <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}">
-                                    <Entry Text="{Binding Servidor.Senha}" IsPassword="True"/>
+                            <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}" HasError="{Binding PassHasError}">
+                                <Entry Text="{Binding Servidor.Senha}" IsPassword="True" TextChanged="Entry_TextChanged"/>
                                 </sfText:SfTextInputLayout>
-                            <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Confirmar senha"  HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}">
-                                    <Entry Text="{Binding Servidor.ConfirmarSenha}" IsPassword="True"/>
+                            <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Confirmar senha"  HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}" ErrorText="Senhas não conferem" HasError="{Binding PassHasError}">
+                                <Entry Text="{Binding Servidor.ConfirmarSenha}" IsPassword="True" TextChanged="Entry_TextChanged"/>
                                 </sfText:SfTextInputLayout>
                             </Grid>
                         </Grid>

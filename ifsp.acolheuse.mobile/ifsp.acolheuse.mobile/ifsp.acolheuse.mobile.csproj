@@ -66,11 +66,8 @@
     <EmbeddedResource Update="Views\Administrador\ListaUsuariosAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AuthForms\SimpleEmailEntry.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AuthForms\SimpleLoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Update="Views\AuthForms\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Estagio\CadastroEstagiarioPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

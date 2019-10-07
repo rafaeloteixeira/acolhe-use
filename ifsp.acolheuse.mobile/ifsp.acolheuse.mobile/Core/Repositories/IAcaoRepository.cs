@@ -10,5 +10,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
     {
         Task<IEnumerable<Acao>> GetAllByIdLinhaAsync(string idLinha);
         Task<Acao> GetByGuidAsync(string guidAcao);
+        Task<IEnumerable<Acao>> GetAllByServidorId(string servidorId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Core.Settings;
 using ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
@@ -19,11 +20,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         public DelegateCommand _editarListaEstagiarios { get; set; }
         public DelegateCommand SalvarServidorCommand => _salvarServidorCommand ?? (_salvarServidorCommand = new DelegateCommand(SalvarServidorAsync));
         public DelegateCommand EditarListaEstagiarios => _editarListaEstagiarios ?? (_editarListaEstagiarios = new DelegateCommand(SalvarServidorAsync));
+
+
         #endregion
 
         private Servidor servidor;
         private string estagiarioCollectionString;
         private bool isAdmin;
+        private bool passHasError;
 
         public Servidor Servidor
         {
@@ -41,7 +45,13 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
             get { return isAdmin; }
             set { isAdmin = value; RaisePropertyChanged(); }
         }
+        public bool PassHasError
+        {
+            get { return passHasError; }
+            set { passHasError = value; RaisePropertyChanged(); }
+        }
 
+        
 
         private INavigationService navigationService;
         private IServidorRepository servidorRepository;
@@ -72,22 +82,25 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             if (String.IsNullOrEmpty(Servidor.Id) && IsAdmin)
             {
-                User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
-                var result = await firebase.CreateUserAsync(user);
-
-
-                if (String.IsNullOrEmpty(result))
+                if (!PassHasError)
                 {
-                    Servidor.Id = user.Id;
+                    User user = new User() { Email = Servidor.Email, Password = Servidor.Senha, Tipo = "servidor" };
+                    var result = await firebase.CreateUserAsync(user);
 
-                    await servidorRepository.AddAsync(Servidor);
-                    await userRepository.AddAsync(user);
-                    await navigationService.GoBackAsync();
+
+                    if (String.IsNullOrEmpty(result))
+                    {
+                        Servidor.AccountId = user.Id;
+                        await servidorRepository.AddAsync(Servidor);
+                        await userRepository.AddAsync(user);
+                        await navigationService.GoBackAsync();
+                    }
+                    else
+                    {
+                        await MessageService.Instance.ShowAsync(result);
+                    }
                 }
-                else
-                {
-                    await MessageService.Instance.ShowAsync(result);
-                }
+              
             }
             else
             {
@@ -100,10 +113,16 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             try
             {
-
-                if (!String.IsNullOrEmpty(Servidor.Id))
+                if (!IsAdmin)
                 {
-                    Servidor = await servidorRepository.GetAsync(Servidor.Id);
+                    Servidor = await servidorRepository.GetAsync(Settings.UserId);
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(Servidor.Id))
+                    {
+                        Servidor = await servidorRepository.GetAsync(Servidor.Id);
+                    }
                 }
             }
             catch (Exception)
@@ -146,6 +165,23 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
             GetServidorAsync();
 
+        }
+
+        internal void CheckPass()
+        {
+            if (!String.IsNullOrEmpty(Servidor.Senha) && String.IsNullOrEmpty(Servidor.ConfirmarSenha) 
+                || String.IsNullOrEmpty(Servidor.Senha) && !String.IsNullOrEmpty(Servidor.ConfirmarSenha))
+            {
+                PassHasError = true;
+            }
+            else if(Servidor.Senha != Servidor.ConfirmarSenha)
+            {
+                PassHasError = true;
+            }
+            else
+            {
+                PassHasError = false;
+            }
         }
     }
 }

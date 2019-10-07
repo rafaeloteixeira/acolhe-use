@@ -71,11 +71,6 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             set { idLinha = value; RaisePropertyChanged(); }
         }
 
-        public DiasAcao Dias
-        {
-            get { return dias; }
-            set { dias = value; RaisePropertyChanged(); }
-        }
         public ObservableCollection<ListaEntidade> ResponsavelCollection
         {
             get { return responsavelCollection; }
@@ -89,7 +84,6 @@ namespace ifsp.acolheuse.mobile.Core.Domain
 
         public Acao()
         {
-            Dias = new DiasAcao();
         }
     }
 }

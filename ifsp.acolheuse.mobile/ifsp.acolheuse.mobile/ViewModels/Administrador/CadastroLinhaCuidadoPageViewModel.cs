@@ -37,7 +37,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         private INavigationService navigationService;
         private ILinhaRepository linhaRepository;
         private IAcaoRepository acaoRepository;
-        private string titlePage = "title";
+        private string titlePage = "Linha de cuidado";
 
         public CadastroLinhaCuidadoPageViewModel(INavigationService navigationService, ILinhaRepository linhaRepository, IAcaoRepository acaoRepository)
         : base(navigationService)

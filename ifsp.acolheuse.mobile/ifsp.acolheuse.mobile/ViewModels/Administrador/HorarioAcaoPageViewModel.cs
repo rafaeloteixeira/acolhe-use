@@ -69,7 +69,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
             if (horarioAtendimento == null)
             {
-                if (await MessageService.Instance.ShowAsyncYesNo("Deseja adicionar este horário do atendimento da " + dia + "?"))
+                if (await MessageService.Instance.ShowAsyncYesNo("Deseja excluir este horário do atendimento da " + dia + "?"))
                 {
                     if (horario != null)
                     {
@@ -80,7 +80,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
             }
             else
             {
-                if (await MessageService.Instance.ShowAsyncYesNo("Deseja excluir este horário do atendimento da " + dia + "?"))
+                if (await MessageService.Instance.ShowAsyncYesNo("Deseja adicionar este horário do atendimento da " + dia + "?"))
                 {
                     await horarioRepository.DeleteAtendimentoByIdAcaoEventIdAsync(Acao.Id, horario.EventId);
                     BuscarHorariosAsync();
@@ -100,7 +100,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
                 for (int i = 0; i < ex.Count(); i++)
                 {
                     ScheduleAppointment appointment = new ScheduleAppointment();
-                    appointment.Subject = "(+) Marcar";
+                    appointment.Subject = "";
                     appointment.Color = ex.ElementAt(i).Cor;
                     appointment.StartTime = ex.ElementAt(i).StartTime;
                     appointment.EndTime = ex.ElementAt(i).EndTime;
@@ -136,19 +136,19 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
             switch (dia)
             {
                 case "Segunda-feira":
-                    Date = new DateTime(0001, 01, 03, 08, 0, 0);
+                    Date = new DateTime(2001, 01, 01, 08, 0, 0);
                     break;
                 case "Terça-feira":
-                    Date = new DateTime(0001, 01, 04, 08, 0, 0);
+                    Date = new DateTime(2001, 01, 02, 08, 0, 0);
                     break;
                 case "Quarta-feira":
-                    Date = new DateTime(0001, 01, 05, 08, 0, 0);
+                    Date = new DateTime(2001, 01, 03, 08, 0, 0);
                     break;
                 case "Quinta-feira":
-                    Date = new DateTime(0001, 01, 06, 08, 0, 0);
+                    Date = new DateTime(2001, 01, 04, 08, 0, 0);
                     break;
                 case "Sexta-feira":
-                    Date = new DateTime(0001, 01, 07, 08, 0, 0);
+                    Date = new DateTime(2001, 01, 05, 08, 0, 0);
                     break;
             }
 

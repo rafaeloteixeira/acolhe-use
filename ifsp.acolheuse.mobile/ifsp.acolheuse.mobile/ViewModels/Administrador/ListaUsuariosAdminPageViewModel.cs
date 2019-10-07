@@ -34,7 +34,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         {
             this.navigationService = navigationService;
             this.pacienteRepository = pacienteRepository;
-            Title = "My View A";
+            Title = "Usuários";
         }
 
         internal async void ItemTapped(Paciente paciente)

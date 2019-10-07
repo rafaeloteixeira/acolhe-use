@@ -11,7 +11,6 @@
   <ContentPage.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </ContentPage.Resources>
@@ -20,9 +19,15 @@
         <ToolbarItem Text="Estagiários" Order="Secondary" Command="{Binding EditarEstagiariosCommand}" />
         <ToolbarItem Text="Responsáveis" Order="Secondary" Command="{Binding EditarResponsaveisCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="5">
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="White"
+                     Padding="15,15,15,15"
+                     Spacing="5">
                 <StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <combobox:SfComboBox DisplayMemberPath="Nome" DataSource="{Binding LinhasCollection}" SelectedItem="{Binding Linha}"/>
@@ -34,16 +39,16 @@
                     </StackLayout>
 
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Label Text="Orientação" VerticalOptions="Center"/>
+                        <StackLayout Orientation="Horizontal" Spacing="0" >
+                            <Label Text="Orientação" VerticalOptions="Center" WidthRequest="80"/>
                             <Switch IsToggled="{Binding Acao.IsOrientation}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Label Text="Individual" VerticalOptions="Center"/>
+                            <Label Text="Individual" VerticalOptions="Center"  WidthRequest="80"/>
                             <Switch IsToggled="{Binding Acao.IsIndividual}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Label Text="Grupo" VerticalOptions="Center"/>
+                            <Label Text="Grupo" VerticalOptions="Center"  WidthRequest="80"/>
                             <Switch IsToggled="{Binding Acao.IsGroup}"/>
                         </StackLayout>
                         <!---->
@@ -73,7 +78,18 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+
             </StackLayout>
         </ScrollView>
-    </ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
 </ContentPage>

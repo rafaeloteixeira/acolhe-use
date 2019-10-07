@@ -30,6 +30,17 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             return yourModels;
         }
 
+        public async Task<IEnumerable<Acao>> GetAllByServidorId(string servidorId)
+        {
+            var query = await CrossCloudFirestore.Current
+                                                  .Instance
+                                                  .GetCollection(collectionName)
+                                                  .GetDocumentsAsync();
+
+            var yourModels = query.ToObjects<Acao>().Where(x => x.ResponsavelCollection != null && x.ResponsavelCollection.FirstOrDefault(m => m.Id == servidorId) != null);
+            return yourModels;
+        }
+
         public async Task<Acao> GetByGuidAsync(string guidAcao)
         {
             var query = await CrossCloudFirestore.Current

@@ -1,4 +1,5 @@
-﻿using ifsp.acolheuse.mobile.Services;
+﻿using ifsp.acolheuse.mobile.Core.Settings;
+using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -54,7 +55,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     break;
                 case 5:
                     await MessageService.Instance.ShowAsync("Você saiu");
-                    await navigationService.GoBackToRootAsync();
+                    Settings.InitializeSettings();
+                    await NavigationService.NavigateAsync("/NavigationPage/LoginPage");
                     break;
             }
         }

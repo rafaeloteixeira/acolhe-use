@@ -65,6 +65,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
 
             var navParameters = new NavigationParameters();
             navParameters.Add("estagiarios", estagiarios);
+            navParameters.Add("usuario", atendimento.Paciente);
+            navParameters.Add("horario", atendimento.StartTime);
+            navParameters.Add("tipo_consulta", atendimento.TipoConsulta);
             await navigationService.NavigateAsync("DetalhesAgendamentoPage", navParameters);
         }
         internal async void LoadAppointment(DateTime date)
@@ -238,8 +241,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                 ScheduleAppointment appointment = new ScheduleAppointment();
                 appointment.Subject = "";
                 appointment.Color = horariosDisponiveis.ElementAt(i).Cor;
-                appointment.StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek).Day, horariosDisponiveis.ElementAt(i).StartTime.Hour, horariosDisponiveis.ElementAt(i).StartTime.Minute, 0);
-                appointment.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).EndTime.DayOfWeek).Day, horariosDisponiveis.ElementAt(i).EndTime.Hour, horariosDisponiveis.ElementAt(i).EndTime.Minute, 0);
+
+                DateTime startWeek = DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek);
+                DateTime endWeek = DateTime.Now.StartOfWeek(horariosDisponiveis.ElementAt(i).EndTime.DayOfWeek);
+
+                appointment.StartTime = new DateTime(
+                    startWeek.Year,
+                    startWeek.Month,
+                    startWeek.Day, 
+                    horariosDisponiveis.ElementAt(i).StartTime.Hour, horariosDisponiveis.ElementAt(i).StartTime.Minute, 0);
+
+                appointment.EndTime = new DateTime(
+                    endWeek.Year,
+                    endWeek.Month,
+                    endWeek.Day, 
+                    horariosDisponiveis.ElementAt(i).EndTime.Hour, horariosDisponiveis.ElementAt(i).EndTime.Minute, 0);
+
 
                 switch (horariosDisponiveis.ElementAt(i).StartTime.DayOfWeek)
                 {

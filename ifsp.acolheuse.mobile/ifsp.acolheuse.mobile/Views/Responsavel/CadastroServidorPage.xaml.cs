@@ -26,5 +26,10 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
                 _viewModel.ItemTapped(estagiario);
             }
         }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _viewModel.CheckPass();
+        }
     }
 }

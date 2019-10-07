@@ -38,11 +38,25 @@ namespace ifsp.acolheuse.mobile.Core.Settings
             get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
         }
+        public static string AccountId
+        {
+            get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
+        }
 
         public static string Tipo
         {
             get => AppSettings.GetValueOrDefault(nameof(Tipo), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(Tipo), value);
+        }
+        public static void InitializeSettings()
+        {
+            FirebaseAuthJson = "";
+            AccessToken = "";
+            Email = "";
+            UserId = "";
+            AccountId = "";
+            Tipo = "";
         }
     }
 }

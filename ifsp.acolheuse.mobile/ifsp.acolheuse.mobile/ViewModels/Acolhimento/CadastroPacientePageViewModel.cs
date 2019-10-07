@@ -13,9 +13,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
     {
         #region commands
         public DelegateCommand _salvarPacienteCommand { get; set; }
-        public DelegateCommand _editarListaAcoes { get; set; }
+        public DelegateCommand _editarListaAcoesCommand { get; set; }
         public DelegateCommand SalvarPacienteCommand => _salvarPacienteCommand ?? (_salvarPacienteCommand = new DelegateCommand(SalvarPacienteAsync));
-        public DelegateCommand EditarListaAcoes => _editarListaAcoes ?? (_editarListaAcoes = new DelegateCommand(EditarAcoesAsync));
+        public DelegateCommand EditarListaAcoesCommand => _editarListaAcoesCommand ?? (_editarListaAcoesCommand = new DelegateCommand(EditarAcoesAsync));
         #endregion
 
         #region properties
@@ -37,6 +37,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
             this.navigationService = navigationService;
             this.pacienteRepository = pacienteRepository;
             Paciente = new Paciente();
+            Title = "Usuário";
         }
     
         public async void SalvarPacienteAsync()

@@ -17,10 +17,10 @@ namespace ifsp.acolheuse.mobile.Views.Responsavel
 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
         {
-            DateTime agendamento = e.Datetime;
+            ScheduleAppointment agendamento = e.Appointment as ScheduleAppointment;
             if (agendamento != null)
             {
-                _viewModel.VisualizeAppointments();
+                _viewModel.VisualizeAppointments(agendamento.Notes);
             }
         }
     }

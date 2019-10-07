@@ -25,11 +25,11 @@ namespace ifsp.acolheuse.mobile.Services
 
         public async Task ShowAsync(string message)
         {
-            await App.Current.MainPage.DisplayAlert("USE App", message, "ok");
+            await App.Current.MainPage.DisplayAlert("AcolheUSE", message, "OK");
         }
         public async Task<bool> ShowAsyncYesNo(string message)
         {
-            if (await App.Current.MainPage.DisplayAlert("USE App", message, "Sim", "Não"))
+            if (await App.Current.MainPage.DisplayAlert("AcolheUSE", message, "Sim", "Não"))
                 return true;
 
             return false;

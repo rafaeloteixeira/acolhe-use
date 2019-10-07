@@ -17,7 +17,6 @@ using ifsp.acolheuse.mobile.Views.Estagio;
 using ifsp.acolheuse.mobile.Views.Menu;
 using ifsp.acolheuse.mobile.Core.Settings;
 using ifsp.acolheuse.mobile.Views.AuthForms;
-using ifsp.acolheuse.mobile.ViewModels.AuthForms;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ifsp.acolheuse.mobile
@@ -36,14 +35,15 @@ namespace ifsp.acolheuse.mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUwMzgyQDMxMzcyZTMyMmUzME1qbEVtVEJaRmE5M0N6U3VGSFBlaVBESVVWa05KNEg0bGEwbmdlYmlBRmc9");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
 
             #region menu
             containerRegistry.RegisterForNavigation<MenuAdminPage, MenuAdminPageViewModel>();

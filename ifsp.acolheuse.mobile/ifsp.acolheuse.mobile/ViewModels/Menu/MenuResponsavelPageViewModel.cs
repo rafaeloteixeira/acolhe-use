@@ -29,7 +29,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 {
                     new MenuModel{Id = 0, Titulo = "Editar perfil"},
                     new MenuModel{Id = 1, Titulo = "Gerenciar minhas ações"},
-                    //new MenuModel{Id = 2, Titulo = "Gerenciar estagiários"},
+                    new MenuModel{Id = 2, Titulo = "Gerenciar estagiários"},
                     new MenuModel{Id = 3, Titulo = "Visualizar usuários que atendo"},
                     new MenuModel{Id = 4, Titulo = "Visualizar agenda"},
                     new MenuModel{Id = 5, Titulo = "Sair"}
@@ -39,14 +39,12 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void NavegarMenu(int Id)
         {
-            Servidor servidor = await servidorRepository.GetAsync(Settings.UserId);
+        
 
             switch (Id)
             {
                 case 0:
-                    var navParameters = new NavigationParameters();
-                    navParameters.Add("servidor", servidor);
-                    await navigationService.NavigateAsync("CadastroServidorPage", navParameters);
+                    await navigationService.NavigateAsync("CadastroServidorPage");
                     break;
                 case 1:
                     await navigationService.NavigateAsync("ListaAcoesResponsavelPage");
@@ -55,14 +53,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     await navigationService.NavigateAsync("ListaEstagiariosResponsavelPage");
                     break;
                 case 3:
-                    await navigationService.NavigateAsync("ListaEstagiariosResponsavelPage");
+                    await navigationService.NavigateAsync("ListaUsuariosResponsavelPage");
                     break;
                 case 4:
-                    await navigationService.NavigateAsync("ListaUsuariosResponsavelPage");
+                    await navigationService.NavigateAsync("AgendaServidorPage");
                     break;
                 case 5:
                     await MessageService.Instance.ShowAsync("Você saiu");
-                    await navigationService.GoBackToRootAsync();
+                    Settings.InitializeSettings();
+                    await NavigationService.NavigateAsync("/NavigationPage/LoginPage");
                     break;
             }
         }

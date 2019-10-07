@@ -1,127 +1,89 @@
-﻿using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Internals;
+﻿using ifsp.acolheuse.mobile.Core.Domain;
+using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Core.Settings;
+using ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations;
+using ifsp.acolheuse.mobile.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace ifsp.acolheuse.mobile.ViewModels.AuthForms
+namespace ifsp.acolheuse.mobile.ViewModels
 {
-    /// <summary>
-    /// ViewModel for login page.
-    /// </summary>
-    [Preserve(AllMembers = true)]
-    public class LoginPageViewModel : LoginViewModel
+    public class LoginPageViewModel : ViewModelBase
     {
-        #region Fields
-
-        private string password;
-
+        #region commands
+        public DelegateCommand _loginCommand { get; set; }
+        public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginCommandExecute));
         #endregion
 
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance for the <see cref="LoginPageViewModel" /> class.
-        /// </summary>
-        public LoginPageViewModel()
+        #region properties
+        private User usuario;
+        public User Usuario
         {
-            this.LoginCommand = new Command(this.LoginClicked);
-            this.SignUpCommand = new Command(this.SignUpClicked);
-            this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
-            this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
+            get { return usuario; }
+            set { usuario = value; RaisePropertyChanged(); }
         }
 
         #endregion
 
-        #region property
-
-        /// <summary>
-        /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
-        /// </summary>
-        public string Password
+        INavigationService navigationService;
+        IUserRepository userRepository;
+        IServidorRepository servidorRepository;
+        public LoginPageViewModel(INavigationService navigationService, IUserRepository userRepository, IServidorRepository servidorRepository) :
+          base(navigationService)
         {
-            get
-            {
-                return this.password;
-            }
+            Usuario = new User();
+            this.navigationService = navigationService;
+            this.userRepository = userRepository;
+            this.servidorRepository = servidorRepository;
+        }
 
-            set
+        public async void LoginCommandExecute()
+        {
+            try
             {
-                if (this.password == value)
+                FirebaseAccess firebase = new FirebaseAccess();
+                var result = await firebase.LoginAsync(Usuario);
+
+                if (!String.IsNullOrEmpty(result))
                 {
-                    return;
+                    await MessageService.Instance.ShowAsync(result);
                 }
+                else
+                {
+                    var user = await userRepository.GetByLocalIdAsync(Settings.AccessToken);
+                    Settings.Email = user.Email;
+                    Settings.AccountId = user.Id;
+                    Settings.Tipo = user.Tipo;
 
-                this.password = value;
-                this.OnPropertyChanged();
+
+                    switch (user.Tipo)
+                    {
+                        case "admin":
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuAdminPage");
+                            break;
+                        case "servidor":
+                            Servidor servidor = await servidorRepository.GetByAccountIdAsync(Settings.AccountId);
+                            Settings.UserId = servidor.Id;
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                            break;
+                        case "estagiario":
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                            break;
+                        case "acolhimento":
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await MessageService.Instance.ShowAsync(ex.ToString());
+                throw;
             }
         }
-
-        #endregion
-
-        #region Command
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Log In button is clicked.
-        /// </summary>
-        public Command LoginCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Sign Up button is clicked.
-        /// </summary>
-        public Command SignUpCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Forgot Password button is clicked.
-        /// </summary>
-        public Command ForgotPasswordCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the social media login button is clicked.
-        /// </summary>
-        public Command SocialMediaLoginCommand { get; set; }
-
-        #endregion
-
-        #region methods
-
-        /// <summary>
-        /// Invoked when the Log In button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void LoginClicked(object obj)
-        {
-            // Do something
-        }
-
-        /// <summary>
-        /// Invoked when the Sign Up button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
-        {
-            // Do something
-        }
-
-        /// <summary>
-        /// Invoked when the Forgot Password button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private async void ForgotPasswordClicked(object obj)
-        {
-            var label = obj as Label;
-            label.BackgroundColor = Color.FromHex("#70FFFFFF");
-            await Task.Delay(100);
-            label.BackgroundColor = Color.Transparent;
-        }
-
-        /// <summary>
-        /// Invoked when social media login button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void SocialLoggedIn(object obj)
-        {
-            // Do something
-        }
-
-        #endregion
     }
 }

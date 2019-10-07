@@ -49,7 +49,6 @@ namespace ifsp.acolheuse.mobile.ViewModels.Acolhimento
         public async void SalvarAsync()
         {
             Paciente.AcoesCollection = new ObservableCollection<ListaAtendimento>(AcoesCollection.Where(x => x.Adicionado == true));
-            await pacienteRepository.AddOrUpdateAsync(Paciente, Paciente.Id);
             await navigationService.GoBackAsync();
         }
 

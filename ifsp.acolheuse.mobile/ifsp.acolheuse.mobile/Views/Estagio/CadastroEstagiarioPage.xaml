@@ -63,11 +63,11 @@
                 </sfText:SfTextInputLayout>
 
                 <Grid Grid.Row="5">
-                    <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand">
-                        <Entry Text="{Binding Estagiario.Senha}" IsPassword="True"/>
+                    <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand" HasError="{Binding PassHasError}">
+                        <Entry Text="{Binding Estagiario.Senha}" IsPassword="True" TextChanged="Entry_TextChanged"/>
                     </sfText:SfTextInputLayout>
-                    <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Confirmar senha"  HorizontalOptions="FillAndExpand">
-                        <Entry Text="{Binding Estagiario.ConfirmarSenha}" IsPassword="True"/>
+                    <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Confirmar senha"  HorizontalOptions="FillAndExpand" ErrorText="Senhas não conferem" HasError="{Binding PassHasError}">
+                        <Entry Text="{Binding Estagiario.ConfirmarSenha}" IsPassword="True" TextChanged="Entry_TextChanged"/>
                     </sfText:SfTextInputLayout>
                 </Grid>
 

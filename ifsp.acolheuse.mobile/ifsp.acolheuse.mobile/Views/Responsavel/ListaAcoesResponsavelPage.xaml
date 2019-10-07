@@ -15,8 +15,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Novo"
-                 Command="{Binding NovaAcaoCommand}" />
+
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

@@ -5,7 +5,6 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Responsavel.AgendaServidorPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             xmlns:local="clr-namespace:ifsp.use.mobile.ViewModels.Servidor"
              Title="Agenda">
   <ContentPage.Resources>
     <ResourceDictionary>

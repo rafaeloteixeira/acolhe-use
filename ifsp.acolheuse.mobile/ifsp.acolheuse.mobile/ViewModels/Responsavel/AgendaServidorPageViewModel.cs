@@ -36,13 +36,15 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         private INavigationService navigationService;
         private IServidorRepository servidorRepository;
         private IAtendimentoRepository atendimentoRepository;
+        private IEstagiarioRepository estagiarioRepository;
 
-        public AgendaServidorPageViewModel(INavigationService navigationService, IServidorRepository servidorRepository, IAtendimentoRepository atendimentoRepository) :
+        public AgendaServidorPageViewModel(INavigationService navigationService, IServidorRepository servidorRepository, IAtendimentoRepository atendimentoRepository, IEstagiarioRepository estagiarioRepository) :
           base(navigationService)
         {
             this.navigationService = navigationService;
             this.servidorRepository = servidorRepository;
             this.atendimentoRepository = atendimentoRepository;
+            this.estagiarioRepository = estagiarioRepository;
             Meetings = new ObservableCollection<ScheduleAppointment>();
             BuscarAtendimentosAsync();
         }
@@ -50,11 +52,19 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         /// <summary>
         /// Creates meetings and stores in a collection.  
         /// </summary>
-        public async void VisualizeAppointments()
+        public async void VisualizeAppointments(string appointmentNotes)
         {
+            Atendimento atendimento = (await atendimentoRepository.GetAllAsync()).FirstOrDefault(x => x.Id == appointmentNotes);
             if (await MessageService.Instance.ShowAsyncYesNo("Deseja visualizar os detalhes do atendimento?"))
             {
+                IEnumerable<Estagiario> estagiarios = (await estagiarioRepository.GetAllAsync()).Where(x => atendimento.EstagiariosIdCollection.Contains(x.Id));
 
+                var navParameters = new NavigationParameters();
+                navParameters.Add("estagiarios", estagiarios);
+                navParameters.Add("usuario", atendimento.Paciente);
+                navParameters.Add("horario", atendimento.StartTime);
+                navParameters.Add("tipo_consulta", atendimento.TipoConsulta);
+                await navigationService.NavigateAsync("DetalhesAgendamentoPage", navParameters);
             }
         }
 
@@ -72,7 +82,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
                 appointment.Color = atendimentos.ElementAt(i).Cor;
                 appointment.StartTime = atendimentos.ElementAt(i).StartTime;
                 appointment.EndTime = atendimentos.ElementAt(i).EndTime;
-
+                appointment.Notes = atendimentos.ElementAt(i).Id;
                 if (atendimentos.ElementAt(i).Repeat)
                 {
                     RecurrenceProperties recurrenceProperties = new RecurrenceProperties();

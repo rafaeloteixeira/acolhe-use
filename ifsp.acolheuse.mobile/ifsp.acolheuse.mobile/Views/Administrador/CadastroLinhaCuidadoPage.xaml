@@ -7,45 +7,60 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Administrador.CadastroLinhaCuidadoPage"
              Title="{Binding Title}">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salvar"
-                 Command="{Binding SalvarLinhaCommand}" />
+        <ToolbarItem Text="Salvar" Command="{Binding SalvarLinhaCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="White"
+                     Padding="20,20,20,20"
+                     Spacing="5">
+                <StackLayout>
+                    <StackLayout>
+                        <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome da linha" >
+                            <Entry Text="{Binding Linha.Nome}" HorizontalOptions="Fill"/>
+                        </sfText:SfTextInputLayout>
+                    </StackLayout>
+                    <Label Text="Ações" FontAttributes="Bold"  />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                        <listview:SfListView x:Name="lvAcoes" VerticalOptions="FillAndExpand" ItemsSource="{Binding AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
+                            <listview:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Margin="8">
+                                            <Grid x:Name="GridTasks">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </listview:SfListView.ItemTemplate>
+                        </listview:SfListView>
+                    </StackLayout>
+                </StackLayout>
 
-        <StackLayout>
-            <StackLayout>
-                <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome da linha" >
-                    <Entry Text="{Binding Linha.Nome}" HorizontalOptions="Fill"/>
-                </sfText:SfTextInputLayout>
             </StackLayout>
-            <Label Text="Ações" FontAttributes="Bold"  />
-            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                <listview:SfListView x:Name="lvAcoes" VerticalOptions="FillAndExpand" ItemsSource="{Binding AcaoCollection}" ItemTapped="LvAcoes_ItemTapped">
-                    <listview:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="8">
-                                    <Grid x:Name="GridTasks">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="1*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Nome}"  FontAttributes="Bold" Grid.Column="0" />
-                                    </Grid>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </listview:SfListView.ItemTemplate>
-                </listview:SfListView>
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+        </ScrollView>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
+
+
+
 </ContentPage>

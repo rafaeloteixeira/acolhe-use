@@ -23,7 +23,8 @@
         </Style>
 
         <Style TargetType="Switch">
-            <Setter Property="OnColor" Value="#007044"></Setter>
+            <Setter Property="OnColor" Value="#2e7d32"></Setter>
+            <Setter Property="ThumbColor" Value="#007044"></Setter>
         </Style>
 
         <Style TargetType="listview:SfListView">

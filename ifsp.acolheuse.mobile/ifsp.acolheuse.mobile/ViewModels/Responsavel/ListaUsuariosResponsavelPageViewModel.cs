@@ -30,7 +30,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("paciente", paciente);
-            await navigationService.NavigateAsync("ListaUsuariosPage", navParameters);
+            await navigationService.NavigateAsync("UsuarioServidorPage", navParameters);
         }
         #endregion
 
@@ -56,10 +56,10 @@ namespace ifsp.acolheuse.mobile.ViewModels.Responsavel
         public async void BuscarPacientesCollectionAsync()
         {
             //BUSCA AS AÇÕES ATENDIDAS POR ESSE SERVIDOR
-            IEnumerable<Acao> acaoesAtendidas = (await acaoRepository.GetAllAsync()).Where(x => x.ResponsavelCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null);
+            IEnumerable<Acao> acaoesAtendidas = await acaoRepository.GetAllByServidorId(Settings.UserId);
 
             //BUSCA OS USUÁRIOS ATENDIDOS PELAS AÇÕES DO SERVIDOR
-            PacientesCollection = (await pacienteRepository.GetAllAsync()).Where(p => p.AcoesCollection.Any(c => acaoesAtendidas.Any(c2 => c2.Id == c.Id)));
+            PacientesCollection = (await pacienteRepository.GetAllAsync()).Where(p => p.AcoesCollection != null && p.AcoesCollection.Any(c => acaoesAtendidas.Any(c2 => c2.Id == c.Id)));
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

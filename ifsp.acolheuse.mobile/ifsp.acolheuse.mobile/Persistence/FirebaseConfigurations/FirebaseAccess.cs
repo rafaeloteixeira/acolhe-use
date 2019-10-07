@@ -38,7 +38,6 @@ namespace ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations
                 Settings.FirebaseAuthJson = auth.FirebaseToken;
                 Settings.Email = usuario.Email;
                 Settings.AccessToken = auth.User.LocalId;
-                usuario.Id = Settings.UserId;
 
                 return null;
             }
@@ -55,7 +54,7 @@ namespace ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations
                 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
                 var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(usuario.Email, usuario.Password);
 
-                usuario.LocalId = auth.User.LocalId;
+                usuario.AcessToken = auth.User.LocalId;
                 return null;
             }
             catch (FirebaseAuthException ex)

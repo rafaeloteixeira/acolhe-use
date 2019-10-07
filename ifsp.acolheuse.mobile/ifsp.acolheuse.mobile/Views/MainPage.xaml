@@ -11,7 +11,7 @@
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
             <StackLayout BackgroundColor="White"
-                     Padding="50,20,50,20"
+                     Padding="20,20,20,20"
                      Spacing="5">
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label Text="Welcome to Xamarin Forms and Prism!" />

@@ -18,6 +18,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 
         public DelegateCommand SalvarEstagiarioCommand => _salvarEstagiarioCommand ?? (_salvarEstagiarioCommand = new DelegateCommand(SalvarEstagiarioAsync));
 
+
         #endregion
 
         #region properties
@@ -25,6 +26,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
         private Servidor professorOrientador;
         private IEnumerable<Servidor> professorCollection;
         private bool admin;
+        private bool passHasError;
 
         public Estagiario Estagiario
         {
@@ -41,6 +43,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
             get { return professorCollection; }
             set { professorCollection = value; RaisePropertyChanged(); }
         }
+        public bool PassHasError
+        {
+            get { return passHasError; }
+            set { passHasError = value; RaisePropertyChanged(); }
+        }
+
+
+
         #endregion
 
         FirebaseAccess firebase = new FirebaseAccess();
@@ -67,19 +77,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 
             if (admin && String.IsNullOrEmpty(Estagiario.Id))
             {
-                User user = new User() { Email = Estagiario.Email, Password = Estagiario.Senha, Tipo = "estagiario" };
-                var result = await firebase.CreateUserAsync(user);
+                if (!PassHasError)
+                {
+                    User user = new User() { Email = Estagiario.Email, Password = Estagiario.Senha, Tipo = "estagiario" };
+                    var result = await firebase.CreateUserAsync(user);
 
-                if (String.IsNullOrEmpty(result))
-                {
-                    Estagiario.Id = user.Id;
-                    await estagiarioRepository.AddAsync(Estagiario);
-                    await userRepository.AddAsync(user);
-                    await navigationService.GoBackAsync();
-                }
-                else
-                {
-                    await MessageService.Instance.ShowAsync(result);
+                    if (String.IsNullOrEmpty(result))
+                    {
+                        Estagiario.AccountId = user.AcessToken;
+                        await estagiarioRepository.AddAsync(Estagiario);
+                        await userRepository.AddAsync(user);
+                        await navigationService.GoBackAsync();
+                    }
+                    else
+                    {
+                        await MessageService.Instance.ShowAsync(result);
+                    }
                 }
             }
             else
@@ -105,9 +118,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
             {
                 throw;
             }
-       
+
         }
-   
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
 
@@ -127,5 +140,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
             GetEstagiarioAsync();
 
         }
+        internal void CheckPassword()
+        {
+            if (!String.IsNullOrEmpty(Estagiario.Senha) && String.IsNullOrEmpty(Estagiario.ConfirmarSenha)
+                || String.IsNullOrEmpty(Estagiario.Senha) && !String.IsNullOrEmpty(Estagiario.ConfirmarSenha))
+            {
+                PassHasError = true;
+            }
+            else if (Estagiario.Senha != Estagiario.ConfirmarSenha)
+            {
+                PassHasError = true;
+            }
+            else
+            {
+                PassHasError = false;
+            }
+        }
+
     }
 }
