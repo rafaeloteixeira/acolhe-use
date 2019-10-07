@@ -105,6 +105,8 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ListaUsuariosAltaResponsavelPage, ViewModels.Responsavel.ListaUsuariosAltaResponsavelPageViewModel>();
             containerRegistry.RegisterForNavigation<UsuarioServidorPage, ViewModels.Responsavel.UsuarioServidorPageViewModel>();
             #endregion
+            containerRegistry.RegisterForNavigation<AgendaEstagiarioPage, AgendaEstagiarioPageViewModel>();
+            containerRegistry.RegisterForNavigation<EstagiarioComparecimentoPage, EstagiarioComparecimentoPageViewModel>();
         }
 
         protected override void OnStart()

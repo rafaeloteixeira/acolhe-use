@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.Estagio.AgendaEstagiarioPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             Title="Agenda">
+    <ContentPage.Content>
+        <syncfusion:SfSchedule x:Name="schedule"
+	    DataSource="{Binding Meetings}"
+	    ScheduleView="WeekView" CellTapped="Schedule_CellTapped" Locale="pt">
+            <syncfusion:SfSchedule.DayViewSettings>
+                <syncfusion:DayViewSettings 
+                    NonWorkingHoursTimeSlotColor="#fcf3c9"
+			        NonWorkingHoursTimeSlotBorderColor="#fceb9f"
+			        TimeSlotBorderStrokeWidth="5"
+			        VerticalLineStrokeWidth="5" 
+			        VerticalLineColor="LightGray"
+                    WorkStartHour="08"
+                    WorkEndHour="18">
+                    <syncfusion:DayViewSettings.NonAccessibleBlocks>
+                        <syncfusion:NonAccessibleBlock 
+					 StartTime="12"
+					 EndTime="13"  
+					 Text="ALMOÇO"
+					 Color="Black" />
+                    </syncfusion:DayViewSettings.NonAccessibleBlocks>
+                    <syncfusion:DayViewSettings.DayLabelSettings>
+                        <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
+                    </syncfusion:DayViewSettings.DayLabelSettings>
+                </syncfusion:DayViewSettings>
+            </syncfusion:SfSchedule.DayViewSettings>
+        </syncfusion:SfSchedule>
+    </ContentPage.Content>
+</ContentPage>

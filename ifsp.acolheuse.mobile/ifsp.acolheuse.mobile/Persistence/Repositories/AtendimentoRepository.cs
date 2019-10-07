@@ -26,7 +26,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             var yourModels = query.ToObjects<Atendimento>().Where
             (
                 x => x.IdServidor == servidorId
-                && x.Paciente.Id == pacienteId 
+                && x.Paciente.Id == pacienteId
                 && x.TipoConsulta == tipoConsulta
             );
 
@@ -44,5 +44,20 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             return yourModel;
         }
 
+        public async Task<IEnumerable<Atendimento>> GetAllByEstagiarioId(string estagiarioId)
+        {
+            var query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .GetCollection(collectionName)
+                                     .GetDocumentsAsync();
+
+            var yourModels = query.ToObjects<Atendimento>().Where
+            (
+            x => x.EstagiariosIdCollection != null
+            && x.EstagiariosIdCollection.Contains(estagiarioId)
+            );
+
+            return yourModels;
+        }
     }
 }

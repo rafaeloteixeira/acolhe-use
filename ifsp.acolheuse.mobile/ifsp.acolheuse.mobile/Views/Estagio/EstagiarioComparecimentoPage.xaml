@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.Estagio.EstagiarioComparecimentoPage"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<DatePicker />-->
+            <sfPopup:SfPopupLayout x:Name="popupLayout1">
+                <sfPopup:SfPopupLayout.PopupView>
+                    <sfPopup:PopupView ShowFooter="False" />
+                </sfPopup:SfPopupLayout.PopupView>
+            </sfPopup:SfPopupLayout>
+
+            <sfPopup:SfPopupLayout x:Name="popupLayout" StaysOpen="True">
+                <sfPopup:SfPopupLayout.PopupView>
+                    <sfPopup:PopupView  ShowFooter="False" 
+                                        HeaderTitle="Notification !" 
+                                        HeightRequest="130">
+                        <sfPopup:PopupView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Vertical">
+                                    <Label FontSize="14"  
+                                       BackgroundColor="White" 
+                                       TextColor="Black" 
+                                       Text="Click1"/>
+                                    <Label FontSize="14"  
+                                       BackgroundColor="White" 
+                                       TextColor="Black" 
+                                       Text="Click2"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </sfPopup:PopupView.ContentTemplate>
+                    </sfPopup:PopupView>
+                </sfPopup:SfPopupLayout.PopupView>
+            </sfPopup:SfPopupLayout>
+
+
+
+            <listview:SfListView ItemsSource="{Binding AtendimentoCollection}" x:Name="ListTTasks" ItemTapped="ListTTasks_ItemTapped">
+
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="8">
+                                <Grid x:Name="GridTasks">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Paciente.NomeCompleto}"  FontAttributes="Bold" Grid.Column="1" />
+                                    <Label Text="{Binding StartTime}"  FontAttributes="Bold" Grid.Column="0" />
+                                </Grid>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+
+            </listview:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
