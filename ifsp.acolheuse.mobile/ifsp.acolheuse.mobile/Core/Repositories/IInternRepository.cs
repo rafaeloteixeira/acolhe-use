@@ -9,5 +9,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
     public interface IInternRepository : IRepository<Intern>
     {
         Task<IEnumerable<Intern>> GetInternsByResponsibleIdAsync(string idResponsible);
+        Task<Intern> GetByAccessTokenAsync(string idResponsible);
     }
 }

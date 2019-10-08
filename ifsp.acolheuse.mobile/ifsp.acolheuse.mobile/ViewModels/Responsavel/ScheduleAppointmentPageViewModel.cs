@@ -68,7 +68,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             navParameters.Add("patient", appointment.Patient);
             navParameters.Add("schedule", appointment.StartTime);
             navParameters.Add("type_consultation", appointment.ConsultationType);
-            await navigationService.NavigateAsync("DetailsSchedulementoPage", navParameters);
+            await navigationService.NavigateAsync("DetailsschedulePage", navParameters);
         }
         internal async void LoadAppointment(DateTime date)
         {

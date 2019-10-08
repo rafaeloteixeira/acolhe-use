@@ -12,7 +12,6 @@ using ifsp.acolheuse.mobile.Persistence.Repositories;
 using ifsp.acolheuse.mobile.Core.Repositories;
 using ifsp.acolheuse.mobile.Views.Administrador;
 using ifsp.acolheuse.mobile.Views.Acolhimento;
-using ifsp.acolheuse.mobile.Views;
 using ifsp.acolheuse.mobile.Views.Estagio;
 using ifsp.acolheuse.mobile.Views.Menu;
 using ifsp.acolheuse.mobile.Core.Settings;
@@ -35,7 +34,7 @@ namespace ifsp.acolheuse.mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUwMzgyQDMxMzcyZTMyMmUzME1qbEVtVEJaRmE5M0N6U3VGSFBlaVBESVVWa05KNEg0bGEwbmdlYmlBRmc9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTU0MDM0QDMxMzcyZTMzMmUzMFBhRzFJOHIyenlJZE1ER2hROGVVTTdzV1JOMXJDdjlERnQwa1o3V29mejg9");
             await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
@@ -91,7 +90,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ScheduleAppointmentPage, ViewModels.ScheduleAppointmentPageViewModel>();
             containerRegistry.RegisterForNavigation<ScheduleResponsiblePage, ViewModels.ScheduleResponsiblePageViewModel>();
             containerRegistry.RegisterForNavigation<AppointmentPage, ViewModels.AppointmentPageViewModel>();
-            containerRegistry.RegisterForNavigation<DetailsSchedulementoPage, ViewModels.DetailsSchedulementoPageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailsschedulePage, ViewModels.DetailsschedulePageViewModel>();
             containerRegistry.RegisterForNavigation<InternResponsiblePage, ViewModels.InternResponsiblePageViewModel>();
             containerRegistry.RegisterForNavigation<SelectionInternsAppointmentPage, ViewModels.SelectionInternsAppointmentPageViewModel>();
             containerRegistry.RegisterForNavigation<SelectionResponsibleInterconsultationtionPage, ViewModels.SelectionResponsibleInterconsultationtionPageViewModel>();
@@ -107,6 +106,13 @@ namespace ifsp.acolheuse.mobile
             #endregion
             containerRegistry.RegisterForNavigation<ScheduleInternPage, ScheduleInternPageViewModel>();
             containerRegistry.RegisterForNavigation<InternAttendancePage, InternAttendancePageViewModel>();
+            containerRegistry.RegisterForNavigation<MenuHostPage, MenuHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<MenuInternPage, MenuInternPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListResponsibleHostPage, ListResponsibleHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListLinesHostPage, ListLinesHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListActionHostPage, ListActionHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListInternsHostPage, ListInternsHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListPatientsHostPage, ListPatientsHostPageViewModel>();
         }
 
         protected override void OnStart()

@@ -3,10 +3,10 @@ using Xamarin.Forms;
 
 namespace ifsp.acolheuse.mobile.Views
 {
-    public partial class DetailsSchedulementoPage : ContentPage
+    public partial class DetailsschedulePage : ContentPage
     {
-        private readonly DetailsSchedulementoPageViewModel _viewModel;
-        public DetailsSchedulementoPage()
+        private readonly DetailsschedulePageViewModel _viewModel;
+        public DetailsschedulePage()
         {
             InitializeComponent();
         }

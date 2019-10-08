@@ -1,5 +1,6 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Core.Settings;
 using ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
@@ -25,7 +26,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
         private Intern intern;
         private Responsible responsibleOrientador;
         private IEnumerable<Responsible> responsibleCollection;
-        private bool admin;
+        private bool isAdmin;
         private bool passHasError;
 
         public Intern Intern
@@ -42,6 +43,11 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
         {
             get { return responsibleCollection; }
             set { responsibleCollection = value; RaisePropertyChanged(); }
+        }
+        public bool IsAdmin
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; RaisePropertyChanged(); }
         }
         public bool PassHasError
         {
@@ -75,7 +81,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
         {
             Intern.IdResponsible = ResponsibleOrientador.Id;
 
-            if (admin && String.IsNullOrEmpty(Intern.Id))
+            if (IsAdmin && String.IsNullOrEmpty(Intern.Id))
             {
                 if (!PassHasError)
                 {
@@ -106,19 +112,24 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
         {
             try
             {
-                if (!String.IsNullOrEmpty(Intern.Id))
+                if (!IsAdmin)
                 {
-                    Intern = await internRepository.GetAsync(Intern.Id);
-                    ResponsibleOrientador = await responsibleRepository.GetAsync(Intern.IdResponsible);
+                    Intern = await internRepository.GetAsync(Settings.UserId);
                 }
-
+                else
+                {
+                    if (!String.IsNullOrEmpty(Intern.Id))
+                    {
+                        Intern = await internRepository.GetAsync(Intern.Id);
+                    }
+                }
+                ResponsibleOrientador = await responsibleRepository.GetAsync(Intern.IdResponsible);
                 ResponsibleCollection = await responsibleRepository.GetAllAsync();
             }
             catch (Exception)
             {
                 throw;
             }
-
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -135,7 +146,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 
             if (parameters["admin"] != null)
             {
-                admin = true;
+                IsAdmin = true;
             }
             GetInternAsync();
 

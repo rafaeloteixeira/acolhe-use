@@ -62,7 +62,7 @@
                     <Entry Text="{Binding Intern.Email}" />
                 </sfText:SfTextInputLayout>
 
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="5" IsVisible="{Binding IsAdmin}">
                     <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand" HasError="{Binding PassHasError}">
                         <Entry Text="{Binding Intern.Password}" IsPassword="True" TextChanged="Entry_TextChanged"/>
                     </sfText:SfTextInputLayout>

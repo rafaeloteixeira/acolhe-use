@@ -13,33 +13,46 @@ namespace ifsp.acolheuse.mobile.ViewModels
 {
     public class InternAttendancePageViewModel : ViewModelBase
     {
-        private ObservableCollection<Appointment> appointmentCollection;
+        #region properties
+        private ObservableCollection<Patient> patientCollection;
 
-        public ObservableCollection<Appointment> AppointmentCollection
+        public ObservableCollection<Patient> PatientCollection
         {
-            get { return appointmentCollection; }
-            set { appointmentCollection = value; RaisePropertyChanged(); }
+            get { return patientCollection; }
+            set { patientCollection = value; RaisePropertyChanged(); }
         }
+        #endregion
 
-        INavigationService navigationService;
-        IInternRepository internRepository;
-        IAppointmentRepository appointmentRepository;
+        #region commands
+        public DelegateCommand _saveCommand { get; set; }
 
-        public InternAttendancePageViewModel(INavigationService navigationService, IInternRepository internRepository, IAppointmentRepository appointmentRepository) : base(navigationService)
+        public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
+        #endregion
+
+        private INavigationService navigationService;
+        public InternAttendancePageViewModel(INavigationService navigationService) :
+            base(navigationService)
         {
             this.navigationService = navigationService;
-            this.internRepository = internRepository;
-            this.appointmentRepository = appointmentRepository;
+            Title = "Comparecimento";
         }
 
-
-        public async void BuscarAppointmentsAsync()
+        public async void SaveAsync()
         {
-            AppointmentCollection = new ObservableCollection<Appointment>();
+            await NavigationService.GoBackAsync();
+        }
 
-            Intern Intern = await internRepository.GetAsync(Settings.UserId);
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
 
-            var appointments = await appointmentRepository.GetAllByInternId(Intern.Id);
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (parameters["patients"] != null)
+            {
+                PatientCollection = parameters["patients"] as ObservableCollection<Patient>;
+            }
         }
     }
 }

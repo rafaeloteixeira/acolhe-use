@@ -33,11 +33,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
         INavigationService navigationService;
         IInternRepository internRepository;
         IAppointmentRepository appointmentRepository;
-        public ScheduleInternPageViewModel(INavigationService navigationService, IInternRepository internRepository, IAppointmentRepository appointmentRepository) : base(navigationService)
+        IPatientRepository patientRepository;
+        public ScheduleInternPageViewModel(INavigationService navigationService, IInternRepository internRepository, IAppointmentRepository appointmentRepository, IPatientRepository patientRepository) : base(navigationService)
         {
             this.navigationService = navigationService;
             this.internRepository = internRepository;
             this.appointmentRepository = appointmentRepository;
+            this.patientRepository = patientRepository;
 
             Meetings = new ObservableCollection<ScheduleAppointment>();
             BuscarAppointmentsAsync();
@@ -47,11 +49,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
         /// <summary>
         /// Creates meetings and stores in a collection.  
         /// </summary>
-        public async void VisualizeAppointments()
+        public async void VisualizeAppointments(string appointmentNotes)
         {
+            Appointment appointment = (await appointmentRepository.GetAllAsync()).FirstOrDefault(x => x.Id == appointmentNotes);
             if (await MessageService.Instance.ShowAsyncYesNo("Deseja visualizar os detalhes do atendimento?"))
             {
+                IEnumerable<Intern> patients = (await patientRepository.GetAllAsync()).Where(x => appointment.PatientCollection.Contains(x.Id));
 
+                var navParameters = new NavigationParameters();
+                navParameters.Add("patients", patients);
+                await navigationService.NavigateAsync("InternAttendancePageViewModel", navParameters);
             }
         }
 
@@ -68,6 +75,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 appointment.Color = appointments.ElementAt(i).Cor;
                 appointment.StartTime = appointments.ElementAt(i).StartTime;
                 appointment.EndTime = appointments.ElementAt(i).EndTime;
+                appointment.Notes = appointments.ElementAt(i).Id;
 
                 if (appointments.ElementAt(i).Repeat)
                 {
@@ -93,7 +101,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
                             recurrenceProperties.WeekDays = WeekDays.Friday;
                             break;
                     }
-
                     appointment.RecurrenceRule = DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
                 }
 

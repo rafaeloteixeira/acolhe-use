@@ -32,13 +32,15 @@ namespace ifsp.acolheuse.mobile.ViewModels
         INavigationService navigationService;
         IUserRepository userRepository;
         IResponsibleRepository responsibleRepository;
-        public LoginPageViewModel(INavigationService navigationService, IUserRepository userRepository, IResponsibleRepository responsibleRepository) :
+        IInternRepository internRepository;
+        public LoginPageViewModel(INavigationService navigationService, IUserRepository userRepository, IResponsibleRepository responsibleRepository, IInternRepository internRepository) :
           base(navigationService)
         {
             Patient = new User();
             this.navigationService = navigationService;
             this.userRepository = userRepository;
             this.responsibleRepository = responsibleRepository;
+            this.internRepository = internRepository;
         }
 
         public async void LoginCommandExecute()
@@ -70,7 +72,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
                             await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
                             break;
                         case "intern":
-                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
+                            Intern intern = await internRepository.GetByAccessTokenAsync(Settings.AccessToken);
+                            Settings.UserId = intern.Id;
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuInternPage");
                             break;
                         case "acolhimento":
                             await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");

@@ -26,10 +26,10 @@ namespace ifsp.acolheuse.mobile.Views
 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
         {
-            DateTime schedulemento = e.Datetime;
-            if (schedulemento != null)
+            DateTime schedule = e.Datetime;
+            if (schedule != null)
             {
-                _viewModel.LoadAppointment(schedulemento);
+                _viewModel.LoadAppointment(schedule);
             }
         }
     }
