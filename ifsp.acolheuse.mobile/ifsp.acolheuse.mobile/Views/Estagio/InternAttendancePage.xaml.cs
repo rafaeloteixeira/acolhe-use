@@ -14,15 +14,10 @@ namespace ifsp.acolheuse.mobile.Views.Estagio
         }
         protected override void OnAppearing()
         {
-            _viewModel.BuscarAppointmentsAsync();
         }
         private void ListTTasks_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            if (e.ItemData != null)
-            {
-                var appointment = (Appointment)e.ItemData;
-                popupLayout.Show();
-            }
+
         }
     }
 }

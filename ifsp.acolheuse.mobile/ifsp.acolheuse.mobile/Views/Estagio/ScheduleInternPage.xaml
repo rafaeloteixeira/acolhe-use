@@ -5,7 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Estagio.ScheduleInternPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             Title="Schedule">
+             Title="Atendimentos">
     <ContentPage.Content>
         <syncfusion:SfSchedule x:Name="schedule"
 	    DataSource="{Binding Meetings}"

@@ -52,14 +52,39 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public async void VisualizeAppointments(string appointmentNotes)
         {
             Appointment appointment = (await appointmentRepository.GetAllAsync()).FirstOrDefault(x => x.Id == appointmentNotes);
-            if (await MessageService.Instance.ShowAsyncYesNo("Deseja visualizar os detalhes do atendimento?"))
-            {
-                IEnumerable<Intern> patients = (await patientRepository.GetAllAsync()).Where(x => appointment.PatientCollection.Contains(x.Id));
 
-                var navParameters = new NavigationParameters();
-                navParameters.Add("patients", patients);
-                await navigationService.NavigateAsync("InternAttendancePageViewModel", navParameters);
+            switch(appointment.ConsultationType)
+            {
+                case Appointment._INDIVIDUAL:
+                case Appointment._ORIENTACAO:
+                    if (!appointment.Confirmed)
+                    {
+                        if (await MessageService.Instance.ShowAsyncYesNo("Deseja confirmar o comparecimento do usuário " + appointment.Patient.Name + "?"))
+                        {
+                            appointment.Confirmed = true;
+                            await appointmentRepository.UpdateAsync(appointment, appointment.Id);
+                        }
+                    }
+                    else
+                    {
+                        if (await MessageService.Instance.ShowAsyncYesNo("Deseja retirar o comparecimento do usuário " + appointment.Patient.Name + "?"))
+                        {
+                            appointment.Confirmed = false;
+                            await appointmentRepository.UpdateAsync(appointment, appointment.Id);
+                        }
+                    }
+
+                    BuscarAppointmentsAsync();
+                    break;
+                case Appointment._GRUPO:
+                    var navParameters = new NavigationParameters();
+                    navParameters.Add("patients", null);
+                    await navigationService.NavigateAsync("InternAttendancePageViewModel", navParameters);
+                    break;
+
+
             }
+        
         }
 
         public async void BuscarAppointmentsAsync()
@@ -72,7 +97,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 ScheduleAppointment appointment = new ScheduleAppointment();
                 appointment.Subject = appointments.ElementAt(i).DescricaoConsultation;
-                appointment.Color = appointments.ElementAt(i).Cor;
+
+                if (appointments.ElementAt(i).Confirmed)
+                {
+                    appointment.Color = Color.Green;
+                }
+                else
+                {
+                    appointment.Color = Color.Orange;
+                }
+
                 appointment.StartTime = appointments.ElementAt(i).StartTime;
                 appointment.EndTime = appointments.ElementAt(i).EndTime;
                 appointment.Notes = appointments.ElementAt(i).Id;

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
@@ -14,6 +15,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         private string _title;
         private bool _isBusy;
+        private bool _canNavigate = true;
+
         public string Title
         {
             get { return _title; }
@@ -28,7 +31,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             get { return !IsBusy; }
         }
-
+        public bool CanNavigate
+        {
+            get { return _canNavigate; }
+            set { SetProperty(ref _canNavigate, value); }
+        }
         public CultureInfo MaskedEditCultureInfo
         {
             get { return new CultureInfo("en-US"); }
@@ -46,17 +53,41 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
-
+            isNavigating = false;
         }
 
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-
         }
+        public virtual void OnNavigatingTo(INavigationParameters parameters) { }
 
         public virtual void Destroy()
         {
 
         }
+
+        #region Navigation
+
+        public virtual bool OnBackButtonPressed => true;
+
+        public void BackButtonPressed()
+        {
+            if (NavigationService != null)
+                if (OnBackButtonPressed)
+                    NavigationService.GoBackAsync();
+        }
+
+        private bool isNavigating;
+
+        protected Task SafeNavigateAsync(string name, NavigationParameters parameters = null, bool? useModalNavigation = null, bool animated = true)
+        {
+            if (isNavigating)
+                return Task.CompletedTask;
+            isNavigating = true;
+            try { return NavigationService.NavigateAsync(name, parameters, useModalNavigation, animated); }
+            catch { return Task.CompletedTask; }
+        }
+
+        #endregion
     }
 }
