@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.ScheduleAppointmentPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             Title="Agendar atendimento" Appearing="ContentPage_Appearing">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <syncfusion:SfSchedule x:Name="schedule" DataSource="{Binding Meetings}" ScheduleView ="WorkWeekView" CellTapped="Schedule_CellTapped" Locale="pt"  ShowAppointmentsInline="False">
+                    <syncfusion:SfSchedule.WeekViewSettings>
+                        <syncfusion:WeekViewSettings 
+                                NonWorkingHoursTimeSlotColor="#fcf3c9"
+			                    NonWorkingHoursTimeSlotBorderColor="#fceb9f"
+			                    VerticalLineColor="LightGray"
+                                WorkStartHour="08"
+                                WorkEndHour="18" />
+                    </syncfusion:SfSchedule.WeekViewSettings>
+                    <!--<syncfusion:SfSchedule.DayViewSettings>
+                        <syncfusion:DayViewSettings>
+                            <syncfusion:DayViewSettings.DayLabelSettings>
+                                <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
+                            </syncfusion:DayViewSettings.DayLabelSettings>
+                        </syncfusion:DayViewSettings>
+                    </syncfusion:SfSchedule.DayViewSettings>-->
+                </syncfusion:SfSchedule>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

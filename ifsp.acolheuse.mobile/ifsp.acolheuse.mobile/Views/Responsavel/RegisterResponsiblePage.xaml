@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.RegisterResponsiblePage"
+             xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+             Title="Meus dados">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar"
+                 Command="{Binding SaveResponsibleCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                    <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="CPF" >
+                                    <maskededit:SfMaskedEdit Value="{Binding Responsible.Cpf}" Keyboard="Numeric" MaskType="Text" Mask="000.000.000-00" Culture="{Binding MaskedEditCultureInfo}" />
+                                </sfText:SfTextInputLayout>
+                            <StackLayout IsVisible="{Binding IsAdmin}" Orientation="Vertical" Grid.Column="1" >
+                                    <Label Text="É orientador?" HorizontalTextAlignment="End" />
+                                    <Switch IsToggled="{Binding Responsible.IsProfessor}" Grid.Column="1"/>
+                                </StackLayout>
+                            </Grid>
+
+
+                            <sfText:SfTextInputLayout Grid.Row="1" ContainerType="Outlined" Hint="Nome" >
+                                <Entry Text="{Binding Responsible.Name}" />
+                            </sfText:SfTextInputLayout>
+
+                            <sfText:SfTextInputLayout Grid.Row="2" ContainerType="Outlined" Hint="Sobrenome" >
+                                <Entry Text="{Binding Responsible.LastName}" />
+                            </sfText:SfTextInputLayout>
+
+                            <Grid Grid.Row="3">
+                                <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Telefone" HorizontalOptions="FillAndExpand">
+                                    <maskededit:SfMaskedEdit Value="{Binding Responsible.Phone}" Keyboard="Numeric" Mask="(00) 0000-0000" />
+                                </sfText:SfTextInputLayout>
+                                <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Celular" HorizontalOptions="FillAndExpand">
+                                    <maskededit:SfMaskedEdit Value="{Binding Responsible.Cellphone}" Keyboard="Numeric" Mask="(00) 0 0000-0000" />
+                                </sfText:SfTextInputLayout>
+                            </Grid>
+
+                            <sfText:SfTextInputLayout Grid.Row="4" ContainerType="Outlined" Hint="E-mail"  HorizontalOptions="FillAndExpand" ReserveSpaceForAssistiveLabels="True"  >
+                                <Entry Text="{Binding Responsible.Email}" IsEnabled="{Binding IsAdmin}" />
+                            </sfText:SfTextInputLayout>
+                            <Grid Grid.Row="5">
+
+                            <sfText:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" Hint="Senha" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}" HasError="{Binding PassHasError}">
+                                <Entry Text="{Binding Responsible.Password}" IsPassword="True" TextChanged="Entry_TextChanged"/>
+                                </sfText:SfTextInputLayout>
+                            <sfText:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" Hint="Confirmar senha"  HorizontalOptions="FillAndExpand" IsVisible="{Binding IsAdmin}" ErrorText="Passwords não conferem" HasError="{Binding PassHasError}">
+                                <Entry Text="{Binding Responsible.ConfirmPassword}" IsPassword="True" TextChanged="Entry_TextChanged"/>
+                                </sfText:SfTextInputLayout>
+                            </Grid>
+                        </Grid>
+                </StackLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+        
+
+    </ContentPage.Content>
+</ContentPage>

@@ -7,10 +7,10 @@ using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    public class Linha : BindableBase
+    public class Line : BindableBase
     {
         private string id;
-        private string nome;
+        private string name;
       
         [Id]
         public string Id
@@ -18,14 +18,14 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             get { return id; }
             set { id = value; RaisePropertyChanged(); }
         }
-        public string Nome
+        public string Name
         {
-            get { return nome; }
-            set { nome = value; RaisePropertyChanged(); }
+            get { return name; }
+            set { name = value; RaisePropertyChanged(); }
         }
 
 
-        public Linha()
+        public Line()
         {
         }
     }

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.AppointmentPage"
+             xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Title="Atendimento">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Ação: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Action.Name}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Usuário: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.NameCompleto}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Telefone: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.Phone}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                            <Label Text="Celular: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.Cellphone}" FontSize="Large"  HorizontalOptions="Fill" />
+                        </StackLayout>
+
+                       
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                        <buttons:SfButton Text="Interconsulta" Command="{Binding InterconsultationtionCommand}" IsEnabled="{Binding InterconsultationtionVisible}"/>
+                        <buttons:SfButton Text="Orientação" Command="{Binding SchedulerOrientactionCommand}" IsEnabled="{Binding OrientactionVisible}" />
+                        <buttons:SfButton Text="Individual" Command="{Binding SchedulerIndividualCommand}" IsEnabled="{Binding IndividualVisible}"/>
+                        <buttons:SfButton Text="Grupo" Command="{Binding SchedulerGrupoCommand}" IsEnabled="{Binding GrupoVisible}"/>
+                        <buttons:SfButton Text="Dar alta" Command="{Binding DarReleaseCommand}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

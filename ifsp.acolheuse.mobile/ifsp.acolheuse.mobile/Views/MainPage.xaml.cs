@@ -21,7 +21,7 @@ namespace ifsp.acolheuse.mobile.Views
             (BindingContext as MainPageViewModel).NavigateAdmin(); 
         }
 
-        private void Servidor_Clicked(object sender, EventArgs e)
+        private void Responsible_Clicked(object sender, EventArgs e)
         {
             (BindingContext as MainPageViewModel).NavigateServ();
            

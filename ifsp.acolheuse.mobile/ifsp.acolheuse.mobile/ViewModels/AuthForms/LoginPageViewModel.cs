@@ -20,25 +20,25 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
 
         #region properties
-        private User usuario;
-        public User Usuario
+        private User patient;
+        public User Patient
         {
-            get { return usuario; }
-            set { usuario = value; RaisePropertyChanged(); }
+            get { return patient; }
+            set { patient = value; RaisePropertyChanged(); }
         }
 
         #endregion
 
         INavigationService navigationService;
         IUserRepository userRepository;
-        IServidorRepository servidorRepository;
-        public LoginPageViewModel(INavigationService navigationService, IUserRepository userRepository, IServidorRepository servidorRepository) :
+        IResponsibleRepository responsibleRepository;
+        public LoginPageViewModel(INavigationService navigationService, IUserRepository userRepository, IResponsibleRepository responsibleRepository) :
           base(navigationService)
         {
-            Usuario = new User();
+            Patient = new User();
             this.navigationService = navigationService;
             this.userRepository = userRepository;
-            this.servidorRepository = servidorRepository;
+            this.responsibleRepository = responsibleRepository;
         }
 
         public async void LoginCommandExecute()
@@ -46,7 +46,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             try
             {
                 FirebaseAccess firebase = new FirebaseAccess();
-                var result = await firebase.LoginAsync(Usuario);
+                var result = await firebase.LoginAsync(Patient);
 
                 if (!String.IsNullOrEmpty(result))
                 {
@@ -54,27 +54,26 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 }
                 else
                 {
-                    var user = await userRepository.GetByLocalIdAsync(Settings.AccessToken);
+                    var user = await userRepository.GetByAccessTokenAsync(Settings.AccessToken);
                     Settings.Email = user.Email;
-                    Settings.AccountId = user.Id;
-                    Settings.Tipo = user.Tipo;
+                    Settings.Type = user.Type;
 
 
-                    switch (user.Tipo)
+                    switch (user.Type)
                     {
                         case "admin":
                             await NavigationService.NavigateAsync("/NavigationPage/MenuAdminPage");
                             break;
-                        case "servidor":
-                            Servidor servidor = await servidorRepository.GetByAccountIdAsync(Settings.AccountId);
-                            Settings.UserId = servidor.Id;
-                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                        case "responsible":
+                            Responsible responsible = await responsibleRepository.GetByAccessTokenAsync(Settings.AccessToken);
+                            Settings.UserId = responsible.Id;
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
                             break;
-                        case "estagiario":
-                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                        case "intern":
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
                             break;
                         case "acolhimento":
-                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
                             break;
                     }
                 }

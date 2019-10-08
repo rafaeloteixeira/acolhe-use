@@ -24,15 +24,21 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
         public async Task<TEntity> GetAsync(string id)
         {
+            if (!String.IsNullOrEmpty(id))
+            {
+                var document = await CrossCloudFirestore.Current
+                                                 .Instance
+                                                 .GetCollection(collectionName)
+                                                 .GetDocument(id)
+                                                 .GetDocumentAsync();
 
-            var document = await CrossCloudFirestore.Current
-                                       .Instance
-                                       .GetCollection(collectionName)
-                                       .GetDocument(id)
-                                       .GetDocumentAsync();
-
-            var yourModel = document.ToObject<TEntity>();
-            return yourModel;
+                var yourModel = document.ToObject<TEntity>();
+                return yourModel;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
@@ -55,10 +61,13 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
         public async Task UpdateAsync(TEntity entity, string id)
         {
-            await CrossCloudFirestore.Current.Instance
-                                                 .GetCollection(collectionName)
-                                                 .GetDocument(id)
-                                                 .UpdateDataAsync(entity);
+            if (entity != null && !String.IsNullOrEmpty(id))
+            {
+                await CrossCloudFirestore.Current.Instance
+                        .GetCollection(collectionName)
+                        .GetDocument(id)
+                        .UpdateDataAsync(entity);
+            }
         }
 
         public async Task AddOrUpdateAsync(TEntity entity, string id)
@@ -75,11 +84,14 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
 
         public async Task RemoveAsync(string id)
         {
-            await CrossCloudFirestore.Current
-                         .Instance
-                         .GetCollection(collectionName)
-                         .GetDocument(id)
-                         .DeleteDocumentAsync();
+            if (!String.IsNullOrEmpty(id))
+            {
+                await CrossCloudFirestore.Current
+                  .Instance
+                  .GetCollection(collectionName)
+                  .GetDocument(id)
+                  .DeleteDocumentAsync();
+            }
         }
     }
 }

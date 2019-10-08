@@ -31,52 +31,52 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Acolhimento\CadastroPacientePage.xaml">
+    <EmbeddedResource Update="Views\Acolhimento\RegisterPatientPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Acolhimento\InclusaoAcaoPage.xaml">
+    <EmbeddedResource Update="Views\Acolhimento\SelectionActionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\CadastroAcaoPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\RegisterActionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\CadastroLinhaCuidadoPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\RegisterLineCuidadoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\EdicaoListaEstagiariosPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\EditListInternsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\EdicaoListaResponsaveisPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\EditListResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\HorarioAcaoPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ScheduleActionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\ListaAcoesAdminPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ListActionAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\ListaEstagiariosAdminPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ListInternsAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\ListaLinhasAdminPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ListLinesAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\ListaServidoresAdminPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ListResponsibleAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Administrador\ListaUsuariosAdminPage.xaml">
+    <EmbeddedResource Update="Views\Administrador\ListPatientsAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AuthForms\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Estagio\AgendaEstagiarioPage.xaml">
+    <EmbeddedResource Update="Views\Estagio\ScheduleInternPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Estagio\CadastroEstagiarioPage.xaml">
+    <EmbeddedResource Update="Views\Estagio\RegisterInternPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Estagio\EstagiarioComparecimentoPage.xaml">
+    <EmbeddedResource Update="Views\Estagio\InternComparecimentoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Menu\MenuAdminPage.xaml">
@@ -85,55 +85,55 @@
     <EmbeddedResource Update="Views\PrismContentPage1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\AcaoServidorPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ActionResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\AgendaAtendimentoPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ScheduleAppointmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\AgendaServidorPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ScheduleResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\AtendimentoPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\AppointmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\CadastroServidorPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\RegisterResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\DetalhesAgendamentoPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\DetailsSchedulementoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\EstagiarioServidorPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\InternResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\InclusaoEstagiariosAtendimentoPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\SelectionInternsAppointmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\InclusaoProfessorInterconsultaPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\SelectionResponsibleInterconsultationtionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaAcoesResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListActionResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaAtendimentoResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListAppointmentResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaEsperaResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListWaitingResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaEstagiariosResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListInternsResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaInterconsultaResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListInterconsultationtionResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaUsuariosAltaResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListPatientsReleaseResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\ListaUsuariosResponsavelPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\ListPatientsResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsavel\UsuarioServidorPage.xaml">
+    <EmbeddedResource Update="Views\Responsible\PatientResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ViewB.xaml">
@@ -142,56 +142,173 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Acolhimento\InclusaoAcaoPage.xaml.cs">
-      <DependentUpon>InclusaoAcaoPage.xaml</DependentUpon>
+    <Compile Update="Views\Acolhimento\SelectionActionPage.xaml.cs">
+      <DependentUpon>SelectionActionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Administrador\ListaAcoesAdminPage.xaml.cs">
-      <DependentUpon>ListaAcoesAdminPage.xaml</DependentUpon>
+    <Compile Update="Views\Acolhimento\RegisterPatientPage.xaml.cs">
+      <DependentUpon>RegisterPatientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Administrador\ListaEstagiariosAdminPage.xaml.cs">
-      <DependentUpon>ListaEstagiariosAdminPage.xaml</DependentUpon>
+    <Compile Update="Views\Acolhimento\SelectionActionPage.xaml.cs">
+      <DependentUpon>SelectionActionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Administrador\ListaLinhasAdminPage.xaml.cs">
-      <DependentUpon>ListaLinhasAdminPage.xaml</DependentUpon>
+    <Compile Update="Views\Administrador\EditListResponsiblePage.xaml.cs">
+      <DependentUpon>EditListResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Administrador\ListaServidoresAdminPage.xaml.cs">
-      <DependentUpon>ListaServidoresAdminPage.xaml</DependentUpon>
+    <Compile Update="Views\Administrador\EditListInternsPage.xaml.cs">
+      <DependentUpon>EditListInternsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Administrador\ListaUsuariosAdminPage.xaml.cs">
-      <DependentUpon>ListaUsuariosAdminPage.xaml</DependentUpon>
+    <Compile Update="Views\Administrador\ListActionAdminPage.xaml.cs">
+      <DependentUpon>ListActionAdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Menu\MenuAcolhimento.xaml.cs">
-      <DependentUpon>MenuAcolhimento.xaml</DependentUpon>
+    <Compile Update="Views\Administrador\ListResponsibleAdminPage.xaml.cs">
+      <DependentUpon>ListResponsibleAdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Menu\MenuEstagiario.xaml.cs">
-      <DependentUpon>MenuEstagiario.xaml</DependentUpon>
+    <Compile Update="Views\Administrador\ListPatientsAdminPage.xaml.cs">
+      <DependentUpon>ListPatientsAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListLinesAdminPage.xaml.cs">
+      <DependentUpon>ListLinesAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListResponsibleAdminPage.xaml.cs">
+      <DependentUpon>ListResponsibleAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListInternsAdminPage.xaml.cs">
+      <DependentUpon>ListInternsAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ScheduleActionPage.xaml.cs">
+      <DependentUpon>ScheduleActionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\RegisterLinePage.xaml.cs">
+      <DependentUpon>RegisterLinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\RegisterActionPage.xaml.cs">
+      <DependentUpon>RegisterActionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListActionAdminPage.xaml.cs">
+      <DependentUpon>ListActionAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListInternsAdminPage.xaml.cs">
+      <DependentUpon>ListInternsAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListLinesAdminPage.xaml.cs">
+      <DependentUpon>ListLinesAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListResponsibleAdminPage.xaml.cs">
+      <DependentUpon>ListResponsibleAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Administrador\ListPatientsAdminPage.xaml.cs">
+      <DependentUpon>ListPatientsAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Estagio\InternAttendancePage.xaml.cs">
+      <DependentUpon>InternAttendancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Estagio\RegisterInternPage.xaml.cs">
+      <DependentUpon>RegisterInternPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Estagio\ScheduleInternPage.xaml.cs">
+      <DependentUpon>ScheduleInternPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Menu\MenuIntern.xaml.cs">
+      <DependentUpon>MenuIntern.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Menu\MenuAdminPage.xaml.cs">
       <DependentUpon>MenuAdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Menu\MenuResponsavelPage.xaml.cs">
-      <DependentUpon>MenuResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Menu\MenuResponsiblePage.xaml.cs">
+      <DependentUpon>MenuResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaAcoesResponsavelPage.xaml.cs">
-      <DependentUpon>ListaAcoesResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Menu\MenuResponsiblePage.xaml.cs">
+      <DependentUpon>MenuResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaAtendimentoResponsavelPage.xaml.cs">
-      <DependentUpon>ListaAtendimentoResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\ActionResponsiblePage.xaml.cs">
+      <DependentUpon>ActionResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaEsperaResponsavelPage.xaml.cs">
-      <DependentUpon>ListaEsperaResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\ActionResponsiblePage.xaml.cs">
+      <DependentUpon>ActionResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaEstagiariosResponsavelPage.xaml.cs">
-      <DependentUpon>ListaEstagiariosResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\AppointmentPage.xaml.cs">
+      <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaInterconsultaResponsavelPage.xaml.cs">
-      <DependentUpon>ListaInterconsultaResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\DetailsSchedulementoPage.xaml.cs">
+      <DependentUpon>DetailsSchedulementoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaUsuariosAltaResponsavelPage.xaml.cs">
-      <DependentUpon>ListaUsuariosAltaResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\InternResponsiblePage.xaml.cs">
+      <DependentUpon>InternResponsiblePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\ListaUsuariosResponsavelPage.xaml.cs">
-      <DependentUpon>ListaUsuariosResponsavelPage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\ListPatientsReleaseResponsiblePage.xaml.cs">
+      <DependentUpon>ListPatientsReleaseResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListPatientsResponsiblePage.xaml.cs">
+      <DependentUpon>ListPatientsResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListInterconsultationtionResponsiblePage.xaml.cs">
+      <DependentUpon>ListInterconsultationtionResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListInternsResponsiblePage.xaml.cs">
+      <DependentUpon>ListInternsResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListWaitingResponsiblePage.xaml.cs">
+      <DependentUpon>ListWaitingResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListAppointmentResponsiblePage.xaml.cs">
+      <DependentUpon>ListAppointmentResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ListActionResponsiblePage.xaml.cs">
+      <DependentUpon>ListActionResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\PatientResponsiblePage.xaml.cs">
+      <DependentUpon>PatientResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\RegisterResponsiblePage.xaml.cs">
+      <DependentUpon>RegisterResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ScheduleResponsiblePage.xaml.cs">
+      <DependentUpon>ScheduleResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\SelectionResponsibleInterconsultationtionPage.xaml.cs">
+      <DependentUpon>SelectionResponsibleInterconsultationtionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\SelectionResponsibleInterconsultationtionPage.xaml.cs">
+      <DependentUpon>SelectionResponsibleInterconsultationtionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\SelectionInternsAppointmentPage.xaml.cs">
+      <DependentUpon>SelectionInternsAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\InternResponsiblePage.xaml.cs">
+      <DependentUpon>InternResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\RegisterResponsiblePage.xaml.cs">
+      <DependentUpon>RegisterResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ScheduleResponsiblePage.xaml.cs">
+      <DependentUpon>ScheduleResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\ScheduleAppointmentPage.xaml.cs">
+      <DependentUpon>ScheduleAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\PatientResponsiblePage.xaml.cs">
+      <DependentUpon>PatientResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListActionResponsiblePage.xaml.cs">
+      <DependentUpon>ListActionResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListAppointmentResponsiblePage.xaml.cs">
+      <DependentUpon>ListAppointmentResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListWaitingResponsiblePage.xaml.cs">
+      <DependentUpon>ListWaitingResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListInternsResponsiblePage.xaml.cs">
+      <DependentUpon>ListInternsResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListInterconsultationtionResponsiblePage.xaml.cs">
+      <DependentUpon>ListInterconsultationtionResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListPatientsReleaseResponsiblePage.xaml.cs">
+      <DependentUpon>ListPatientsReleaseResponsiblePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsible\ListPatientsResponsiblePage.xaml.cs">
+      <DependentUpon>ListPatientsResponsiblePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

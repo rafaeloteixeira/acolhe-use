@@ -19,7 +19,7 @@
     <ContentPage.Content>
 
         <listview:SfListView x:Name="listView" 
-                    ItemsSource="{Binding ListaMenu}"
+                    ItemsSource="{Binding ListMenu}"
                     ItemSize="100"
                     ItemTapped="ListView_ItemTapped">
             <listview:SfListView.LayoutManager>

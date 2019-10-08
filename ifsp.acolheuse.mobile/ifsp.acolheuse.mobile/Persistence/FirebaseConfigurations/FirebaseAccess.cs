@@ -29,14 +29,14 @@ namespace ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations
             //});
         }
 
-        public async Task<string> LoginAsync(ifsp.acolheuse.mobile.Core.Domain.User usuario)
+        public async Task<string> LoginAsync(ifsp.acolheuse.mobile.Core.Domain.User patient)
         {
             try
             {
                 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
-                var auth = await authProvider.SignInWithEmailAndPasswordAsync(usuario.Email, usuario.Password);
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(patient.Email, patient.Password);
                 Settings.FirebaseAuthJson = auth.FirebaseToken;
-                Settings.Email = usuario.Email;
+                Settings.Email = patient.Email;
                 Settings.AccessToken = auth.User.LocalId;
 
                 return null;
@@ -47,14 +47,14 @@ namespace ifsp.acolheuse.mobile.Persistence.FirebaseConfigurations
             }
         }
 
-        public async Task<string> CreateUserAsync(ifsp.acolheuse.mobile.Core.Domain.User usuario)
+        public async Task<string> CreateUserAsync(ifsp.acolheuse.mobile.Core.Domain.User patient)
         {
             try
             {
                 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey));
-                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(usuario.Email, usuario.Password);
+                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(patient.Email, patient.Password);
 
-                usuario.AcessToken = auth.User.LocalId;
+                patient.AccessToken = auth.User.LocalId;
                 return null;
             }
             catch (FirebaseAuthException ex)

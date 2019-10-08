@@ -27,14 +27,14 @@
 
                 <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
                     <inputLayout:SfTextInputLayout Hint="Email" ContainerType="Outlined" >
-                        <Entry Text="{Binding Usuario.Email}" HorizontalOptions="Fill"/>
+                        <Entry Text="{Binding Patient.Email}" HorizontalOptions="Fill"/>
                     </inputLayout:SfTextInputLayout>
                 </Grid>
 
 
                 <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
-                    <inputLayout:SfTextInputLayout Hint="Senha" ContainerType="Outlined">
-                        <Entry Text="{Binding Usuario.Password}" HorizontalOptions="Fill" IsPassword="True"/>
+                    <inputLayout:SfTextInputLayout Hint="Password" ContainerType="Outlined">
+                        <Entry Text="{Binding Patient.Password}" HorizontalOptions="Fill" IsPassword="True"/>
                     </inputLayout:SfTextInputLayout>
                 </Grid>
 

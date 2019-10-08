@@ -12,7 +12,7 @@ using ifsp.acolheuse.mobile.Persistence.Repositories;
 using ifsp.acolheuse.mobile.Core.Repositories;
 using ifsp.acolheuse.mobile.Views.Administrador;
 using ifsp.acolheuse.mobile.Views.Acolhimento;
-using ifsp.acolheuse.mobile.Views.Responsavel;
+using ifsp.acolheuse.mobile.Views;
 using ifsp.acolheuse.mobile.Views.Estagio;
 using ifsp.acolheuse.mobile.Views.Menu;
 using ifsp.acolheuse.mobile.Core.Settings;
@@ -47,66 +47,66 @@ namespace ifsp.acolheuse.mobile
 
             #region menu
             containerRegistry.RegisterForNavigation<MenuAdminPage, MenuAdminPageViewModel>();
-            containerRegistry.RegisterForNavigation<MenuResponsavelPage, MenuResponsavelPageViewModel>();
+            containerRegistry.RegisterForNavigation<MenuResponsiblePage, MenuResponsiblePageViewModel>();
             #endregion
 
             #region repository
-            containerRegistry.Register<IAcaoRepository, AcaoRepository>();
-            containerRegistry.Register<ILinhaRepository, LinhaRepository>();
-            containerRegistry.Register<IHorarioAcaoRepository, HorarioAcaoRepository>();
-            containerRegistry.Register<IEstagiarioRepository, EstagiarioRepository>();
-            containerRegistry.Register<IPacienteRepository, PacienteRepository>();
-            containerRegistry.Register<IServidorRepository, ServidorRepository>();
+            containerRegistry.Register<IActionRepository, ActionRepository>();
+            containerRegistry.Register<ILineRepository, LineRepository>();
+            containerRegistry.Register<IScheduleActionRepository, ScheduleActionRepository>();
+            containerRegistry.Register<IInternRepository, InternRepository>();
+            containerRegistry.Register<IPatientRepository, PatientRepository>();
+            containerRegistry.Register<IResponsibleRepository, ResponsibleRepository>();
             containerRegistry.Register<IUserRepository, UserRepository>();
-            containerRegistry.Register<IAtendimentoRepository, AtendimentoRepository>();
+            containerRegistry.Register<IAppointmentRepository, AppointmentRepository>();
             #endregion
 
             #region administrador
-            containerRegistry.RegisterForNavigation<CadastroAcaoPage, ViewModels.Administrador.CadastroAcaoPageViewModel>();
-            containerRegistry.RegisterForNavigation<CadastroLinhaCuidadoPage, ViewModels.Administrador.CadastroLinhaCuidadoPageViewModel>();
-            containerRegistry.RegisterForNavigation<EdicaoListaEstagiariosPage, ViewModels.Administrador.EdicaoListaEstagiariosPageViewModel>();
-            containerRegistry.RegisterForNavigation<EdicaoListaResponsaveisPage, ViewModels.Administrador.EdicaoListaResponsaveisPageViewModel>();
-            containerRegistry.RegisterForNavigation<HorarioAcaoPage, ViewModels.Administrador.HorarioAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterActionPage, ViewModels.Administrador.RegisterActionPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterLinePage, ViewModels.Administrador.RegisterLinePageViewModel>();
+            containerRegistry.RegisterForNavigation<EditListInternsPage, ViewModels.Administrador.EditListInternsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EditListResponsiblePage, ViewModels.Administrador.EditListResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ScheduleActionPage, ViewModels.Administrador.ScheduleActionPageViewModel>();
 
-            containerRegistry.RegisterForNavigation<ListaAcoesAdminPage, ViewModels.Administrador.ListaAcoesAdminPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaEstagiariosAdminPage, ViewModels.Administrador.ListaEstagiariosAdminPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaUsuariosAdminPage, ViewModels.Administrador.ListaUsuariosAdminPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaServidoresAdminPage, ViewModels.Administrador.ListaServidoresAdminPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaLinhasAdminPage, ViewModels.Administrador.ListaLinhasAdminPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListActionAdminPage, ViewModels.Administrador.ListActionAdminPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListInternsAdminPage, ViewModels.Administrador.ListInternsAdminPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListPatientsAdminPage, ViewModels.Administrador.ListPatientsAdminPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListResponsibleAdminPage, ViewModels.Administrador.ListResponsibleAdminPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListLinesAdminPage, ViewModels.Administrador.ListLinesAdminPageViewModel>();
 
 
             #endregion
 
             #region acolhimento
-            containerRegistry.RegisterForNavigation<CadastroPacientePage, ViewModels.Acolhimento.CadastroPacientePageViewModel>();
-            containerRegistry.RegisterForNavigation<InclusaoAcaoPage, ViewModels.Acolhimento.InclusaoAcaoPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPatientPage, ViewModels.Acolhimento.RegisterPatientPageViewModel>();
+            containerRegistry.RegisterForNavigation<SelectionActionPage, ViewModels.Acolhimento.SelectionActionPageViewModel>();
             #endregion
 
 
-            containerRegistry.RegisterForNavigation<CadastroEstagiarioPage, ViewModels.Estagio.CadastroEstagiarioPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterInternPage, ViewModels.Estagio.RegisterInternPageViewModel>();
 
-            #region responsavel
-            containerRegistry.RegisterForNavigation<CadastroServidorPage, ViewModels.Responsavel.CadastroServidorPageViewModel>();
-            containerRegistry.RegisterForNavigation<AcaoServidorPage, ViewModels.Responsavel.AcaoServidorPageViewModel>();
-            containerRegistry.RegisterForNavigation<AgendaAtendimentoPage, ViewModels.Responsavel.AgendaAtendimentoPageViewModel>();
-            containerRegistry.RegisterForNavigation<AgendaServidorPage, ViewModels.Responsavel.AgendaServidorPageViewModel>();
-            containerRegistry.RegisterForNavigation<AtendimentoPage, ViewModels.Responsavel.AtendimentoPageViewModel>();
-            containerRegistry.RegisterForNavigation<DetalhesAgendamentoPage, ViewModels.Responsavel.DetalhesAgendamentoPageViewModel>();
-            containerRegistry.RegisterForNavigation<EstagiarioServidorPage, ViewModels.Responsavel.EstagiarioServidorPageViewModel>();
-            containerRegistry.RegisterForNavigation<InclusaoEstagiariosAtendimentoPage, ViewModels.Responsavel.InclusaoEstagiariosAtendimentoPageViewModel>();
-            containerRegistry.RegisterForNavigation<InclusaoProfessorInterconsultaPage, ViewModels.Responsavel.InclusaoProfessorInterconsultaPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaAtendimentoResponsavelPage, ViewModels.Responsavel.ListaAtendimentoResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaEsperaResponsavelPage, ViewModels.Responsavel.ListaEsperaResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaInterconsultaResponsavelPage, ViewModels.Responsavel.ListaInterconsultaResponsavelPageViewModel>();
+            #region responsible
+            containerRegistry.RegisterForNavigation<RegisterResponsiblePage, ViewModels.RegisterResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ActionResponsiblePage, ViewModels.ActionResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ScheduleAppointmentPage, ViewModels.ScheduleAppointmentPageViewModel>();
+            containerRegistry.RegisterForNavigation<ScheduleResponsiblePage, ViewModels.ScheduleResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<AppointmentPage, ViewModels.AppointmentPageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailsSchedulementoPage, ViewModels.DetailsSchedulementoPageViewModel>();
+            containerRegistry.RegisterForNavigation<InternResponsiblePage, ViewModels.InternResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<SelectionInternsAppointmentPage, ViewModels.SelectionInternsAppointmentPageViewModel>();
+            containerRegistry.RegisterForNavigation<SelectionResponsibleInterconsultationtionPage, ViewModels.SelectionResponsibleInterconsultationtionPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListAppointmentResponsiblePage, ViewModels.ListAppointmentResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListWaitingResponsiblePage, ViewModels.ListWaitingResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListInterconsultationtionResponsiblePage, ViewModels.ListInterconsultationtionResponsiblePageViewModel>();
 
-            containerRegistry.RegisterForNavigation<ListaAcoesResponsavelPage, ViewModels.Responsavel.ListaAcoesResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaEstagiariosResponsavelPage, ViewModels.Responsavel.ListaEstagiariosResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaUsuariosResponsavelPage, ViewModels.Responsavel.ListaUsuariosResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListaUsuariosAltaResponsavelPage, ViewModels.Responsavel.ListaUsuariosAltaResponsavelPageViewModel>();
-            containerRegistry.RegisterForNavigation<UsuarioServidorPage, ViewModels.Responsavel.UsuarioServidorPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListActionResponsiblePage, ViewModels.ListActionResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListInternsResponsiblePage, ViewModels.ListInternsResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListPatientsResponsiblePage, ViewModels.ListPatientsResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListPatientsReleaseResponsiblePage, ViewModels.ListPatientsReleaseResponsiblePageViewModel>();
+            containerRegistry.RegisterForNavigation<PatientResponsiblePage, ViewModels.PatientResponsiblePageViewModel>();
             #endregion
-            containerRegistry.RegisterForNavigation<AgendaEstagiarioPage, AgendaEstagiarioPageViewModel>();
-            containerRegistry.RegisterForNavigation<EstagiarioComparecimentoPage, EstagiarioComparecimentoPageViewModel>();
+            containerRegistry.RegisterForNavigation<ScheduleInternPage, ScheduleInternPageViewModel>();
+            containerRegistry.RegisterForNavigation<InternAttendancePage, InternAttendancePageViewModel>();
         }
 
         protected override void OnStart()

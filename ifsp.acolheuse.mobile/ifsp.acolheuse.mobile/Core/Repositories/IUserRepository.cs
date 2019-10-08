@@ -8,6 +8,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<User> GetByLocalIdAsync(string localId);
+        Task<User> GetByAccessTokenAsync(string localId);
     }
 }

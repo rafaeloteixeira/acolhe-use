@@ -14,18 +14,26 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
         public UserRepository()
             : base(new FirebaseConfigurations.FirebaseAccess())
         {
+            collectionName = "user";
         }
 
-        public async Task<User> GetByLocalIdAsync(string acessToken)
+        public async Task<User> GetByAccessTokenAsync(string accessToken)
         {
-            var query = await CrossCloudFirestore.Current
-                            .Instance
-                            .GetCollection(collectionName)
-                            .WhereEqualsTo("AcessToken", acessToken)
-                            .GetDocumentsAsync();
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                var query = await CrossCloudFirestore.Current
+                      .Instance
+                      .GetCollection(collectionName)
+                      .WhereEqualsTo("AccessToken", accessToken)
+                      .GetDocumentsAsync();
 
-            var yourModels = query.ToObjects<User>();
-            return yourModels.FirstOrDefault();
+                var yourModels = query.ToObjects<User>();
+                return yourModels.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

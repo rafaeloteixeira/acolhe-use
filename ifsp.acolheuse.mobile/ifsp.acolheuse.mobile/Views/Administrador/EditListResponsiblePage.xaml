@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.EditListResponsiblePage"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="Incluir Responsáveis">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adicionar"
+                 Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar />
+            <listview:SfListView x:Name="lvResponsible" ItemsSource="{Binding ResponsibleCollection}">
+
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="8">
+                                <Grid x:Name="GridTasks">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="12*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}"  FontAttributes="Bold" Grid.Column="0" HorizontalOptions="FillAndExpand"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Switch IsToggled="{Binding Added}" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

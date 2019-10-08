@@ -5,50 +5,50 @@ using System.Text;
 
 namespace ifsp.acolheuse.mobile.Core.Domain
 {
-    public class ListaAtendimento : BindableBase
+    public class ListAppointment : BindableBase
     {
         private string id;
-        private string nome;
-        private bool adicionado;
-        private bool isListaEspera;
-        private bool isAtendimento;
-        private bool isAlta;
-        private bool isInterconsulta;
+        private string name;
+        private bool added;
+        private bool isListWaiting;
+        private bool isAppointment;
+        private bool isRelease;
+        private bool isInterconsultationtion;
 
         public string Id
         {
             get { return id; }
             set { id = value; RaisePropertyChanged(); }
         }
-        public string Nome
+        public string Name
         {
-            get { return nome; }
-            set { nome = value; RaisePropertyChanged(); }
+            get { return name; }
+            set { name = value; RaisePropertyChanged(); }
         }
-        public bool Adicionado
+        public bool Added
         {
-            get { return adicionado; }
-            set { adicionado = value; RaisePropertyChanged(); }
+            get { return added; }
+            set { added = value; RaisePropertyChanged(); }
         }
-        public bool IsListaEspera
+        public bool IsListWaiting
         {
-            get { return isListaEspera; }
-            set { isListaEspera = value; RaisePropertyChanged(); }
+            get { return isListWaiting; }
+            set { isListWaiting = value; RaisePropertyChanged(); }
         }
-        public bool IsAtendimento
+        public bool IsAppointment
         {
-            get { return isAtendimento; }
-            set { isAtendimento = value; RaisePropertyChanged(); }
+            get { return isAppointment; }
+            set { isAppointment = value; RaisePropertyChanged(); }
         }
-        public bool IsAlta
+        public bool IsRelease
         {
-            get { return isAlta; }
-            set { isAlta = value; RaisePropertyChanged(); }
+            get { return isRelease; }
+            set { isRelease = value; RaisePropertyChanged(); }
         }
-        public bool IsInterconsulta
+        public bool IsInterconsultationtion
         {
-            get { return isInterconsulta; }
-            set { isInterconsulta = value; RaisePropertyChanged(); }
+            get { return isInterconsultationtion; }
+            set { isInterconsultationtion = value; RaisePropertyChanged(); }
         }
     }
 }

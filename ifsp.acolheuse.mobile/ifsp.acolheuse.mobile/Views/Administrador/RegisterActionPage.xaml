@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.RegisterActionPage"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Title="Ação">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Command="{Binding SaveActionCommand}" />
+        <ToolbarItem Text="Estagiários" Order="Secondary" Command="{Binding EditarInternsCommand}" />
+        <ToolbarItem Text="Responsáveis" Order="Secondary" Command="{Binding EditarResponsibleCommand}" />
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="White"
+                     Padding="15,15,15,15"
+                     Spacing="5">
+                <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <combobox:SfComboBox DisplayMemberPath="Name" DataSource="{Binding LinesCollection}" SelectedItem="{Binding Line}"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Nome" >
+                            <Entry Text="{Binding Action.Name}" HorizontalOptions="Fill"/>
+                        </sfText:SfTextInputLayout>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0" >
+                            <Label Text="Orientação" VerticalOptions="Center" WidthRequest="80"/>
+                            <Switch IsToggled="{Binding Action.IsOrientation}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Text="Individual" VerticalOptions="Center"  WidthRequest="80"/>
+                            <Switch IsToggled="{Binding Action.IsIndividual}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Text="Grupo" VerticalOptions="Center"  WidthRequest="80"/>
+                            <Switch IsToggled="{Binding Action.IsGroup}"/>
+                        </StackLayout>
+                        <!---->
+
+
+
+                        <StackLayout Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                    <sfText:SfTextInputLayout ContainerType="Outlined" Hint="Número de vagas" >
+                                        <Entry Text="{Binding Action.NumberVacancies}" />
+                                    </sfText:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label Text="Lista aberta" VerticalOptions="Center"/>
+                                    <Switch IsToggled="{Binding Action.IsListOpen}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <combobox:SfComboBox DataSource="{Binding DaysCollection}" SelectedItem="{Binding Day}" />
+                            </StackLayout>
+                            <sfButtons:SfButton Text="Configurar" Command="{Binding ConfigurarDayCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="Red"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
+</ContentPage>

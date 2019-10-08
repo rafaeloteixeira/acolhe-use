@@ -15,7 +15,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         internal async void NavigateServ()
         {
-            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsavelPage");
+            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
         }
 
         internal async void NavigateAdmin()

@@ -38,16 +38,11 @@ namespace ifsp.acolheuse.mobile.Core.Settings
             get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
         }
-        public static string AccountId
-        {
-            get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
-            set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
-        }
 
-        public static string Tipo
+        public static string Type
         {
-            get => AppSettings.GetValueOrDefault(nameof(Tipo), string.Empty);
-            set => AppSettings.AddOrUpdateValue(nameof(Tipo), value);
+            get => AppSettings.GetValueOrDefault(nameof(Type), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(Type), value);
         }
         public static void InitializeSettings()
         {
@@ -55,8 +50,7 @@ namespace ifsp.acolheuse.mobile.Core.Settings
             AccessToken = "";
             Email = "";
             UserId = "";
-            AccountId = "";
-            Tipo = "";
+            Type = "";
         }
     }
 }

@@ -16,7 +16,7 @@
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label Text="Welcome to Xamarin Forms and Prism!" />
                     <Button Text="Admin" Clicked="Admin_Clicked"/>
-                    <Button Text="Servidor" Clicked="Servidor_Clicked" />
+                    <Button Text="Responsible" Clicked="Responsible_Clicked" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

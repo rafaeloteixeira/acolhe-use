@@ -10,9 +10,9 @@ namespace ifsp.acolheuse.mobile.Core.Domain
     {
         private string email;
         private string password;
-        private string tipo;
+        private string type;
         private string id;
-        private string acessToken;
+        private string accessToken;
 
         public string Email
         {
@@ -41,10 +41,10 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             }
             set { password = value; RaisePropertyChanged(); }
         }
-        public string Tipo
+        public string Type
         {
-            get { return tipo; }
-            set { tipo = value; RaisePropertyChanged(); }
+            get { return type; }
+            set { type = value; RaisePropertyChanged(); }
         }
         [Id]
         public string Id
@@ -53,10 +53,10 @@ namespace ifsp.acolheuse.mobile.Core.Domain
             set { id = value; RaisePropertyChanged(); }
         }
 
-        public string AcessToken
+        public string AccessToken
         {
-            get { return acessToken; }
-            set { acessToken = value; RaisePropertyChanged(); }
+            get { return accessToken; }
+            set { accessToken = value; RaisePropertyChanged(); }
         }
 
     }
