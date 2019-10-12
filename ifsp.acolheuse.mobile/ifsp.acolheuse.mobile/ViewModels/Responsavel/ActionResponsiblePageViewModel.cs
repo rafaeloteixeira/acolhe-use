@@ -13,7 +13,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
     public class ActionResponsiblePageViewModel : ViewModelBase
     {
         #region commands
-        public DelegateCommand _editarInternsCommand { get; set; }
+        public DelegateCommand _editInternsCommand { get; set; }
         public DelegateCommand _saveActionCommand { get; set; }
         public DelegateCommand _listInterconsultationtionCommand { get; set; }
         public DelegateCommand _listAppointmentCommand { get; set; }
@@ -21,7 +21,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public DelegateCommand _listrPatientsReleaseCommand { get; set; }
 
 
-        public DelegateCommand EditarInternsCommand => _editarInternsCommand ?? (_editarInternsCommand = new DelegateCommand(EditarListInternsAsync));
+        public DelegateCommand EditInternsCommand => _editInternsCommand ?? (_editInternsCommand = new DelegateCommand(EditListInternsAsync));
         public DelegateCommand SaveActionCommand => _saveActionCommand ?? (_saveActionCommand = new DelegateCommand(SaveActionAsync));
         public DelegateCommand ListInterconsultationtionCommand => _listInterconsultationtionCommand ?? (_listInterconsultationtionCommand = new DelegateCommand(ListInterconsultationtionAsync));
         public DelegateCommand ListAppointmentCommand => _listAppointmentCommand ?? (_listAppointmentCommand = new DelegateCommand(ListAppointmentAsync));
@@ -32,6 +32,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #region properties
         private Line line;
         private ActionModel action;
+        private int numberOfPatients;
         private IEnumerable<Line> linesCollection;
         public Line Line
         {
@@ -43,6 +44,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
             get { return action; }
             set { action = value; RaisePropertyChanged(); }
         }
+        public int NumberOfPatients
+        {
+            get { return numberOfPatients; }
+            set { numberOfPatients = value; RaisePropertyChanged(); }
+        }
         public IEnumerable<Line> LinesCollection
         {
             get { return linesCollection; }
@@ -53,19 +59,21 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private ILineRepository lineRepository;
         private IActionRepository actionRepository;
+        private IPatientRepository patientRepository;
 
-        public ActionResponsiblePageViewModel(INavigationService navigationService, ILineRepository lineRepository, IActionRepository actionRepository) :
+        public ActionResponsiblePageViewModel(INavigationService navigationService, ILineRepository lineRepository, IActionRepository actionRepository, IPatientRepository patientRepository) :
           base(navigationService)
         {
             this.navigationService = navigationService;
             this.lineRepository = lineRepository;
             this.actionRepository = actionRepository;
+            this.patientRepository = patientRepository;
 
             Action = new ActionModel();
         }
 
 
-        public async void EditarListInternsAsync()
+        public async void EditListInternsAsync()
         {
             var navParameters = new NavigationParameters();
             navParameters.Add("action", Action);
@@ -115,13 +123,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             if (parameters["action"] != null)
             {
-                Action = parameters["action"] as ActionModel;
-                TrazerLine();
+                GetActionData(parameters["action"] as ActionModel);
             }
         }
-        private async void TrazerLine()
+        private async void GetActionData(ActionModel action)
         {
+            IsBusy = true;
+            Action = action;
+            NumberOfPatients = (await patientRepository.GetAllByActionIdAsync(Action.Id)).Count();
             Line = await lineRepository.GetAsync(Action.IdLine);
+            IsBusy = false;
         }
     }
 }

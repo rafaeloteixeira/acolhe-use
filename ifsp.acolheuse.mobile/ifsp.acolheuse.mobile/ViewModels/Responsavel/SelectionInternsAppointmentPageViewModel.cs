@@ -74,6 +74,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public void BuscarInternsCollection()
         {
+            IsBusy = true;
             InternCollection = new ObservableCollection<ListEntity>();
             if(Action.InternCollection != null)
             {
@@ -87,6 +88,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     });
                 }
             }
+            IsBusy = false;
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

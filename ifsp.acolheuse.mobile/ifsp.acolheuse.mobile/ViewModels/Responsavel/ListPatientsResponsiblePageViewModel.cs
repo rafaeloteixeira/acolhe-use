@@ -55,11 +55,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void BuscarPatientsCollectionAsync()
         {
+            IsBusy = true;
             //BUSCA AS AÇÕES ATENDIDAS POR ESSE SERVIDOR
             IEnumerable<ActionModel> actionesAtendidas = await actionRepository.GetAllByResponsibleId(Settings.UserId);
 
             //BUSCA OS USUÁRIOS ATENDIDOS PELAS AÇÕES DO SERVIDOR
-            PatientsCollection = (await patientRepository.GetAllAsync()).Where(p => p.ActionCollection != null && p.ActionCollection.Any(c => actionesAtendidas.Any(c2 => c2.Id == c.Id)));
+            PatientsCollection = (await patientRepository.GetAllAsync()).Where(p =>
+            p.ActionCollection != null &&
+            p.ActionCollection.Any(c => actionesAtendidas.Any(c2 => c2.Id == c.Id) && c.IsAppointment == true));
+
+            IsBusy = false;
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

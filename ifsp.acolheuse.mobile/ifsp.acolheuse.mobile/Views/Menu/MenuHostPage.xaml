@@ -31,7 +31,7 @@
                         <Grid Padding="2" Margin="2" >
                             <Frame HasShadow="True" Padding="2" Margin="2">
                                 <StackLayout>
-                                    <Label Text="{Binding Titulo}" FontSize="Large"/>
+                                    <Label Text="{Binding Titulo}" FontSize=","/>
                                 </StackLayout>
                             </Frame>
                         </Grid>

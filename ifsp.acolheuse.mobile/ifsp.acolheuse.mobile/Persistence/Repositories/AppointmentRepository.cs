@@ -17,7 +17,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             collectionName = "Appointment";
         }
 
-        public async Task<IEnumerable<Appointment>> GetAllByResponsibleIdPatientIdConsultationId(string responsibleId, string patientId, int consultationType)
+        public async Task<IEnumerable<Appointment>> GetAllByResponsibleIdPatientId(string responsibleId, string patientId)
         {
             if (!String.IsNullOrEmpty(responsibleId) && !String.IsNullOrEmpty(patientId))
             {
@@ -30,7 +30,6 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                 (
                     x => x.IdResponsible == responsibleId
                     && x.Patient.Id == patientId
-                    && x.ConsultationType == consultationType
                 );
 
                 return yourModels;
@@ -41,7 +40,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             }
         }
 
-        public async Task<Appointment> GetAppointmentByEventIdActionIdAsync(string eventId, string actionId)
+        public async Task<Appointment> GetAppointmentByEventIdActionIdAsync(string eventId, string actionId, string patientId)
         {
             if (!String.IsNullOrEmpty(eventId) && !String.IsNullOrEmpty(actionId))
             {
@@ -50,7 +49,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                                              .GetCollection(collectionName)
                                              .GetDocumentsAsync();
 
-                var yourModel = query.ToObjects<Appointment>().FirstOrDefault(x => x.EventId == eventId && x.IdAction == actionId);
+                var yourModel = query.ToObjects<Appointment>().FirstOrDefault(x => x.EventId == eventId && x.IdAction == actionId && x.Patient.Id == patientId);
                 return yourModel;
             }
             else

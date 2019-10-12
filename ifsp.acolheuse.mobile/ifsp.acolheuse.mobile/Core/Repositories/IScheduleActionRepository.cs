@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.Core.Repositories
 {
-    public interface IScheduleActionRepository
+    public interface IScheduleActionRepository : IRepository<ScheduleAction>
     {
         Task<IEnumerable<ScheduleAction>> GetAppointmentsByIdActionAsync(string idAction);
         Task<ScheduleAction> GetAppointmentByIdActionEventIdAsync(string idAction, string eventId);

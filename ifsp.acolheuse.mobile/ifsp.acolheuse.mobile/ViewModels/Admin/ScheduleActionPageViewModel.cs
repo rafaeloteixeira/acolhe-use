@@ -69,22 +69,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
             if (scheduleAppointment == null)
             {
-                if (await MessageService.Instance.ShowAsyncYesNo("Deseja excluir este horário do appointment da " + dia + "?"))
-                {
+                //if (await MessageService.Instance.ShowAsyncYesNo("Deseja excluir este horário da " + dia + "?"))
+                //{
                     if (schedule != null)
                     {
                         await scheduleRepository.AddAppointmentByIdActionAsync(Action.Id, schedule);
                         BuscarSchedulesAsync();
                     }
-                }
+                //}
             }
             else
             {
-                if (await MessageService.Instance.ShowAsyncYesNo("Deseja adicionar este horário do appointment da " + dia + "?"))
-                {
+                //if (await MessageService.Instance.ShowAsyncYesNo("Deseja adicionar este horário da " + dia + "?"))
+                //{
                     await scheduleRepository.DeleteAppointmentByIdActionEventIdAsync(Action.Id, schedule.EventId);
                     BuscarSchedulesAsync();
-                }
+                //}
             }
         }
 
@@ -92,6 +92,8 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         {
             try
             {
+                IsBusy = true;
+
                 Schedules = new ObservableCollection<ScheduleAppointment>();
                 Action = await actionRepository.GetAsync(Action.Id);
 
@@ -100,12 +102,14 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
                 for (int i = 0; i < ex.Count(); i++)
                 {
                     ScheduleAppointment appointment = new ScheduleAppointment();
-                    appointment.Subject = "";
+                    appointment.Subject = "Fechado";
                     appointment.Color = ex.ElementAt(i).Cor;
                     appointment.StartTime = ex.ElementAt(i).StartTime;
                     appointment.EndTime = ex.ElementAt(i).EndTime;
                     Schedules.Add(appointment);
                 }
+
+                IsBusy = false;
             }
             catch (Exception)
             {

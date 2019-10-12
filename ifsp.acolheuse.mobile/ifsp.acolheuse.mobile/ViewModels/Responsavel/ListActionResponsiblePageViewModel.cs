@@ -70,9 +70,14 @@ namespace ifsp.acolheuse.mobile.ViewModels
             await navigationService.NavigateAsync("RegisterActionPage");
         }
 
+        private async void GetOnNavited()
+        {
+            IsBusy = true;
+            LinesCollection = new ObservableCollection<Line>(await GetLinesCollectionAsync());
+            IsBusy = false;
+        }
 
-
-        private async Task<ConcurrentBag<Line>> BuscarLinesCollectionAsync()
+        private async Task<ConcurrentBag<Line>> GetLinesCollectionAsync()
         {
             ConcurrentBag<Line> lines = new ConcurrentBag<Line>();
             ObservableCollection<ActionModel> action = new ObservableCollection<ActionModel>((await actionRepository.GetAllAsync()).Where(x => x.ResponsibleCollection != null && x.ResponsibleCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null));
@@ -93,7 +98,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         internal async void BuscarActionCollectionAsync()
         {
+            IsBusy = true;
             ActionCollection = await actionRepository.GetAllByIdLineAsync(Line.Id);
+            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -105,10 +112,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             var navigationMode = parameters.GetNavigationMode();
             if (navigationMode != NavigationMode.Back)
             {
-
-                Task taskA = Task.Run(async () =>
-                     LinesCollection = new ObservableCollection<Line>(await BuscarLinesCollectionAsync())
-                );
+                GetOnNavited();
             }
         }
     }

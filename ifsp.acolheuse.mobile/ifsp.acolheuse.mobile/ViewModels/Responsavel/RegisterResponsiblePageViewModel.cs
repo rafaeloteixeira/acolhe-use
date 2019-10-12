@@ -113,6 +113,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             try
             {
+                IsBusy = true;
                 if (!IsAdmin)
                 {
                     Responsible = await responsibleRepository.GetAsync(Settings.UserId);
@@ -124,6 +125,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                         Responsible = await responsibleRepository.GetAsync(Responsible.Id);
                     }
                 }
+                IsBusy = false;
             }
             catch (Exception)
             {

@@ -13,13 +13,9 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Pedir interconsultationtion"
-                 Command="{Binding PerdirInterconsultationtionCommand}" />-->
-    </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <StackLayout>
-            <SearchBar />
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="10,10,10,10">
             <listview:SfListView x:Name="lvAction" ItemsSource="{Binding ActionCollection}" ItemTapped="LvAction_ItemTapped">
                 <listview:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -38,5 +34,15 @@
                 </listview:SfListView.ItemTemplate>
             </listview:SfListView>
         </StackLayout>
-    </ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="ForestGreen"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
 </ContentPage>

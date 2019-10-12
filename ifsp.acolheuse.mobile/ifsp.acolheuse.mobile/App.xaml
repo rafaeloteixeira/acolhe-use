@@ -15,8 +15,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <themes:LightTheme />
             </ResourceDictionary.MergedDictionaries>
+   
         </ResourceDictionary>
 
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="#007044"></Setter>
             <Setter Property="BarTextColor" Value="White"></Setter>

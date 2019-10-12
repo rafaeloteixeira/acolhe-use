@@ -8,8 +8,8 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
 {
     public interface IAppointmentRepository : IRepository<Appointment>
     {
-        Task<Appointment> GetAppointmentByEventIdActionIdAsync(string eventId, string idAction);
-        Task<IEnumerable<Appointment>> GetAllByResponsibleIdPatientIdConsultationId(string responsibleId, string patientId, int consultationType);
+        Task<Appointment> GetAppointmentByEventIdActionIdAsync(string eventId, string idAction, string idPatient);
+        Task<IEnumerable<Appointment>> GetAllByResponsibleIdPatientId(string responsibleId, string patientId);
         Task<IEnumerable<Appointment>> GetAllByInternId(string internId);
     }
 }

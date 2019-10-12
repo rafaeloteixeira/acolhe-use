@@ -28,23 +28,23 @@
                      Spacing="5">
                     <StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Ação: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
-                            <Label Text="{Binding Action.Name}" FontSize="Large"  HorizontalOptions="Fill" />
+                            <Label Text="Ação: " HorizontalOptions="Fill" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Action.Name}" FontSize="Medium"  HorizontalOptions="Fill" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Usuário: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
-                            <Label Text="{Binding Patient.NameCompleto}" FontSize="Large"  HorizontalOptions="Fill" />
+                            <Label Text="Usuário: " HorizontalOptions="Fill" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.NameCompleto}" FontSize="Medium"  HorizontalOptions="Fill" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Telefone: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
-                            <Label Text="{Binding Patient.Phone}" FontSize="Large"  HorizontalOptions="Fill" />
+                            <Label Text="Telefone: " HorizontalOptions="Fill" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.Phone}" FontSize="Medium"  HorizontalOptions="Fill" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                            <Label Text="Celular: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
-                            <Label Text="{Binding Patient.Cellphone}" FontSize="Large"  HorizontalOptions="Fill" />
+                            <Label Text="Celular: " HorizontalOptions="Fill" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Patient.Cellphone}" FontSize="Medium"  HorizontalOptions="Fill" />
                         </StackLayout>
 
                        
@@ -62,7 +62,7 @@
                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
                     AbsoluteLayout.LayoutFlags="All"
                     IsVisible="{Binding IsBusy}">
-                <ActivityIndicator Color="Red"
+                <ActivityIndicator Color="ForestGreen"
                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
                            AbsoluteLayout.LayoutFlags="All"
                            IsVisible="True"

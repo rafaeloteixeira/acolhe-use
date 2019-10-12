@@ -43,7 +43,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         private async void BuscarInternCollectionAsync(string KeyResponsible)
         {
+            IsBusy = true;
             InternCollection = await internRepository.GetInternsByResponsibleIdAsync(KeyResponsible);
+            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

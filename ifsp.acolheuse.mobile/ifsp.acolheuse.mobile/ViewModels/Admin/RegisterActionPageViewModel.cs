@@ -104,14 +104,8 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
             if (String.IsNullOrEmpty(Action.Id))
             {
-                var action = await dialogService.DisplayActionSheetAsync("Para configurar é necessário save a ação.", "Cancelar", null, "Save");
-
-                if (action == "Cancelar")
-                    return;
-
-                Action.GuidAction = Guid.NewGuid().ToString();
-                await actionRepository.AddAsync(Action);
-                Action = await actionRepository.GetByGuidAsync(Action.GuidAction.ToString());
+                await dialogService.DisplayAlertAsync("Para configurar é necessário salvar a ação.", "", "Continuar");
+                return;
             }
 
             var navParameters = new NavigationParameters();
@@ -122,22 +116,27 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
 
         public async void SaveActionAsync()
         {
-            if(String.IsNullOrEmpty(Action.GuidAction))
+            IsBusy = true;
+            if (String.IsNullOrEmpty(Action.GuidAction))
                 Action.GuidAction = Guid.NewGuid().ToString();
 
             this.Action.IdLine = Line.Id;
             await actionRepository.AddOrUpdateAsync(Action, Action.Id);
-            await navigationService.GoBackAsync();
+            IsBusy = false;
         }
 
-        public async void CarregarLineAction(string IdAction)
+        public async void LoadLineAction(string IdAction)
         {
             try
             {
+                IsBusy = true;
+
                 Action = await actionRepository.GetAsync(IdAction);
                 Line = await lineRepository.GetAsync(Action.IdLine);
                 LinesCollection = await lineRepository.GetAllAsync();
                 Day = DaysCollection[0];
+
+                IsBusy = false;
             }
             catch (Exception)
             {
@@ -145,10 +144,12 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
             }
         }
 
-        public async void CarregarLine()
+        public async void LoadLine()
         {
+            IsBusy = true;
             LinesCollection = await lineRepository.GetAllAsync();
             Day = DaysCollection[0];
+            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -158,20 +159,22 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             var navigationMode = parameters.GetNavigationMode();
-            if(navigationMode != NavigationMode.Back)
+            if (navigationMode != NavigationMode.Back)
             {
                 if (parameters["line"] != null)
                 {
                     Line = parameters["line"] as Line;
                 }
+
                 if (parameters["action"] != null)
                 {
                     Action = parameters["action"] as ActionModel;
-                    CarregarLineAction(Action.Id);
+                    LoadLineAction(Action.Id);
+           
                 }
                 else
                 {
-                    CarregarLine();
+                    LoadLine();
                 }
             }
         }

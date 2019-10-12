@@ -84,7 +84,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void BuscarActionCollectionAsync()
         {
+            IsBusy = true;
             ActionCollection = (await actionRepository.GetAllAsync()).Where( x=>x.Id != Action.Id);
+            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

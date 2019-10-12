@@ -6,7 +6,7 @@
              x:Class="ifsp.acolheuse.mobile.Views.RegisterResponsiblePage"
              xmlns:sfText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
-             Title="Meus dados">
+             Title="Meu perfil">
   <ContentPage.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -89,7 +89,7 @@
                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
                     AbsoluteLayout.LayoutFlags="All"
                     IsVisible="{Binding IsBusy}">
-                <ActivityIndicator Color="Red"
+                <ActivityIndicator Color="ForestGreen"
                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
                            AbsoluteLayout.LayoutFlags="All"
                            IsVisible="True"

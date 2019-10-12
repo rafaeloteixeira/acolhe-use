@@ -17,7 +17,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public DelegateCommand _novoPatientCommand { get; set; }
         public DelegateCommand NovoPatientCommand => _novoPatientCommand ?? (_novoPatientCommand = new DelegateCommand(NovoPatientCommandAsync));
         #endregion
-        
+
         #region properties
         private IEnumerable<Patient> patientsCollection;
         private ActionModel action;
@@ -53,19 +53,21 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void BuscarPatientsCollectionAsync()
         {
+            IsBusy = true;
             //BUSCA AS AÇÕES ATENDIDAS POR ESSE SERVIDOR
             IEnumerable<ActionModel> actionesAtendidas = (await actionRepository.GetAllAsync()).Where(x => x.ResponsibleCollection.FirstOrDefault(m => m.Id == Settings.UserId) != null);
 
             //BUSCA OS USUÁRIOS ATENDIDOS PELAS AÇÕES DO SERVIDOR
             PatientsCollection = (await patientRepository.GetAllAsync()).Where(p => p.ActionCollection.Any(c => actionesAtendidas.Any(c2 => c2.Id == c.Id) && c.IsInterconsultationtion == true));
+            IsBusy = false;
         }
         public async void PromoverAppointment(Patient Patient)
         {
-                var action = Patient.ActionCollection.FirstOrDefault(x => x.Id == Action.Id);
-                action.IsRelease = false;
-                action.IsAppointment = true;
-                action.IsListWaiting = false;
-                action.IsInterconsultationtion = false;
+            var action = Patient.ActionCollection.FirstOrDefault(x => x.Id == Action.Id);
+            action.IsRelease = false;
+            action.IsAppointment = true;
+            action.IsListWaiting = false;
+            action.IsInterconsultationtion = false;
 
             await patientRepository.AddOrUpdateAsync(Patient, Patient.Id);
             await navigationService.GoBackAsync();

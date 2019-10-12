@@ -70,6 +70,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public async void BuscarAppointmentsAsync()
         {
+            IsBusy = true;
             Meetings = new ObservableCollection<ScheduleAppointment>();
             Responsible = await responsibleRepository.GetAsync(Settings.UserId);
 
@@ -114,6 +115,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 Meetings.Add(appointment);
 
             }
+            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

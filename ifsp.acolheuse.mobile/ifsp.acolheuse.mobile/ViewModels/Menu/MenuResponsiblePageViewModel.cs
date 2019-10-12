@@ -27,11 +27,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 return new List<MenuModel>()
                 {
-                    new MenuModel{Id = 0, Titulo = "Editar perfil"},
-                    new MenuModel{Id = 1, Titulo = "Gerenciar minhas ações"},
-                    new MenuModel{Id = 2, Titulo = "Gerenciar estagiários"},
-                    new MenuModel{Id = 3, Titulo = "Visualizar usuários que atendo"},
-                    new MenuModel{Id = 4, Titulo = "Visualizar agenda"},
+                    new MenuModel{Id = 0, Titulo = "Meu perfil"},
+                    new MenuModel{Id = 1, Titulo = "Minhas ações"},
+                    new MenuModel{Id = 2, Titulo = "Meus estagiários"},
+                    new MenuModel{Id = 3, Titulo = "Usuários que atendo"},
+                    new MenuModel{Id = 4, Titulo = "Agenda"},
                     new MenuModel{Id = 5, Titulo = "Sair"}
                 };
             }

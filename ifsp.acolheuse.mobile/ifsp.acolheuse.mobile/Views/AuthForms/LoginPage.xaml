@@ -9,41 +9,58 @@
              xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
-    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    
+        <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White"
+                     Padding="20,20,20,20"
+                     Spacing="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Acolhe USE" FontSize="60" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#159566" />
+
+                        <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
+                            <inputLayout:SfTextInputLayout Hint="Email" ContainerType="Outlined" >
+                                <Entry Text="{Binding Patient.Email}" HorizontalOptions="Fill"/>
+                            </inputLayout:SfTextInputLayout>
+                        </Grid>
 
 
-        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
-            <Grid Padding="20, 30, 20, 20" RowSpacing="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                        <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
+                            <inputLayout:SfTextInputLayout Hint="Password" ContainerType="Outlined">
+                                <Entry Text="{Binding Patient.Password}" HorizontalOptions="Fill" IsPassword="True"/>
+                            </inputLayout:SfTextInputLayout>
+                        </Grid>
 
-                <Label Text="Acolhe USE" FontSize="60" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" TextColor="#159566" />
-
-                <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
-                    <inputLayout:SfTextInputLayout Hint="Email" ContainerType="Outlined" >
-                        <Entry Text="{Binding Patient.Email}" HorizontalOptions="Fill"/>
-                    </inputLayout:SfTextInputLayout>
-                </Grid>
+                        <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" >
+                            <sfButtons:SfButton Text="Entrar" Command="{Binding LoginCommand}"/>
+                        </StackLayout>
 
 
-                <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
-                    <inputLayout:SfTextInputLayout Hint="Password" ContainerType="Outlined">
-                        <Entry Text="{Binding Patient.Password}" HorizontalOptions="Fill" IsPassword="True"/>
-                    </inputLayout:SfTextInputLayout>
-                </Grid>
-
-                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" >
-                    <sfButtons:SfButton Text="Entrar" Command="{Binding LoginCommand}"/>
+                    </Grid>
                 </StackLayout>
-
-
-            </Grid>
-        </ScrollView>
-    </AbsoluteLayout>
+            </ScrollView>
+            <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+                <ActivityIndicator Color="ForestGreen"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
 </ContentPage>

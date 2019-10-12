@@ -29,13 +29,13 @@
                     <StackLayout>
                         <StackLayout VerticalOptions="Start">
                             <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                                <Label Text="Linha: " HorizontalOptions="Fill" FontSize="Large" FontAttributes="Bold" />
-                                <Label Text="{Binding Line.Name}" FontSize="Large"  HorizontalOptions="Fill" />
+                                <Label Text="Linha: " HorizontalOptions="Fill" FontSize="Medium" FontAttributes="Bold" />
+                                <Label Text="{Binding Line.Name}" FontSize="Medium"  HorizontalOptions="Fill" />
                             </StackLayout>
 
                             <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                                <Label Text="Ação: " FontSize="Large"  HorizontalOptions="Fill" FontAttributes="Bold"/>
-                                <Label Text="{Binding Action.Name}" FontSize="Large"  HorizontalOptions="Fill" />
+                                <Label Text="Ação: " FontSize="Medium"  HorizontalOptions="Fill" FontAttributes="Bold"/>
+                                <Label Text="{Binding Action.Name}" FontSize="Medium"  HorizontalOptions="Fill" />
                             </StackLayout>
                         </StackLayout>
 
@@ -43,14 +43,20 @@
                             <StackLayout VerticalOptions="Start">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                        <Label Text="Número de vagas: " FontSize="Large"  FontAttributes="Bold" HorizontalOptions="Fill" />
-                                        <Label Text="{Binding Action.NumberVacancies}" FontSize="Large"  HorizontalOptions="Fill" />
+                                        <Label Text="Total de vagas: " FontSize="Medium"  FontAttributes="Bold" HorizontalOptions="Fill" />
+                                        <Label Text="{Binding Action.NumberVacancies}" FontSize="Medium"  HorizontalOptions="Fill" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label Text="Total de atendimentos: " FontSize="Medium"  FontAttributes="Bold" HorizontalOptions="Fill" />
+                                        <Label Text="{Binding NumberOfPatients}" FontSize="Medium"  HorizontalOptions="Fill" />
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Spacing="0" VerticalOptions="Start" Margin="0, 20, 0, 0">
-                            <Label Text="Estagiários" FontSize="Large"  FontAttributes="Bold" />
+                            <Label Text="Estagiários" FontSize="Medium"  FontAttributes="Bold" />
 
                             <listview:SfListView x:Name="lvIntern" ItemsSource="{Binding Action.InternCollection}" ItemTapped="LvIntern_ItemTapped" VerticalOptions="StartAndExpand">
 
@@ -85,7 +91,7 @@
                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
                     AbsoluteLayout.LayoutFlags="All"
                     IsVisible="{Binding IsBusy}">
-                <ActivityIndicator Color="Red"
+                <ActivityIndicator Color="ForestGreen"
                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
                            AbsoluteLayout.LayoutFlags="All"
                            IsVisible="True"

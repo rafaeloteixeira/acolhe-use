@@ -13,8 +13,10 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout>
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="10,10,10,10">
             <SearchBar x:Name="filterText" HeightRequest="40" Placeholder="" TextChanged="OnFilterTextChanged" Grid.Row="0"/>
             <listview:SfListView x:Name="lvPatient" ItemsSource="{Binding PatientsCollection}" ItemTapped="LvPatient_ItemTapped">
 
@@ -35,5 +37,15 @@
                 </listview:SfListView.ItemTemplate>
             </listview:SfListView>
         </StackLayout>
-    </ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="ForestGreen"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
 </ContentPage>

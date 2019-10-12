@@ -94,7 +94,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     break;
             }
 
-            var appointmentMarcado = (await appointmentRepository.GetAppointmentByEventIdActionIdAsync(appointment.EventId, IdAction));
+            var appointmentMarcado = (await appointmentRepository.GetAppointmentByEventIdActionIdAsync(appointment.EventId, IdAction, appointment.Patient.Id));
 
             if (appointmentMarcado == null)
             {
@@ -102,13 +102,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
                 if (schedulesIndisponiveis.FirstOrDefault(x => x.StartTime.DayOfWeek == date.DayOfWeek && x.StartTime.Hour == date.Hour) == null)
                 {
-                    var action = await dialogService.DisplayActionSheetAsync("Deseja scheduler o appointment?", "Cancelar", "Scheduler");
+                    var action = await dialogService.DisplayActionSheetAsync("Deseja agendar o atendimento?", "Cancelar", "Agendar");
 
                     switch (action)
                     {
                         case "Cancelar":
                             return;
-                        case "Scheduler":
+                        case "Agendar":
                             Create(appointment);
                             break;
                     }
@@ -117,13 +117,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
             else
             {
                 appointment = appointmentMarcado;
-                var action = await dialogService.DisplayActionSheetAsync("Selectione a operação desejada:", "Cancelar", null, "Ver details", "Desmarcar");
+                var action = await dialogService.DisplayActionSheetAsync("Selecione a operação desejada:", "Cancelar", null, "Ver detalhes", "Desmarcar");
 
                 switch (action)
                 {
                     case "Cancelar":
                         return;
-                    case "Ver details":
+                    case "Ver detalhes":
                         OpenAppointment(appointment);
                         break;
                     case "Desmarcar":
@@ -161,11 +161,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 IsBusy = true;
 
-                IEnumerable<Appointment> appointments = await appointmentRepository.GetAllByResponsibleIdPatientIdConsultationId(ResponsibleId, Patient.Id, ConsultationType);
+                IEnumerable<Appointment> appointments = await appointmentRepository.GetAllByResponsibleIdPatientId(ResponsibleId, Patient.Id);
                 IEnumerable<ScheduleAction> schedulesDisponiveis = await scheduleActionRepository.GetAppointmentsByIdActionAsync(IdAction);
 
-                BuscarAppointments(appointments);
-                BuscarSchedulesDisponiveis(appointments, schedulesDisponiveis);
+                GetAppointments(appointments);
+                GetFreeSchedules(schedulesDisponiveis);
 
                 IsBusy = false;
             }
@@ -176,7 +176,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
             }
         }
 
-        private void BuscarAppointments(IEnumerable<Appointment> appointments)
+        private void GetAppointments(IEnumerable<Appointment> appointments)
         {
             for (int i = 0; i < appointments.Count(); i++)
             {
@@ -219,7 +219,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 Meetings.Add(appointment);
             }
         }
-        private void BuscarSchedulesDisponiveis(IEnumerable<Appointment> appointments, IEnumerable<ScheduleAction> schedulesDisponiveis)
+        private void GetFreeSchedules(IEnumerable<ScheduleAction> schedulesDisponiveis)
         {
             RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
             recurrenceProperties.RecurrenceType = RecurrenceType.Weekly;
@@ -229,15 +229,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
             for (int i = 0; i < schedulesDisponiveis.Count(); i++)
             {
-                if (appointments.FirstOrDefault(x =>
-                (x.ConsultationType == Appointment._GRUPO || x.ConsultationType == Appointment._INDIVIDUAL)
-                && x.StartTime.DayOfWeek == schedulesDisponiveis.ElementAt(i).StartTime.DayOfWeek
-                && x.StartTime.Hour == schedulesDisponiveis.ElementAt(i).StartTime.Hour) != null)
-                    continue;
-
-                if (Meetings.FirstOrDefault(x => x.StartTime == schedulesDisponiveis.ElementAt(i).StartTime) != null)
-                    continue;
-
                 ScheduleAppointment appointment = new ScheduleAppointment();
                 appointment.Subject = "";
                 appointment.Color = schedulesDisponiveis.ElementAt(i).Cor;
@@ -276,6 +267,9 @@ namespace ifsp.acolheuse.mobile.ViewModels
                         recurrenceProperties.WeekDays = WeekDays.Friday;
                         break;
                 }
+
+                //if (Meetings.FirstOrDefault(x => x.StartTime == appointment.StartTime) != null)
+                //    continue;
 
                 appointment.RecurrenceRule = Xamarin.Forms.DependencyService.Get<IRecurrenceBuilder>().RRuleGenerator(recurrenceProperties, appointment.StartTime, appointment.EndTime);
                 Meetings.Add(appointment);

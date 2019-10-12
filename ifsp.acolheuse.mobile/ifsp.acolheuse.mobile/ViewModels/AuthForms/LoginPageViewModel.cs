@@ -47,6 +47,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             try
             {
+                IsBusy = true;
                 FirebaseAccess firebase = new FirebaseAccess();
                 var result = await firebase.LoginAsync(Patient);
 
@@ -60,7 +61,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     Settings.Email = user.Email;
                     Settings.Type = user.Type;
 
-
+                    
                     switch (user.Type)
                     {
                         case "admin":
@@ -81,6 +82,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                             break;
                     }
                 }
+                IsBusy = false;
             }
             catch (Exception ex)
             {

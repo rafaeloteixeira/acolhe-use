@@ -6,19 +6,25 @@
              x:Class="ifsp.acolheuse.mobile.Views.ScheduleResponsiblePage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              Title="Minha agenda">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-    <ContentPage.Content>
-        <syncfusion:SfSchedule x:Name="schedule"
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <syncfusion:SfSchedule x:Name="schedule"
 	    DataSource="{Binding Meetings}"
 	    ScheduleView="WeekView" CellTapped="Schedule_CellTapped" Locale="pt">
-            <syncfusion:SfSchedule.DayViewSettings>
-                <syncfusion:DayViewSettings 
+                <syncfusion:SfSchedule.DayViewSettings>
+                    <syncfusion:DayViewSettings 
                     NonWorkingHoursTimeSlotColor="#fcf3c9"
 			        NonWorkingHoursTimeSlotBorderColor="#fceb9f"
 			        TimeSlotBorderStrokeWidth="5"
@@ -26,18 +32,29 @@
 			        VerticalLineColor="LightGray"
                     WorkStartHour="08"
                     WorkEndHour="18">
-                    <syncfusion:DayViewSettings.NonAccessibleBlocks>
-                        <syncfusion:NonAccessibleBlock 
+                        <syncfusion:DayViewSettings.NonAccessibleBlocks>
+                            <syncfusion:NonAccessibleBlock 
 					 StartTime="12"
 					 EndTime="13"  
 					 Text="ALMOÇO"
 					 Color="Black" />
-                    </syncfusion:DayViewSettings.NonAccessibleBlocks>
-                    <syncfusion:DayViewSettings.DayLabelSettings>
-                        <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
-                    </syncfusion:DayViewSettings.DayLabelSettings>
-                </syncfusion:DayViewSettings>
-            </syncfusion:SfSchedule.DayViewSettings>
-        </syncfusion:SfSchedule>
-    </ContentPage.Content>
+                        </syncfusion:DayViewSettings.NonAccessibleBlocks>
+                        <syncfusion:DayViewSettings.DayLabelSettings>
+                            <syncfusion:DayLabelSettings TimeFormat = "hh:mm" />
+                        </syncfusion:DayViewSettings.DayLabelSettings>
+                    </syncfusion:DayViewSettings>
+                </syncfusion:SfSchedule.DayViewSettings>
+            </syncfusion:SfSchedule>
+        </ScrollView>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="ForestGreen"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
 </ContentPage>

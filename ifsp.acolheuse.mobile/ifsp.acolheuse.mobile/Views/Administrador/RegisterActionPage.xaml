@@ -85,7 +85,7 @@
                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
                     AbsoluteLayout.LayoutFlags="All"
                     IsVisible="{Binding IsBusy}">
-            <ActivityIndicator Color="Red"
+            <ActivityIndicator Color="ForestGreen"
                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
                            AbsoluteLayout.LayoutFlags="All"
                            IsVisible="True"
