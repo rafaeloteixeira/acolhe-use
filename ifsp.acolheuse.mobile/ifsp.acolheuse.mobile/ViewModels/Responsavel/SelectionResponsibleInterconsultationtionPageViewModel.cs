@@ -1,5 +1,6 @@
 ﻿using ifsp.acolheuse.mobile.Core.Domain;
 using ifsp.acolheuse.mobile.Core.Repositories;
+using ifsp.acolheuse.mobile.Core.Settings;
 using ifsp.acolheuse.mobile.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -17,7 +18,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         private ActionModel action;
         private Patient patient;
-        private int consultationType;
         private IEnumerable<ActionModel> actionCollection;
 
         public ActionModel Action
@@ -40,13 +40,17 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private INavigationService navigationService;
         private IPatientRepository patientRepository;
         private IActionRepository actionRepository;
+        private IMessageRepository messageRepository;
+        private IResponsibleRepository responsibleRepository;
 
-        public SelectionResponsibleInterconsultationtionPageViewModel(INavigationService navigationService, IPatientRepository patientRepository, IActionRepository actionRepository) :
+        public SelectionResponsibleInterconsultationtionPageViewModel(INavigationService navigationService, IPatientRepository patientRepository, IActionRepository actionRepository, IMessageRepository messageRepository, IResponsibleRepository responsibleRepository) :
           base(navigationService)
         {
             this.navigationService = navigationService;
             this.patientRepository = patientRepository;
             this.actionRepository = actionRepository;
+            this.messageRepository = messageRepository;
+            this.responsibleRepository = responsibleRepository;
 
         }
 
@@ -69,6 +73,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 Patient.ActionCollection.Add(new ListAppointment
                 {
                     Id = actionDestino.Id,
+                    ProfessorIdFrom = Settings.UserId,
                     Name = actionDestino.Name,
                     Added = true,
                     IsRelease = false,
@@ -76,16 +81,30 @@ namespace ifsp.acolheuse.mobile.ViewModels
                     IsListWaiting = false,
                     IsInterconsultationtion = true
                 });
+                Responsible responsible = await responsibleRepository.GetAsync(Settings.UserId);
 
+                Message message = new Message
+                {
+                    Date = DateTime.Now,
+                    IdAction = Action.Id,
+                    IdFrom = Settings.UserId,
+                    NameFrom = responsible.NameCompleto,
+                    Body = "Enviou um pedido de interconsulta para o paciente " + Patient.NameCompleto + ", para a ação " + Action.Name
+                };
+                await messageRepository.AddAsync(message);
                 await patientRepository.AddOrUpdateAsync(Patient, Patient.Id);
                 await navigationService.GoBackAsync();
+            }
+            else
+            {
+                await MessageService.Instance.ShowAsync("Este usuário já está na ação " + actionDestino.Name);
             }
         }
 
         public async void BuscarActionCollectionAsync()
         {
             IsBusy = true;
-            ActionCollection = (await actionRepository.GetAllAsync()).Where( x=>x.Id != Action.Id);
+            ActionCollection = (await actionRepository.GetAllAsync()).Where(x => x.Id != Action.Id);
             IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)

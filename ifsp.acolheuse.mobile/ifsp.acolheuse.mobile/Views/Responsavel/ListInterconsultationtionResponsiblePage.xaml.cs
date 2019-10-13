@@ -18,15 +18,12 @@ namespace ifsp.acolheuse.mobile.Views
         {
         }
 
-        private async void LvPatient_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void LvPatient_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             if (e.ItemData != null)
             {
                 var item = (Patient)e.ItemData;
-                if (await MessageService.Instance.ShowAsyncYesNo("Deseja enviar este usuário ao atendimento?"))
-                {
-                    _viewModel.PromoverAppointment(item);
-                }
+                _viewModel.PromoverAppointment(item);
             }
         }
 

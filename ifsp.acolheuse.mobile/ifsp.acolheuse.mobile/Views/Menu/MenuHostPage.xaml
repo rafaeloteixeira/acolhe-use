@@ -9,18 +9,13 @@
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="True"
              Title="AcolheUSE">
-        <ContentPage.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
+    <ContentPage.Content>
 
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </ContentPage.Resources>
-        <ContentPage.Content>
-
+        <StackLayout Padding="20, 20, 20, 20" Spacing="15" BackgroundColor="White">
+            <Image Source="logo_use" HeightRequest="150" HorizontalOptions="Start" />
             <listview:SfListView x:Name="listView" 
                     ItemsSource="{Binding ListMenu}"
-                    ItemSize="100"
+                    ItemSize="70"
                     ItemTapped="ListView_ItemTapped">
                 <listview:SfListView.LayoutManager>
                     <listview:LinearLayout />
@@ -28,17 +23,13 @@
 
                 <listview:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="2" Margin="2" >
-                            <Frame HasShadow="True" Padding="2" Margin="2">
-                                <StackLayout>
-                                    <Label Text="{Binding Titulo}" FontSize=","/>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
+                        <StackLayout>
+                            <Label Text="{Binding Titulo}" FontSize="Title" TextColor="Black"/>
+                        </StackLayout>
+
                     </DataTemplate>
                 </listview:SfListView.ItemTemplate>
             </listview:SfListView>
-
-
-        </ContentPage.Content>
-    </ContentPage>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

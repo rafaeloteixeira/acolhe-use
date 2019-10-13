@@ -17,9 +17,9 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
             collectionName = "Appointment";
         }
 
-        public async Task<IEnumerable<Appointment>> GetAllByResponsibleIdPatientId(string responsibleId, string patientId)
+        public async Task<IEnumerable<Appointment>> GetAllByResponsibleId(string responsibleId)
         {
-            if (!String.IsNullOrEmpty(responsibleId) && !String.IsNullOrEmpty(patientId))
+            if (!String.IsNullOrEmpty(responsibleId))
             {
                 var query = await CrossCloudFirestore.Current
                          .Instance
@@ -29,7 +29,6 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                 var yourModels = query.ToObjects<Appointment>().Where
                 (
                     x => x.IdResponsible == responsibleId
-                    && x.Patient.Id == patientId
                 );
 
                 return yourModels;

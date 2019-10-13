@@ -55,7 +55,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         public async void VisualizeAppointments(string appointmentNotes)
         {
             Appointment appointment = (await appointmentRepository.GetAllAsync()).FirstOrDefault(x => x.Id == appointmentNotes);
-            if (await MessageService.Instance.ShowAsyncYesNo("Deseja visualizar os details do appointment?"))
+            if (await MessageService.Instance.ShowAsyncYesNo("Deseja visualizar os details do atendimento?"))
             {
                 IEnumerable<Intern> interns = (await internRepository.GetAllAsync()).Where(x => appointment.InternsIdCollection.Contains(x.Id));
 
@@ -74,8 +74,39 @@ namespace ifsp.acolheuse.mobile.ViewModels
             Meetings = new ObservableCollection<ScheduleAppointment>();
             Responsible = await responsibleRepository.GetAsync(Settings.UserId);
 
-            var appointments = (await appointmentRepository.GetAllAsync()).Where(x => x.IdResponsible == Responsible.Id);
 
+            IEnumerable<Appointment> appointments = await appointmentRepository.GetAllByResponsibleId(Responsible.Id);
+
+            GetAppointments(appointments.Where(x => x.ConsultationType != Appointment._GRUPO));
+
+            IEnumerable<Appointment> groupAppointments = appointments
+                .Where(x => x.ConsultationType == Appointment._GRUPO)
+                .GroupBy(x => x.StartTime)
+                .Select(g => new Appointment()
+                {
+                    Canceled = g.FirstOrDefault().Canceled,
+                    Confirmed = g.FirstOrDefault().Confirmed,
+                    StartTime = g.FirstOrDefault().StartTime,
+                    EndTime = g.FirstOrDefault().EndTime,
+                    Id = g.FirstOrDefault().Id,
+                    EventName = g.FirstOrDefault().EventName,
+                    IdResponsible = g.FirstOrDefault().IdResponsible,
+                    Patient = g.FirstOrDefault().Patient,
+                    IdAction = g.FirstOrDefault().IdAction,
+                    Capacity = g.FirstOrDefault().Capacity,
+                    AllDay = g.FirstOrDefault().AllDay,
+                    Repeat = g.FirstOrDefault().Repeat,
+                    ConsultationType = g.FirstOrDefault().ConsultationType,
+                    InternsIdCollection = g.FirstOrDefault().InternsIdCollection,
+                });
+
+            GetAppointments(groupAppointments);
+
+           
+            IsBusy = false;
+        }
+        private void GetAppointments(IEnumerable<Appointment> appointments)
+        {
             for (int i = 0; i < appointments.Count(); i++)
             {
                 ScheduleAppointment appointment = new ScheduleAppointment();
@@ -115,7 +146,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 Meetings.Add(appointment);
 
             }
-            IsBusy = false;
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

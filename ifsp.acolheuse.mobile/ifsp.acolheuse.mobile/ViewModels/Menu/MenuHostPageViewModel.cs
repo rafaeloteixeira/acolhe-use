@@ -25,12 +25,10 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 return new List<MenuModel>()
                 {
-                    new MenuModel{Id = 0, Titulo = "Visualizar responsáveis"},
                     new MenuModel{Id = 1, Titulo = "Visualizar linhas"},
                     new MenuModel{Id = 2, Titulo = "Visualizar ações"},
-                    new MenuModel{Id = 3, Titulo = "Gerenciar estagiários"},
-                    new MenuModel{Id = 4, Titulo = "Gerenciar usuários"},
-                    new MenuModel{Id = 5, Titulo = "Sair"}
+                    new MenuModel{Id = 3, Titulo = "Gerenciar usuários"},
+                    new MenuModel{Id = 4, Titulo = "Sair"}
                 };
             }
         }
@@ -39,22 +37,16 @@ namespace ifsp.acolheuse.mobile.ViewModels
         {
             switch (Id)
             {
-                case 0:
-                    await navigationService.NavigateAsync("ListResponsibleHostPage");
-                    break;
                 case 1:
-                    await navigationService.NavigateAsync("ListLinesHostPage");
+                    await navigationService.NavigateAsync("ListLinesAdminPage");
                     break;
                 case 2:
-                    await navigationService.NavigateAsync("ListActionHostPage");
+                    await navigationService.NavigateAsync("ListActionAdminPage");
                     break;
                 case 3:
-                    await navigationService.NavigateAsync("ListInternsHostPage");
+                    await navigationService.NavigateAsync("ListPatientsAdminPage");
                     break;
                 case 4:
-                    await navigationService.NavigateAsync("ListPatientsHostPage");
-                    break;
-                case 5:
                     await MessageService.Instance.ShowAsync("Você saiu");
                     Settings.InitializeSettings();
                     await NavigationService.NavigateAsync("/NavigationPage/LoginPage");

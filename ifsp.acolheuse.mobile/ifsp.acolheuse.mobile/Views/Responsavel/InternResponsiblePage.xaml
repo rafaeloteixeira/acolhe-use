@@ -13,12 +13,6 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Ações"
-                 Command="{Binding EditarListAction}" />
-        <ToolbarItem Text="save"
-                 Command="{Binding SavePatientCommand}" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">

@@ -58,6 +58,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.Register<IResponsibleRepository, ResponsibleRepository>();
             containerRegistry.Register<IUserRepository, UserRepository>();
             containerRegistry.Register<IAppointmentRepository, AppointmentRepository>();
+            containerRegistry.Register<IMessageRepository, MessageRepository>();
             #endregion
 
             #region administrador
@@ -109,10 +110,9 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<MenuHostPage, MenuHostPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuInternPage, MenuInternPageViewModel>();
             containerRegistry.RegisterForNavigation<ListResponsibleHostPage, ListResponsibleHostPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListLinesHostPage, ListLinesHostPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListActionHostPage, ListActionHostPageViewModel>();
             containerRegistry.RegisterForNavigation<ListInternsHostPage, ListInternsHostPageViewModel>();
             containerRegistry.RegisterForNavigation<ListPatientsHostPage, ListPatientsHostPageViewModel>();
+            containerRegistry.RegisterForNavigation<MessagesPage, MessagesPageViewModel>();
         }
 
         protected override void OnStart()

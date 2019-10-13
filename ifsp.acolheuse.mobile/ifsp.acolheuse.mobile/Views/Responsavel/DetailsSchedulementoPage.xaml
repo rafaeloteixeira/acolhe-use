@@ -30,20 +30,20 @@
                      Padding="10,10,10,10"
                      Spacing="5">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Tipo de consulta: " />
-                        <Label Text="{Binding ConsultationType}" />
+                        <Label Text="Tipo de consulta: " FontSize="Medium" />
+                        <Label Text="{Binding ConsultationType}" FontSize="Medium" />
                     </StackLayout>
                     <StackLayout x:Name="slSchedule" Orientation="Horizontal">
-                        <Label Text="Horário: " />
-                        <Label Text="{Binding Schedule}" />
+                        <Label Text="Horário: " FontSize="Medium" />
+                        <Label Text="{Binding Schedule}" FontSize="Medium" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Usuário: " />
-                        <Label Text="{Binding Patient}" />
+                        <Label Text="Usuário: " FontSize="Medium" />
+                        <Label Text="{Binding Patient}" FontSize="Medium" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Estagiário(s): " />
-                        <Label Text="{Binding Interns}" />
+                        <Label Text="Estagiário(s): " FontSize="Medium" />
+                        <Label Text="{Binding Interns}" FontSize="Medium" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

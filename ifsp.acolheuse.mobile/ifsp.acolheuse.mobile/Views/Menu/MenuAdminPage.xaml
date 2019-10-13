@@ -9,36 +9,27 @@
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="True"
              Title="AcolheUSE">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </ContentPage.Resources>
     <ContentPage.Content>
 
-        <listview:SfListView x:Name="listView" 
+        <StackLayout Padding="20, 20, 20, 20" Spacing="15" BackgroundColor="White">
+            <Image Source="logo_use" HeightRequest="150" HorizontalOptions="Start" />
+            <listview:SfListView x:Name="listView" 
                     ItemsSource="{Binding ListMenu}"
-                    ItemSize="100"
+                    ItemSize="70"
                     ItemTapped="ListView_ItemTapped">
-            <listview:SfListView.LayoutManager>
-                <listview:LinearLayout />
-            </listview:SfListView.LayoutManager>
+                <listview:SfListView.LayoutManager>
+                    <listview:LinearLayout />
+                </listview:SfListView.LayoutManager>
 
-            <listview:SfListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="2" Margin="2" >
-                        <Frame HasShadow="True" Padding="2" Margin="2">
-                            <StackLayout>
-                                <Label Text="{Binding Titulo}" FontSize="Large"/>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </listview:SfListView.ItemTemplate>
-        </listview:SfListView>
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Titulo}" FontSize="Title" TextColor="Black"/>
+                        </StackLayout>
 
-
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

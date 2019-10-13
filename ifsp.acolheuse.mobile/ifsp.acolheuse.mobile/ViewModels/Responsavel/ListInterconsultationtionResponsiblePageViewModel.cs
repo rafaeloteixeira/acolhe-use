@@ -4,6 +4,8 @@ using ifsp.acolheuse.mobile.Core.Settings;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,16 +36,20 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
 
         private INavigationService navigationService;
-        private IResponsibleRepository responsibleRepository;
         private IActionRepository actionRepository;
         private IPatientRepository patientRepository;
-        public ListInterconsultationtionResponsiblePageViewModel(INavigationService navigationService, IResponsibleRepository responsibleRepository, IActionRepository actionRepository, IPatientRepository patientRepository) :
+        private IPageDialogService dialogService;
+        private IMessageRepository messageRepository;
+        private IResponsibleRepository responsibleRepository;
+        public ListInterconsultationtionResponsiblePageViewModel(INavigationService navigationService, IActionRepository actionRepository, IPatientRepository patientRepository, IPageDialogService dialogService, IMessageRepository messageRepository, IResponsibleRepository responsibleRepository) :
           base(navigationService)
         {
             this.navigationService = navigationService;
-            this.responsibleRepository = responsibleRepository;
             this.actionRepository = actionRepository;
             this.patientRepository = patientRepository;
+            this.dialogService = dialogService;
+            this.messageRepository = messageRepository;
+            this.responsibleRepository = responsibleRepository;
         }
 
         public async void NovoPatientCommandAsync()
@@ -63,14 +69,38 @@ namespace ifsp.acolheuse.mobile.ViewModels
         }
         public async void PromoverAppointment(Patient Patient)
         {
+            var result = await dialogService.DisplayActionSheetAsync("Selecione a operação desejada para o pedido de interconsulta", "Cancelar", null, "Aceitar", "Negar");
             var action = Patient.ActionCollection.FirstOrDefault(x => x.Id == Action.Id);
-            action.IsRelease = false;
-            action.IsAppointment = true;
-            action.IsListWaiting = false;
-            action.IsInterconsultationtion = false;
+            switch (result)
+            {
+                case "Aceitar":
 
-            await patientRepository.AddOrUpdateAsync(Patient, Patient.Id);
-            await navigationService.GoBackAsync();
+                    action.IsRelease = false;
+                    action.IsAppointment = true;
+                    action.IsListWaiting = false;
+                    action.IsInterconsultationtion = false;
+
+                    await patientRepository.AddOrUpdateAsync(Patient, Patient.Id);
+                    await navigationService.GoBackAsync();
+                    return;
+                case "Negar":
+                    Responsible responsible = await responsibleRepository.GetAsync(Settings.UserId);
+                    Message message = new Message
+                    {
+                        Date = DateTime.Now,
+                        IdAction = Action.Id,
+                        IdFrom = Settings.UserId,
+                        NameFrom = responsible.NameCompleto,
+                        IdTo = action.ProfessorIdFrom,
+                        Body = "Recusou o pedido de interconsulta para o paciente " + Patient.NameCompleto + ", para a ação " + Action.Name
+                    };
+                    await messageRepository.AddAsync(message);
+
+                    Patient.ActionCollection.Remove(action);
+                    await patientRepository.AddOrUpdateAsync(Patient, Patient.Id);
+                    await navigationService.GoBackAsync();
+                    break;
+            }
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

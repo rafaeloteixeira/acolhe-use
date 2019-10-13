@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ifsp.acolheuse.mobile.Views.Administrador.MessagesPage"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="Mensagens">
+    <ContentPage.Content>
+
+        <StackLayout Padding="10, 10, 10, 10">
+            <listview:SfListView x:Name="listView" 
+                    ItemsSource="{Binding MessageCollection}"
+                    ItemSize="100">
+                <listview:SfListView.LayoutManager>
+                    <listview:LinearLayout />
+                </listview:SfListView.LayoutManager>
+
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="2" Margin="2" >
+                            <Frame HasShadow="True" Padding="2" Margin="2">
+                                <StackLayout Padding="3">
+                                    <Label Text="{Binding Date}" FontAttributes="Bold" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="De:"  FontAttributes="Bold" />
+                                        <Label Text="{Binding NameFrom}"  FontAttributes="Bold" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Body}"  FontAttributes="Bold" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

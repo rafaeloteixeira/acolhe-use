@@ -12,7 +12,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
         {
             InitializeComponent();
             _viewModel = BindingContext as ViewModels.Administrador.ListActionAdminPageViewModel;
-            if (Settings.Type == "acolhimento")
+            if (Settings.Type == "host")
                 ToolbarItems.Clear();
         }
 
@@ -24,7 +24,7 @@ namespace ifsp.acolheuse.mobile.Views.Administrador
         private void LvAction_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
           
-            if (Settings.Type != "acolhimento")
+            if (Settings.Type != "host")
             {
                 if (e.ItemData != null)
                 {

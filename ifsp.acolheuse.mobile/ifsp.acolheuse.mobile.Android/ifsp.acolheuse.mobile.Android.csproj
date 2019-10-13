@@ -80,6 +80,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Expander">
       <Version>17.3.0.14</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
+      <Version>17.3.0.14</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
       <Version>17.3.0.14</Version>
     </PackageReference>

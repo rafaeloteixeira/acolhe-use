@@ -7,28 +7,35 @@
              x:Class="ifsp.acolheuse.mobile.Views.Menu.MenuResponsiblePage"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False"
+             xmlns:badge ="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
              Title="">
     <ContentPage.Content>
-        
+
         <StackLayout Padding="20, 20, 20, 20" Spacing="15" BackgroundColor="White">
+
             <Image Source="logo_use" HeightRequest="150" HorizontalOptions="Start" />
             <listview:SfListView x:Name="listView" 
                     ItemsSource="{Binding ListMenu}"
                     ItemSize="70"
                     ItemTapped="ListView_ItemTapped">
-            <listview:SfListView.LayoutManager>
-                <listview:LinearLayout />
-            </listview:SfListView.LayoutManager>
+                <listview:SfListView.LayoutManager>
+                    <listview:LinearLayout />
+                </listview:SfListView.LayoutManager>
 
-            <listview:SfListView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Image Source="use_logo.png" />
-                        <Label Text="{Binding Titulo}" FontSize="Title" TextColor="Black"/>
-                    </StackLayout>
-                </DataTemplate>
-            </listview:SfListView.ItemTemplate>
-        </listview:SfListView>
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <badge:SfBadgeView BadgeText="{Binding Badge}">
+                            <badge:SfBadgeView.Content>
+                                <Label Text="{Binding Titulo}" FontSize="Title" TextColor="Black"/>
+                            </badge:SfBadgeView.Content>
+                            <badge:SfBadgeView.BadgeSettings>
+                                <badge:BadgeSetting BadgePosition="TopLeft"/>
+                            </badge:SfBadgeView.BadgeSettings>
+                        </badge:SfBadgeView>
+                        
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
 
         </StackLayout>
     </ContentPage.Content>

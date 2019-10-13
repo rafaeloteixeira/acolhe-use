@@ -77,8 +77,8 @@ namespace ifsp.acolheuse.mobile.ViewModels
                             Settings.UserId = intern.Id;
                             await NavigationService.NavigateAsync("/NavigationPage/MenuInternPage");
                             break;
-                        case "acolhimento":
-                            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
+                        case "host":
+                            await NavigationService.NavigateAsync("/NavigationPage/MenuHostPage");
                             break;
                     }
                 }

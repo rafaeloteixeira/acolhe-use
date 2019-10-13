@@ -161,10 +161,33 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 IsBusy = true;
 
-                IEnumerable<Appointment> appointments = await appointmentRepository.GetAllByResponsibleIdPatientId(ResponsibleId, Patient.Id);
+                IEnumerable<Appointment> appointments = await appointmentRepository.GetAllByResponsibleId(ResponsibleId);
                 IEnumerable<ScheduleAction> schedulesDisponiveis = await scheduleActionRepository.GetAppointmentsByIdActionAsync(IdAction);
 
-                GetAppointments(appointments);
+                GetAppointments(appointments.Where(x => x.ConsultationType != Appointment._GRUPO));
+
+                IEnumerable<Appointment> groupAppointments = appointments
+                    .Where(x => x.ConsultationType == Appointment._GRUPO)
+                    .GroupBy(x => x.StartTime)
+                    .Select(g => new Appointment()
+                    {
+                        Canceled = g.FirstOrDefault().Canceled,
+                        Confirmed = g.FirstOrDefault().Confirmed,
+                        StartTime = g.FirstOrDefault().StartTime,
+                        EndTime = g.FirstOrDefault().EndTime,
+                        Id = g.FirstOrDefault().Id,
+                        EventName = g.FirstOrDefault().EventName,
+                        IdResponsible = g.FirstOrDefault().IdResponsible,
+                        Patient = g.FirstOrDefault().Patient,
+                        IdAction = g.FirstOrDefault().IdAction,
+                        Capacity = g.FirstOrDefault().Capacity,
+                        AllDay = g.FirstOrDefault().AllDay,
+                        Repeat = g.FirstOrDefault().Repeat,
+                        ConsultationType = g.FirstOrDefault().ConsultationType,
+                        InternsIdCollection = g.FirstOrDefault().InternsIdCollection,
+                    });
+
+                GetAppointments(groupAppointments);
                 GetFreeSchedules(schedulesDisponiveis);
 
                 IsBusy = false;
@@ -185,6 +208,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 appointment.Color = appointments.ElementAt(i).Cor;
                 appointment.StartTime = appointments.ElementAt(i).StartTime;
                 appointment.EndTime = appointments.ElementAt(i).EndTime;
+
 
                 if (appointments.ElementAt(i).Repeat)
                 {
@@ -239,13 +263,13 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 appointment.StartTime = new DateTime(
                     startWeek.Year,
                     startWeek.Month,
-                    startWeek.Day, 
+                    startWeek.Day,
                     schedulesDisponiveis.ElementAt(i).StartTime.Hour, schedulesDisponiveis.ElementAt(i).StartTime.Minute, 0);
 
                 appointment.EndTime = new DateTime(
                     endWeek.Year,
                     endWeek.Month,
-                    endWeek.Day, 
+                    endWeek.Day,
                     schedulesDisponiveis.ElementAt(i).EndTime.Hour, schedulesDisponiveis.ElementAt(i).EndTime.Minute, 0);
 
 

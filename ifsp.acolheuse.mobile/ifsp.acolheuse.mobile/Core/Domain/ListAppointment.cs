@@ -8,6 +8,7 @@ namespace ifsp.acolheuse.mobile.Core.Domain
     public class ListAppointment : BindableBase
     {
         private string id;
+        private string professorIdFrom;
         private string name;
         private bool added;
         private bool isListWaiting;
@@ -19,6 +20,11 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         {
             get { return id; }
             set { id = value; RaisePropertyChanged(); }
+        }
+        public string ProfessorIdFrom
+        {
+            get { return professorIdFrom; }
+            set { professorIdFrom = value; RaisePropertyChanged(); }
         }
         public string Name
         {
