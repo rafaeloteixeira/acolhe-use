@@ -11,5 +11,6 @@ namespace ifsp.acolheuse.mobile.Core.Repositories
         Task<Appointment> GetAppointmentByEventIdActionIdAsync(string eventId, string idAction, string idPatient);
         Task<IEnumerable<Appointment>> GetAllByResponsibleId(string responsibleId);
         Task<IEnumerable<Appointment>> GetAllByInternId(string internId);
+        Task<IEnumerable<Appointment>> GetAllByInternIdStartTime(string internId, DateTime startTime);
     }
 }

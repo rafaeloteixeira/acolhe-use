@@ -36,7 +36,7 @@
         <Style TargetType="listview:SfListView">
             <Setter Property="SelectionBackgroundColor" Value="Transparent"></Setter>
         </Style>
-
+        
         <Style TargetType="buttons:SfButton">
             <Setter Property="BackgroundColor" Value="#007044"></Setter>
             <Setter Property="TextColor" Value="White"></Setter>

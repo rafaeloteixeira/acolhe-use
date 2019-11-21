@@ -51,7 +51,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         public async void SaveAsync()
         {
             Action.InternCollection = new ObservableCollection<ListEntity>(InternCollection.Where(x => x.Added == true));
-            await actionRepository.AddOrUpdateAsync(Action, Action.Id);
+            //await actionRepository.AddOrUpdateAsync(Action, Action.Id);
             await NavigationService.GoBackAsync();
         }
 

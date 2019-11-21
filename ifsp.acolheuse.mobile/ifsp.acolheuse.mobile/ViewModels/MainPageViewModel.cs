@@ -7,23 +7,8 @@ using System.Threading.Tasks;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
-    class MainPageViewModel : ViewModelBase
+    class MainPageViewModel
     {
-        public MainPageViewModel(INavigationService navigationService) :
-          base(navigationService)
-        { }
-
-        internal async void NavigateServ()
-        {
-            await NavigationService.NavigateAsync("/NavigationPage/MenuResponsiblePage");
-        }
-
-        internal async void NavigateAdmin()
-        {
-            IsBusy = true;
-            await Task.Delay(4000);
-            IsBusy = false;
-            await NavigationService.NavigateAsync("/NavigationPage/MenuAdminPage");
-        }
+ 
     }
 }

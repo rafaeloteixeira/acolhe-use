@@ -14,32 +14,83 @@ namespace ifsp.acolheuse.mobile.ViewModels
     public class InternAttendancePageViewModel : ViewModelBase
     {
         #region properties
-        private ObservableCollection<Patient> patientCollection;
+        private DateTime startTime;
+        private ObservableCollection<Appointment> appointmentCollection;
 
-        public ObservableCollection<Patient> PatientCollection
+        public ObservableCollection<Appointment> AppointmentCollection
         {
-            get { return patientCollection; }
-            set { patientCollection = value; RaisePropertyChanged(); }
+            get { return appointmentCollection; }
+            set { appointmentCollection = value; RaisePropertyChanged(); }
+        }
+        public DateTime StartTime
+        {
+            get { return startTime; }
+            set { startTime = value; RaisePropertyChanged(); }
         }
         #endregion
 
         #region commands
-        public DelegateCommand _saveCommand { get; set; }
+        public DelegateCommand
+            _saveCommand { get; set; }
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
+
         #endregion
 
         private INavigationService navigationService;
-        public InternAttendancePageViewModel(INavigationService navigationService) :
+        private IAppointmentRepository appointmentRepository;
+        private ICheckOutRepository checkOutRepository;
+        public InternAttendancePageViewModel(INavigationService navigationService, IAppointmentRepository appointmentRepository, ICheckOutRepository checkOutRepository) :
             base(navigationService)
         {
             this.navigationService = navigationService;
+            this.appointmentRepository = appointmentRepository;
+            this.checkOutRepository = checkOutRepository;
             Title = "Comparecimento";
+            StartTime = DateTime.Now;
         }
 
+        public async void GetAppointmentsAsync()
+        {
+            IsBusy = true;
+            AppointmentCollection = new ObservableCollection<Appointment>(await appointmentRepository.GetAllByInternIdStartTime(Settings.UserId, StartTime));
+
+            for (int i = 0; i < AppointmentCollection.Count(); i++)
+            {
+                CheckOut checkout = await checkOutRepository.GetByAppointmentIdDateAsync(AppointmentCollection.ElementAt(i).Id, StartTime);
+
+                if (checkout != null)
+                    AppointmentCollection.ElementAt(i).Confirmed = checkout.Confirmed;
+            }
+
+            IsBusy = false;
+        }
         public async void SaveAsync()
         {
-            await NavigationService.GoBackAsync();
+            IsBusy = true;
+
+            for (int i = 0; i < AppointmentCollection.Count(); i++)
+            {
+                CheckOut checkout = await checkOutRepository.GetByAppointmentIdDateAsync(AppointmentCollection.ElementAt(i).Id, StartTime);
+
+                if (checkout != null)
+                {
+                    checkout.Confirmed = AppointmentCollection.ElementAt(i).Confirmed;
+                    await checkOutRepository.AddOrUpdateAsync(checkout, checkout.Id);
+                }
+                else
+                {
+                    checkout = new CheckOut();
+                    checkout.Confirmed = true;
+                    checkout.Date = StartTime;
+                    checkout.AppointmentId = AppointmentCollection.ElementAt(i).Id;
+                    await checkOutRepository.AddAsync(checkout);
+                }
+            }
+            IsBusy = false;
+
+
+            GetAppointmentsAsync();
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -49,10 +100,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters["patients"] != null)
-            {
-                PatientCollection = parameters["patients"] as ObservableCollection<Patient>;
-            }
+            GetAppointmentsAsync();
         }
     }
 }

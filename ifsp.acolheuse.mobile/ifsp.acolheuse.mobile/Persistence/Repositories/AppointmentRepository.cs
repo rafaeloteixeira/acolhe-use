@@ -79,5 +79,33 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                 return null;
             }
         }
+
+        public async Task<IEnumerable<Appointment>> GetAllByInternIdStartTime(string internId, DateTime startTime)
+        {
+            if (!String.IsNullOrEmpty(internId))
+            {
+                var query = await CrossCloudFirestore.Current
+                           .Instance
+                           .GetCollection(collectionName)
+                           .GetDocumentsAsync();
+
+                var yourModels = query.ToObjects<Appointment>().Where(
+                x => x.InternsIdCollection != null &&
+                x.InternsIdCollection.Contains(internId) &&
+                ((x.StartTime.ToString("dd/MM/yyyy") == startTime.ToString("dd/MM/yyyy") && x.ConsultationType == Appointment._ORIENTACAO)
+                ||
+                (x.StartTime.DayOfWeek == startTime.DayOfWeek &&
+                (x.ConsultationType == Appointment._GRUPO || x.ConsultationType == Appointment._INDIVIDUAL)))
+                );
+
+              
+
+                return yourModels;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

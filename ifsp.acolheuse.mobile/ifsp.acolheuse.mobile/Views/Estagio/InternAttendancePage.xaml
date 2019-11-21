@@ -5,35 +5,60 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ifsp.acolheuse.mobile.Views.Estagio.InternAttendancePage"
              xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms">
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:local="clr-namespace:ifsp.acolheuse.mobile.Controls"
+             Title="Confirmar comparecimento">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Confirmar"
-                 Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="Salvar" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <StackLayout>
-            <SearchBar />
-            <listview:SfListView x:Name="lvIntern" ItemsSource="{Binding InternCollection}">
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="White"
+                     Padding="10,10,10,10"
+                     Spacing="5">
+            <StackLayout>
 
-                <listview:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Margin="8">
-                                <Grid x:Name="GridTasks">
+                <DatePicker x:Name="startDatePicker"
+                    Format="dd/MM/yyyy"
+                    Date="{Binding StartTime}"
+                    DateSelected="OnDateSelected" />
+
+                <listview:SfListView x:Name="lvCheckout" ItemSize="80" ItemsSource="{Binding AppointmentCollection}">
+                    <listview:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="8" >
+
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="12*" />
-                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.5*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Name}"  FontAttributes="Bold" Grid.Column="0" HorizontalOptions="FillAndExpand"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand">
-                                        <Switch IsToggled="{Binding Added}" />
-                                    </StackLayout>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding StartTime}"  FontAttributes="Bold" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0"/>
+                                    <Label Text="{Binding TypeName}"  HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"/>
+                                    <Label Text="{Binding Patient.Name}"  HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2"/>
+                                    <Switch IsToggled="{Binding Confirmed}" Grid.Column="1" Grid.RowSpan="3"/>
                                 </Grid>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </listview:SfListView.ItemTemplate>
-            </listview:SfListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </listview:SfListView.ItemTemplate>
+                </listview:SfListView>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#22000000"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy}">
+            <ActivityIndicator Color="ForestGreen"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,0.1,0.1"
+                           AbsoluteLayout.LayoutFlags="All"
+                           IsVisible="True"
+                           IsRunning="True"/>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
 </ContentPage>

@@ -19,6 +19,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="17.3.0.14" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="17.3.0.14" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
@@ -123,7 +124,7 @@
     <EmbeddedResource Update="Views\Responsible\RegisterResponsiblePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Responsible\DetailsschedulePage.xaml">
+    <EmbeddedResource Update="Views\Responsible\DetailsSchedulePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Responsible\InternResponsiblePage.xaml">
@@ -257,8 +258,11 @@
     <Compile Update="Views\Responsavel\AppointmentPage.xaml.cs">
       <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Responsavel\DetailsschedulePage.xaml.cs">
-      <DependentUpon>DetailsschedulePage.xaml</DependentUpon>
+    <Compile Update="Views\Responsavel\DetailsSchedulePage.xaml.cs">
+      <DependentUpon>DetailsSchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Responsavel\DetailsSchedulePage.xaml.cs">
+      <DependentUpon>DetailsSchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Responsavel\InternResponsiblePage.xaml.cs">
       <DependentUpon>InternResponsiblePage.xaml</DependentUpon>

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ifsp.acolheuse.mobile.ViewModels
 {
-    public class DetailsschedulePageViewModel : ViewModelBase
+    public class DetailsSchedulePageViewModel : ViewModelBase
     {
         #region properties
 
@@ -42,7 +42,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         #endregion
 
         private INavigationService navigationService;
-        public DetailsschedulePageViewModel(INavigationService navigationService) :
+        public DetailsSchedulePageViewModel(INavigationService navigationService) :
           base(navigationService)
         {
             this.navigationService = navigationService;
@@ -88,7 +88,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
                 }
                 else
                 {
-                    Patient = "";
+                    Patient = (parameters["patient"] as ListEntity).Name;
                 }
             }
             if (parameters["schedule"] != null)

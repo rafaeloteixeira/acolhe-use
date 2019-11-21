@@ -105,7 +105,7 @@ namespace ifsp.acolheuse.mobile.ViewModels
         }
         public async void SaveActionAsync()
         {
-            await actionRepository.AddOrUpdateAsync(Action, Action.Id);
+            //await actionRepository.AddOrUpdateAsync(Action, Action.Id);
             await navigationService.GoBackAsync();
         }
 
@@ -129,9 +129,11 @@ namespace ifsp.acolheuse.mobile.ViewModels
         private async void GetActionData(ActionModel action)
         {
             IsBusy = true;
+
             Action = action;
             NumberOfPatients = (await patientRepository.GetAllByActionIdAsync(Action.Id)).Count();
             Line = await lineRepository.GetAsync(Action.IdLine);
+
             IsBusy = false;
         }
     }

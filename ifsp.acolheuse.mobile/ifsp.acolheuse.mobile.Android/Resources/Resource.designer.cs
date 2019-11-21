@@ -2724,6 +2724,61 @@ namespace ifsp.acolheuse.mobile.Droid
 			global::Com.Syncfusion.Navigationdrawer.Resource.Styleable.SfNavigationDrawer_navIsOpen = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfNavigationDrawer_navIsOpen;
 			global::Com.Syncfusion.Navigationdrawer.Resource.Styleable.SfNavigationDrawer_navPosition = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfNavigationDrawer_navPosition;
 			global::Com.Syncfusion.Navigationdrawer.Resource.Styleable.SfNavigationDrawer_navTransition = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfNavigationDrawer_navTransition;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerBorderColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerBorderColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerColumnHeaderBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerColumnHeaderBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerColumnHeaderHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerColumnHeaderHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerColumnHeaderTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerColumnHeaderTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerColumnHeaderTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerColumnHeaderTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerEnableLooping = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerEnableLooping;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerFooterHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerFooterHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeaderBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeaderBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeaderHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeaderHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeaderText = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeaderText;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeaderTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeaderTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeaderTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeaderTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerIsOpen = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerIsOpen;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerItemHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerItemHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerMode = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerMode;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerSelectedItemTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerSelectedItemTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerSelectedItemTextcolor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerSelectedItemTextcolor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerSelectionBorderColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerSelectionBorderColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerShowColumnHeader = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerShowColumnHeader;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerShowFooter = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerShowFooter;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerShowHeader = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerShowHeader;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerUnselectedItemTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerUnselectedItemTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerUnselectedItemTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerUnselectedItemTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Attribute.pickerWidth = global::ifsp.acolheuse.mobile.Droid.Resource.Attribute.pickerWidth;
+			global::Com.Syncfusion.SfPicker.Resource.Id.Default = global::ifsp.acolheuse.mobile.Droid.Resource.Id.Default;
+			global::Com.Syncfusion.SfPicker.Resource.Id.Dialog = global::ifsp.acolheuse.mobile.Droid.Resource.Id.Dialog;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerBorderColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerBorderColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerColumnHeaderBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerColumnHeaderBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerColumnHeaderHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerColumnHeaderHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerColumnHeaderTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerColumnHeaderTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerColumnHeaderTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerColumnHeaderTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerEnableLooping = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerEnableLooping;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerFooterHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerFooterHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeaderBackgroundColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeaderBackgroundColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeaderHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeaderHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeaderText = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeaderText;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeaderTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeaderTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeaderTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeaderTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerIsOpen = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerIsOpen;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerItemHeight = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerItemHeight;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerMode = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerMode;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerSelectedItemTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerSelectedItemTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerSelectedItemTextcolor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerSelectedItemTextcolor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerSelectionBorderColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerSelectionBorderColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerShowColumnHeader = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerShowColumnHeader;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerShowFooter = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerShowFooter;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerShowHeader = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerShowHeader;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerUnselectedItemTextColor = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerUnselectedItemTextColor;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerUnselectedItemTextSize = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerUnselectedItemTextSize;
+			global::Com.Syncfusion.SfPicker.Resource.Styleable.SfPicker_pickerWidth = global::ifsp.acolheuse.mobile.Droid.Resource.Styleable.SfPicker_pickerWidth;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_close_icon = global::ifsp.acolheuse.mobile.Droid.Resource.Drawable.popup_forms_android_close_icon;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_shadow = global::ifsp.acolheuse.mobile.Droid.Resource.Drawable.popup_forms_android_shadow;
 			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_dark_theme_close_icon = global::ifsp.acolheuse.mobile.Droid.Resource.Drawable.popup_forms_dark_theme_close_icon;
@@ -5983,8 +6038,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0100c9
 			public const int checkboxStyle = 2130772169;
 			
-			// aapt resource value: 0x7f010206
-			public const int @checked = 2130772486;
+			// aapt resource value: 0x7f010220
+			public const int @checked = 2130772512;
 			
 			// aapt resource value: 0x7f010179
 			public const int checkedChip = 2130772345;
@@ -6184,8 +6239,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f010199
 			public const int cornerRadius = 2130772377;
 			
-			// aapt resource value: 0x7f010205
-			public const int cornerradius = 2130772485;
+			// aapt resource value: 0x7f01021f
+			public const int cornerradius = 2130772511;
 			
 			// aapt resource value: 0x7f0101c8
 			public const int counterEnabled = 2130772424;
@@ -6469,8 +6524,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f01002b
 			public const int isLightTheme = 2130772011;
 			
-			// aapt resource value: 0x7f010204
-			public const int isthreestate = 2130772484;
+			// aapt resource value: 0x7f01021e
+			public const int isthreestate = 2130772510;
 			
 			// aapt resource value: 0x7f01019d
 			public const int itemBackground = 2130772381;
@@ -6664,29 +6719,29 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f01004c
 			public const int multiChoiceItemLayout = 2130772044;
 			
-			// aapt resource value: 0x7f0101ff
-			public const int navDrawerFooterHeight = 2130772479;
+			// aapt resource value: 0x7f010219
+			public const int navDrawerFooterHeight = 2130772505;
 			
-			// aapt resource value: 0x7f0101fe
-			public const int navDrawerHeaderHeight = 2130772478;
+			// aapt resource value: 0x7f010218
+			public const int navDrawerHeaderHeight = 2130772504;
 			
-			// aapt resource value: 0x7f0101fc
-			public const int navDrawerHeight = 2130772476;
+			// aapt resource value: 0x7f010216
+			public const int navDrawerHeight = 2130772502;
 			
-			// aapt resource value: 0x7f0101fb
-			public const int navDrawerWidth = 2130772475;
+			// aapt resource value: 0x7f010215
+			public const int navDrawerWidth = 2130772501;
 			
-			// aapt resource value: 0x7f010200
-			public const int navEnableSwipeGesture = 2130772480;
+			// aapt resource value: 0x7f01021a
+			public const int navEnableSwipeGesture = 2130772506;
 			
-			// aapt resource value: 0x7f0101fd
-			public const int navIsOpen = 2130772477;
+			// aapt resource value: 0x7f010217
+			public const int navIsOpen = 2130772503;
 			
-			// aapt resource value: 0x7f010201
-			public const int navPosition = 2130772481;
+			// aapt resource value: 0x7f01021b
+			public const int navPosition = 2130772507;
 			
-			// aapt resource value: 0x7f010202
-			public const int navTransition = 2130772482;
+			// aapt resource value: 0x7f01021c
+			public const int navTransition = 2130772508;
 			
 			// aapt resource value: 0x7f01011b
 			public const int navigationContentDescription = 2130772251;
@@ -6741,6 +6796,84 @@ namespace ifsp.acolheuse.mobile.Droid
 			
 			// aapt resource value: 0x7f0101d0
 			public const int passwordToggleTintMode = 2130772432;
+			
+			// aapt resource value: 0x7f0101fc
+			public const int pickerBackgroundColor = 2130772476;
+			
+			// aapt resource value: 0x7f01020c
+			public const int pickerBorderColor = 2130772492;
+			
+			// aapt resource value: 0x7f010209
+			public const int pickerColumnHeaderBackgroundColor = 2130772489;
+			
+			// aapt resource value: 0x7f010205
+			public const int pickerColumnHeaderHeight = 2130772485;
+			
+			// aapt resource value: 0x7f010214
+			public const int pickerColumnHeaderTextColor = 2130772500;
+			
+			// aapt resource value: 0x7f010210
+			public const int pickerColumnHeaderTextSize = 2130772496;
+			
+			// aapt resource value: 0x7f010201
+			public const int pickerEnableLooping = 2130772481;
+			
+			// aapt resource value: 0x7f0101fe
+			public const int pickerFooterHeight = 2130772478;
+			
+			// aapt resource value: 0x7f010208
+			public const int pickerHeaderBackgroundColor = 2130772488;
+			
+			// aapt resource value: 0x7f0101fd
+			public const int pickerHeaderHeight = 2130772477;
+			
+			// aapt resource value: 0x7f01020d
+			public const int pickerHeaderText = 2130772493;
+			
+			// aapt resource value: 0x7f010213
+			public const int pickerHeaderTextColor = 2130772499;
+			
+			// aapt resource value: 0x7f01020f
+			public const int pickerHeaderTextSize = 2130772495;
+			
+			// aapt resource value: 0x7f0101ff
+			public const int pickerHeight = 2130772479;
+			
+			// aapt resource value: 0x7f010200
+			public const int pickerIsOpen = 2130772480;
+			
+			// aapt resource value: 0x7f010206
+			public const int pickerItemHeight = 2130772486;
+			
+			// aapt resource value: 0x7f0101fb
+			public const int pickerMode = 2130772475;
+			
+			// aapt resource value: 0x7f010212
+			public const int pickerSelectedItemTextSize = 2130772498;
+			
+			// aapt resource value: 0x7f010207
+			public const int pickerSelectedItemTextcolor = 2130772487;
+			
+			// aapt resource value: 0x7f01020b
+			public const int pickerSelectionBorderColor = 2130772491;
+			
+			// aapt resource value: 0x7f010204
+			public const int pickerShowColumnHeader = 2130772484;
+			
+			// aapt resource value: 0x7f010203
+			public const int pickerShowFooter = 2130772483;
+			
+			// aapt resource value: 0x7f010202
+			public const int pickerShowHeader = 2130772482;
+			
+			// aapt resource value: 0x7f01020a
+			public const int pickerUnselectedItemTextColor = 2130772490;
+			
+			// aapt resource value: 0x7f010211
+			public const int pickerUnselectedItemTextSize = 2130772497;
+			
+			// aapt resource value: 0x7f01020e
+			public const int pickerWidth = 2130772494;
 			
 			// aapt resource value: 0x7f01009d
 			public const int popupMenuStyle = 2130772125;
@@ -6823,41 +6956,41 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0100d0
 			public const int seekBarStyle = 2130772176;
 			
-			// aapt resource value: 0x7f010208
-			public const int segmentBackColor = 2130772488;
+			// aapt resource value: 0x7f010222
+			public const int segmentBackColor = 2130772514;
 			
-			// aapt resource value: 0x7f010209
-			public const int segmentBorderColor = 2130772489;
+			// aapt resource value: 0x7f010223
+			public const int segmentBorderColor = 2130772515;
 			
-			// aapt resource value: 0x7f01020a
-			public const int segmentBorderThickness = 2130772490;
+			// aapt resource value: 0x7f010224
+			public const int segmentBorderThickness = 2130772516;
 			
-			// aapt resource value: 0x7f01020b
-			public const int segmentColor = 2130772491;
+			// aapt resource value: 0x7f010225
+			public const int segmentColor = 2130772517;
 			
-			// aapt resource value: 0x7f010210
-			public const int segmentCornerRadius = 2130772496;
+			// aapt resource value: 0x7f01022a
+			public const int segmentCornerRadius = 2130772522;
 			
-			// aapt resource value: 0x7f010212
-			public const int segmentDisplayMode = 2130772498;
+			// aapt resource value: 0x7f01022c
+			public const int segmentDisplayMode = 2130772524;
 			
-			// aapt resource value: 0x7f010211
-			public const int segmentPosition = 2130772497;
+			// aapt resource value: 0x7f01022b
+			public const int segmentPosition = 2130772523;
 			
-			// aapt resource value: 0x7f010207
-			public const int segmentSelectedIndex = 2130772487;
+			// aapt resource value: 0x7f010221
+			public const int segmentSelectedIndex = 2130772513;
 			
-			// aapt resource value: 0x7f01020f
-			public const int segmentStrokeThickness = 2130772495;
+			// aapt resource value: 0x7f010229
+			public const int segmentStrokeThickness = 2130772521;
 			
-			// aapt resource value: 0x7f01020d
-			public const int segmentedHeight = 2130772493;
+			// aapt resource value: 0x7f010227
+			public const int segmentedHeight = 2130772519;
 			
-			// aapt resource value: 0x7f01020c
-			public const int segmentedPadding = 2130772492;
+			// aapt resource value: 0x7f010226
+			public const int segmentedPadding = 2130772518;
 			
-			// aapt resource value: 0x7f01020e
-			public const int segmentedWidth = 2130772494;
+			// aapt resource value: 0x7f010228
+			public const int segmentedWidth = 2130772520;
 			
 			// aapt resource value: 0x7f010095
 			public const int selectableItemBackground = 2130772117;
@@ -6925,8 +7058,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f010148
 			public const int state_collapsible = 2130772296;
 			
-			// aapt resource value: 0x7f010203
-			public const int state_indeterminate = 2130772483;
+			// aapt resource value: 0x7f01021d
+			public const int state_indeterminate = 2130772509;
 			
 			// aapt resource value: 0x7f01014a
 			public const int state_liftable = 2130772298;
@@ -9642,35 +9775,41 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0041
 			public const int ALT = 2131624001;
 			
-			// aapt resource value: 0x7f0e0116
-			public const int BorderView = 2131624214;
+			// aapt resource value: 0x7f0e0118
+			public const int BorderView = 2131624216;
 			
-			// aapt resource value: 0x7f0e0074
-			public const int Bottom = 2131624052;
+			// aapt resource value: 0x7f0e0076
+			public const int Bottom = 2131624054;
 			
 			// aapt resource value: 0x7f0e0042
 			public const int CTRL = 2131624002;
 			
+			// aapt resource value: 0x7f0e0074
+			public const int Default = 2131624052;
+			
+			// aapt resource value: 0x7f0e0075
+			public const int Dialog = 2131624053;
+			
 			// aapt resource value: 0x7f0e0043
 			public const int FUNCTION = 2131624003;
 			
-			// aapt resource value: 0x7f0e00bb
-			public const int Itemname = 2131624123;
+			// aapt resource value: 0x7f0e00bd
+			public const int Itemname = 2131624125;
 			
-			// aapt resource value: 0x7f0e0075
-			public const int Left = 2131624053;
+			// aapt resource value: 0x7f0e0077
+			public const int Left = 2131624055;
 			
 			// aapt resource value: 0x7f0e0044
 			public const int META = 2131624004;
 			
+			// aapt resource value: 0x7f0e007a
+			public const int Push = 2131624058;
+			
+			// aapt resource value: 0x7f0e007b
+			public const int Reveal = 2131624059;
+			
 			// aapt resource value: 0x7f0e0078
-			public const int Push = 2131624056;
-			
-			// aapt resource value: 0x7f0e0079
-			public const int Reveal = 2131624057;
-			
-			// aapt resource value: 0x7f0e0076
-			public const int Right = 2131624054;
+			public const int Right = 2131624056;
 			
 			// aapt resource value: 0x7f0e0045
 			public const int SHIFT = 2131624005;
@@ -9678,47 +9817,47 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0046
 			public const int SYM = 2131624006;
 			
-			// aapt resource value: 0x7f0e007a
-			public const int SlideOnTop = 2131624058;
+			// aapt resource value: 0x7f0e007c
+			public const int SlideOnTop = 2131624060;
 			
-			// aapt resource value: 0x7f0e0077
-			public const int Top = 2131624055;
+			// aapt resource value: 0x7f0e0079
+			public const int Top = 2131624057;
 			
-			// aapt resource value: 0x7f0e00fc
-			public const int action0 = 2131624188;
+			// aapt resource value: 0x7f0e00fe
+			public const int action0 = 2131624190;
 			
-			// aapt resource value: 0x7f0e00a4
-			public const int action_bar = 2131624100;
+			// aapt resource value: 0x7f0e00a6
+			public const int action_bar = 2131624102;
 			
 			// aapt resource value: 0x7f0e0001
 			public const int action_bar_activity_content = 2131623937;
 			
-			// aapt resource value: 0x7f0e00a3
-			public const int action_bar_container = 2131624099;
+			// aapt resource value: 0x7f0e00a5
+			public const int action_bar_container = 2131624101;
 			
-			// aapt resource value: 0x7f0e009f
-			public const int action_bar_root = 2131624095;
+			// aapt resource value: 0x7f0e00a1
+			public const int action_bar_root = 2131624097;
 			
 			// aapt resource value: 0x7f0e0002
 			public const int action_bar_spinner = 2131623938;
 			
-			// aapt resource value: 0x7f0e0082
-			public const int action_bar_subtitle = 2131624066;
+			// aapt resource value: 0x7f0e0084
+			public const int action_bar_subtitle = 2131624068;
 			
-			// aapt resource value: 0x7f0e0081
-			public const int action_bar_title = 2131624065;
+			// aapt resource value: 0x7f0e0083
+			public const int action_bar_title = 2131624067;
 			
-			// aapt resource value: 0x7f0e00f9
-			public const int action_container = 2131624185;
+			// aapt resource value: 0x7f0e00fb
+			public const int action_container = 2131624187;
 			
-			// aapt resource value: 0x7f0e00a5
-			public const int action_context_bar = 2131624101;
+			// aapt resource value: 0x7f0e00a7
+			public const int action_context_bar = 2131624103;
 			
-			// aapt resource value: 0x7f0e0100
-			public const int action_divider = 2131624192;
+			// aapt resource value: 0x7f0e0102
+			public const int action_divider = 2131624194;
 			
-			// aapt resource value: 0x7f0e00fa
-			public const int action_image = 2131624186;
+			// aapt resource value: 0x7f0e00fc
+			public const int action_image = 2131624188;
 			
 			// aapt resource value: 0x7f0e0003
 			public const int action_menu_divider = 2131623939;
@@ -9726,23 +9865,23 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0004
 			public const int action_menu_presenter = 2131623940;
 			
-			// aapt resource value: 0x7f0e00a1
-			public const int action_mode_bar = 2131624097;
+			// aapt resource value: 0x7f0e00a3
+			public const int action_mode_bar = 2131624099;
 			
-			// aapt resource value: 0x7f0e00a0
-			public const int action_mode_bar_stub = 2131624096;
+			// aapt resource value: 0x7f0e00a2
+			public const int action_mode_bar_stub = 2131624098;
 			
-			// aapt resource value: 0x7f0e0083
-			public const int action_mode_close_button = 2131624067;
+			// aapt resource value: 0x7f0e0085
+			public const int action_mode_close_button = 2131624069;
 			
-			// aapt resource value: 0x7f0e00fb
-			public const int action_text = 2131624187;
+			// aapt resource value: 0x7f0e00fd
+			public const int action_text = 2131624189;
 			
-			// aapt resource value: 0x7f0e0109
-			public const int actions = 2131624201;
+			// aapt resource value: 0x7f0e010b
+			public const int actions = 2131624203;
 			
-			// aapt resource value: 0x7f0e0084
-			public const int activity_chooser_view_content = 2131624068;
+			// aapt resource value: 0x7f0e0086
+			public const int activity_chooser_view_content = 2131624070;
 			
 			// aapt resource value: 0x7f0e0036
 			public const int add = 2131623990;
@@ -9753,8 +9892,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0025
 			public const int adjust_width = 2131623973;
 			
-			// aapt resource value: 0x7f0e0096
-			public const int alertTitle = 2131624086;
+			// aapt resource value: 0x7f0e0098
+			public const int alertTitle = 2131624088;
 			
 			// aapt resource value: 0x7f0e006b
 			public const int all = 2131624043;
@@ -9774,38 +9913,38 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e006d
 			public const int blocking = 2131624045;
 			
-			// aapt resource value: 0x7f0e007e
-			public const int border = 2131624062;
+			// aapt resource value: 0x7f0e0080
+			public const int border = 2131624064;
 			
 			// aapt resource value: 0x7f0e004c
 			public const int bottom = 2131624012;
 			
-			// aapt resource value: 0x7f0e00b4
-			public const int bottomtab_navarea = 2131624116;
-			
-			// aapt resource value: 0x7f0e00b5
-			public const int bottomtab_tabbar = 2131624117;
+			// aapt resource value: 0x7f0e00b6
+			public const int bottomtab_navarea = 2131624118;
 			
 			// aapt resource value: 0x7f0e00b7
-			public const int browser_actions_header_text = 2131624119;
+			public const int bottomtab_tabbar = 2131624119;
 			
 			// aapt resource value: 0x7f0e00b9
-			public const int browser_actions_menu_item_icon = 2131624121;
+			public const int browser_actions_header_text = 2131624121;
+			
+			// aapt resource value: 0x7f0e00bb
+			public const int browser_actions_menu_item_icon = 2131624123;
+			
+			// aapt resource value: 0x7f0e00bc
+			public const int browser_actions_menu_item_text = 2131624124;
 			
 			// aapt resource value: 0x7f0e00ba
-			public const int browser_actions_menu_item_text = 2131624122;
+			public const int browser_actions_menu_items = 2131624122;
 			
 			// aapt resource value: 0x7f0e00b8
-			public const int browser_actions_menu_items = 2131624120;
+			public const int browser_actions_menu_view = 2131624120;
 			
-			// aapt resource value: 0x7f0e00b6
-			public const int browser_actions_menu_view = 2131624118;
+			// aapt resource value: 0x7f0e008b
+			public const int buttonPanel = 2131624075;
 			
-			// aapt resource value: 0x7f0e0089
-			public const int buttonPanel = 2131624073;
-			
-			// aapt resource value: 0x7f0e00fd
-			public const int cancel_action = 2131624189;
+			// aapt resource value: 0x7f0e00ff
+			public const int cancel_action = 2131624191;
 			
 			// aapt resource value: 0x7f0e0054
 			public const int center = 2131624020;
@@ -9816,14 +9955,14 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0059
 			public const int center_vertical = 2131624025;
 			
-			// aapt resource value: 0x7f0e009d
-			public const int checkbox = 2131624093;
+			// aapt resource value: 0x7f0e009f
+			public const int checkbox = 2131624095;
 			
-			// aapt resource value: 0x7f0e007b
-			public const int @checked = 2131624059;
+			// aapt resource value: 0x7f0e007d
+			public const int @checked = 2131624061;
 			
-			// aapt resource value: 0x7f0e0105
-			public const int chronometer = 2131624197;
+			// aapt resource value: 0x7f0e0107
+			public const int chronometer = 2131624199;
 			
 			// aapt resource value: 0x7f0e0068
 			public const int clip_horizontal = 2131624040;
@@ -9834,23 +9973,23 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0048
 			public const int collapseActionView = 2131624008;
 			
-			// aapt resource value: 0x7f0e00be
-			public const int container = 2131624126;
+			// aapt resource value: 0x7f0e00c0
+			public const int container = 2131624128;
 			
-			// aapt resource value: 0x7f0e0099
-			public const int content = 2131624089;
+			// aapt resource value: 0x7f0e009b
+			public const int content = 2131624091;
 			
-			// aapt resource value: 0x7f0e008c
-			public const int contentPanel = 2131624076;
+			// aapt resource value: 0x7f0e008e
+			public const int contentPanel = 2131624078;
 			
-			// aapt resource value: 0x7f0e00bf
-			public const int coordinator = 2131624127;
+			// aapt resource value: 0x7f0e00c1
+			public const int coordinator = 2131624129;
 			
-			// aapt resource value: 0x7f0e0093
-			public const int custom = 2131624083;
+			// aapt resource value: 0x7f0e0095
+			public const int custom = 2131624085;
 			
-			// aapt resource value: 0x7f0e0092
-			public const int customPanel = 2131624082;
+			// aapt resource value: 0x7f0e0094
+			public const int customPanel = 2131624084;
 			
 			// aapt resource value: 0x7f0e002b
 			public const int dark = 2131623979;
@@ -9858,38 +9997,38 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0070
 			public const int dayView = 2131624048;
 			
-			// aapt resource value: 0x7f0e00a2
-			public const int decor_content_parent = 2131624098;
+			// aapt resource value: 0x7f0e00a4
+			public const int decor_content_parent = 2131624100;
 			
-			// aapt resource value: 0x7f0e0086
-			public const int default_activity_button = 2131624070;
-			
-			// aapt resource value: 0x7f0e00c1
-			public const int design_bottom_sheet = 2131624129;
-			
-			// aapt resource value: 0x7f0e00c6
-			public const int design_menu_item_action_area = 2131624134;
-			
-			// aapt resource value: 0x7f0e00c5
-			public const int design_menu_item_action_area_stub = 2131624133;
-			
-			// aapt resource value: 0x7f0e00c4
-			public const int design_menu_item_text = 2131624132;
+			// aapt resource value: 0x7f0e0088
+			public const int default_activity_button = 2131624072;
 			
 			// aapt resource value: 0x7f0e00c3
-			public const int design_navigation_view = 2131624131;
+			public const int design_bottom_sheet = 2131624131;
+			
+			// aapt resource value: 0x7f0e00c8
+			public const int design_menu_item_action_area = 2131624136;
+			
+			// aapt resource value: 0x7f0e00c7
+			public const int design_menu_item_action_area_stub = 2131624135;
+			
+			// aapt resource value: 0x7f0e00c6
+			public const int design_menu_item_text = 2131624134;
+			
+			// aapt resource value: 0x7f0e00c5
+			public const int design_navigation_view = 2131624133;
 			
 			// aapt resource value: 0x7f0e0030
 			public const int disableHome = 2131623984;
 			
-			// aapt resource value: 0x7f0e00a6
-			public const int edit_query = 2131624102;
+			// aapt resource value: 0x7f0e00a8
+			public const int edit_query = 2131624104;
 			
 			// aapt resource value: 0x7f0e003f
 			public const int end = 2131623999;
 			
-			// aapt resource value: 0x7f0e010b
-			public const int end_padder = 2131624203;
+			// aapt resource value: 0x7f0e010d
+			public const int end_padder = 2131624205;
 			
 			// aapt resource value: 0x7f0e004e
 			public const int enterAlways = 2131624014;
@@ -9900,11 +10039,11 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0050
 			public const int exitUntilCollapsed = 2131624016;
 			
-			// aapt resource value: 0x7f0e0085
-			public const int expand_activities_button = 2131624069;
+			// aapt resource value: 0x7f0e0087
+			public const int expand_activities_button = 2131624071;
 			
-			// aapt resource value: 0x7f0e009c
-			public const int expanded_menu = 2131624092;
+			// aapt resource value: 0x7f0e009e
+			public const int expanded_menu = 2131624094;
 			
 			// aapt resource value: 0x7f0e0065
 			public const int fill = 2131624037;
@@ -9921,11 +10060,11 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0063
 			public const int @fixed = 2131624035;
 			
-			// aapt resource value: 0x7f0e00c8
-			public const int flyoutcontent_appbar = 2131624136;
+			// aapt resource value: 0x7f0e00ca
+			public const int flyoutcontent_appbar = 2131624138;
 			
-			// aapt resource value: 0x7f0e00c9
-			public const int flyoutcontent_recycler = 2131624137;
+			// aapt resource value: 0x7f0e00cb
+			public const int flyoutcontent_recycler = 2131624139;
 			
 			// aapt resource value: 0x7f0e006e
 			public const int forever = 2131624046;
@@ -9933,8 +10072,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e000a
 			public const int ghost_view = 2131623946;
 			
-			// aapt resource value: 0x7f0e0098
-			public const int group_divider = 2131624088;
+			// aapt resource value: 0x7f0e009a
+			public const int group_divider = 2131624090;
 			
 			// aapt resource value: 0x7f0e0005
 			public const int home = 2131623941;
@@ -9942,11 +10081,11 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0031
 			public const int homeAsUp = 2131623985;
 			
-			// aapt resource value: 0x7f0e0088
-			public const int icon = 2131624072;
+			// aapt resource value: 0x7f0e008a
+			public const int icon = 2131624074;
 			
-			// aapt resource value: 0x7f0e010a
-			public const int icon_group = 2131624202;
+			// aapt resource value: 0x7f0e010c
+			public const int icon_group = 2131624204;
 			
 			// aapt resource value: 0x7f0e0027
 			public const int icon_only = 2131623975;
@@ -9954,17 +10093,17 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0049
 			public const int ifRoom = 2131624009;
 			
-			// aapt resource value: 0x7f0e007f
-			public const int image = 2131624063;
+			// aapt resource value: 0x7f0e0081
+			public const int image = 2131624065;
 			
-			// aapt resource value: 0x7f0e0080
-			public const int imagewithtext = 2131624064;
+			// aapt resource value: 0x7f0e0082
+			public const int imagewithtext = 2131624066;
 			
-			// aapt resource value: 0x7f0e007c
-			public const int indeterminate = 2131624060;
+			// aapt resource value: 0x7f0e007e
+			public const int indeterminate = 2131624062;
 			
-			// aapt resource value: 0x7f0e0106
-			public const int info = 2131624198;
+			// aapt resource value: 0x7f0e0108
+			public const int info = 2131624200;
 			
 			// aapt resource value: 0x7f0e006f
 			public const int italic = 2131624047;
@@ -9975,8 +10114,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0055
 			public const int labeled = 2131624021;
 			
-			// aapt resource value: 0x7f0e00bd
-			public const int largeLabel = 2131624125;
+			// aapt resource value: 0x7f0e00bf
+			public const int largeLabel = 2131624127;
 			
 			// aapt resource value: 0x7f0e005b
 			public const int left = 2131624027;
@@ -9993,29 +10132,29 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e002d
 			public const int listMode = 2131623981;
 			
-			// aapt resource value: 0x7f0e0087
-			public const int list_item = 2131624071;
-			
-			// aapt resource value: 0x7f0e010c
-			public const int main_appbar = 2131624204;
+			// aapt resource value: 0x7f0e0089
+			public const int list_item = 2131624073;
 			
 			// aapt resource value: 0x7f0e010e
-			public const int main_tablayout = 2131624206;
+			public const int main_appbar = 2131624206;
 			
-			// aapt resource value: 0x7f0e010d
-			public const int main_toolbar = 2131624205;
+			// aapt resource value: 0x7f0e0110
+			public const int main_tablayout = 2131624208;
 			
 			// aapt resource value: 0x7f0e010f
-			public const int main_viewpager = 2131624207;
+			public const int main_toolbar = 2131624207;
 			
-			// aapt resource value: 0x7f0e0115
-			public const int masked = 2131624213;
+			// aapt resource value: 0x7f0e0111
+			public const int main_viewpager = 2131624209;
 			
-			// aapt resource value: 0x7f0e00ff
-			public const int media_actions = 2131624191;
+			// aapt resource value: 0x7f0e0117
+			public const int masked = 2131624215;
 			
-			// aapt resource value: 0x7f0e00b3
-			public const int message = 2131624115;
+			// aapt resource value: 0x7f0e0101
+			public const int media_actions = 2131624193;
+			
+			// aapt resource value: 0x7f0e00b5
+			public const int message = 2131624117;
 			
 			// aapt resource value: 0x7f0e0040
 			public const int middle = 2131624000;
@@ -10026,143 +10165,143 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0071
 			public const int monthView = 2131624049;
 			
-			// aapt resource value: 0x7f0e00e6
-			public const int mr_art = 2131624166;
-			
-			// aapt resource value: 0x7f0e00d7
-			public const int mr_cast_checkbox = 2131624151;
-			
-			// aapt resource value: 0x7f0e00d0
-			public const int mr_cast_close_button = 2131624144;
-			
-			// aapt resource value: 0x7f0e00cb
-			public const int mr_cast_group_icon = 2131624139;
-			
-			// aapt resource value: 0x7f0e00cc
-			public const int mr_cast_group_name = 2131624140;
-			
-			// aapt resource value: 0x7f0e00ca
-			public const int mr_cast_list = 2131624138;
-			
-			// aapt resource value: 0x7f0e00cf
-			public const int mr_cast_meta = 2131624143;
-			
-			// aapt resource value: 0x7f0e00d1
-			public const int mr_cast_meta_art = 2131624145;
-			
-			// aapt resource value: 0x7f0e00d3
-			public const int mr_cast_meta_subtitle = 2131624147;
-			
-			// aapt resource value: 0x7f0e00d2
-			public const int mr_cast_meta_title = 2131624146;
-			
-			// aapt resource value: 0x7f0e00d5
-			public const int mr_cast_route_icon = 2131624149;
-			
-			// aapt resource value: 0x7f0e00d6
-			public const int mr_cast_route_name = 2131624150;
-			
-			// aapt resource value: 0x7f0e00d4
-			public const int mr_cast_stop_button = 2131624148;
-			
-			// aapt resource value: 0x7f0e00d8
-			public const int mr_cast_volume_layout = 2131624152;
+			// aapt resource value: 0x7f0e00e8
+			public const int mr_art = 2131624168;
 			
 			// aapt resource value: 0x7f0e00d9
-			public const int mr_cast_volume_slider = 2131624153;
+			public const int mr_cast_checkbox = 2131624153;
 			
-			// aapt resource value: 0x7f0e00db
-			public const int mr_chooser_list = 2131624155;
-			
-			// aapt resource value: 0x7f0e00de
-			public const int mr_chooser_route_desc = 2131624158;
-			
-			// aapt resource value: 0x7f0e00dc
-			public const int mr_chooser_route_icon = 2131624156;
-			
-			// aapt resource value: 0x7f0e00dd
-			public const int mr_chooser_route_name = 2131624157;
-			
-			// aapt resource value: 0x7f0e00da
-			public const int mr_chooser_title = 2131624154;
-			
-			// aapt resource value: 0x7f0e00e3
-			public const int mr_close = 2131624163;
-			
-			// aapt resource value: 0x7f0e00e9
-			public const int mr_control_divider = 2131624169;
-			
-			// aapt resource value: 0x7f0e00f4
-			public const int mr_control_playback_ctrl = 2131624180;
-			
-			// aapt resource value: 0x7f0e00f7
-			public const int mr_control_subtitle = 2131624183;
-			
-			// aapt resource value: 0x7f0e00f6
-			public const int mr_control_title = 2131624182;
-			
-			// aapt resource value: 0x7f0e00f5
-			public const int mr_control_title_container = 2131624181;
-			
-			// aapt resource value: 0x7f0e00e4
-			public const int mr_custom_control = 2131624164;
-			
-			// aapt resource value: 0x7f0e00e5
-			public const int mr_default_control = 2131624165;
-			
-			// aapt resource value: 0x7f0e00e0
-			public const int mr_dialog_area = 2131624160;
-			
-			// aapt resource value: 0x7f0e00ef
-			public const int mr_dialog_header_name = 2131624175;
-			
-			// aapt resource value: 0x7f0e00df
-			public const int mr_expandable_area = 2131624159;
-			
-			// aapt resource value: 0x7f0e00f8
-			public const int mr_group_expand_collapse = 2131624184;
+			// aapt resource value: 0x7f0e00d2
+			public const int mr_cast_close_button = 2131624146;
 			
 			// aapt resource value: 0x7f0e00cd
-			public const int mr_group_volume_route_name = 2131624141;
+			public const int mr_cast_group_icon = 2131624141;
 			
 			// aapt resource value: 0x7f0e00ce
-			public const int mr_group_volume_slider = 2131624142;
+			public const int mr_cast_group_name = 2131624142;
 			
-			// aapt resource value: 0x7f0e00e7
-			public const int mr_media_main_control = 2131624167;
+			// aapt resource value: 0x7f0e00cc
+			public const int mr_cast_list = 2131624140;
 			
-			// aapt resource value: 0x7f0e00e2
-			public const int mr_name = 2131624162;
+			// aapt resource value: 0x7f0e00d1
+			public const int mr_cast_meta = 2131624145;
 			
-			// aapt resource value: 0x7f0e00f0
-			public const int mr_picker_close_button = 2131624176;
+			// aapt resource value: 0x7f0e00d3
+			public const int mr_cast_meta_art = 2131624147;
 			
-			// aapt resource value: 0x7f0e00f1
-			public const int mr_picker_list = 2131624177;
+			// aapt resource value: 0x7f0e00d5
+			public const int mr_cast_meta_subtitle = 2131624149;
 			
-			// aapt resource value: 0x7f0e00f2
-			public const int mr_picker_route_icon = 2131624178;
+			// aapt resource value: 0x7f0e00d4
+			public const int mr_cast_meta_title = 2131624148;
 			
-			// aapt resource value: 0x7f0e00f3
-			public const int mr_picker_route_name = 2131624179;
+			// aapt resource value: 0x7f0e00d7
+			public const int mr_cast_route_icon = 2131624151;
 			
-			// aapt resource value: 0x7f0e00e8
-			public const int mr_playback_control = 2131624168;
+			// aapt resource value: 0x7f0e00d8
+			public const int mr_cast_route_name = 2131624152;
 			
-			// aapt resource value: 0x7f0e00e1
-			public const int mr_title_bar = 2131624161;
+			// aapt resource value: 0x7f0e00d6
+			public const int mr_cast_stop_button = 2131624150;
 			
-			// aapt resource value: 0x7f0e00ea
-			public const int mr_volume_control = 2131624170;
+			// aapt resource value: 0x7f0e00da
+			public const int mr_cast_volume_layout = 2131624154;
+			
+			// aapt resource value: 0x7f0e00db
+			public const int mr_cast_volume_slider = 2131624155;
+			
+			// aapt resource value: 0x7f0e00dd
+			public const int mr_chooser_list = 2131624157;
+			
+			// aapt resource value: 0x7f0e00e0
+			public const int mr_chooser_route_desc = 2131624160;
+			
+			// aapt resource value: 0x7f0e00de
+			public const int mr_chooser_route_icon = 2131624158;
+			
+			// aapt resource value: 0x7f0e00df
+			public const int mr_chooser_route_name = 2131624159;
+			
+			// aapt resource value: 0x7f0e00dc
+			public const int mr_chooser_title = 2131624156;
+			
+			// aapt resource value: 0x7f0e00e5
+			public const int mr_close = 2131624165;
 			
 			// aapt resource value: 0x7f0e00eb
-			public const int mr_volume_group_list = 2131624171;
+			public const int mr_control_divider = 2131624171;
+			
+			// aapt resource value: 0x7f0e00f6
+			public const int mr_control_playback_ctrl = 2131624182;
+			
+			// aapt resource value: 0x7f0e00f9
+			public const int mr_control_subtitle = 2131624185;
+			
+			// aapt resource value: 0x7f0e00f8
+			public const int mr_control_title = 2131624184;
+			
+			// aapt resource value: 0x7f0e00f7
+			public const int mr_control_title_container = 2131624183;
+			
+			// aapt resource value: 0x7f0e00e6
+			public const int mr_custom_control = 2131624166;
+			
+			// aapt resource value: 0x7f0e00e7
+			public const int mr_default_control = 2131624167;
+			
+			// aapt resource value: 0x7f0e00e2
+			public const int mr_dialog_area = 2131624162;
+			
+			// aapt resource value: 0x7f0e00f1
+			public const int mr_dialog_header_name = 2131624177;
+			
+			// aapt resource value: 0x7f0e00e1
+			public const int mr_expandable_area = 2131624161;
+			
+			// aapt resource value: 0x7f0e00fa
+			public const int mr_group_expand_collapse = 2131624186;
+			
+			// aapt resource value: 0x7f0e00cf
+			public const int mr_group_volume_route_name = 2131624143;
+			
+			// aapt resource value: 0x7f0e00d0
+			public const int mr_group_volume_slider = 2131624144;
+			
+			// aapt resource value: 0x7f0e00e9
+			public const int mr_media_main_control = 2131624169;
+			
+			// aapt resource value: 0x7f0e00e4
+			public const int mr_name = 2131624164;
+			
+			// aapt resource value: 0x7f0e00f2
+			public const int mr_picker_close_button = 2131624178;
+			
+			// aapt resource value: 0x7f0e00f3
+			public const int mr_picker_list = 2131624179;
+			
+			// aapt resource value: 0x7f0e00f4
+			public const int mr_picker_route_icon = 2131624180;
+			
+			// aapt resource value: 0x7f0e00f5
+			public const int mr_picker_route_name = 2131624181;
+			
+			// aapt resource value: 0x7f0e00ea
+			public const int mr_playback_control = 2131624170;
+			
+			// aapt resource value: 0x7f0e00e3
+			public const int mr_title_bar = 2131624163;
+			
+			// aapt resource value: 0x7f0e00ec
+			public const int mr_volume_control = 2131624172;
 			
 			// aapt resource value: 0x7f0e00ed
-			public const int mr_volume_item_icon = 2131624173;
+			public const int mr_volume_group_list = 2131624173;
 			
-			// aapt resource value: 0x7f0e00ee
-			public const int mr_volume_slider = 2131624174;
+			// aapt resource value: 0x7f0e00ef
+			public const int mr_volume_item_icon = 2131624175;
+			
+			// aapt resource value: 0x7f0e00f0
+			public const int mr_volume_slider = 2131624176;
 			
 			// aapt resource value: 0x7f0e0014
 			public const int mtrl_child_content_container = 2131623956;
@@ -10173,8 +10312,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0037
 			public const int multiply = 2131623991;
 			
-			// aapt resource value: 0x7f0e00c2
-			public const int navigation_header_container = 2131624130;
+			// aapt resource value: 0x7f0e00c4
+			public const int navigation_header_container = 2131624132;
 			
 			// aapt resource value: 0x7f0e004a
 			public const int never = 2131624010;
@@ -10185,14 +10324,14 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e002e
 			public const int normal = 2131623982;
 			
-			// aapt resource value: 0x7f0e0108
-			public const int notification_background = 2131624200;
+			// aapt resource value: 0x7f0e010a
+			public const int notification_background = 2131624202;
 			
-			// aapt resource value: 0x7f0e0102
-			public const int notification_main_column = 2131624194;
+			// aapt resource value: 0x7f0e0104
+			public const int notification_main_column = 2131624196;
 			
-			// aapt resource value: 0x7f0e0101
-			public const int notification_main_column_container = 2131624193;
+			// aapt resource value: 0x7f0e0103
+			public const int notification_main_column_container = 2131624195;
 			
 			// aapt resource value: 0x7f0e0067
 			public const int outline = 2131624039;
@@ -10200,8 +10339,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e005e
 			public const int parallax = 2131624030;
 			
-			// aapt resource value: 0x7f0e008b
-			public const int parentPanel = 2131624075;
+			// aapt resource value: 0x7f0e008d
+			public const int parentPanel = 2131624077;
 			
 			// aapt resource value: 0x7f0e000b
 			public const int parent_matrix = 2131623947;
@@ -10215,17 +10354,17 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0007
 			public const int progress_horizontal = 2131623943;
 			
-			// aapt resource value: 0x7f0e009e
-			public const int radio = 2131624094;
+			// aapt resource value: 0x7f0e00a0
+			public const int radio = 2131624096;
 			
 			// aapt resource value: 0x7f0e005c
 			public const int right = 2131624028;
 			
-			// aapt resource value: 0x7f0e0107
-			public const int right_icon = 2131624199;
+			// aapt resource value: 0x7f0e0109
+			public const int right_icon = 2131624201;
 			
-			// aapt resource value: 0x7f0e0103
-			public const int right_side = 2131624195;
+			// aapt resource value: 0x7f0e0105
+			public const int right_side = 2131624197;
 			
 			// aapt resource value: 0x7f0e000c
 			public const int save_image_matrix = 2131623948;
@@ -10242,62 +10381,62 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0051
 			public const int scroll = 2131624017;
 			
-			// aapt resource value: 0x7f0e0091
-			public const int scrollIndicatorDown = 2131624081;
+			// aapt resource value: 0x7f0e0093
+			public const int scrollIndicatorDown = 2131624083;
 			
-			// aapt resource value: 0x7f0e008d
-			public const int scrollIndicatorUp = 2131624077;
+			// aapt resource value: 0x7f0e008f
+			public const int scrollIndicatorUp = 2131624079;
 			
-			// aapt resource value: 0x7f0e008e
-			public const int scrollView = 2131624078;
+			// aapt resource value: 0x7f0e0090
+			public const int scrollView = 2131624080;
 			
 			// aapt resource value: 0x7f0e0064
 			public const int scrollable = 2131624036;
 			
-			// aapt resource value: 0x7f0e00a8
-			public const int search_badge = 2131624104;
-			
-			// aapt resource value: 0x7f0e00a7
-			public const int search_bar = 2131624103;
+			// aapt resource value: 0x7f0e00aa
+			public const int search_badge = 2131624106;
 			
 			// aapt resource value: 0x7f0e00a9
-			public const int search_button = 2131624105;
-			
-			// aapt resource value: 0x7f0e00ae
-			public const int search_close_btn = 2131624110;
-			
-			// aapt resource value: 0x7f0e00aa
-			public const int search_edit_frame = 2131624106;
-			
-			// aapt resource value: 0x7f0e00b0
-			public const int search_go_btn = 2131624112;
+			public const int search_bar = 2131624105;
 			
 			// aapt resource value: 0x7f0e00ab
-			public const int search_mag_icon = 2131624107;
+			public const int search_button = 2131624107;
+			
+			// aapt resource value: 0x7f0e00b0
+			public const int search_close_btn = 2131624112;
 			
 			// aapt resource value: 0x7f0e00ac
-			public const int search_plate = 2131624108;
-			
-			// aapt resource value: 0x7f0e00ad
-			public const int search_src_text = 2131624109;
-			
-			// aapt resource value: 0x7f0e00b1
-			public const int search_voice_btn = 2131624113;
+			public const int search_edit_frame = 2131624108;
 			
 			// aapt resource value: 0x7f0e00b2
-			public const int select_dialog_listview = 2131624114;
+			public const int search_go_btn = 2131624114;
+			
+			// aapt resource value: 0x7f0e00ad
+			public const int search_mag_icon = 2131624109;
+			
+			// aapt resource value: 0x7f0e00ae
+			public const int search_plate = 2131624110;
+			
+			// aapt resource value: 0x7f0e00af
+			public const int search_src_text = 2131624111;
+			
+			// aapt resource value: 0x7f0e00b3
+			public const int search_voice_btn = 2131624115;
+			
+			// aapt resource value: 0x7f0e00b4
+			public const int select_dialog_listview = 2131624116;
 			
 			// aapt resource value: 0x7f0e0056
 			public const int selected = 2131624022;
 			
-			// aapt resource value: 0x7f0e0110
-			public const int shellcontent_appbar = 2131624208;
+			// aapt resource value: 0x7f0e0112
+			public const int shellcontent_appbar = 2131624210;
 			
-			// aapt resource value: 0x7f0e0111
-			public const int shellcontent_toolbar = 2131624209;
+			// aapt resource value: 0x7f0e0113
+			public const int shellcontent_toolbar = 2131624211;
 			
-			// aapt resource value: 0x7f0e009a
-			public const int shortcut = 2131624090;
+			// aapt resource value: 0x7f0e009c
+			public const int shortcut = 2131624092;
 			
 			// aapt resource value: 0x7f0e0032
 			public const int showCustom = 2131623986;
@@ -10308,11 +10447,11 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0034
 			public const int showTitle = 2131623988;
 			
-			// aapt resource value: 0x7f0e0112
-			public const int sliding_tabs = 2131624210;
+			// aapt resource value: 0x7f0e0114
+			public const int sliding_tabs = 2131624212;
 			
-			// aapt resource value: 0x7f0e00bc
-			public const int smallLabel = 2131624124;
+			// aapt resource value: 0x7f0e00be
+			public const int smallLabel = 2131624126;
 			
 			// aapt resource value: 0x7f0e0016
 			public const int snackbar_action = 2131623958;
@@ -10326,8 +10465,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0053
 			public const int snapMargins = 2131624019;
 			
-			// aapt resource value: 0x7f0e008a
-			public const int spacer = 2131624074;
+			// aapt resource value: 0x7f0e008c
+			public const int spacer = 2131624076;
 			
 			// aapt resource value: 0x7f0e0008
 			public const int split_action_bar = 2131623944;
@@ -10347,17 +10486,17 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e005d
 			public const int start = 2131624029;
 			
-			// aapt resource value: 0x7f0e00fe
-			public const int status_bar_latest_event_content = 2131624190;
+			// aapt resource value: 0x7f0e0100
+			public const int status_bar_latest_event_content = 2131624192;
 			
 			// aapt resource value: 0x7f0e0062
 			public const int stretch = 2131624034;
 			
-			// aapt resource value: 0x7f0e009b
-			public const int submenuarrow = 2131624091;
+			// aapt resource value: 0x7f0e009d
+			public const int submenuarrow = 2131624093;
 			
-			// aapt resource value: 0x7f0e00af
-			public const int submit_area = 2131624111;
+			// aapt resource value: 0x7f0e00b1
+			public const int submit_area = 2131624113;
 			
 			// aapt resource value: 0x7f0e002f
 			public const int tabMode = 2131623983;
@@ -10377,17 +10516,17 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0022
 			public const int text2 = 2131623970;
 			
-			// aapt resource value: 0x7f0e0090
-			public const int textSpacerNoButtons = 2131624080;
+			// aapt resource value: 0x7f0e0092
+			public const int textSpacerNoButtons = 2131624082;
 			
-			// aapt resource value: 0x7f0e008f
-			public const int textSpacerNoTitle = 2131624079;
+			// aapt resource value: 0x7f0e0091
+			public const int textSpacerNoTitle = 2131624081;
 			
 			// aapt resource value: 0x7f0e0061
 			public const int textStart = 2131624033;
 			
-			// aapt resource value: 0x7f0e00c7
-			public const int text_input_password_toggle = 2131624135;
+			// aapt resource value: 0x7f0e00c9
+			public const int text_input_password_toggle = 2131624137;
 			
 			// aapt resource value: 0x7f0e0018
 			public const int textinput_counter = 2131623960;
@@ -10398,29 +10537,29 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e001a
 			public const int textinput_helper_text = 2131623962;
 			
-			// aapt resource value: 0x7f0e0104
-			public const int time = 2131624196;
+			// aapt resource value: 0x7f0e0106
+			public const int time = 2131624198;
 			
 			// aapt resource value: 0x7f0e0023
 			public const int title = 2131623971;
 			
+			// aapt resource value: 0x7f0e0099
+			public const int titleDividerNoCustom = 2131624089;
+			
 			// aapt resource value: 0x7f0e0097
-			public const int titleDividerNoCustom = 2131624087;
+			public const int title_template = 2131624087;
 			
-			// aapt resource value: 0x7f0e0095
-			public const int title_template = 2131624085;
-			
-			// aapt resource value: 0x7f0e0113
-			public const int toolbar = 2131624211;
+			// aapt resource value: 0x7f0e0115
+			public const int toolbar = 2131624213;
 			
 			// aapt resource value: 0x7f0e004d
 			public const int top = 2131624013;
 			
-			// aapt resource value: 0x7f0e0094
-			public const int topPanel = 2131624084;
+			// aapt resource value: 0x7f0e0096
+			public const int topPanel = 2131624086;
 			
-			// aapt resource value: 0x7f0e00c0
-			public const int touch_outside = 2131624128;
+			// aapt resource value: 0x7f0e00c2
+			public const int touch_outside = 2131624130;
 			
 			// aapt resource value: 0x7f0e000f
 			public const int transition_current_scene = 2131623951;
@@ -10437,8 +10576,8 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e0013
 			public const int transition_transform = 2131623955;
 			
-			// aapt resource value: 0x7f0e007d
-			public const int @unchecked = 2131624061;
+			// aapt resource value: 0x7f0e007f
+			public const int @unchecked = 2131624063;
 			
 			// aapt resource value: 0x7f0e003c
 			public const int uniform = 2131623996;
@@ -10455,11 +10594,11 @@ namespace ifsp.acolheuse.mobile.Droid
 			// aapt resource value: 0x7f0e001b
 			public const int view_offset_helper = 2131623963;
 			
-			// aapt resource value: 0x7f0e0114
-			public const int visible = 2131624212;
+			// aapt resource value: 0x7f0e0116
+			public const int visible = 2131624214;
 			
-			// aapt resource value: 0x7f0e00ec
-			public const int volume_item_container = 2131624172;
+			// aapt resource value: 0x7f0e00ee
+			public const int volume_item_container = 2131624174;
 			
 			// aapt resource value: 0x7f0e0072
 			public const int weekView = 2131624050;
@@ -14209,7 +14348,7 @@ namespace ifsp.acolheuse.mobile.Droid
 			public const int DesignTheme_bottomSheetStyle = 1;
 			
 			public static int[] DrawableStates = new int[] {
-					2130772483};
+					2130772509};
 			
 			// aapt resource value: 0
 			public const int DrawableStates_state_indeterminate = 0;
@@ -15131,9 +15270,9 @@ namespace ifsp.acolheuse.mobile.Droid
 			public const int SearchView_voiceIcon = 12;
 			
 			public static int[] SfCheckBox = new int[] {
-					2130772484,
-					2130772485,
-					2130772486};
+					2130772510,
+					2130772511,
+					2130772512};
 			
 			// aapt resource value: 2
 			public const int SfCheckBox_checked = 2;
@@ -15145,14 +15284,14 @@ namespace ifsp.acolheuse.mobile.Droid
 			public const int SfCheckBox_isthreestate = 0;
 			
 			public static int[] SfNavigationDrawer = new int[] {
-					2130772475,
-					2130772476,
-					2130772477,
-					2130772478,
-					2130772479,
-					2130772480,
-					2130772481,
-					2130772482};
+					2130772501,
+					2130772502,
+					2130772503,
+					2130772504,
+					2130772505,
+					2130772506,
+					2130772507,
+					2130772508};
 			
 			// aapt resource value: 4
 			public const int SfNavigationDrawer_navDrawerFooterHeight = 4;
@@ -15177,6 +15316,112 @@ namespace ifsp.acolheuse.mobile.Droid
 			
 			// aapt resource value: 7
 			public const int SfNavigationDrawer_navTransition = 7;
+			
+			public static int[] SfPicker = new int[] {
+					2130772475,
+					2130772476,
+					2130772477,
+					2130772478,
+					2130772479,
+					2130772480,
+					2130772481,
+					2130772482,
+					2130772483,
+					2130772484,
+					2130772485,
+					2130772486,
+					2130772487,
+					2130772488,
+					2130772489,
+					2130772490,
+					2130772491,
+					2130772492,
+					2130772493,
+					2130772494,
+					2130772495,
+					2130772496,
+					2130772497,
+					2130772498,
+					2130772499,
+					2130772500};
+			
+			// aapt resource value: 1
+			public const int SfPicker_pickerBackgroundColor = 1;
+			
+			// aapt resource value: 17
+			public const int SfPicker_pickerBorderColor = 17;
+			
+			// aapt resource value: 14
+			public const int SfPicker_pickerColumnHeaderBackgroundColor = 14;
+			
+			// aapt resource value: 10
+			public const int SfPicker_pickerColumnHeaderHeight = 10;
+			
+			// aapt resource value: 25
+			public const int SfPicker_pickerColumnHeaderTextColor = 25;
+			
+			// aapt resource value: 21
+			public const int SfPicker_pickerColumnHeaderTextSize = 21;
+			
+			// aapt resource value: 6
+			public const int SfPicker_pickerEnableLooping = 6;
+			
+			// aapt resource value: 3
+			public const int SfPicker_pickerFooterHeight = 3;
+			
+			// aapt resource value: 13
+			public const int SfPicker_pickerHeaderBackgroundColor = 13;
+			
+			// aapt resource value: 2
+			public const int SfPicker_pickerHeaderHeight = 2;
+			
+			// aapt resource value: 18
+			public const int SfPicker_pickerHeaderText = 18;
+			
+			// aapt resource value: 24
+			public const int SfPicker_pickerHeaderTextColor = 24;
+			
+			// aapt resource value: 20
+			public const int SfPicker_pickerHeaderTextSize = 20;
+			
+			// aapt resource value: 4
+			public const int SfPicker_pickerHeight = 4;
+			
+			// aapt resource value: 5
+			public const int SfPicker_pickerIsOpen = 5;
+			
+			// aapt resource value: 11
+			public const int SfPicker_pickerItemHeight = 11;
+			
+			// aapt resource value: 0
+			public const int SfPicker_pickerMode = 0;
+			
+			// aapt resource value: 23
+			public const int SfPicker_pickerSelectedItemTextSize = 23;
+			
+			// aapt resource value: 12
+			public const int SfPicker_pickerSelectedItemTextcolor = 12;
+			
+			// aapt resource value: 16
+			public const int SfPicker_pickerSelectionBorderColor = 16;
+			
+			// aapt resource value: 9
+			public const int SfPicker_pickerShowColumnHeader = 9;
+			
+			// aapt resource value: 8
+			public const int SfPicker_pickerShowFooter = 8;
+			
+			// aapt resource value: 7
+			public const int SfPicker_pickerShowHeader = 7;
+			
+			// aapt resource value: 15
+			public const int SfPicker_pickerUnselectedItemTextColor = 15;
+			
+			// aapt resource value: 22
+			public const int SfPicker_pickerUnselectedItemTextSize = 22;
+			
+			// aapt resource value: 19
+			public const int SfPicker_pickerWidth = 19;
 			
 			public static int[] SfSchedule = new int[] {
 					2130772465,
@@ -15221,18 +15466,18 @@ namespace ifsp.acolheuse.mobile.Droid
 			public const int SfSchedule_viewHeaderHeight = 4;
 			
 			public static int[] SfSegmentedControl = new int[] {
-					2130772487,
-					2130772488,
-					2130772489,
-					2130772490,
-					2130772491,
-					2130772492,
-					2130772493,
-					2130772494,
-					2130772495,
-					2130772496,
-					2130772497,
-					2130772498};
+					2130772513,
+					2130772514,
+					2130772515,
+					2130772516,
+					2130772517,
+					2130772518,
+					2130772519,
+					2130772520,
+					2130772521,
+					2130772522,
+					2130772523,
+					2130772524};
 			
 			// aapt resource value: 1
 			public const int SfSegmentedControl_segmentBackColor = 1;

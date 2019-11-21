@@ -120,8 +120,9 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
             if (String.IsNullOrEmpty(Action.GuidAction))
                 Action.GuidAction = Guid.NewGuid().ToString();
 
-            this.Action.IdLine = Line.Id;
+            Action.IdLine = Line.Id;
             await actionRepository.AddOrUpdateAsync(Action, Action.Id);
+            Action = await actionRepository.GetByGuidAsync(Action.GuidAction);
             IsBusy = false;
         }
 
@@ -159,6 +160,7 @@ namespace ifsp.acolheuse.mobile.ViewModels.Administrador
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             var navigationMode = parameters.GetNavigationMode();
+
             if (navigationMode != NavigationMode.Back)
             {
                 if (parameters["line"] != null)

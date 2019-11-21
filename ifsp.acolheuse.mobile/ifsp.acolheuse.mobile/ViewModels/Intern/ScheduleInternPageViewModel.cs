@@ -57,24 +57,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 case Appointment._INDIVIDUAL:
                 case Appointment._ORIENTACAO:
-                    if (!appointment.Confirmed)
-                    {
-                        if (await MessageService.Instance.ShowAsyncYesNo("Deseja confirmar o comparecimento do usuário " + appointment.Patient.Name + "?"))
-                        {
-                            appointment.Confirmed = true;
-                            await appointmentRepository.UpdateAsync(appointment, appointment.Id);
-                        }
-                    }
-                    else
-                    {
-                        if (await MessageService.Instance.ShowAsyncYesNo("Deseja retirar o comparecimento do usuário " + appointment.Patient.Name + "?"))
-                        {
-                            appointment.Confirmed = false;
-                            await appointmentRepository.UpdateAsync(appointment, appointment.Id);
-                        }
-                    }
-
-                    BuscarAppointmentsAsync();
                     break;
                 case Appointment._GRUPO:
                     var navParameters = new NavigationParameters();
@@ -97,15 +79,6 @@ namespace ifsp.acolheuse.mobile.ViewModels
             {
                 ScheduleAppointment appointment = new ScheduleAppointment();
                 appointment.Subject = appointments.ElementAt(i).DescricaoConsultation;
-
-                if (appointments.ElementAt(i).Confirmed)
-                {
-                    appointment.Color = Color.Green;
-                }
-                else
-                {
-                    appointment.Color = Color.Orange;
-                }
 
                 appointment.StartTime = appointments.ElementAt(i).StartTime;
                 appointment.EndTime = appointments.ElementAt(i).EndTime;

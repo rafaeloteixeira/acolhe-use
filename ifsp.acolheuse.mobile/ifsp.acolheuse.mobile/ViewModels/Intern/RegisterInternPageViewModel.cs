@@ -79,32 +79,39 @@ namespace ifsp.acolheuse.mobile.ViewModels.Estagio
 
         public async void SaveInternAsync()
         {
-            Intern.IdResponsible = ResponsibleOrientador.Id;
-
-            if (IsAdmin && String.IsNullOrEmpty(Intern.Id))
+            if(ResponsibleOrientador != null)
             {
-                if (!PassHasError)
-                {
-                    User user = new User() { Email = Intern.Email, Password = Intern.Password, Type = "intern" };
-                    var result = await firebase.CreateUserAsync(user);
+                Intern.IdResponsible = ResponsibleOrientador.Id;
 
-                    if (String.IsNullOrEmpty(result))
+                if (IsAdmin && String.IsNullOrEmpty(Intern.Id))
+                {
+                    if (!PassHasError)
                     {
-                        Intern.AccessToken = user.AccessToken;
-                        await internRepository.AddAsync(Intern);
-                        await userRepository.AddAsync(user);
-                        await navigationService.GoBackAsync();
+                        User user = new User() { Email = Intern.Email, Password = Intern.Password, Type = "intern" };
+                        var result = await firebase.CreateUserAsync(user);
+
+                        if (String.IsNullOrEmpty(result))
+                        {
+                            Intern.AccessToken = user.AccessToken;
+                            await internRepository.AddAsync(Intern);
+                            await userRepository.AddAsync(user);
+                            await navigationService.GoBackAsync();
+                        }
+                        else
+                        {
+                            await MessageService.Instance.ShowAsync(result);
+                        }
                     }
-                    else
-                    {
-                        await MessageService.Instance.ShowAsync(result);
-                    }
+                }
+                else
+                {
+                    await internRepository.AddOrUpdateAsync(Intern, Intern.Id);
+                    await navigationService.GoBackAsync();
                 }
             }
             else
             {
-                await internRepository.AddOrUpdateAsync(Intern, Intern.Id);
-                await navigationService.GoBackAsync();
+                await MessageService.Instance.ShowAsync("Insira um orientador");
             }
         }
 

@@ -59,6 +59,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.Register<IUserRepository, UserRepository>();
             containerRegistry.Register<IAppointmentRepository, AppointmentRepository>();
             containerRegistry.Register<IMessageRepository, MessageRepository>();
+            containerRegistry.Register<ICheckOutRepository, CheckOutRepository>();
             #endregion
 
             #region administrador
@@ -91,7 +92,7 @@ namespace ifsp.acolheuse.mobile
             containerRegistry.RegisterForNavigation<ScheduleAppointmentPage, ViewModels.ScheduleAppointmentPageViewModel>();
             containerRegistry.RegisterForNavigation<ScheduleResponsiblePage, ViewModels.ScheduleResponsiblePageViewModel>();
             containerRegistry.RegisterForNavigation<AppointmentPage, ViewModels.AppointmentPageViewModel>();
-            containerRegistry.RegisterForNavigation<DetailsschedulePage, ViewModels.DetailsschedulePageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailsSchedulePage, ViewModels.DetailsSchedulePageViewModel>();
             containerRegistry.RegisterForNavigation<InternResponsiblePage, ViewModels.InternResponsiblePageViewModel>();
             containerRegistry.RegisterForNavigation<SelectionInternsAppointmentPage, ViewModels.SelectionInternsAppointmentPageViewModel>();
             containerRegistry.RegisterForNavigation<SelectionResponsibleInterconsultationtionPage, ViewModels.SelectionResponsibleInterconsultationtionPageViewModel>();

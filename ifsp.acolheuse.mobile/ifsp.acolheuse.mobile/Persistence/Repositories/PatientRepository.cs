@@ -27,7 +27,7 @@ namespace ifsp.acolheuse.mobile.Persistence.Repositories
                                        .GetDocumentsAsync();
 
                 var yourModels = query.ToObjects<Patient>();
-                return yourModels.Where(x => x.ActionCollection.FirstOrDefault(y => y.Id == actionId) != null);
+                return yourModels.Where(x => x.ActionCollection != null && x.ActionCollection.FirstOrDefault(y => y.Id == actionId) != null);
             }
             else
             {

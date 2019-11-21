@@ -66,6 +66,27 @@ namespace ifsp.acolheuse.mobile.Core.Domain
         }
 
         [Ignored]
+        public string TypeName
+        {
+            get
+            {
+                switch (ConsultationType)
+                {
+                    case _ORIENTACAO:
+                        return "Orientação";
+                    case _GRUPO:
+                        return "Grupo";
+                    case _INDIVIDUAL:
+                        return "Individual";
+                    default:
+                        return "";
+                }
+          
+            }
+
+        }
+
+        [Ignored]
         public string DescricaoConsultation
         {
             get
